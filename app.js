@@ -3,11 +3,14 @@
  * Integrates VERB_DATABASE with Autocomplete search, Quick Tags & 12-Tense Matrix
  */
 
-import { VERB_DATABASE } from './verbsData.js';
+// Data loader: Supports both window.VERB_DATABASE and module imports
+const VERB_DATA_SOURCE = (typeof window !== 'undefined' && Array.isArray(window.VERB_DATABASE))
+  ? window.VERB_DATABASE
+  : (typeof VERB_DATABASE !== 'undefined' && Array.isArray(VERB_DATABASE) ? VERB_DATABASE : []);
 
 // Application State
 const state = {
-  verbs: Array.isArray(VERB_DATABASE) ? VERB_DATABASE : [],
+  verbs: Array.isArray(VERB_DATA_SOURCE) ? VERB_DATA_SOURCE : [],
   currentVerb: null,
   currentSubject: 'I',
   currentVoice: 'active', // 'active' | 'passive'
@@ -720,34 +723,42 @@ function applyTheme(isDark) {
  */
 function initEvents() {
   // Search
-  elements.verbSearch.addEventListener('input', handleSearchInput);
-  elements.verbSearch.addEventListener('keydown', handleSearchKeydown);
-  elements.clearSearchBtn.addEventListener('click', () => {
-    elements.verbSearch.value = '';
-    elements.clearSearchBtn.classList.add('hidden');
-    closeSearchDropdown();
-    elements.verbSearch.focus();
-  });
+  if (elements.verbSearch) {
+    elements.verbSearch.addEventListener('input', handleSearchInput);
+    elements.verbSearch.addEventListener('keydown', handleSearchKeydown);
+  }
+  if (elements.clearSearchBtn && elements.verbSearch) {
+    elements.clearSearchBtn.addEventListener('click', () => {
+      elements.verbSearch.value = '';
+      elements.clearSearchBtn.classList.add('hidden');
+      closeSearchDropdown();
+      elements.verbSearch.focus();
+    });
+  }
 
   // Close dropdown on click outside
   document.addEventListener('click', (e) => {
-    if (!elements.verbSearch.contains(e.target) && !elements.searchDropdown.contains(e.target)) {
-      closeSearchDropdown();
+    if (elements.verbSearch && elements.searchDropdown) {
+      if (!elements.verbSearch.contains(e.target) && !elements.searchDropdown.contains(e.target)) {
+        closeSearchDropdown();
+      }
     }
   });
 
   // Subject Select
-  elements.subjectSelect.addEventListener('change', (e) => {
-    state.currentSubject = e.target.value;
-    renderTenseMatrix();
-  });
+  if (elements.subjectSelect) {
+    elements.subjectSelect.addEventListener('change', (e) => {
+      state.currentSubject = e.target.value;
+      renderTenseMatrix();
+    });
+  }
 
   // Voice Buttons
-  elements.voiceActiveBtn.addEventListener('click', () => setVoice('active'));
-  elements.voicePassiveBtn.addEventListener('click', () => setVoice('passive'));
+  if (elements.voiceActiveBtn) elements.voiceActiveBtn.addEventListener('click', () => setVoice('active'));
+  if (elements.voicePassiveBtn) elements.voicePassiveBtn.addEventListener('click', () => setVoice('passive'));
 
   // Audio Pronounce
-  elements.pronounceBtn.addEventListener('click', pronounceCurrentVerb);
+  if (elements.pronounceBtn) elements.pronounceBtn.addEventListener('click', pronounceCurrentVerb);
 }
 
 /**
@@ -757,7 +768,9 @@ function initApp() {
   console.log(`[LexiMatrix] Loaded ${state.verbs.length} verbs from VERB_DATABASE.`);
   
   // Update Header Badge
-  elements.verbCountBadge.textContent = `${state.verbs.length} Động từ`;
+  if (elements.verbCountBadge) {
+    elements.verbCountBadge.textContent = `${state.verbs.length} Động từ`;
+  }
 
   // Setup Theme
   setupTheme();
@@ -769,12 +782,14 @@ function initApp() {
   initEvents();
 
   // Select Default Verb: write (or go, or first item)
-  let defaultVerb = state.verbs.find(v => v.v1.toLowerCase() === 'write');
-  if (!defaultVerb) {
-    defaultVerb = state.verbs.find(v => v.v1.toLowerCase() === 'go') || state.verbs[0];
-  }
-  if (defaultVerb) {
-    selectVerb(defaultVerb);
+  if (state.verbs && state.verbs.length > 0) {
+    let defaultVerb = state.verbs.find(v => v.v1 && v.v1.toLowerCase() === 'write');
+    if (!defaultVerb) {
+      defaultVerb = state.verbs.find(v => v.v1 && v.v1.toLowerCase() === 'go') || state.verbs[0];
+    }
+    if (defaultVerb) {
+      selectVerb(defaultVerb);
+    }
   }
 }
 
