@@ -124,3 +124,162 @@ html:not(.dark) footer {
 .matrix-dot-delay-420 { animation-delay: 420ms; }
 .matrix-dot-delay-510 { animation-delay: 510ms; }
 
+/* =========================================================================
+ * RESPONSIVE MOBILE & TABLET OPTIMIZATIONS (LexiMatrix Responsive Engine)
+ * ========================================================================= */
+
+/* 1. Global Overflow Protection */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 2. Touch Scroll Horizontal Rows (No Scrollbar, Smooth Touch Momentum) */
+.touch-scroll-row,
+.quick-chips-scroll,
+.no-scrollbar {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.touch-scroll-row::-webkit-scrollbar,
+.quick-chips-scroll::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 3. Touch Target Standardization */
+.touch-target-btn {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 4. TABLET BREAKPOINT (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .bento-card {
+    padding: 1.15rem;
+  }
+  .bento-card h3 {
+    font-size: 1.05rem;
+  }
+  .sent-speak-row {
+    padding: 0.85rem;
+  }
+  .sent-speak-row p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .verb-form-cell {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+/* 5. NARROW TABLET AUTO-ADJUSTMENT (< 900px) */
+@media (max-width: 900px) {
+  #matrix-stage > .grid.lg\:grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* 6. MOBILE BREAKPOINT (< 768px) */
+@media (max-width: 767px) {
+  /* Matrix 1-Column Card Stack */
+  #matrix-stage .grid-cols-2,
+  #matrix-stage .grid-cols-3,
+  #matrix-stage .lg\:grid-cols-3,
+  #matrix-stage .md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Bento Cards on Mobile */
+  .bento-card {
+    padding: 1rem;
+    border-radius: 1.25rem;
+  }
+
+  /* Sentences Typography & Word-break */
+  .sent-speak-row p {
+    font-size: 0.95rem !important;
+    line-height: 1.45 !important;
+    word-break: break-word;
+  }
+
+  /* Truncate formula tags gracefully without horizontal stretch */
+  .bento-card .font-mono.truncate {
+    max-width: 190px;
+  }
+
+  /* Search Input & Dropdown */
+  #verb-input {
+    font-size: 0.95rem;
+  }
+
+  #suggestions-dropdown {
+    max-height: 55vh;
+  }
+
+  /* Sticky Control Bar */
+  .sticky.top-16 {
+    top: 3.5rem !important;
+    padding: 0.65rem 0.75rem !important;
+  }
+}
+
+/* 7. SMALL SCREENS & BOTTOM SHEET MODAL TRANSFORMATION (< 640px) */
+@media (max-width: 640px) {
+  /* Bottom Sheet Transformation for Modals */
+  #detail-modal,
+  #cheatsheet-modal {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  #detail-modal > .bento-card,
+  #cheatsheet-modal > .bento-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 88vh !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-top-left-radius: 1.5rem !important;
+    border-top-right-radius: 1.5rem !important;
+    padding: 1.25rem 1rem 2rem 1rem !important;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.45) !important;
+    animation: sheetSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  }
+
+  @keyframes sheetSlideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0.5;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* 5 Verb Forms Bento Strip on Mobile */
+  .verb-form-cell {
+    padding: 0.6rem 0.75rem !important;
+  }
+
+  .verb-form-cell div[id^="cell-"] {
+    font-size: 1rem !important;
+  }
+
+  /* Header Brand sizing */
+  header .max-w-7xl {
+    height: 3.5rem !important;
+  }
+}
+

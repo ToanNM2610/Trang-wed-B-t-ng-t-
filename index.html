@@ -489,11 +489,10 @@
         </div>
       </div>
 
-      <!-- Curated Quick Verb Chips -->
-      <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1">
-        <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 mr-1">Từ phổ
-          biến:</span>
-        <div id="quick-chips" class="flex flex-wrap justify-center gap-1.5">
+      <!-- Curated Quick Verb Chips (Touch Swipeable) -->
+      <div class="flex items-center justify-start sm:justify-center gap-2 pt-1 w-full overflow-hidden">
+        <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">Từ phổ biến:</span>
+        <div id="quick-chips" class="quick-chips-scroll flex items-center gap-1.5 overflow-x-auto w-full no-scrollbar py-1">
           <!-- Populated by JS -->
         </div>
       </div>
@@ -539,9 +538,9 @@
               write
             </h2>
             <!-- Audio Accent Buttons (Web Speech API US & UK) -->
-            <div class="inline-flex items-center gap-1.5">
+            <div class="inline-flex items-center gap-2">
               <button id="btn-speak-us" type="button"
-                class="px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-indigo-500/15 dark:bg-slate-800 dark:hover:bg-indigo-500/25 text-zinc-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-300 text-xs font-semibold inline-flex items-center gap-1.5 border border-transparent hover:border-indigo-500/30 transition-all"
+                class="px-3.5 py-2 min-h-[44px] rounded-xl bg-zinc-100 hover:bg-indigo-500/15 dark:bg-slate-800 dark:hover:bg-indigo-500/25 text-zinc-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-300 text-xs font-bold inline-flex items-center gap-1.5 border border-transparent hover:border-indigo-500/30 transition-all touch-target-btn cursor-pointer"
                 title="Nghe phát âm Anh - Mỹ (en-US)">
                 <svg class="w-3.5 h-3.5 text-indigo-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -552,7 +551,7 @@
                 <span>US</span>
               </button>
               <button id="btn-speak-uk" type="button"
-                class="px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-emerald-500/15 dark:bg-slate-800 dark:hover:bg-emerald-500/25 text-zinc-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-300 text-xs font-semibold inline-flex items-center gap-1.5 border border-transparent hover:border-emerald-500/30 transition-all"
+                class="px-3.5 py-2 min-h-[44px] rounded-xl bg-zinc-100 hover:bg-emerald-500/15 dark:bg-slate-800 dark:hover:bg-emerald-500/25 text-zinc-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-300 text-xs font-bold inline-flex items-center gap-1.5 border border-transparent hover:border-emerald-500/30 transition-all touch-target-btn cursor-pointer"
                 title="Nghe phát âm Anh - Anh (en-GB)">
                 <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -737,56 +736,56 @@
       class="sticky top-16 z-30 backdrop-blur-xl bg-white/90 dark:bg-[#121620]/90 rounded-2xl border border-[#E5E2DC] dark:border-[#23293A] p-3 sm:px-5 sm:py-3.5 shadow-sm transition-all">
       <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-3.5">
 
-        <!-- Subject Pronoun Segmented Bar -->
-        <div class="flex items-center gap-2 overflow-x-auto pb-1 xl:pb-0 no-scrollbar">
+        <!-- Subject Pronoun Segmented Bar (Horizontal Touch Swipeable) -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 xl:pb-0 touch-scroll-row no-scrollbar w-full xl:w-auto">
           <span id="subject-label"
             class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">
             Chủ ngữ:
           </span>
           <div id="subject-selector"
-            class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] shrink-0">
+            class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] shrink-0 touch-scroll-row gap-0.5">
             <button data-subj="I"
-              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all">I</button>
+              class="subj-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all touch-target-btn">I</button>
             <button data-subj="You"
-              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">You</button>
+              class="subj-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">You</button>
             <button data-subj="We"
-              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">We</button>
+              class="subj-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">We</button>
             <button data-subj="They"
-              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">They</button>
+              class="subj-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">They</button>
             <button data-subj="He"
-              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">He</button>
+              class="subj-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">He</button>
             <button data-subj="She"
-              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">She</button>
+              class="subj-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">She</button>
             <button data-subj="It"
-              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">It</button>
+              class="subj-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">It</button>
           </div>
         </div>
 
         <!-- Right Controls: Polarity + Passive Voice Toggle & Layout Mode -->
-        <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2.5">
+        <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2.5 w-full xl:w-auto">
           <!-- Sentence Polarity (+ / - / ? / All) & Passive Toggle -->
-          <div class="flex flex-wrap items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2 overflow-x-auto touch-scroll-row no-scrollbar w-full sm:w-auto">
             <span
-              class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 hidden sm:inline">Thể:</span>
+              class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 hidden sm:inline shrink-0">Thể:</span>
             <div id="polarity-selector"
-              class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A]">
+              class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] shrink-0 touch-scroll-row gap-0.5">
               <button data-pol="aff"
-                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-600 text-white shadow-2xs transition-all">+
+                class="pol-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-bold bg-emerald-600 text-white shadow-2xs transition-all touch-target-btn">+
                 Khẳng định</button>
               <button data-pol="neg"
-                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">−
+                class="pol-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">−
                 Phủ định</button>
               <button data-pol="int"
-                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">?
+                class="pol-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">?
                 Nghi vấn</button>
               <button data-pol="all"
-                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">Tất
+                class="pol-btn px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn">Tất
                 cả</button>
             </div>
 
             <!-- Tactile UI Toggle Switch for Passive Voice (Pure SVG + Sliding Track & Thumb) -->
             <button id="btn-passive-toggle" type="button" role="switch" aria-checked="false"
-              class="group relative inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs font-bold border border-[#E5E2DC] dark:border-[#2A3248] bg-[#F6F5F2] dark:bg-[#0B0D13] text-zinc-700 dark:text-slate-300 hover:border-violet-500/60 transition-all cursor-pointer select-none"
+              class="group relative inline-flex items-center gap-2.5 px-3.5 py-2 min-h-[44px] rounded-xl text-xs font-bold border border-[#E5E2DC] dark:border-[#2A3248] bg-[#F6F5F2] dark:bg-[#0B0D13] text-zinc-700 dark:text-slate-300 hover:border-violet-500/60 transition-all cursor-pointer select-none touch-target-btn shrink-0"
               title="Bật/Tắt Thể Bị Động (Passive Voice: S + be + V3/ed + by O)">
               <svg class="w-3.5 h-3.5 text-violet-500 shrink-0 transition-transform duration-200 group-hover:rotate-12"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
@@ -810,19 +809,19 @@
 
           <!-- View Layout Switcher -->
           <div id="layout-selector"
-            class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A]">
+            class="touch-scroll-row inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A]">
             <button data-layout="columns" title="Ma trận 3 Cột Thời gian"
-              class="layout-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all flex items-center gap-1.5">
+              class="layout-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all flex items-center gap-1.5 touch-target-btn">
               <i class="fa-solid fa-table-columns text-[11px]"></i>
               <span class="hidden md:inline">3 Cột</span>
             </button>
             <button data-layout="aspects" title="Đối chiếu theo 4 Trạng thái"
-              class="layout-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5">
+              class="layout-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5 touch-target-btn">
               <i class="fa-solid fa-layer-group text-[11px]"></i>
               <span class="hidden md:inline">4 Trạng thái</span>
             </button>
             <button data-layout="tabs" title="Tập trung từng Mốc thời gian"
-              class="layout-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5">
+              class="layout-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5 touch-target-btn">
               <i class="fa-regular fa-compass text-[11px]"></i>
               <span class="hidden md:inline">Từng mốc</span>
             </button>
@@ -970,7 +969,7 @@
           <p id="modal-usage" class="text-xs sm:text-sm text-zinc-500 dark:text-slate-400 mt-1"></p>
         </div>
         <button id="btn-close-detail" type="button" title="Đóng cửa sổ chi tiết" aria-label="Đóng cửa sổ chi tiết"
-          class="w-9 h-9 rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center shrink-0 transition-colors">
+          class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center shrink-0 transition-colors touch-target-btn">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
           <span class="sr-only">Đóng cửa sổ chi tiết</span>
         </button>
@@ -1084,7 +1083,7 @@
         </div>
         <button id="btn-close-cheatsheet" type="button" title="Đóng bảng tham chiếu công thức"
           aria-label="Đóng bảng tham chiếu công thức"
-          class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center">
+          class="w-11 h-11 min-w-[44px] min-h-[44px] rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center touch-target-btn transition-colors">
           <i class="fa-solid fa-xmark" aria-hidden="true"></i>
           <span class="sr-only">Đóng bảng tham chiếu công thức</span>
         </button>
@@ -2423,9 +2422,9 @@
         const verbObj = VERB_DATABASE.find(x => x.v1 === btn.dataset.verb);
         const isIntrans = verbObj && !verbObj.isTransitive;
         if (btn.dataset.verb === d.v1) {
-          btn.className = 'quick-chip-btn px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all';
+          btn.className = 'quick-chip-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-mono font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all touch-target-btn';
         } else {
-          btn.className = `quick-chip-btn px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#121620] ${isIntrans ? 'text-amber-700 dark:text-amber-300/90' : 'text-zinc-600 dark:text-slate-400'} hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#23293A] transition-all`;
+          btn.className = `quick-chip-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#121620] ${isIntrans ? 'text-amber-700 dark:text-amber-300/90' : 'text-zinc-600 dark:text-slate-400'} hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#23293A] transition-all touch-target-btn`;
         }
       });
     }
@@ -2555,12 +2554,12 @@
 
             <!-- Action Icons (Pure Inline SVG) -->
             <div class="flex items-center gap-1">
-              <button type="button" class="btn-card-speak w-7 h-7 rounded-lg text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Nghe phát âm câu" aria-label="Nghe phát âm câu">
-                <svg class="w-3.5 h-3.5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <button type="button" class="btn-card-speak w-10 h-10 sm:w-8 sm:h-8 min-w-[40px] min-h-[40px] sm:min-w-[32px] sm:min-h-[32px] rounded-lg text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors touch-target-btn" title="Nghe phát âm câu" aria-label="Nghe phát âm câu">
+                <svg class="w-4 h-4 sm:w-3.5 sm:h-3.5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                 <span class="sr-only">Nghe phát âm câu</span>
               </button>
-              <button type="button" class="btn-card-copy w-7 h-7 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Sao chép câu" aria-label="Sao chép câu">
-                <svg class="w-3.5 h-3.5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <button type="button" class="btn-card-copy w-10 h-10 sm:w-8 sm:h-8 min-w-[40px] min-h-[40px] sm:min-w-[32px] sm:min-h-[32px] rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors touch-target-btn" title="Sao chép câu" aria-label="Sao chép câu">
+                <svg class="w-4 h-4 sm:w-3.5 sm:h-3.5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
                 <span class="sr-only">Sao chép câu</span>
               </button>
             </div>
@@ -2583,7 +2582,7 @@
           <div class="font-mono text-[11px] sm:text-xs font-semibold ${isPas ? 'text-violet-700 dark:text-violet-300 bg-violet-500/10' : 'text-zinc-700 dark:text-slate-300 bg-zinc-100/80 dark:bg-slate-800/80'} px-2.5 py-1 rounded-lg truncate" title="${activeOrPassiveFormula}">
             ${activeOrPassiveFormula}
           </div>
-          <button type="button" class="btn-card-detail px-2.5 py-1 rounded-lg text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-500/10 inline-flex items-center gap-1 shrink-0 transition-colors">
+          <button type="button" class="btn-card-detail px-3.5 py-2 min-h-[44px] rounded-lg text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:bg-indigo-500/10 inline-flex items-center gap-1 shrink-0 transition-colors touch-target-btn">
             <span>Chi tiết</span>
             <span class="font-mono text-[11px]">[↗]</span>
           </button>
@@ -3188,9 +3187,9 @@
     document.querySelectorAll('.subj-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.subj-btn').forEach(b => {
-          b.className = 'subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all';
+          b.className = 'subj-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn';
         });
-        btn.className = 'subj-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all';
+        btn.className = 'subj-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all touch-target-btn';
         state.subject = btn.dataset.subj;
         renderHeroDictionary();
         renderMatrix();
@@ -3201,14 +3200,14 @@
     document.querySelectorAll('.pol-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.pol-btn').forEach(b => {
-          b.className = 'pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all';
+          b.className = 'pol-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all touch-target-btn';
         });
         const pol = btn.dataset.pol;
         let activeColor = 'bg-indigo-600 text-white';
         if (pol === 'aff') activeColor = 'bg-emerald-600 text-white';
         if (pol === 'neg') activeColor = 'bg-rose-600 text-white';
         if (pol === 'int') activeColor = 'bg-sky-600 text-white';
-        btn.className = `pol-btn px-2.5 py-1 rounded-lg text-xs font-bold ${activeColor} shadow-2xs transition-all`;
+        btn.className = `pol-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-bold ${activeColor} shadow-2xs transition-all touch-target-btn`;
         state.polarity = pol;
         renderMatrix();
       });
@@ -3218,9 +3217,9 @@
     document.querySelectorAll('.layout-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.layout-btn').forEach(b => {
-          b.className = 'layout-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5';
+          b.className = 'layout-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5 touch-target-btn';
         });
-        btn.className = 'layout-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all flex items-center gap-1.5';
+        btn.className = 'layout-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all flex items-center gap-1.5 touch-target-btn';
         state.layout = btn.dataset.layout;
         timeframeTabs.classList.toggle('hidden', state.layout !== 'tabs');
         renderMatrix();
@@ -3262,7 +3261,7 @@
         const btn = document.createElement('button');
         btn.dataset.verb = v;
         btn.textContent = v;
-        btn.className = 'quick-chip-btn px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#121620] text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#23293A] transition-all';
+        btn.className = 'quick-chip-btn shrink-0 px-3 py-1.5 min-h-[38px] rounded-lg text-xs font-mono font-medium bg-white dark:bg-[#121620] text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#23293A] transition-all touch-target-btn';
         btn.addEventListener('click', () => selectVerb(v));
         quickChipsContainer.appendChild(btn);
       });
