@@ -2,9 +2,15 @@
  * LEXIMATRIX - INTRO SPLASH SCREEN STYLES (intro.css)
  * ========================================================================= */
 
+/* Lock body scroll during Intro */
+body.intro-active {
+  overflow: hidden !important;
+}
+
 /* Micro-Matrix Dot Pulsing Animation */
 @keyframes matrixDotPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(0.82);
     opacity: 0.32;
   }
@@ -30,11 +36,12 @@
 
 .intro-progress-bar {
   transform-origin: left center;
-  animation: introProgressFill 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform;
 }
 
-/* Intro Splash Screen Overlay */
-#intro-overlay {
+/* Intro Splash Screen Overlay (Universal) */
+#intro-overlay,
+#lexi-intro-overlay {
   position: fixed;
   inset: 0;
   z-index: 99999;
@@ -47,13 +54,17 @@
   color: #F4F4F6;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s ease;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
 }
 
 /* Smooth Fade-out State */
-#intro-overlay.intro-fade-out {
+#intro-overlay.intro-fade-out,
+#intro-overlay.is-exiting,
+#lexi-intro-overlay.is-exiting {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -69,6 +80,8 @@
   background-color: #191E2B;
   color: #94A3B8;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* Micro-Matrix Animation Delays (Extracted from inline styles) */
@@ -85,3 +98,277 @@
 .matrix-dot-delay-420 { animation-delay: 420ms; }
 .matrix-dot-delay-510 { animation-delay: 510ms; }
 
+/* =========================================================================
+ * ULTRA CYBER-LUXURY INTRO STYLES (LexiMatrix v2.0 Modular Shell)
+ * ========================================================================= */
+.cyber-ambient-stage {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cyber-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform, opacity;
+}
+
+.cyber-orb--violet {
+  width: 24rem;
+  height: 24rem;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18), transparent 70%);
+  transform: translate(-20%, -15%);
+}
+
+.cyber-orb--cyan {
+  width: 22rem;
+  height: 22rem;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.14), transparent 70%);
+  transform: translate(25%, 20%);
+}
+
+.cyber-orb--core {
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12), transparent 70%);
+}
+
+.cyber-grid-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+
+.cyber-core-shell {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 28rem;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  border-radius: 1.5rem;
+  background: rgba(18, 22, 32, 0.92);
+  border: 1px solid #23293A;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.cyber-emblem-dock {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 1rem;
+  background-color: #0B0D13;
+  border: 1px solid #23293A;
+  margin-bottom: 1.25rem;
+}
+
+.cyber-cube-badge {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cyber-cube-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: #6366F1;
+  animation: spinSlow 16s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cyber-monogram {
+  display: flex;
+  align-items: baseline;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.cyber-monogram-v {
+  font-size: 1.15rem;
+  color: #818CF8;
+}
+
+.cyber-monogram-lm {
+  font-size: 0.75rem;
+  color: #A5B4FC;
+  margin-left: 1px;
+}
+
+.cyber-emblem-divider {
+  width: 1px;
+  height: 1.75rem;
+  background-color: #23293A;
+}
+
+.cyber-matrix-grid {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 0.35rem;
+}
+
+.cyber-matrix-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cyber-node {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  animation: matrixDotPulse 1.3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+.cyber-node--present {
+  background-color: #10B981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+.cyber-node--past {
+  background-color: #F59E0B;
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+}
+
+.cyber-node--future {
+  background-color: #6366F1;
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.6);
+}
+
+.cyber-version-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #818CF8;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  background-color: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  margin-bottom: 0.75rem;
+}
+
+.cyber-version-dot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background-color: #10B981;
+}
+
+.cyber-brand-title {
+  font-family: 'Newsreader', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.cyber-brand-title-sub {
+  font-style: italic;
+  font-weight: 400;
+  color: #818CF8;
+  margin-left: 0.35rem;
+}
+
+.cyber-tech-subtitle {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+  color: #94A3B8;
+  margin: 0.5rem 0 1.25rem 0;
+}
+
+.cyber-telemetry-box {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+.cyber-telemetry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  margin-bottom: 0.4rem;
+}
+
+.cyber-status-text {
+  color: #94A3B8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+}
+
+.cyber-percent-counter {
+  color: #818CF8;
+  font-weight: 700;
+}
+
+.cyber-progress-track {
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: #1E2433;
+  overflow: hidden;
+}
+
+.cyber-progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #10B981, #F59E0B, #6366F1);
+  border-radius: 9999px;
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+.cyber-skip-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #64748B;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.cyber-skip-badge {
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid #23293A;
+  background-color: #191E2B;
+  color: #94A3B8;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
