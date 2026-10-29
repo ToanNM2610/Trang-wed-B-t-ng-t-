@@ -15,6 +15,8 @@
     rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Intro Splash Screen Styles -->
+  <link rel="stylesheet" href="intro.css">
 
   <script>
     tailwind.config = {
@@ -289,6 +291,88 @@
 
 <body
   class="min-h-full flex flex-col font-sans bg-grid-pattern selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300 transition-colors duration-200">
+
+  <!-- =========================================================================
+   * INTRO SPLASH SCREEN (MÀN HÌNH CHÀO TỰ ĐỘNG CHUYỂN CẢNH)
+   * ========================================================================= -->
+  <div id="intro-overlay" role="dialog" aria-modal="true" aria-label="Màn hình khởi động LexiMatrix">
+    <!-- Ambient Glow -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden flex items-center justify-center">
+      <div class="w-96 h-96 rounded-full bg-gradient-to-tr from-emerald-500/10 via-amber-500/10 to-indigo-500/15 blur-3xl"></div>
+    </div>
+
+    <!-- Centerpiece Card -->
+    <div class="relative z-10 flex flex-col items-center text-center max-w-md space-y-6 p-8 rounded-3xl bg-[#121620]/90 border border-[#23293A] shadow-2xl shadow-black/60 backdrop-blur-xl">
+      <!-- Brand V Badge + 3x4 Glowing Matrix Dots -->
+      <div class="flex items-center gap-4 px-5 py-3.5 rounded-2xl bg-[#0B0D13] border border-[#23293A]">
+        <div class="w-10 h-10 rounded-xl bg-white text-zinc-900 flex items-center justify-center font-serif italic font-bold text-2xl shadow-sm">
+          V
+        </div>
+        <div class="h-7 w-[1px] bg-[#23293A]"></div>
+        <!-- 3 Timeframes x 4 Aspects Micro-Matrix -->
+        <div class="grid grid-rows-3 gap-1.5" aria-hidden="true">
+          <!-- Row 1: Present (Emerald) -->
+          <div class="flex items-center gap-1.5">
+            <span class="intro-dot w-2 h-2 rounded-full bg-emerald-500 shadow-xs shadow-emerald-500/50" style="animation-delay: 0ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-emerald-500 shadow-xs shadow-emerald-500/50" style="animation-delay: 90ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-emerald-500 shadow-xs shadow-emerald-500/50" style="animation-delay: 180ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-emerald-500 shadow-xs shadow-emerald-500/50" style="animation-delay: 270ms;"></span>
+          </div>
+          <!-- Row 2: Past (Amber) -->
+          <div class="flex items-center gap-1.5">
+            <span class="intro-dot w-2 h-2 rounded-full bg-amber-500 shadow-xs shadow-amber-500/50" style="animation-delay: 120ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-amber-500 shadow-xs shadow-amber-500/50" style="animation-delay: 210ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-amber-500 shadow-xs shadow-amber-500/50" style="animation-delay: 300ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-amber-500 shadow-xs shadow-amber-500/50" style="animation-delay: 390ms;"></span>
+          </div>
+          <!-- Row 3: Future (Indigo) -->
+          <div class="flex items-center gap-1.5">
+            <span class="intro-dot w-2 h-2 rounded-full bg-indigo-500 shadow-xs shadow-indigo-500/50" style="animation-delay: 240ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-indigo-500 shadow-xs shadow-indigo-500/50" style="animation-delay: 330ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-indigo-500 shadow-xs shadow-indigo-500/50" style="animation-delay: 420ms;"></span>
+            <span class="intro-dot w-2 h-2 rounded-full bg-indigo-500 shadow-xs shadow-indigo-500/50" style="animation-delay: 510ms;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title & Subtitle -->
+      <div class="space-y-1.5">
+        <div class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-indigo-400 font-bold">
+          <span>3 Mốc Thời Gian × 4 Trạng Thái</span>
+        </div>
+        <h1 class="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          LexiMatrix <span class="italic font-normal text-indigo-400">12 Tenses</span>
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Hệ thống Tra cứu Động từ &amp; Ma trận Ngữ pháp Tiếng Anh chuyên nghiệp
+        </p>
+      </div>
+
+      <!-- 3 Timeframe Pills Preview -->
+      <div class="flex items-center justify-center gap-2 text-[11px] font-mono">
+        <span class="px-2.5 sm:px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Present (Hiện tại)</span>
+        <span class="px-2.5 sm:px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20">Past (Quá khứ)</span>
+        <span class="px-2.5 sm:px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">Future (Tương lai)</span>
+      </div>
+
+      <!-- Smooth Progress Line -->
+      <div class="w-56 h-[3px] rounded-full bg-slate-800 overflow-hidden">
+        <div class="intro-progress-bar w-full h-full bg-gradient-to-r from-emerald-500 via-amber-500 to-indigo-500 rounded-full"></div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex flex-col sm:flex-row items-center gap-3 w-full pt-2">
+        <button id="btn-intro-enter" type="button" class="w-full py-3 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold shadow-lg shadow-indigo-600/30 transition-all text-center flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-solid fa-compass text-xs" aria-hidden="true"></i>
+          <span>Vào trang tra cứu chính</span>
+        </button>
+      </div>
+
+      <div class="text-[11px] font-mono text-slate-500">
+        Nhấn phím <span class="intro-kbd-badge">Enter ↵</span> hoặc <span class="intro-kbd-badge">Space</span> để vào trang
+      </div>
+    </div>
+  </div>
 
   <!-- FLOATING TOAST NOTIFICATION -->
   <div id="toast"
@@ -1053,6 +1137,9 @@
         nghe phát âm</span>
     </div>
   </footer>
+
+  <!-- INTRO SPLASH SCREEN LOGIC -->
+  <script src="intro.js"></script>
 
   <!-- APPLICATION SCRIPT -->
   <script>

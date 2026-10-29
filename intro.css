@@ -1,0 +1,71 @@
+/* =========================================================================
+ * LEXIMATRIX - INTRO SPLASH SCREEN STYLES (intro.css)
+ * ========================================================================= */
+
+/* Micro-Matrix Dot Pulsing Animation */
+@keyframes matrixDotPulse {
+  0%, 100% {
+    transform: scale(0.82);
+    opacity: 0.32;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 1;
+  }
+}
+
+.intro-dot {
+  animation: matrixDotPulse 1.3s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+/* Horizontal Progress Line Fill */
+@keyframes introProgressFill {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.intro-progress-bar {
+  transform-origin: left center;
+  animation: introProgressFill 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Intro Splash Screen Overlay */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #0B0D13;
+  color: #F4F4F6;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
+  user-select: none;
+}
+
+/* Smooth Fade-out State */
+#intro-overlay.intro-fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Keycap Badge in Intro */
+.intro-kbd-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid #23293A;
+  background-color: #191E2B;
+  color: #94A3B8;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+}
