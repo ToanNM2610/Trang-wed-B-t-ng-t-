@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi" class="h-full dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LexiMatrix — Tra cứu Động từ & Ma trận 12 Thì Tiếng Anh</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Plus Jakarta Sans, Newsreader, JetBrains Mono -->
+  <!-- Google Fonts: Plus Jakarta Sans, Newsreader (Editorial Serif), JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -78,6 +81,7 @@
       background-image: radial-gradient(rgba(120, 118, 110, 0.14) 1px, transparent 1px);
       background-size: 24px 24px;
     }
+
     html.dark .bg-grid-pattern {
       background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
     }
@@ -87,13 +91,16 @@
       width: 6px;
       height: 6px;
     }
+
     ::-webkit-scrollbar-track {
       background: transparent;
     }
+
     ::-webkit-scrollbar-thumb {
       background: rgba(150, 150, 150, 0.3);
       border-radius: 9999px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(150, 150, 150, 0.5);
     }
@@ -103,13 +110,15 @@
       background-color: var(--bg-surface);
       border: 1px solid var(--border-hairline);
       transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 0.22s ease;
+        box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.22s ease;
     }
+
     .bento-card:hover {
       transform: translateY(-2px);
       box-shadow: 0 14px 30px -10px rgba(24, 24, 27, 0.06), 0 4px 12px -2px rgba(24, 24, 27, 0.04);
     }
+
     html.dark .bento-card:hover {
       box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.07);
     }
@@ -119,6 +128,7 @@
       color: var(--text-primary);
       font-weight: 600;
     }
+
     .token-aux {
       font-weight: 700;
       padding: 0.08rem 0.35rem;
@@ -126,6 +136,7 @@
       margin: 0 0.05rem;
       display: inline-block;
     }
+
     .token-verb {
       font-weight: 800;
       padding: 0.08rem 0.4rem;
@@ -141,15 +152,18 @@
       background-color: rgba(16, 185, 129, 0.12);
       color: #047857;
     }
+
     html.dark .theme-present .token-aux {
       background-color: rgba(16, 185, 129, 0.18);
       color: #6EE7B7;
     }
+
     .theme-present .token-verb {
       background-color: rgba(5, 150, 105, 0.18);
       color: #065F46;
       border-bottom: 2px solid #10B981;
     }
+
     html.dark .theme-present .token-verb {
       background-color: rgba(5, 150, 105, 0.28);
       color: #A7F3D0;
@@ -160,15 +174,18 @@
       background-color: rgba(245, 158, 11, 0.14);
       color: #B45309;
     }
+
     html.dark .theme-past .token-aux {
       background-color: rgba(245, 158, 11, 0.18);
       color: #FCD34D;
     }
+
     .theme-past .token-verb {
       background-color: rgba(217, 119, 6, 0.18);
       color: #92400E;
       border-bottom: 2px solid #F59E0B;
     }
+
     html.dark .theme-past .token-verb {
       background-color: rgba(217, 119, 6, 0.28);
       color: #FDE68A;
@@ -179,15 +196,18 @@
       background-color: rgba(99, 102, 241, 0.12);
       color: #4338CA;
     }
+
     html.dark .theme-future .token-aux {
       background-color: rgba(99, 102, 241, 0.20);
       color: #A5B4FC;
     }
+
     .theme-future .token-verb {
       background-color: rgba(79, 70, 229, 0.18);
       color: #3730A3;
       border-bottom: 2px solid #6366F1;
     }
+
     html.dark .theme-future .token-verb {
       background-color: rgba(79, 70, 229, 0.30);
       color: #C7D2FE;
@@ -204,10 +224,12 @@
       margin: 0 0.05rem;
       display: inline-block;
     }
+
     html.dark .token-passive-be {
       background-color: rgba(139, 92, 246, 0.25);
       color: #DDD6FE;
     }
+
     .token-agent {
       font-style: italic;
       opacity: 0.85;
@@ -216,9 +238,19 @@
 
     /* Speaking pulse animation */
     @keyframes pulseSpeak {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.16); opacity: 0.75; }
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.16);
+        opacity: 0.75;
+      }
     }
+
     .is-speaking {
       animation: pulseSpeak 0.7s infinite ease-in-out;
       color: #6366F1 !important;
@@ -233,7 +265,7 @@
       border: 1px solid var(--border-hairline);
       background-color: var(--bg-subtle);
       color: var(--text-muted);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
     }
 
     /* Subtle fade-in animation for dynamic updates */
@@ -242,37 +274,47 @@
         opacity: 0;
         transform: translateY(6px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
     .animate-card-in {
       animation: fadeSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
   </style>
 </head>
-<body class="min-h-full flex flex-col font-sans bg-grid-pattern selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300 transition-colors duration-200">
+
+<body
+  class="min-h-full flex flex-col font-sans bg-grid-pattern selection:bg-indigo-500/20 selection:text-indigo-600 dark:selection:text-indigo-300 transition-colors duration-200">
 
   <!-- FLOATING TOAST NOTIFICATION -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-4 py-3 rounded-2xl shadow-2xl border border-zinc-700/50 dark:border-zinc-200 text-xs sm:text-sm font-semibold">
-    <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 dark:text-emerald-600 flex items-center justify-center">
+  <div id="toast"
+    class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-4 py-3 rounded-2xl shadow-2xl border border-zinc-700/50 dark:border-zinc-200 text-xs sm:text-sm font-semibold">
+    <span
+      class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 dark:text-emerald-600 flex items-center justify-center">
       <i class="fa-solid fa-check text-xs"></i>
     </span>
     <span id="toast-message">Đã sao chép vào bộ nhớ tạm</span>
   </div>
 
   <!-- TOP MINIMALIST NAVIGATION BAR -->
-  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#F6F5F2]/85 dark:bg-[#0B0D13]/85 border-b border-[#E5E2DC] dark:border-[#23293A] transition-colors">
+  <header
+    class="sticky top-0 z-40 backdrop-blur-xl bg-[#F6F5F2]/85 dark:bg-[#0B0D13]/85 border-b border-[#E5E2DC] dark:border-[#23293A] transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
       <!-- Brand Identity -->
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-serif italic font-bold text-lg shadow-sm">
+        <div
+          class="w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-serif italic font-bold text-lg shadow-sm">
           V
         </div>
         <div class="flex items-center gap-2">
           <span class="font-bold text-sm tracking-tight text-zinc-900 dark:text-white">LexiMatrix</span>
-          <span id="header-count-badge" class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-zinc-200/70 dark:bg-slate-800 text-zinc-600 dark:text-slate-300 font-medium">3×4 Engine</span>
+          <span
+            class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-zinc-200/70 dark:bg-slate-800 text-zinc-600 dark:text-slate-300 font-medium">3×4
+            Engine</span>
         </div>
       </div>
 
@@ -294,13 +336,17 @@
 
       <!-- Right Actions: Formula Guide & Theme Switcher -->
       <div class="flex items-center gap-2">
-        <button id="btn-open-cheatsheet" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-zinc-700 dark:text-slate-300 hover:bg-zinc-200/60 dark:hover:bg-slate-800/80 border border-[#E5E2DC] dark:border-[#23293A] transition-all flex items-center gap-1.5">
-          <i class="fa-solid fa-table-columns text-zinc-400 dark:text-slate-400"></i>
+        <button id="btn-open-cheatsheet" type="button" title="Mở sơ đồ công thức 3×4"
+          aria-label="Mở sơ đồ công thức 3×4"
+          class="px-3 py-1.5 rounded-lg text-xs font-semibold text-zinc-700 dark:text-slate-300 hover:bg-zinc-200/60 dark:hover:bg-slate-800/80 border border-[#E5E2DC] dark:border-[#23293A] transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-table-columns text-zinc-400 dark:text-slate-400" aria-hidden="true"></i>
           <span>Sơ đồ 3×4</span>
         </button>
 
-        <button id="btn-theme-toggle" aria-label="Đổi giao diện Sáng/Tối" class="w-8 h-8 rounded-lg border border-[#E5E2DC] dark:border-[#23293A] bg-white dark:bg-[#121620] text-zinc-700 dark:text-amber-300 hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-all">
-          <i id="theme-icon" class="fa-solid fa-sun text-xs"></i>
+        <button id="btn-theme-toggle" type="button" title="Đổi giao diện Sáng/Tối" aria-label="Đổi giao diện Sáng/Tối"
+          class="w-8 h-8 rounded-lg border border-[#E5E2DC] dark:border-[#23293A] bg-white dark:bg-[#121620] text-zinc-700 dark:text-amber-300 hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-all">
+          <i id="theme-icon" class="fa-solid fa-sun text-xs" aria-hidden="true"></i>
+          <span class="sr-only">Đổi giao diện Sáng/Tối</span>
         </button>
       </div>
     </div>
@@ -311,49 +357,55 @@
 
     <!-- 1. SPOTLIGHT SEARCH HEADER & QUICK CHIPS -->
     <section class="max-w-3xl mx-auto text-center space-y-4">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] text-[11px] font-medium text-zinc-600 dark:text-slate-400 shadow-2xs">
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] text-[11px] font-medium text-zinc-600 dark:text-slate-400 shadow-2xs">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         <span>3 Mốc Thời Gian × 4 Trạng Thái = 12 Thì Tiếng Anh (Chủ động &amp; Bị động)</span>
       </div>
 
-      <h1 class="font-serif text-3xl sm:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-tight">
-        Từ điển Chia Động Từ &amp; <span class="italic font-normal text-indigo-600 dark:text-indigo-400">Ma trận 12 Thì</span>
+      <h1
+        class="font-serif text-3xl sm:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-tight">
+        Từ điển Chia Động Từ &amp; <span class="italic font-normal text-indigo-600 dark:text-indigo-400">Ma trận 12
+          Thì</span>
       </h1>
 
       <!-- Spotlight Search Box -->
       <div class="relative max-w-2xl mx-auto pt-2 text-left">
-        <div class="relative flex items-center bg-white dark:bg-[#121620] rounded-2xl border border-[#D6D3CD] dark:border-[#2A3146] shadow-lg shadow-zinc-900/[0.03] dark:shadow-black/40 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-500 dark:focus-within:border-indigo-400 transition-all">
+        <div
+          class="relative flex items-center bg-white dark:bg-[#121620] rounded-2xl border border-[#D6D3CD] dark:border-[#2A3146] shadow-lg shadow-zinc-900/[0.03] dark:shadow-black/40 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-500 dark:focus-within:border-indigo-400 transition-all">
           <div class="pl-4 pr-3 text-zinc-400 dark:text-slate-500 pointer-events-none">
-            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            <i class="fa-solid fa-magnifying-glass text-sm" aria-hidden="true"></i>
           </div>
-          <input
-            id="verb-input"
-            type="text"
-            autocomplete="off"
-            spellcheck="false"
+          <input id="verb-input" type="text" autocomplete="off" spellcheck="false"
+            title="Tìm kiếm động từ tiếng Anh (V1, V2, V3) hoặc nghĩa tiếng Việt"
+            aria-label="Tìm kiếm động từ tiếng Anh (V1, V2, V3) hoặc nghĩa tiếng Việt"
             placeholder="Tìm V1, V2, V3 hoặc nghĩa tiếng Việt (VD: write, wrote, viết, go, xây dựng)..."
-            class="w-full py-3.5 sm:py-4 pr-28 bg-transparent text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-slate-500 text-sm sm:text-base font-medium focus:outline-none"
-          />
+            class="w-full py-3.5 sm:py-4 pr-28 bg-transparent text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-slate-500 text-sm sm:text-base font-medium focus:outline-none" />
           <div class="absolute right-2.5 flex items-center gap-1.5">
-            <button id="btn-clear" title="Xóa" class="hidden w-7 h-7 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors">
-              <i class="fa-solid fa-xmark text-xs"></i>
+            <button id="btn-clear" type="button" title="Xóa từ khóa tìm kiếm" aria-label="Xóa từ khóa tìm kiếm"
+              class="hidden w-7 h-7 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors">
+              <i class="fa-solid fa-xmark text-xs" aria-hidden="true"></i>
+              <span class="sr-only">Xóa từ khóa tìm kiếm</span>
             </button>
             <span id="shortcut-hint" class="kbd-badge hidden sm:inline-block" title="Nhấn phím / để tìm nhanh">/</span>
-            <button id="btn-search" class="bg-zinc-900 hover:bg-zinc-800 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition-all shadow-xs">
+            <button id="btn-search" type="button" title="Tra cứu động từ" aria-label="Tra cứu động từ"
+              class="bg-zinc-900 hover:bg-zinc-800 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition-all shadow-xs">
               Tra từ
             </button>
           </div>
         </div>
 
         <!-- Live Autocomplete Dropdown -->
-        <div id="suggestions-dropdown" class="hidden absolute left-0 right-0 mt-2 bg-white dark:bg-[#121620] rounded-2xl border border-[#E5E2DC] dark:border-[#23293A] shadow-2xl overflow-hidden z-50 max-h-80 overflow-y-auto divide-y divide-zinc-100 dark:divide-slate-800/70">
+        <div id="suggestions-dropdown"
+          class="hidden absolute left-0 right-0 mt-2 bg-white dark:bg-[#121620] rounded-2xl border border-[#E5E2DC] dark:border-[#23293A] shadow-2xl overflow-hidden z-50 max-h-80 overflow-y-auto divide-y divide-zinc-100 dark:divide-slate-800/70">
           <!-- Populated dynamically -->
         </div>
       </div>
 
       <!-- Curated Quick Verb Chips -->
       <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1">
-        <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 mr-1">Từ phổ biến:</span>
+        <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 mr-1">Từ phổ
+          biến:</span>
         <div id="quick-chips" class="flex flex-wrap justify-center gap-1.5">
           <!-- Populated by JS -->
         </div>
@@ -363,55 +415,62 @@
     <!-- 2. EDITORIAL DICTIONARY HERO CARD (5 CORE VERB FORMS BENTO) -->
     <section class="bento-card rounded-3xl p-5 sm:p-7 shadow-xs space-y-5">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        
+
         <!-- Left: Dictionary Entry Headword, IPA, Transitivity, Meaning, Audio -->
         <div class="space-y-2.5 flex-1">
           <div class="flex flex-wrap items-center gap-2">
             <!-- Regular / Irregular Badge -->
-            <span id="verb-type-pill" class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20">
+            <span id="verb-type-pill"
+              class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20">
               <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
               <span>Động từ Bất quy tắc (Irregular)</span>
             </span>
 
-            <!-- Clickable [vt.] / [vi.] Transitivity Badge -->
-            <button
-              id="verb-transitivity-pill"
-              type="button"
+            <!-- Clickable [vt.] / [vi.] Transitivity Badge (Pure SVG + Monospace Tag) -->
+            <button id="verb-transitivity-pill" type="button"
               title="Nhấn để chuyển đổi thử nghiệm giữa Ngoại động từ [vt.] và Nội động từ [vi.]"
-              class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 hover:bg-emerald-500/20 transition-all cursor-pointer select-none"
-            >
-              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 10h14l-4-4"/>
-                <path d="M17 14H3l4 4"/>
+              class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 hover:bg-emerald-500/20 transition-all cursor-pointer select-none">
+              <svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 10h14l-4-4" />
+                <path d="M17 14H3l4 4" />
               </svg>
               <span class="font-mono font-bold">[vt.]</span>
               <span>Ngoại động từ (Có bị động)</span>
             </button>
 
             <!-- IPA Badge -->
-            <span id="verb-ipa" class="font-mono text-xs sm:text-sm text-zinc-500 dark:text-slate-400 bg-zinc-100 dark:bg-slate-800/80 px-2.5 py-0.5 rounded-md">
+            <span id="verb-ipa"
+              class="font-mono text-xs sm:text-sm text-zinc-500 dark:text-slate-400 bg-zinc-100 dark:bg-slate-800/80 px-2.5 py-0.5 rounded-md">
               /raɪt/
             </span>
           </div>
 
           <div class="flex items-baseline gap-4 flex-wrap">
-            <h2 id="hero-verb-title" class="font-serif text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white tracking-tight">
+            <h2 id="hero-verb-title"
+              class="font-serif text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white tracking-tight">
               write
             </h2>
             <!-- Audio Accent Buttons (Web Speech API US & UK) -->
             <div class="inline-flex items-center gap-1.5">
-              <button id="btn-speak-us" type="button" class="px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-indigo-500/15 dark:bg-slate-800 dark:hover:bg-indigo-500/25 text-zinc-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-300 text-xs font-semibold inline-flex items-center gap-1.5 border border-transparent hover:border-indigo-500/30 transition-all" title="Nghe phát âm Anh - Mỹ (en-US)">
-                <svg class="w-3.5 h-3.5 text-indigo-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+              <button id="btn-speak-us" type="button"
+                class="px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-indigo-500/15 dark:bg-slate-800 dark:hover:bg-indigo-500/25 text-zinc-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-300 text-xs font-semibold inline-flex items-center gap-1.5 border border-transparent hover:border-indigo-500/30 transition-all"
+                title="Nghe phát âm Anh - Mỹ (en-US)">
+                <svg class="w-3.5 h-3.5 text-indigo-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
                 </svg>
                 <span>US</span>
               </button>
-              <button id="btn-speak-uk" type="button" class="px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-emerald-500/15 dark:bg-slate-800 dark:hover:bg-emerald-500/25 text-zinc-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-300 text-xs font-semibold inline-flex items-center gap-1.5 border border-transparent hover:border-emerald-500/30 transition-all" title="Nghe phát âm Anh - Anh (en-GB)">
-                <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <button id="btn-speak-uk" type="button"
+                class="px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-emerald-500/15 dark:bg-slate-800 dark:hover:bg-emerald-500/25 text-zinc-700 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-emerald-300 text-xs font-semibold inline-flex items-center gap-1.5 border border-transparent hover:border-emerald-500/30 transition-all"
+                title="Nghe phát âm Anh - Anh (en-GB)">
+                <svg class="w-3.5 h-3.5 text-emerald-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
                 </svg>
                 <span>UK</span>
               </button>
@@ -420,17 +479,21 @@
 
           <p class="text-sm sm:text-base text-zinc-600 dark:text-slate-300 flex flex-wrap items-center gap-2">
             <span class="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500">Nghĩa:</span>
-            <strong id="hero-verb-meaning" class="font-semibold text-zinc-900 dark:text-white">viết, soạn thảo, sáng tác</strong>
+            <strong id="hero-verb-meaning" class="font-semibold text-zinc-900 dark:text-white">viết, soạn thảo, sáng
+              tác</strong>
             <span class="text-zinc-300 dark:text-slate-700">•</span>
-            <span id="hero-verb-context" class="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-medium">+ the letter</span>
+            <span id="hero-verb-context" class="text-xs font-mono text-indigo-600 dark:text-indigo-400 font-medium">+
+              the letter</span>
           </p>
 
-          <!-- Smart Word Note Banner -->
-          <div id="custom-word-note" class="hidden p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2.5 leading-relaxed">
-            <svg class="w-4 h-4 text-amber-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="16" x2="12" y2="12"/>
-              <line x1="12" y1="8" x2="12.01" y2="8"/>
+          <!-- Smart Word Note Banner (Shown when searching words like 'hello' or unlisted custom words) -->
+          <div id="custom-word-note"
+            class="hidden p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-xs text-amber-900 dark:text-amber-200 flex items-start gap-2.5 leading-relaxed">
+            <svg class="w-4 h-4 text-amber-500 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
             </svg>
             <div id="custom-word-note-text"></div>
           </div>
@@ -439,105 +502,176 @@
         <!-- Right: 5 Morphological Verb Forms Bento Strip -->
         <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 lg:w-[58%]">
           <!-- V1 Base -->
-          <button data-form-key="v1" type="button" class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-indigo-50/70 dark:hover:bg-indigo-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
+          <button data-form-key="v1" type="button"
+            class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-indigo-50/70 dark:hover:bg-indigo-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
             <div class="flex items-center justify-between w-full">
-              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-slate-500">V1 • Gốc</span>
-              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-indigo-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <span
+                class="font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-slate-500">V1 •
+                Gốc</span>
+              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-indigo-500 transition-colors"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
             </div>
-            <div id="cell-v1" class="font-mono text-base sm:text-lg font-bold text-zinc-900 dark:text-white mt-1.5 truncate">write</div>
+            <div id="cell-v1"
+              class="font-mono text-base sm:text-lg font-bold text-zinc-900 dark:text-white mt-1.5 truncate">write</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Infinitive</span>
           </button>
 
           <!-- V-s/es 3rd Person -->
-          <button data-form-key="vs" type="button" class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-emerald-50/70 dark:hover:bg-emerald-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
+          <button data-form-key="vs" type="button"
+            class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-emerald-50/70 dark:hover:bg-emerald-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
             <div class="flex items-center justify-between w-full">
-              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">V-s/es</span>
-              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-emerald-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <span
+                class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">V-s/es</span>
+              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-emerald-500 transition-colors"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
             </div>
-            <div id="cell-vs" class="font-mono text-base sm:text-lg font-bold text-emerald-700 dark:text-emerald-300 mt-1.5 truncate">writes</div>
+            <div id="cell-vs"
+              class="font-mono text-base sm:text-lg font-bold text-emerald-700 dark:text-emerald-300 mt-1.5 truncate">
+              writes</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">He / She / It</span>
           </button>
 
           <!-- V2 Past Simple -->
-          <button data-form-key="v2" type="button" class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-amber-50/70 dark:hover:bg-amber-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
+          <button data-form-key="v2" type="button"
+            class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-amber-50/70 dark:hover:bg-amber-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
             <div class="flex items-center justify-between w-full">
-              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">V2 • Quá khứ</span>
-              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-amber-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <span
+                class="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">V2 •
+                Quá khứ</span>
+              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-amber-500 transition-colors"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
             </div>
-            <div id="cell-v2" class="font-mono text-base sm:text-lg font-bold text-amber-700 dark:text-amber-300 mt-1.5 truncate">wrote</div>
+            <div id="cell-v2"
+              class="font-mono text-base sm:text-lg font-bold text-amber-700 dark:text-amber-300 mt-1.5 truncate">wrote
+            </div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Past Simple</span>
           </button>
 
           <!-- V3 Past Participle -->
-          <button data-form-key="v3" type="button" class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-purple-50/70 dark:hover:bg-purple-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
+          <button data-form-key="v3" type="button"
+            class="verb-form-cell group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-purple-50/70 dark:hover:bg-purple-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
             <div class="flex items-center justify-between w-full">
-              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">V3/ed • Phân từ</span>
-              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-purple-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <span
+                class="font-mono text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">V3/ed
+                • Phân từ</span>
+              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-purple-500 transition-colors"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
             </div>
-            <div id="cell-v3" class="font-mono text-base sm:text-lg font-bold text-purple-700 dark:text-purple-300 mt-1.5 truncate">written</div>
+            <div id="cell-v3"
+              class="font-mono text-base sm:text-lg font-bold text-purple-700 dark:text-purple-300 mt-1.5 truncate">
+              written</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Perfect &amp; Passive</span>
           </button>
 
           <!-- V-ing Present Participle -->
-          <button data-form-key="ving" type="button" class="verb-form-cell col-span-2 sm:col-span-1 group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-indigo-50/70 dark:hover:bg-indigo-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
+          <button data-form-key="ving" type="button"
+            class="verb-form-cell col-span-2 sm:col-span-1 group text-left p-3 rounded-2xl bg-[#F6F5F2] dark:bg-[#191E2B] hover:bg-indigo-50/70 dark:hover:bg-indigo-950/40 border border-[#E5E2DC] dark:border-[#262E42] transition-all flex flex-col justify-between">
             <div class="flex items-center justify-between w-full">
-              <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">V-ing • Tiếp diễn</span>
-              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-indigo-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <span
+                class="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">V-ing
+                • Tiếp diễn</span>
+              <svg class="w-3 h-3 text-zinc-400 dark:text-slate-500 group-hover:text-indigo-500 transition-colors"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              </svg>
             </div>
-            <div id="cell-ving" class="font-mono text-base sm:text-lg font-bold text-indigo-700 dark:text-indigo-300 mt-1.5 truncate">writing</div>
+            <div id="cell-ving"
+              class="font-mono text-base sm:text-lg font-bold text-indigo-700 dark:text-indigo-300 mt-1.5 truncate">
+              writing</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Continuous (Be +)</span>
           </button>
         </div>
       </div>
 
       <!-- INTERACTIVE CUSTOM OBJECT / CONTEXT EDITOR STRIP -->
-      <div class="pt-4 border-t border-[#E5E2DC] dark:border-[#23293A] flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+      <div
+        class="pt-4 border-t border-[#E5E2DC] dark:border-[#23293A] flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         <div class="flex flex-wrap items-center gap-2 flex-1">
-          <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 flex items-center gap-1.5 shrink-0">
-            <svg class="w-3.5 h-3.5 text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <span
+            class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 flex items-center gap-1.5 shrink-0">
+            <svg class="w-3.5 h-3.5 text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+            </svg>
             <span>Tùy chỉnh Tân ngữ / Ngữ cảnh:</span>
           </span>
 
           <div class="flex items-center gap-2 flex-1 min-w-[220px] max-w-md">
-            <input
-              id="custom-object-input"
-              type="text"
+            <input id="custom-object-input" type="text" title="Nhập tân ngữ hoặc ngữ cảnh tùy chỉnh cho câu ví dụ"
+              aria-label="Nhập tân ngữ hoặc ngữ cảnh tùy chỉnh cho câu ví dụ"
               placeholder="Nhập tân ngữ (VD: everyone, a message, English...)"
-              class="w-full px-3 py-1.5 rounded-xl text-xs font-mono bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#262E42] text-zinc-800 dark:text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors"
-            />
+              class="w-full px-3 py-1.5 rounded-xl text-xs font-mono bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#262E42] text-zinc-800 dark:text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors" />
           </div>
         </div>
 
         <!-- Preset Context Chips -->
         <div class="flex flex-wrap items-center gap-1.5">
           <span class="text-[10px] font-mono text-zinc-400 dark:text-slate-500 mr-0.5">Chọn nhanh:</span>
-          <button type="button" data-obj-preset="__default__" class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono font-semibold bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30 transition-all">Mặc định</button>
-          <button type="button" data-obj-preset="everyone" class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">everyone</button>
-          <button type="button" data-obj-preset="a message" class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">a message</button>
-          <button type="button" data-obj-preset="English" class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">English</button>
-          <button type="button" data-obj-preset="it" class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">it</button>
-          <button type="button" data-obj-preset="" class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">(Không tân ngữ)</button>
+          <button type="button" data-obj-preset="__default__"
+            class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono font-semibold bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border border-indigo-500/30 transition-all">Mặc
+            định</button>
+          <button type="button" data-obj-preset="everyone"
+            class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">everyone</button>
+          <button type="button" data-obj-preset="a message"
+            class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">a
+            message</button>
+          <button type="button" data-obj-preset="English"
+            class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">English</button>
+          <button type="button" data-obj-preset="it"
+            class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">it</button>
+          <button type="button" data-obj-preset=""
+            class="obj-preset-btn px-2 py-1 rounded-lg text-[11px] font-mono text-zinc-600 dark:text-slate-400 bg-[#F6F5F2] dark:bg-[#191E2B] hover:text-zinc-900 dark:hover:text-white border border-[#E5E2DC] dark:border-[#262E42] transition-all">(Không
+            tân ngữ)</button>
         </div>
       </div>
     </section>
 
     <!-- 3. STICKY INTERACTIVE CONTROL BAR (SUBJECT, POLARITY, PASSIVE VOICE TOGGLE, LAYOUT) -->
-    <section class="sticky top-16 z-30 backdrop-blur-xl bg-white/90 dark:bg-[#121620]/90 rounded-2xl border border-[#E5E2DC] dark:border-[#23293A] p-3 sm:px-5 sm:py-3.5 shadow-sm transition-all">
+    <section
+      class="sticky top-16 z-30 backdrop-blur-xl bg-white/90 dark:bg-[#121620]/90 rounded-2xl border border-[#E5E2DC] dark:border-[#23293A] p-3 sm:px-5 sm:py-3.5 shadow-sm transition-all">
       <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-3.5">
-        
+
         <!-- Subject Pronoun Segmented Bar -->
         <div class="flex items-center gap-2 overflow-x-auto pb-1 xl:pb-0 no-scrollbar">
-          <span id="subject-label" class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">
+          <span id="subject-label"
+            class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">
             Chủ ngữ:
           </span>
-          <div id="subject-selector" class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] shrink-0">
-            <button data-subj="I" class="subj-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all">I</button>
-            <button data-subj="You" class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">You</button>
-            <button data-subj="We" class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">We</button>
-            <button data-subj="They" class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">They</button>
-            <button data-subj="He" class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">He</button>
-            <button data-subj="She" class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">She</button>
-            <button data-subj="It" class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">It</button>
+          <div id="subject-selector"
+            class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] shrink-0">
+            <button data-subj="I"
+              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all">I</button>
+            <button data-subj="You"
+              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">You</button>
+            <button data-subj="We"
+              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">We</button>
+            <button data-subj="They"
+              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">They</button>
+            <button data-subj="He"
+              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">He</button>
+            <button data-subj="She"
+              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">She</button>
+            <button data-subj="It"
+              class="subj-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">It</button>
           </div>
         </div>
 
@@ -545,49 +679,63 @@
         <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2.5">
           <!-- Sentence Polarity (+ / - / ? / All) & Passive Toggle -->
           <div class="flex flex-wrap items-center gap-2">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 hidden sm:inline">Thể:</span>
-            <div id="polarity-selector" class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A]">
-              <button data-pol="aff" class="pol-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-600 text-white shadow-2xs transition-all">+ Khẳng định</button>
-              <button data-pol="neg" class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">− Phủ định</button>
-              <button data-pol="int" class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">? Nghi vấn</button>
-              <button data-pol="all" class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">Tất cả</button>
+            <span
+              class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 hidden sm:inline">Thể:</span>
+            <div id="polarity-selector"
+              class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A]">
+              <button data-pol="aff"
+                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-600 text-white shadow-2xs transition-all">+
+                Khẳng định</button>
+              <button data-pol="neg"
+                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">−
+                Phủ định</button>
+              <button data-pol="int"
+                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">?
+                Nghi vấn</button>
+              <button data-pol="all"
+                class="pol-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all">Tất
+                cả</button>
             </div>
 
-            <!-- Tactile UI Toggle Switch for Passive Voice -->
-            <button
-              id="btn-passive-toggle"
-              type="button"
-              role="switch"
-              aria-checked="false"
+            <!-- Tactile UI Toggle Switch for Passive Voice (Pure SVG + Sliding Track & Thumb) -->
+            <button id="btn-passive-toggle" type="button" role="switch" aria-checked="false"
               class="group relative inline-flex items-center gap-2.5 px-3 py-1.5 rounded-xl text-xs font-bold border border-[#E5E2DC] dark:border-[#2A3248] bg-[#F6F5F2] dark:bg-[#0B0D13] text-zinc-700 dark:text-slate-300 hover:border-violet-500/60 transition-all cursor-pointer select-none"
-              title="Bật/Tắt Thể Bị Động (Passive Voice: S + be + V3/ed + by O)"
-            >
-              <svg class="w-3.5 h-3.5 text-violet-500 shrink-0 transition-transform duration-200 group-hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 2.1l4 4-4 4"/>
-                <path d="M3 12.2v-2a4 4 0 0 1 4-4h14"/>
-                <path d="M7 21.9l-4-4 4-4"/>
-                <path d="M21 11.8v2a4 4 0 0 1-4 4H3"/>
+              title="Bật/Tắt Thể Bị Động (Passive Voice: S + be + V3/ed + by O)">
+              <svg class="w-3.5 h-3.5 text-violet-500 shrink-0 transition-transform duration-200 group-hover:rotate-12"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M17 2.1l4 4-4 4" />
+                <path d="M3 12.2v-2a4 4 0 0 1 4-4h14" />
+                <path d="M7 21.9l-4-4 4-4" />
+                <path d="M21 11.8v2a4 4 0 0 1-4 4H3" />
               </svg>
               <span>Bị động (Passive)</span>
               <!-- Switch Track & Thumb -->
-              <span id="passive-switch-track" class="relative inline-flex h-4 w-7 shrink-0 items-center rounded-full bg-zinc-300 dark:bg-slate-700 transition-colors duration-200">
-                <span id="passive-switch-thumb" class="inline-block h-3 w-3 transform rounded-full bg-white shadow-xs transition-transform duration-200 translate-x-0.5"></span>
+              <span id="passive-switch-track"
+                class="relative inline-flex h-4 w-7 shrink-0 items-center rounded-full bg-zinc-300 dark:bg-slate-700 transition-colors duration-200">
+                <span id="passive-switch-thumb"
+                  class="inline-block h-3 w-3 transform rounded-full bg-white shadow-xs transition-transform duration-200 translate-x-0.5"></span>
               </span>
-              <span id="passive-status-badge" class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-slate-800 text-zinc-500 dark:text-slate-400">OFF</span>
+              <span id="passive-status-badge"
+                class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-zinc-200/80 dark:bg-slate-800 text-zinc-500 dark:text-slate-400">OFF</span>
             </button>
           </div>
 
           <!-- View Layout Switcher -->
-          <div id="layout-selector" class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A]">
-            <button data-layout="columns" title="Ma trận 3 Cột Thời gian" class="layout-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all flex items-center gap-1.5">
+          <div id="layout-selector"
+            class="inline-flex p-1 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A]">
+            <button data-layout="columns" title="Ma trận 3 Cột Thời gian"
+              class="layout-btn px-2.5 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all flex items-center gap-1.5">
               <i class="fa-solid fa-table-columns text-[11px]"></i>
               <span class="hidden md:inline">3 Cột</span>
             </button>
-            <button data-layout="aspects" title="Đối chiếu theo 4 Trạng thái" class="layout-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5">
+            <button data-layout="aspects" title="Đối chiếu theo 4 Trạng thái"
+              class="layout-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5">
               <i class="fa-solid fa-layer-group text-[11px]"></i>
               <span class="hidden md:inline">4 Trạng thái</span>
             </button>
-            <button data-layout="tabs" title="Tập trung từng Mốc thời gian" class="layout-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5">
+            <button data-layout="tabs" title="Tập trung từng Mốc thời gian"
+              class="layout-btn px-2.5 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5">
               <i class="fa-regular fa-compass text-[11px]"></i>
               <span class="hidden md:inline">Từng mốc</span>
             </button>
@@ -597,14 +745,18 @@
       </div>
 
       <!-- Sub-bar: Timeframe Tab Selector (Only visible when 'tabs' layout is selected) -->
-      <div id="timeframe-tabs" class="hidden pt-3 mt-3 border-t border-[#E5E2DC] dark:border-[#23293A] flex items-center justify-center gap-2">
-        <button data-tf="present" class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-xs transition-all">
+      <div id="timeframe-tabs"
+        class="hidden pt-3 mt-3 border-t border-[#E5E2DC] dark:border-[#23293A] flex items-center justify-center gap-2">
+        <button data-tf="present"
+          class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-xs transition-all">
           1. Hiện tại (Present)
         </button>
-        <button data-tf="past" class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-all">
+        <button data-tf="past"
+          class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-all">
           2. Quá khứ (Past)
         </button>
-        <button data-tf="future" class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-all">
+        <button data-tf="future"
+          class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-all">
           3. Tương lai (Future)
         </button>
       </div>
@@ -613,21 +765,28 @@
     <!-- Color-coded Token Legend Bar -->
     <div class="flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-zinc-500 dark:text-slate-400">
       <div class="flex flex-wrap items-center gap-4">
-        <span class="font-mono text-[11px] uppercase tracking-wider text-zinc-400 dark:text-slate-500">Chú giải cấu trúc câu:</span>
+        <span class="font-mono text-[11px] uppercase tracking-wider text-zinc-400 dark:text-slate-500">Chú giải cấu trúc
+          câu:</span>
         <span class="inline-flex items-center gap-1.5">
-          <span class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold text-[11px]">Trợ động từ (Aux)</span>
+          <span
+            class="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold text-[11px]">Trợ
+            động từ (Aux)</span>
           <span class="text-zinc-400">do/does, have/has, will...</span>
         </span>
         <span id="legend-passive-be" class="hidden inline-flex items-center gap-1.5">
-          <span class="px-1.5 py-0.5 rounded bg-pink-500/20 text-pink-700 dark:text-pink-300 font-bold text-[11px]">To Be Bị động</span>
+          <span class="px-1.5 py-0.5 rounded bg-pink-500/20 text-pink-700 dark:text-pink-300 font-bold text-[11px]">To
+            Be Bị động</span>
           <span class="text-zinc-400">am/is/are, was/were, been, being</span>
         </span>
         <span class="inline-flex items-center gap-1.5">
-          <span class="px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 border-b-2 border-indigo-500 font-bold text-[11px]">Động từ chính (Main Verb)</span>
+          <span
+            class="px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 border-b-2 border-indigo-500 font-bold text-[11px]">Động
+            từ chính (Main Verb)</span>
           <span class="text-zinc-400">V1, V-s/es, V2, V3/ed, V-ing</span>
         </span>
       </div>
-      <span class="text-[11px] font-mono text-zinc-400 dark:text-slate-500">Nhấn vào bất kỳ câu nào để nghe phát âm</span>
+      <span class="text-[11px] font-mono text-zinc-400 dark:text-slate-500">Nhấn vào bất kỳ câu nào để nghe phát
+        âm</span>
     </div>
 
     <!-- 4. THE 12 TENSES MATRIX RENDER CONTAINER -->
@@ -639,11 +798,15 @@
     <section class="pt-6 border-t border-[#E5E2DC] dark:border-[#23293A]">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-5 gap-2">
         <div>
-          <span class="font-mono text-[11px] uppercase tracking-widest text-indigo-600 dark:text-indigo-400 font-semibold">Nguyên lý Ngữ pháp Cốt lõi</span>
-          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white mt-0.5">Tại sao Tiếng Anh có 12 Thì?</h3>
+          <span
+            class="font-mono text-[11px] uppercase tracking-widest text-indigo-600 dark:text-indigo-400 font-semibold">Nguyên
+            lý Ngữ pháp Cốt lõi</span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white mt-0.5">Tại sao Tiếng Anh
+            có 12 Thì?</h3>
         </div>
         <p class="text-xs text-zinc-500 dark:text-slate-400 max-w-md">
-          Chỉ cần nắm vững <strong>4 Trạng thái (Aspects)</strong> bên dưới và nhân với <strong>3 Mốc thời gian (Present • Past • Future)</strong>, bạn sẽ làm chủ toàn bộ 12 thì mà không cần học vẹt.
+          Chỉ cần nắm vững <strong>4 Trạng thái (Aspects)</strong> bên dưới và nhân với <strong>3 Mốc thời gian (Present
+            • Past • Future)</strong>, bạn sẽ làm chủ toàn bộ 12 thì mà không cần học vẹt.
         </p>
       </div>
 
@@ -651,37 +814,49 @@
         <div class="bento-card rounded-2xl p-4 space-y-2">
           <div class="flex items-center justify-between">
             <span class="font-mono text-[11px] font-bold text-emerald-600 dark:text-emerald-400">01 • SIMPLE</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">V1 / V2 / will V1</span>
+            <span
+              class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">V1
+              / V2 / will V1</span>
           </div>
           <h4 class="font-bold text-sm text-zinc-900 dark:text-white">Trạng thái Đơn</h4>
-          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Nhìn hành động như một sự kiện tổng thể, thói quen lặp lại hoặc chân lý hiển nhiên.</p>
+          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Nhìn hành động như một sự kiện tổng thể,
+            thói quen lặp lại hoặc chân lý hiển nhiên.</p>
         </div>
 
         <div class="bento-card rounded-2xl p-4 space-y-2">
           <div class="flex items-center justify-between">
             <span class="font-mono text-[11px] font-bold text-indigo-600 dark:text-indigo-400">02 • CONTINUOUS</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">be + V-ing</span>
+            <span
+              class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">be
+              + V-ing</span>
           </div>
           <h4 class="font-bold text-sm text-zinc-900 dark:text-white">Trạng thái Tiếp diễn</h4>
-          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Nhấn mạnh hành động đang trong quá trình diễn ra (chưa hoàn tất) ngay tại mốc thời gian đang xét.</p>
+          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Nhấn mạnh hành động đang trong quá trình
+            diễn ra (chưa hoàn tất) ngay tại mốc thời gian đang xét.</p>
         </div>
 
         <div class="bento-card rounded-2xl p-4 space-y-2">
           <div class="flex items-center justify-between">
             <span class="font-mono text-[11px] font-bold text-purple-600 dark:text-purple-400">03 • PERFECT</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">have/had + V3/ed</span>
+            <span
+              class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">have/had
+              + V3/ed</span>
           </div>
           <h4 class="font-bold text-sm text-zinc-900 dark:text-white">Trạng thái Hoàn thành</h4>
-          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Nhấn mạnh kết quả hoặc sự hoàn tất của hành động tính đến trước một mốc thời gian xác định.</p>
+          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Nhấn mạnh kết quả hoặc sự hoàn tất của
+            hành động tính đến trước một mốc thời gian xác định.</p>
         </div>
 
         <div class="bento-card rounded-2xl p-4 space-y-2">
           <div class="flex items-center justify-between">
             <span class="font-mono text-[11px] font-bold text-amber-600 dark:text-amber-400">04 • PERFECT CONT.</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">have/had been + V-ing</span>
+            <span
+              class="font-mono text-xs px-2 py-0.5 rounded bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">have/had
+              been + V-ing</span>
           </div>
           <h4 class="font-bold text-sm text-zinc-900 dark:text-white">Hoàn thành Tiếp diễn</h4>
-          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Đo lường độ dài liên tục không ngắt quãng của hành động kéo dài tới một mốc thời gian.</p>
+          <p class="text-xs text-zinc-500 dark:text-slate-400 leading-relaxed">Đo lường độ dài liên tục không ngắt quãng
+            của hành động kéo dài tới một mốc thời gian.</p>
         </div>
       </div>
     </section>
@@ -689,37 +864,50 @@
   </main>
 
   <!-- TENSE DETAIL & VISUAL TIMELINE MODAL (UPGRADED 4-SECTION ARCHITECTURE) -->
-  <div id="detail-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6">
-    <div class="bento-card rounded-3xl max-w-4xl w-full p-5 sm:p-8 shadow-2xl space-y-6 max-h-[92vh] overflow-y-auto animate-card-in border border-zinc-300 dark:border-slate-700/80">
+  <div id="detail-modal"
+    class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 sm:p-6">
+    <div
+      class="bento-card rounded-3xl max-w-4xl w-full p-5 sm:p-8 shadow-2xl space-y-6 max-h-[92vh] overflow-y-auto animate-card-in border border-zinc-300 dark:border-slate-700/80">
       <!-- Modal Header -->
       <div class="flex items-start justify-between gap-4 border-b border-[#E5E2DC] dark:border-[#23293A] pb-4">
         <div>
           <div class="flex flex-wrap items-center gap-2 mb-1.5">
-            <span id="modal-badge" class="inline-block font-mono text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md">Hiện tại</span>
-            <span id="modal-aspect-badge" class="inline-block font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">Trạng thái Đơn</span>
+            <span id="modal-badge"
+              class="inline-block font-mono text-[11px] font-bold uppercase px-2.5 py-0.5 rounded-md">Hiện tại</span>
+            <span id="modal-aspect-badge"
+              class="inline-block font-mono text-[11px] font-semibold px-2.5 py-0.5 rounded-md bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300">Trạng
+              thái Đơn</span>
           </div>
-          <h3 id="modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white">Hiện tại đơn (Present Simple)</h3>
+          <h3 id="modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white">Hiện tại
+            đơn (Present Simple)</h3>
           <p id="modal-usage" class="text-xs sm:text-sm text-zinc-500 dark:text-slate-400 mt-1"></p>
         </div>
-        <button id="btn-close-detail" class="w-9 h-9 rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center shrink-0 transition-colors">
-          <i class="fa-solid fa-xmark"></i>
+        <button id="btn-close-detail" type="button" title="Đóng cửa sổ chi tiết" aria-label="Đóng cửa sổ chi tiết"
+          class="w-9 h-9 rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center shrink-0 transition-colors">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          <span class="sr-only">Đóng cửa sổ chi tiết</span>
         </button>
       </div>
 
       <!-- Visual SVG Timeline Diagram & Live Verb Examples -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-        <div class="lg:col-span-5 p-4 rounded-2xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] flex flex-col justify-between">
-          <div class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500">Biểu đồ Trục Thời Gian (Timeline):</div>
+        <div
+          class="lg:col-span-5 p-4 rounded-2xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] flex flex-col justify-between">
+          <div class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500">Biểu đồ Trục
+            Thời Gian (Timeline):</div>
           <div id="modal-timeline-svg" class="w-full h-24 flex items-center justify-center my-auto">
             <!-- Injected SVG -->
           </div>
-          <div class="text-[11px] text-zinc-400 dark:text-slate-500 font-mono text-center">Nhấn vào các câu bên phải để nghe phát âm</div>
+          <div class="text-[11px] text-zinc-400 dark:text-slate-500 font-mono text-center">Nhấn vào các câu bên phải để
+            nghe phát âm</div>
         </div>
 
         <div class="lg:col-span-7 space-y-2">
           <div class="flex items-center justify-between">
-            <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500">Ví dụ trực tiếp với động từ đang chọn:</span>
-            <span id="modal-current-verb-tag" class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400"></span>
+            <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500">Ví dụ trực
+              tiếp với động từ đang chọn:</span>
+            <span id="modal-current-verb-tag"
+              class="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400"></span>
           </div>
           <div id="modal-sentences" class="space-y-2">
             <!-- Injected (+ / - / ? / Passive) -->
@@ -731,9 +919,11 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
 
         <!-- KHU VỰC 1: CÔNG THỨC TỔNG QUÁT (KHẲNG ĐỊNH, PHỦ ĐỊNH, NGHI VẤN, BỊ ĐỘNG) -->
-        <div class="p-5 rounded-2xl bg-[#F6F5F2] dark:bg-[#161B28] border border-[#E5E2DC] dark:border-[#252D40] space-y-3">
+        <div
+          class="p-5 rounded-2xl bg-[#F6F5F2] dark:bg-[#161B28] border border-[#E5E2DC] dark:border-[#252D40] space-y-3">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-mono text-xs font-bold">1</span>
+            <span
+              class="w-6 h-6 rounded-lg bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-mono text-xs font-bold">1</span>
             <h4 class="font-bold text-sm sm:text-base text-zinc-900 dark:text-white">Công thức tổng quát (4 Thể)</h4>
           </div>
           <div id="modal-sec1-formulas" class="space-y-2 font-mono text-xs">
@@ -742,9 +932,11 @@
         </div>
 
         <!-- KHU VỰC 2: DẤU HIỆU NHẬN BIẾT (SIGNAL WORDS) -->
-        <div class="p-5 rounded-2xl bg-[#F6F5F2] dark:bg-[#161B28] border border-[#E5E2DC] dark:border-[#252D40] space-y-3">
+        <div
+          class="p-5 rounded-2xl bg-[#F6F5F2] dark:bg-[#161B28] border border-[#E5E2DC] dark:border-[#252D40] space-y-3">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-bold">2</span>
+            <span
+              class="w-6 h-6 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-mono text-xs font-bold">2</span>
             <h4 class="font-bold text-sm sm:text-base text-zinc-900 dark:text-white">Dấu hiệu nhận biết kinh điển</h4>
           </div>
           <ul id="modal-sec2-signals" class="space-y-2 text-xs sm:text-sm text-zinc-700 dark:text-slate-300 list-none">
@@ -755,10 +947,12 @@
         <!-- KHU VỰC 3: BẪY NGỮ PHÁP & LƯU Ý (GRAMMAR TRAPS & STATIVE VERBS) -->
         <div class="p-5 rounded-2xl bg-amber-500/[0.06] dark:bg-amber-500/[0.07] border border-amber-500/25 space-y-3">
           <div class="flex items-center gap-2">
-            <span class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-bold">
+            <span
+              class="w-6 h-6 rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-mono text-xs font-bold">
               <i class="fa-solid fa-triangle-exclamation text-[11px]"></i>
             </span>
-            <h4 class="font-bold text-sm sm:text-base text-amber-900 dark:text-amber-200">3. Bẫy ngữ pháp &amp; Lưu ý đề thi</h4>
+            <h4 class="font-bold text-sm sm:text-base text-amber-900 dark:text-amber-200">3. Bẫy ngữ pháp &amp; Lưu ý đề
+              thi</h4>
           </div>
           <ul id="modal-sec3-traps" class="space-y-2.5 text-xs sm:text-sm text-zinc-700 dark:text-slate-300">
             <!-- Populated by JS -->
@@ -766,18 +960,22 @@
         </div>
 
         <!-- KHU VỰC 4: CẤU TRÚC MỞ RỘNG & SO SÁNH (EXTENDED STRUCTURES) -->
-        <div class="p-5 rounded-2xl bg-[#F6F5F2] dark:bg-[#161B28] border border-[#E5E2DC] dark:border-[#252D40] space-y-3">
+        <div
+          class="p-5 rounded-2xl bg-[#F6F5F2] dark:bg-[#161B28] border border-[#E5E2DC] dark:border-[#252D40] space-y-3">
           <div class="flex items-center justify-between gap-2">
             <div class="flex items-center gap-2">
-              <span class="w-6 h-6 rounded-lg bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center font-mono text-xs font-bold">4</span>
-              <h4 class="font-bold text-sm sm:text-base text-zinc-900 dark:text-white">Cấu trúc mở rộng &amp; So sánh</h4>
+              <span
+                class="w-6 h-6 rounded-lg bg-purple-500/15 text-purple-600 dark:text-purple-400 flex items-center justify-center font-mono text-xs font-bold">4</span>
+              <h4 class="font-bold text-sm sm:text-base text-zinc-900 dark:text-white">Cấu trúc mở rộng &amp; So sánh
+              </h4>
             </div>
           </div>
           <!-- Interactive Sub-tabs for Extended Comparison -->
           <div id="modal-sec4-tabs" class="flex flex-wrap gap-1.5 pt-0.5">
             <!-- Populated by JS -->
           </div>
-          <div id="modal-sec4-content" class="p-3.5 rounded-xl bg-white dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] text-xs sm:text-sm space-y-2">
+          <div id="modal-sec4-content"
+            class="p-3.5 rounded-xl bg-white dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] text-xs sm:text-sm space-y-2">
             <!-- Populated by JS -->
           </div>
         </div>
@@ -787,15 +985,21 @@
   </div>
 
   <!-- 3x4 FORMULA CHEATSHEET MODAL -->
-  <div id="cheatsheet-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
-    <div class="bento-card rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto animate-card-in">
+  <div id="cheatsheet-modal"
+    class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs hidden flex items-center justify-center p-4">
+    <div
+      class="bento-card rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl space-y-5 max-h-[90vh] overflow-y-auto animate-card-in">
       <div class="flex items-center justify-between border-b border-[#E5E2DC] dark:border-[#23293A] pb-4">
         <div>
           <span class="font-mono text-xs uppercase text-indigo-500 font-bold">Bảng Tham Chiếu Nhanh</span>
-          <h3 class="font-serif text-2xl font-bold text-zinc-900 dark:text-white">Ma trận Công thức 3 Mốc × 4 Trạng thái</h3>
+          <h3 class="font-serif text-2xl font-bold text-zinc-900 dark:text-white">Ma trận Công thức 3 Mốc × 4 Trạng thái
+          </h3>
         </div>
-        <button id="btn-close-cheatsheet" class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center">
-          <i class="fa-solid fa-xmark"></i>
+        <button id="btn-close-cheatsheet" type="button" title="Đóng bảng tham chiếu công thức"
+          aria-label="Đóng bảng tham chiếu công thức"
+          class="w-8 h-8 rounded-full bg-zinc-100 dark:bg-slate-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center justify-center">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          <span class="sr-only">Đóng bảng tham chiếu công thức</span>
         </button>
       </div>
 
@@ -841,69 +1045,110 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="border-t border-[#E5E2DC] dark:border-[#23293A] py-6 mt-12 text-center text-xs text-zinc-400 dark:text-slate-500">
+  <footer
+    class="border-t border-[#E5E2DC] dark:border-[#23293A] py-6 mt-12 text-center text-xs text-zinc-400 dark:text-slate-500">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
       <span><strong>LexiMatrix</strong> — Hệ thống Tra cứu Động từ &amp; Ma trận 12 Thì Tiếng Anh</span>
-      <span class="font-mono text-[11px]">Nhấn phím <kbd class="kbd-badge">/</kbd> để tìm nhanh • Nhấn vào câu bất kỳ để nghe phát âm</span>
+      <span class="font-mono text-[11px]">Nhấn phím <kbd class="kbd-badge">/</kbd> để tìm nhanh • Nhấn vào câu bất kỳ để
+        nghe phát âm</span>
     </div>
   </footer>
 
-  <!-- =========================================================================
-   * BƯỚC 1: NẠP KHO DỮ LIỆU ĐỘNG TỪ TỪ FILE RIÊNG verbsData.js
-   * ========================================================================= -->
-  <script src="verbsData.js"></script>
-
-  <!-- =========================================================================
-   * BƯỚC 2: CORE APPLICATION LOGIC (ĐÃ NÂNG CẤP TƯƠNG THÍCH HOÀN TOÀN KHO DỮ LIỆU 388 TỪ)
-   * ========================================================================= -->
+  <!-- APPLICATION SCRIPT -->
   <script>
-    /**
-     * Chuẩn hoá linh hoạt các trường dữ liệu từ verbsData.js
-     * Tự động tương thích cả 2 chuẩn:
-     * - Chuẩn A: { v1, vs, v2, v3, ving, ipaUS, meaning, isIrregular, isTransitive, activeObject, passiveSubject }
-     * - Chuẩn B: { v1, v_s_es, v2, v3, v_ing, ipa, meaning, transitive, object_sample }
-     */
-    function normalizeVerb(item) {
-      if (!item) return null;
-      const v1 = (item.v1 || '').trim();
-      const vs = item.vs || item.v_s_es || (v1 + 's');
-      const v2 = item.v2 || v1;
-      const v3 = item.v3 || v1;
-      const ving = item.ving || item.v_ing || (v1 + 'ing');
-      const ipaUS = item.ipaUS || item.ipa || `/${v1}/`;
-      const meaning = item.meaning || '';
-      const isIrregular = item.isIrregular !== undefined ? item.isIrregular : true;
-      const isTransitive = item.isTransitive !== undefined ? item.isTransitive : (item.transitive !== undefined ? item.transitive : true);
-      const activeObject = item.activeObject !== undefined ? item.activeObject : (item.object_sample !== undefined ? item.object_sample : '');
-      const passiveSubject = item.passiveSubject || formatPassiveSubject(activeObject);
+    /* =======================================================================================
+     * 1. DECOUPLED STANDALONE VERB DATABASE (MẢNG DỮ LIỆU ĐỘC LẬP `VERB_DATABASE`)
+     * ---------------------------------------------------------------------------------------
+     * Bạn có thể dán thêm 360+ động từ bất quy tắc hoặc có quy tắc vào mảng VERB_DATABASE
+     * bên dưới theo đúng cấu trúc Object mà không cần chỉnh sửa bất kỳ đoạn code giao diện nào:
+     * {
+     *   v1: "write",                        // Động từ nguyên mẫu (Base form)
+     *   vs: "writes",                       // Ngôi thứ 3 số ít (He/She/It)
+     *   v2: "wrote",                        // Quá khứ đơn (Past Simple)
+     *   v3: "written",                      // Quá khứ phân từ (Past Participle)
+     *   ving: "writing",                    // Hiện tại phân từ (V-ing)
+     *   ipaUS: "/raɪt/",                    // Phiên âm Quốc tế IPA
+     *   meaning: "viết, soạn thảo, sáng tác",// Nghĩa tiếng Việt (hỗ trợ tìm kiếm có dấu & không dấu)
+     *   isIrregular: true,                  // true = Bất quy tắc, false = Có quy tắc
+     *   isTransitive: true,                 // true = Ngoại động từ (có Bị động), false = Nội động từ (không có Bị động)
+     *   activeObject: "a detailed letter",  // Tân ngữ dùng trong câu Chủ động
+     *   passiveSubject: "A detailed letter"// Chủ ngữ tương ứng khi lật sang câu Bị động
+     * }
+     * ======================================================================================= */
+    const VERB_DATABASE = [
+      // --- NHÓM NGOẠI ĐỘNG TỪ (TRANSITIVE VERBS - Chia được cả Chủ động & Bị động) ---
+      { v1: "write", vs: "writes", v2: "wrote", v3: "written", ving: "writing", ipaUS: "/raɪt/", meaning: "viết, soạn thảo, sáng tác", isIrregular: true, isTransitive: true, activeObject: "the letter", passiveSubject: "The letter" },
+      { v1: "make", vs: "makes", v2: "made", v3: "made", ving: "making", ipaUS: "/meɪk/", meaning: "làm, chế tạo, tạo ra", isIrregular: true, isTransitive: true, activeObject: "a birthday cake", passiveSubject: "A birthday cake" },
+      { v1: "build", vs: "builds", v2: "built", v3: "built", ving: "building", ipaUS: "/bɪld/", meaning: "xây dựng, kiến tạo", isIrregular: true, isTransitive: true, activeObject: "the bridge", passiveSubject: "The bridge" },
+      { v1: "take", vs: "takes", v2: "took", v3: "taken", ving: "taking", ipaUS: "/teɪk/", meaning: "cầm, lấy, chụp (ảnh)", isIrregular: true, isTransitive: true, activeObject: "the photograph", passiveSubject: "The photograph" },
+      { v1: "eat", vs: "eats", v2: "ate", v3: "eaten", ving: "eating", ipaUS: "/iːt/", meaning: "ăn, thưởng thức", isIrregular: true, isTransitive: true, activeObject: "an organic apple", passiveSubject: "An organic apple" },
+      { v1: "drink", vs: "drinks", v2: "drank", v3: "drunk", ving: "drinking", ipaUS: "/drɪŋk/", meaning: "uống", isIrregular: true, isTransitive: true, activeObject: "green tea", passiveSubject: "Green tea" },
+      { v1: "see", vs: "sees", v2: "saw", v3: "seen", ving: "seeing", ipaUS: "/siː/", meaning: "nhìn thấy, trông thấy", isIrregular: true, isTransitive: true, activeObject: "the shooting star", passiveSubject: "The shooting star" },
+      { v1: "read", vs: "reads", v2: "read", v3: "read", ving: "reading", ipaUS: "/riːd/", meaning: "đọc, nghiên cứu", isIrregular: true, isTransitive: true, activeObject: "the novel", passiveSubject: "The novel" },
+      { v1: "speak", vs: "speaks", v2: "spoke", v3: "spoken", ving: "speaking", ipaUS: "/spiːk/", meaning: "nói, phát biểu", isIrregular: true, isTransitive: true, activeObject: "English", passiveSubject: "English" },
+      { v1: "buy", vs: "buys", v2: "bought", v3: "bought", ving: "buying", ipaUS: "/baɪ/", meaning: "mua, tậu", isIrregular: true, isTransitive: true, activeObject: "a new laptop", passiveSubject: "A new laptop" },
+      { v1: "bring", vs: "brings", v2: "brought", v3: "brought", ving: "bringing", ipaUS: "/brɪŋ/", meaning: "mang đến, đem theo", isIrregular: true, isTransitive: true, activeObject: "the document", passiveSubject: "The document" },
+      { v1: "teach", vs: "teaches", v2: "taught", v3: "taught", ving: "teaching", ipaUS: "/tiːtʃ/", meaning: "dạy học, giảng dạy", isIrregular: true, isTransitive: true, activeObject: "grammar", passiveSubject: "Grammar" },
+      { v1: "break", vs: "breaks", v2: "broke", v3: "broken", ving: "breaking", ipaUS: "/breɪk/", meaning: "làm vỡ, phá vỡ", isIrregular: true, isTransitive: true, activeObject: "the world record", passiveSubject: "The world record" },
+      { v1: "choose", vs: "chooses", v2: "chose", v3: "chosen", ving: "choosing", ipaUS: "/tʃuːz/", meaning: "lựa chọn, tuyển chọn", isIrregular: true, isTransitive: true, activeObject: "the best candidate", passiveSubject: "The best candidate" },
+      { v1: "drive", vs: "drives", v2: "drove", v3: "driven", ving: "driving", ipaUS: "/draɪv/", meaning: "lái xe, điều khiển", isIrregular: true, isTransitive: true, activeObject: "the electric car", passiveSubject: "The electric car" },
+      { v1: "find", vs: "finds", v2: "found", v3: "found", ving: "finding", ipaUS: "/faɪnd/", meaning: "tìm thấy, phát hiện", isIrregular: true, isTransitive: true, activeObject: "the hidden key", passiveSubject: "The hidden key" },
+      { v1: "give", vs: "gives", v2: "gave", v3: "given", ving: "giving", ipaUS: "/ɡɪv/", meaning: "tặng, trao, đưa cho", isIrregular: true, isTransitive: true, activeObject: "a scholarship", passiveSubject: "A scholarship" },
+      { v1: "know", vs: "knows", v2: "knew", v3: "known", ving: "knowing", ipaUS: "/nəʊ/", meaning: "biết, tường tận", isIrregular: true, isTransitive: true, activeObject: "the secret", passiveSubject: "The secret" },
+      { v1: "send", vs: "sends", v2: "sent", v3: "sent", ving: "sending", ipaUS: "/send/", meaning: "gửi đi, chuyển phát", isIrregular: true, isTransitive: true, activeObject: "the package", passiveSubject: "The package" },
+      { v1: "keep", vs: "keeps", v2: "kept", v3: "kept", ving: "keeping", ipaUS: "/kiːp/", meaning: "giữ gìn, lưu giữ", isIrregular: true, isTransitive: true, activeObject: "the promise", passiveSubject: "The promise" },
+      { v1: "understand", vs: "understands", v2: "understood", v3: "understood", ving: "understanding", ipaUS: "/ˌʌndəˈstænd/", meaning: "hiểu, nắm bắt", isIrregular: true, isTransitive: true, activeObject: "the theory", passiveSubject: "The theory" },
+      { v1: "do", vs: "does", v2: "did", v3: "done", ving: "doing", ipaUS: "/duː/", meaning: "làm, thực hiện", isIrregular: true, isTransitive: true, activeObject: "the assignment", passiveSubject: "The assignment" },
+      { v1: "have", vs: "has", v2: "had", v3: "had", ving: "having", ipaUS: "/hæv/", meaning: "có, sở hữu, tổ chức", isIrregular: true, isTransitive: true, activeObject: "an important meeting", passiveSubject: "An important meeting" },
+      { v1: "tell", vs: "tells", v2: "told", v3: "told", ving: "telling", ipaUS: "/tel/", meaning: "kể, bảo, thuật lại", isIrregular: true, isTransitive: true, activeObject: "an inspiring story", passiveSubject: "An inspiring story" },
+      { v1: "leave", vs: "leaves", v2: "left", v3: "left", ving: "leaving", ipaUS: "/liːv/", meaning: "rời bỏ, để lại", isIrregular: true, isTransitive: true, activeObject: "a message", passiveSubject: "A message" },
+      { v1: "forget", vs: "forgets", v2: "forgot", v3: "forgotten", ving: "forgetting", ipaUS: "/fəˈɡet/", meaning: "quên, lãng quên", isIrregular: true, isTransitive: true, activeObject: "the password", passiveSubject: "The password" },
+      { v1: "hear", vs: "hears", v2: "heard", v3: "heard", ving: "hearing", ipaUS: "/hɪər/", meaning: "nghe thấy", isIrregular: true, isTransitive: true, activeObject: "the symphony", passiveSubject: "The symphony" },
+      { v1: "lose", vs: "loses", v2: "lost", v3: "lost", ving: "losing", ipaUS: "/luːz/", meaning: "làm mất, đánh mất", isIrregular: true, isTransitive: true, activeObject: "the wallet", passiveSubject: "The wallet" },
+      { v1: "meet", vs: "meets", v2: "met", v3: "met", ving: "meeting", ipaUS: "/miːt/", meaning: "gặp gỡ, đón tiếp", isIrregular: true, isTransitive: true, activeObject: "the partner", passiveSubject: "The partner" },
+      { v1: "pay", vs: "pays", v2: "paid", v3: "paid", ving: "paying", ipaUS: "/peɪ/", meaning: "trả tiền, thanh toán", isIrregular: true, isTransitive: true, activeObject: "the invoice", passiveSubject: "The invoice" },
+      { v1: "put", vs: "puts", v2: "put", v3: "put", ving: "putting", ipaUS: "/pʊt/", meaning: "đặt, để", isIrregular: true, isTransitive: true, activeObject: "the vase on the table", passiveSubject: "The vase" },
+      { v1: "sing", vs: "sings", v2: "sang", v3: "sung", ving: "singing", ipaUS: "/sɪŋ/", meaning: "hát, ca hát", isIrregular: true, isTransitive: true, activeObject: "the national anthem", passiveSubject: "The national anthem" },
+      { v1: "spend", vs: "spends", v2: "spent", v3: "spent", ving: "spending", ipaUS: "/spend/", meaning: "tiêu xài, dành (thời gian)", isIrregular: true, isTransitive: true, activeObject: "the budget", passiveSubject: "The budget" },
+      { v1: "wear", vs: "wears", v2: "wore", v3: "worn", ving: "wearing", ipaUS: "/weər/", meaning: "mặc, đội, đeo", isIrregular: true, isTransitive: true, activeObject: "a silk suit", passiveSubject: "A silk suit" },
+      { v1: "win", vs: "wins", v2: "won", v3: "won", ving: "winning", ipaUS: "/wɪn/", meaning: "chiến thắng, giành được", isIrregular: true, isTransitive: true, activeObject: "the gold trophy", passiveSubject: "The gold trophy" },
+      { v1: "draw", vs: "draws", v2: "drew", v3: "drawn", ving: "drawing", ipaUS: "/drɔː/", meaning: "vẽ, phác họa", isIrregular: true, isTransitive: true, activeObject: "a portrait", passiveSubject: "A portrait" },
+      { v1: "throw", vs: "throws", v2: "threw", v3: "thrown", ving: "throwing", ipaUS: "/θrəʊ/", meaning: "ném, quăng", isIrregular: true, isTransitive: true, activeObject: "the baseball", passiveSubject: "The baseball" },
+      // Động từ có quy tắc (Ngoại động từ)
+      { v1: "study", vs: "studies", v2: "studied", v3: "studied", ving: "studying", ipaUS: "/ˈstʌdi/", meaning: "học tập, nghiên cứu", isIrregular: false, isTransitive: true, activeObject: "English literature", passiveSubject: "English literature" },
+      { v1: "design", vs: "designs", v2: "designed", v3: "designed", ving: "designing", ipaUS: "/dɪˈzaɪn/", meaning: "thiết kế, phác thảo", isIrregular: false, isTransitive: true, activeObject: "the user interface", passiveSubject: "The user interface" },
+      { v1: "create", vs: "creates", v2: "created", v3: "created", ving: "creating", ipaUS: "/kriˈeɪt/", meaning: "sáng tạo, tạo lập", isIrregular: false, isTransitive: true, activeObject: "the masterpiece", passiveSubject: "The masterpiece" },
+      { v1: "watch", vs: "watches", v2: "watched", v3: "watched", ving: "watching", ipaUS: "/wɒtʃ/", meaning: "xem, theo dõi", isIrregular: false, isTransitive: true, activeObject: "the documentary", passiveSubject: "The documentary" },
+      { v1: "clean", vs: "cleans", v2: "cleaned", v3: "cleaned", ving: "cleaning", ipaUS: "/kliːn/", meaning: "dọn dẹp, lau chùi", isIrregular: false, isTransitive: true, activeObject: "the classroom", passiveSubject: "The classroom" },
+      { v1: "open", vs: "opens", v2: "opened", v3: "opened", ving: "opening", ipaUS: "/ˈəʊ.pən/", meaning: "mở, khai trương", isIrregular: false, isTransitive: true, activeObject: "the main gate", passiveSubject: "The main gate" },
+      { v1: "close", vs: "closes", v2: "closed", v3: "closed", ving: "closing", ipaUS: "/kləʊz/", meaning: "đóng, khép lại", isIrregular: false, isTransitive: true, activeObject: "the window", passiveSubject: "The window" },
+      { v1: "cook", vs: "cooks", v2: "cooked", v3: "cooked", ving: "cooking", ipaUS: "/kʊk/", meaning: "nấu ăn, chế biến", isIrregular: false, isTransitive: true, activeObject: "a delicious meal", passiveSubject: "A delicious meal" },
+      { v1: "repair", vs: "repairs", v2: "repaired", v3: "repaired", ving: "repairing", ipaUS: "/rɪˈpeər/", meaning: "sửa chữa, bảo trì", isIrregular: false, isTransitive: true, activeObject: "the engine", passiveSubject: "The engine" },
+      { v1: "code", vs: "codes", v2: "coded", v3: "coded", ving: "coding", ipaUS: "/kəʊd/", meaning: "lập trình, viết mã", isIrregular: false, isTransitive: true, activeObject: "the application", passiveSubject: "The application" },
+      { v1: "debug", vs: "debugs", v2: "debugged", v3: "debugged", ving: "debugging", ipaUS: "/ˌdiːˈbʌɡ/", meaning: "gỡ lỗi chương trình", isIrregular: false, isTransitive: true, activeObject: "the source code", passiveSubject: "The source code" },
 
-      return {
-        ...item,
-        v1,
-        vs,
-        v2,
-        v3,
-        ving,
-        ipaUS,
-        meaning,
-        isIrregular,
-        isTransitive,
-        activeObject,
-        passiveSubject
-      };
-    }
+      // --- NHÓM NỘI ĐỘNG TỪ (INTRANSITIVE VERBS - KHÔNG chia ở Thể Bị Động) ---
+      { v1: "go", vs: "goes", v2: "went", v3: "gone", ving: "going", ipaUS: "/ɡəʊ/", meaning: "đi, di chuyển đến", isIrregular: true, isTransitive: false, activeObject: "to school", passiveSubject: "" },
+      { v1: "come", vs: "comes", v2: "came", v3: "come", ving: "coming", ipaUS: "/kʌm/", meaning: "đến, tới nơi", isIrregular: true, isTransitive: false, activeObject: "home early", passiveSubject: "" },
+      { v1: "run", vs: "runs", v2: "ran", v3: "run", ving: "running", ipaUS: "/rʌn/", meaning: "chạy bộ", isIrregular: true, isTransitive: false, activeObject: "in the park", passiveSubject: "" },
+      { v1: "arrive", vs: "arrives", v2: "arrived", v3: "arrived", ving: "arriving", ipaUS: "/əˈraɪv/", meaning: "đến nơi, cập bến", isIrregular: false, isTransitive: false, activeObject: "at the station", passiveSubject: "" },
+      { v1: "sleep", vs: "sleeps", v2: "slept", v3: "slept", ving: "sleeping", ipaUS: "/sliːp/", meaning: "ngủ, nghỉ ngơi", isIrregular: true, isTransitive: false, activeObject: "peacefully", passiveSubject: "" },
+      { v1: "happen", vs: "happens", v2: "happened", v3: "happened", ving: "happening", ipaUS: "/ˈhæp.ən/", meaning: "xảy ra, diễn ra", isIrregular: false, isTransitive: false, activeObject: "unexpectedly", passiveSubject: "" },
+      { v1: "fall", vs: "falls", v2: "fell", v3: "fallen", ving: "falling", ipaUS: "/fɔːl/", meaning: "rơi, ngã, giảm xuống", isIrregular: true, isTransitive: false, activeObject: "on the ground", passiveSubject: "" },
+      { v1: "sit", vs: "sits", v2: "sat", v3: "sat", ving: "sitting", ipaUS: "/sɪt/", meaning: "ngồi", isIrregular: true, isTransitive: false, activeObject: "by the window", passiveSubject: "" },
+      { v1: "stand", vs: "stands", v2: "stood", v3: "stood", ving: "standing", ipaUS: "/stænd/", meaning: "đứng", isIrregular: true, isTransitive: false, activeObject: "on the stage", passiveSubject: "" },
+      { v1: "stay", vs: "stays", v2: "stayed", v3: "stayed", ving: "staying", ipaUS: "/steɪ/", meaning: "ở lại, lưu trú", isIrregular: false, isTransitive: false, activeObject: "at a hotel", passiveSubject: "" },
+      { v1: "smile", vs: "smiles", v2: "smiled", v3: "smiled", ving: "smiling", ipaUS: "/smaɪl/", meaning: "mỉm cười", isIrregular: false, isTransitive: false, activeObject: "brightly", passiveSubject: "" },
+      { v1: "laugh", vs: "laughs", v2: "laughed", v3: "laughed", ving: "laughing", ipaUS: "/lɑːf/", meaning: "cười lớn, bật cười", isIrregular: false, isTransitive: false, activeObject: "out loud", passiveSubject: "" },
+      { v1: "fly", vs: "flies", v2: "flew", v3: "flown", ving: "flying", ipaUS: "/flaɪ/", meaning: "bay, đi máy bay", isIrregular: true, isTransitive: false, activeObject: "above the clouds", passiveSubject: "" },
+      { v1: "swim", vs: "swims", v2: "swam", v3: "swum", ving: "swimming", ipaUS: "/swɪm/", meaning: "bơi lội", isIrregular: true, isTransitive: false, activeObject: "across the river", passiveSubject: "" },
+      { v1: "walk", vs: "walks", v2: "walked", v3: "walked", ving: "walking", ipaUS: "/wɔːk/", meaning: "đi bộ, tản bộ", isIrregular: false, isTransitive: false, activeObject: "along the beach", passiveSubject: "" },
+      { v1: "be", vs: "is", v2: "was/were", v3: "been", ving: "being", ipaUS: "/biː/", meaning: "thì, là, ở", isIrregular: true, isTransitive: false, activeObject: "very happy", passiveSubject: "" }
+    ];
 
-    // Nạp mảng từ verbsData.js an toàn
-    const RAW_DB = (typeof VERB_DATABASE !== 'undefined' && Array.isArray(VERB_DATABASE))
-      ? VERB_DATABASE
-      : (typeof window !== 'undefined' && Array.isArray(window.VERB_DATABASE) ? window.VERB_DATABASE : []);
+    const QUICK_CHIPS = ["write", "build", "make", "take", "study", "eat", "go", "come", "run", "arrive", "hello", "code"];
 
-    const ALL_VERBS = RAW_DB.map(normalizeVerb).filter(Boolean);
-
-    // Danh sách thẻ gợi ý nhanh
-    const QUICK_CHIPS = ["write", "build", "make", "take", "study", "eat", "go", "come", "run", "arrive", "speak", "know"];
-
-    // Ghi chú từ đặc biệt khi người dùng gõ từ giao tiếp
+    // Dictionary of special interjections / greetings / nouns often typed by learners
     const SPECIAL_WORD_NOTES = {
       hello: {
         ipaUS: "/həˈləʊ/",
@@ -939,7 +1184,7 @@
       }
     };
 
-    // Ánh xạ Đại từ chủ ngữ sang Tác nhân Bị động ("by + Tân ngữ")
+    // Map Subject Pronoun to Passive Agent ("by + Object Pronoun")
     const PASSIVE_AGENT_MAP = {
       "I": "by me",
       "You": "by you",
@@ -950,7 +1195,7 @@
       "It": "by it"
     };
 
-    // Chuẩn hóa tiếng Việt bỏ dấu để tìm kiếm siêu nhạy
+    // Helper: Normalize Vietnamese accents for flexible search
     function removeVietnameseTones(str) {
       return (str || '')
         .normalize('NFD')
@@ -960,48 +1205,43 @@
         .toLowerCase();
     }
 
+    /* =========================================================================
+     * 2. SMART MORPHOLOGICAL FALLBACK ENGINE (For any unlisted English verb)
+     * ========================================================================= */
     function formatPassiveSubject(objStr) {
       const cleaned = (objStr || '').trim();
       if (!cleaned) return 'It';
+      // Strip leading prepositions if someone typed a prepositional phrase
       const noPrep = cleaned.replace(/^(to|at|in|on|with|for|from|by)\s+/i, '');
       const target = noPrep || cleaned;
       return target.charAt(0).toUpperCase() + target.slice(1);
     }
 
-    /**
-     * Tìm từ trong ALL_VERBS hoặc sinh từ động theo quy tắc chuẩn
-     */
     function findOrBuildVerb(rawInput) {
       const q = (rawInput || '').toLowerCase().trim();
-      const fallbackDefault = ALL_VERBS.length > 0 ? { ...ALL_VERBS[0] } : {
-        v1: "write", vs: "writes", v2: "wrote", v3: "written", ving: "writing",
-        ipaUS: "/raɪt/", meaning: "viết", isIrregular: true, isTransitive: true,
-        activeObject: "the letter", passiveSubject: "The letter"
-      };
+      if (!q) return { ...VERB_DATABASE[0] };
 
-      if (!q) return fallbackDefault;
-
-      // 1. Khớp chính xác V1, V2, V3, V-s, V-ing
-      const exactMatch = ALL_VERBS.find(item =>
-        item.v1.toLowerCase() === q ||
-        item.vs.toLowerCase() === q ||
-        item.v2.toLowerCase().split('/').map(s => s.trim()).includes(q) ||
-        item.v3.toLowerCase().split('/').map(s => s.trim()).includes(q) ||
-        item.ving.toLowerCase() === q
+      // 1. Exact match on V1, V2, V3, V-s, V-ing
+      const exactMatch = VERB_DATABASE.find(item =>
+        item.v1 === q ||
+        item.vs === q ||
+        item.v2.split('/').includes(q) ||
+        item.v3 === q ||
+        item.ving === q
       );
       if (exactMatch) return { ...exactMatch };
 
-      // 2. Khớp theo nghĩa tiếng Việt (có dấu và không dấu)
+      // 2. Match by Vietnamese meaning
       const qNoTone = removeVietnameseTones(q);
-      const viMatch = ALL_VERBS.find(item =>
+      const viMatch = VERB_DATABASE.find(item =>
         item.meaning.toLowerCase().includes(q) ||
         removeVietnameseTones(item.meaning).includes(qNoTone)
       );
       if (viMatch) return { ...viMatch };
 
-      // 3. Fallback: Tự động chia động từ có quy tắc nếu từ chưa có trong danh mục
+      // 3. Fallback regular English verb morphology generator
       const v = q.replace(/[^a-z]/g, '');
-      if (!v) return fallbackDefault;
+      if (!v) return { ...VERB_DATABASE[0] };
 
       let vs = v + 's';
       let v2 = v + 'ed';
@@ -1029,39 +1269,57 @@
         ving = v + v.slice(-1) + 'ing';
       }
 
+      // Check if word is in SPECIAL_WORD_NOTES (e.g., "hello", "hi", "chill")
       if (SPECIAL_WORD_NOTES[v]) {
         const sp = SPECIAL_WORD_NOTES[v];
         return {
-          v1: v, vs, v2, v3: v2, ving,
-          ipaUS: sp.ipaUS, meaning: sp.meaning,
-          isIrregular: false, isTransitive: sp.isTransitive,
-          activeObject: sp.activeObject, passiveSubject: sp.passiveSubject,
-          customNote: sp.customNote, isCustomFallback: true
+          v1: v,
+          vs: vs,
+          v2: v2,
+          v3: v2,
+          ving: ving,
+          ipaUS: sp.ipaUS,
+          meaning: sp.meaning,
+          isIrregular: false,
+          isTransitive: sp.isTransitive,
+          activeObject: sp.activeObject,
+          passiveSubject: sp.passiveSubject,
+          customNote: sp.customNote,
+          isCustomFallback: true
         };
       }
 
       return {
-        v1: v, vs, v2, v3: v2, ving,
+        v1: v,
+        vs: vs,
+        v2: v2,
+        v3: v2,
+        ving: ving,
         ipaUS: `/${v}/`,
         meaning: `Động từ chia theo quy tắc (-ed / -ing)`,
         isIrregular: false,
         isTransitive: true,
         activeObject: "everyone",
         passiveSubject: "Everyone",
-        customNote: `Từ <code class="font-mono font-bold">"${v}"</code> đang được chia tự động theo quy tắc chuẩn (<code class="font-mono">${v} / ${vs} / ${v2} / ${ving}</code>). Bạn có thể bấm vào nhãn <code class="font-mono">[vt.]</code> để đổi sang Nội động từ <code class="font-mono">[vi.]</code>.`,
+        customNote: `Từ <code class="font-mono font-bold">"${v}"</code> chưa có trong từ điển gốc nên đang được chia tự động theo quy tắc chuẩn (<code class="font-mono">${v} / ${vs} / ${v2} / ${ving}</code>). Bạn có thể tự sửa tân ngữ ở ô bên dưới hoặc bấm vào nhãn <code class="font-mono">[vt.]</code> để đổi sang Nội động từ <code class="font-mono">[vi.]</code>.`,
         isCustomFallback: true
       };
     }
 
     /* =========================================================================
-     * THIẾT LẬP DỮ LIỆU 12 THÌ & MODAL CHI TIẾT
+     * 3. 12 TENSES METADATA WITH 4-SECTION MODAL DATA
      * ========================================================================= */
     const TENSES = [
-      // 1. PRESENT
+      // ==================== 1. PRESENT (HIỆN TẠI) ====================
       {
-        id: "pres_simple", timeframe: "present", aspect: "simple", aspectOrder: 1,
-        viTitle: "Hiện tại đơn", enTitle: "Present Simple",
-        formula: "S + V(s/es)", passiveFormula: "S + am/is/are + V3/ed + (by O)",
+        id: "pres_simple",
+        timeframe: "present",
+        aspect: "simple",
+        aspectOrder: 1,
+        viTitle: "Hiện tại đơn",
+        enTitle: "Present Simple",
+        formula: "S + V(s/es)",
+        passiveFormula: "S + am/is/are + V3/ed + (by O)",
         formulasAll: {
           aff: "S + V1 / V(s/es) + O",
           neg: "S + do/does + not + V1 + O",
@@ -1097,9 +1355,14 @@
         ]
       },
       {
-        id: "pres_cont", timeframe: "present", aspect: "cont", aspectOrder: 2,
-        viTitle: "Hiện tại tiếp diễn", enTitle: "Present Continuous",
-        formula: "S + am/is/are + V-ing", passiveFormula: "S + am/is/are + being + V3/ed + (by O)",
+        id: "pres_cont",
+        timeframe: "present",
+        aspect: "cont",
+        aspectOrder: 2,
+        viTitle: "Hiện tại tiếp diễn",
+        enTitle: "Present Continuous",
+        formula: "S + am/is/are + V-ing",
+        passiveFormula: "S + am/is/are + being + V3/ed + (by O)",
         formulasAll: {
           aff: "S + am/is/are + V-ing + O",
           neg: "S + am/is/are + not + V-ing + O",
@@ -1134,9 +1397,14 @@
         ]
       },
       {
-        id: "pres_perf", timeframe: "present", aspect: "perf", aspectOrder: 3,
-        viTitle: "Hiện tại hoàn thành", enTitle: "Present Perfect",
-        formula: "S + have/has + V3/ed", passiveFormula: "S + have/has + been + V3/ed + (by O)",
+        id: "pres_perf",
+        timeframe: "present",
+        aspect: "perf",
+        aspectOrder: 3,
+        viTitle: "Hiện tại hoàn thành",
+        enTitle: "Present Perfect",
+        formula: "S + have/has + V3/ed",
+        passiveFormula: "S + have/has + been + V3/ed + (by O)",
         formulasAll: {
           aff: "S + have/has + V3/ed + O",
           neg: "S + have/has + not + V3/ed + O",
@@ -1171,9 +1439,14 @@
         ]
       },
       {
-        id: "pres_perf_cont", timeframe: "present", aspect: "perf_cont", aspectOrder: 4,
-        viTitle: "Hiện tại hoàn thành tiếp diễn", enTitle: "Present Perfect Continuous",
-        formula: "S + have/has been + V-ing", passiveFormula: "S + have/has + been + being + V3/ed (Ít dùng)",
+        id: "pres_perf_cont",
+        timeframe: "present",
+        aspect: "perf_cont",
+        aspectOrder: 4,
+        viTitle: "Hiện tại hoàn thành tiếp diễn",
+        enTitle: "Present Perfect Continuous",
+        formula: "S + have/has been + V-ing",
+        passiveFormula: "S + have/has + been + being + V3/ed (Ít dùng)",
         formulasAll: {
           aff: "S + have/has + been + V-ing + O",
           neg: "S + have/has + not + been + V-ing + O",
@@ -1202,11 +1475,16 @@
         ]
       },
 
-      // 2. PAST
+      // ==================== 2. PAST (QUÁ KHỨ) ====================
       {
-        id: "past_simple", timeframe: "past", aspect: "simple", aspectOrder: 1,
-        viTitle: "Quá khứ đơn", enTitle: "Past Simple",
-        formula: "S + V2/ed", passiveFormula: "S + was/were + V3/ed + (by O)",
+        id: "past_simple",
+        timeframe: "past",
+        aspect: "simple",
+        aspectOrder: 1,
+        viTitle: "Quá khứ đơn",
+        enTitle: "Past Simple",
+        formula: "S + V2/ed",
+        passiveFormula: "S + was/were + V3/ed + (by O)",
         formulasAll: {
           aff: "S + V2/ed + O",
           neg: "S + did + not + V1 + O",
@@ -1241,9 +1519,14 @@
         ]
       },
       {
-        id: "past_cont", timeframe: "past", aspect: "cont", aspectOrder: 2,
-        viTitle: "Quá khứ tiếp diễn", enTitle: "Past Continuous",
-        formula: "S + was/were + V-ing", passiveFormula: "S + was/were + being + V3/ed + (by O)",
+        id: "past_cont",
+        timeframe: "past",
+        aspect: "cont",
+        aspectOrder: 2,
+        viTitle: "Quá khứ tiếp diễn",
+        enTitle: "Past Continuous",
+        formula: "S + was/were + V-ing",
+        passiveFormula: "S + was/were + being + V3/ed + (by O)",
         formulasAll: {
           aff: "S + was/were + V-ing + O",
           neg: "S + was/were + not + V-ing + O",
@@ -1272,9 +1555,14 @@
         ]
       },
       {
-        id: "past_perf", timeframe: "past", aspect: "perf", aspectOrder: 3,
-        viTitle: "Quá khứ hoàn thành", enTitle: "Past Perfect",
-        formula: "S + had + V3/ed", passiveFormula: "S + had + been + V3/ed + (by O)",
+        id: "past_perf",
+        timeframe: "past",
+        aspect: "perf",
+        aspectOrder: 3,
+        viTitle: "Quá khứ hoàn thành",
+        enTitle: "Past Perfect",
+        formula: "S + had + V3/ed",
+        passiveFormula: "S + had + been + V3/ed + (by O)",
         formulasAll: {
           aff: "S + had + V3/ed + O",
           neg: "S + had + not + V3/ed + O",
@@ -1309,9 +1597,14 @@
         ]
       },
       {
-        id: "past_perf_cont", timeframe: "past", aspect: "perf_cont", aspectOrder: 4,
-        viTitle: "Quá khứ hoàn thành tiếp diễn", enTitle: "Past Perfect Continuous",
-        formula: "S + had been + V-ing", passiveFormula: "S + had + been + being + V3/ed (Hiếm gặp)",
+        id: "past_perf_cont",
+        timeframe: "past",
+        aspect: "perf_cont",
+        aspectOrder: 4,
+        viTitle: "Quá khứ hoàn thành tiếp diễn",
+        enTitle: "Past Perfect Continuous",
+        formula: "S + had been + V-ing",
+        passiveFormula: "S + had + been + being + V3/ed (Hiếm gặp)",
         formulasAll: {
           aff: "S + had + been + V-ing + O",
           neg: "S + had + not + been + V-ing + O",
@@ -1339,11 +1632,16 @@
         ]
       },
 
-      // 3. FUTURE
+      // ==================== 3. FUTURE (TƯƠNG LAI) ====================
       {
-        id: "fut_simple", timeframe: "future", aspect: "simple", aspectOrder: 1,
-        viTitle: "Tương lai đơn", enTitle: "Future Simple",
-        formula: "S + will + V1", passiveFormula: "S + will + be + V3/ed + (by O)",
+        id: "fut_simple",
+        timeframe: "future",
+        aspect: "simple",
+        aspectOrder: 1,
+        viTitle: "Tương lai đơn",
+        enTitle: "Future Simple",
+        formula: "S + will + V1",
+        passiveFormula: "S + will + be + V3/ed + (by O)",
         formulasAll: {
           aff: "S + will + V1 + O",
           neg: "S + will not (won't) + V1 + O",
@@ -1366,7 +1664,7 @@
           {
             tab: "Will vs Be going to",
             title: "Phân biệt Tương lai đơn (Will) & Tương lai gần (Be going to)",
-            desc: "• WILL + V1: Quyết định bộc phát ngay lúc nói, hoặc dự đoán chủ quan (I think).\n• AM/IS/ARE GOING TO + V1: Kế hoạch đã dự tính từ trước, hoặc dự đoán có dẫn chứng rõ rệt trước mắt.",
+            desc: "• WILL + V1: Quyết định bộc phát ngay lúc nói, hoặc dự đoán chủ quan (I think).\n• AM/IS/ARE GOING TO + V1: Kế hoạch đã dự tính từ trước, hoặc dự đoán có dẫn chứng rõ rệt trước mắt (nhìn mây đen biết sắp mưa).",
             example: "Look at those dark clouds! It is going to rain. (Có căn cứ) vs. I think it will rain tomorrow. (Chủ quan)"
           },
           {
@@ -1378,9 +1676,14 @@
         ]
       },
       {
-        id: "fut_cont", timeframe: "future", aspect: "cont", aspectOrder: 2,
-        viTitle: "Tương lai tiếp diễn", enTitle: "Future Continuous",
-        formula: "S + will be + V-ing", passiveFormula: "S + will + be + being + V3/ed (Ít dùng)",
+        id: "fut_cont",
+        timeframe: "future",
+        aspect: "cont",
+        aspectOrder: 2,
+        viTitle: "Tương lai tiếp diễn",
+        enTitle: "Future Continuous",
+        formula: "S + will be + V-ing",
+        passiveFormula: "S + will + be + being + V3/ed (Ít dùng)",
         formulasAll: {
           aff: "S + will + be + V-ing + O",
           neg: "S + will not (won't) + be + V-ing + O",
@@ -1408,9 +1711,14 @@
         ]
       },
       {
-        id: "fut_perf", timeframe: "future", aspect: "perf", aspectOrder: 3,
-        viTitle: "Tương lai hoàn thành", enTitle: "Future Perfect",
-        formula: "S + will have + V3/ed", passiveFormula: "S + will + have + been + V3/ed + (by O)",
+        id: "fut_perf",
+        timeframe: "future",
+        aspect: "perf",
+        aspectOrder: 3,
+        viTitle: "Tương lai hoàn thành",
+        enTitle: "Future Perfect",
+        formula: "S + will have + V3/ed",
+        passiveFormula: "S + will + have + been + V3/ed + (by O)",
         formulasAll: {
           aff: "S + will + have + V3/ed + O",
           neg: "S + will not + have + V3/ed + O",
@@ -1439,9 +1747,14 @@
         ]
       },
       {
-        id: "fut_perf_cont", timeframe: "future", aspect: "perf_cont", aspectOrder: 4,
-        viTitle: "Tương lai hoàn thành tiếp diễn", enTitle: "Future Perfect Continuous",
-        formula: "S + will have been + V-ing", passiveFormula: "S + will + have + been + being + V3/ed (Không dùng)",
+        id: "fut_perf_cont",
+        timeframe: "future",
+        aspect: "perf_cont",
+        aspectOrder: 4,
+        viTitle: "Tương lai hoàn thành tiếp diễn",
+        enTitle: "Future Perfect Continuous",
+        formula: "S + will have been + V-ing",
+        passiveFormula: "S + will + have + been + being + V3/ed (Không dùng)",
         formulasAll: {
           aff: "S + will + have + been + V-ing + O",
           neg: "S + will not + have + been + V-ing + O",
@@ -1451,7 +1764,7 @@
         signals: "for 5 years by next month",
         signalBullets: [
           "<strong>Sự kết hợp 'For + khoảng thời gian + By + mốc tương lai':</strong> for 10 years by the end of this year.",
-          "<strong>By the time + for:</strong> By the time he retires, he will have been working here for 30 years."
+          "<strong>By the time + फॉर (for):</strong> By the time he retires, he will have been working here for 30 years."
         ],
         summary: "Quá trình liên tục tính đến một mốc thời gian trong tương lai.",
         detailUsage: "Nhấn mạnh tính liên tục của một hành động đã kéo dài được bao lâu tính đến một mốc thời gian xác định trong tương lai.",
@@ -1470,9 +1783,10 @@
     ];
 
     /* =========================================================================
-     * BỘ SINH CÂU TỰ ĐỘNG CHỦ ĐỘNG & BỊ ĐỘNG
+     * 4. SENTENCE CONJUGATION ENGINE (ACTIVE VOICE & PASSIVE VOICE)
      * ========================================================================= */
     function conjugateTense(tenseId, verb, subj, isPassive = false) {
+      // Handle Passive Voice Branch
       if (isPassive) {
         return conjugatePassiveTense(tenseId, verb, subj);
       }
@@ -1652,6 +1966,9 @@
       return { affRaw, negRaw, intRaw, affHtml, negHtml, intHtml };
     }
 
+    /* =========================================================================
+     * 4B. PASSIVE VOICE CONJUGATION GENERATOR (THỂ BỊ ĐỘNG CHO 12 THÌ)
+     * ========================================================================= */
     function conjugatePassiveTense(tenseId, verb, subj) {
       const pSubj = (verb.passiveSubject || formatPassiveSubject(verb.activeObject) || 'It').trim();
       const pSubjLower = (pSubj === 'I') ? 'I' : (pSubj.charAt(0).toLowerCase() + pSubj.slice(1));
@@ -1780,7 +2097,7 @@
     }
 
     /* =========================================================================
-     * VẼ BIỂU ĐỒ TRỤC THỜI GIAN SVG
+     * 5. VISUAL SVG TIMELINE GENERATOR FOR MODAL
      * ========================================================================= */
     function generateTimelineSVG(tense) {
       const color = tense.timeframe === 'present' ? '#10B981' : (tense.timeframe === 'past' ? '#F59E0B' : '#6366F1');
@@ -1809,7 +2126,9 @@
 
       return `
         <svg viewBox="0 0 480 80" class="w-full h-full max-w-lg">
+          <!-- Main Axis -->
           <line x1="30" y1="40" x2="450" y2="40" stroke="currentColor" class="text-zinc-300 dark:text-slate-700" stroke-width="2" />
+          <!-- Ticks: Past, Present (NOW), Future -->
           <line x1="120" y1="32" x2="120" y2="48" stroke="currentColor" class="text-zinc-400 dark:text-slate-500" stroke-width="2" />
           <line x1="240" y1="26" x2="240" y2="54" stroke="currentColor" class="text-zinc-500 dark:text-slate-400" stroke-width="2" />
           <line x1="360" y1="32" x2="360" y2="48" stroke="currentColor" class="text-zinc-400 dark:text-slate-500" stroke-width="2" />
@@ -1822,18 +2141,18 @@
     }
 
     /* =========================================================================
-     * APPLICATION STATE & DOM REFERENCES
+     * 6. APPLICATION STATE & UI RENDERING
      * ========================================================================= */
     const state = {
       verbKey: 'write',
-      verbData: findOrBuildVerb('write'),
-      defaultActiveObject: 'the letter',
-      defaultPassiveSubject: 'The letter',
+      verbData: { ...VERB_DATABASE[0] }, // Default to 'write' so Passive & Active both showcase clearly
+      defaultActiveObject: VERB_DATABASE[0].activeObject,
+      defaultPassiveSubject: VERB_DATABASE[0].passiveSubject,
       subject: 'I',
-      polarity: 'aff',
-      isPassive: false,
-      layout: 'columns',
-      activeTab: 'present',
+      polarity: 'aff',     // 'aff' | 'neg' | 'int' | 'all'
+      isPassive: false,    // Toggle for Passive Voice (Thể Bị Động)
+      layout: 'columns',   // 'columns' | 'aspects' | 'tabs'
+      activeTab: 'present',// 'present' | 'past' | 'future'
       suggestionIndex: -1
     };
 
@@ -1843,7 +2162,6 @@
     const btnSearch = document.getElementById('btn-search');
     const suggestionsDropdown = document.getElementById('suggestions-dropdown');
     const quickChipsContainer = document.getElementById('quick-chips');
-    const headerCountBadge = document.getElementById('header-count-badge');
 
     const verbTypePill = document.getElementById('verb-type-pill');
     const verbTransitivityPill = document.getElementById('verb-transitivity-pill');
@@ -1874,13 +2192,15 @@
     const toastMsg = document.getElementById('toast-message');
 
     /* =========================================================================
-     * WEB SPEECH API & TOAST
+     * 6B. ROBUST WEB SPEECH API PRONUNCIATION CONTROLLER (en-US & en-GB)
      * ========================================================================= */
     let availableVoices = [];
+
     function loadSpeechVoices() {
       if (!('speechSynthesis' in window)) return;
       availableVoices = window.speechSynthesis.getVoices() || [];
     }
+
     if ('speechSynthesis' in window) {
       loadSpeechVoices();
       if (window.speechSynthesis.onvoiceschanged !== undefined) {
@@ -1961,7 +2281,7 @@
       }, 2200);
     }
 
-    // Render Dictionary Hero Card
+    // Update Hero Dictionary Card
     function renderHeroDictionary() {
       const d = state.verbData;
       heroVerbTitle.textContent = d.v1;
@@ -1975,10 +2295,12 @@
         heroVerbContext.textContent = d.activeObject ? `+ ${d.activeObject}` : `(Không kèm tân ngữ)`;
       }
 
+      // Sync Custom Object Input
       if (document.activeElement !== customObjectInput) {
         customObjectInput.value = d.activeObject || '';
       }
 
+      // Show or Hide Smart Word Note Banner (e.g., for "hello" or unlisted custom words)
       if (d.customNote) {
         customWordNote.classList.remove('hidden');
         customWordNoteText.innerHTML = d.customNote;
@@ -1987,6 +2309,7 @@
         customWordNoteText.innerHTML = '';
       }
 
+      // Regular vs Irregular Pill
       if (!d.isIrregular) {
         verbTypePill.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20';
         verbTypePill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> <span>Động từ Có quy tắc (Regular)</span>`;
@@ -1995,6 +2318,7 @@
         verbTypePill.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> <span>Động từ Bất quy tắc (Irregular)</span>`;
       }
 
+      // Transitive [vt.] vs Intransitive [vi.] Pill with pure inline SVG & zero broken ligature text
       if (d.isTransitive) {
         verbTransitivityPill.className = 'inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 hover:bg-emerald-500/20 transition-all cursor-pointer select-none';
         verbTransitivityPill.innerHTML = `
@@ -2023,8 +2347,9 @@
       cellV3.textContent = d.v3;
       cellVing.textContent = d.ving;
 
+      // Update Quick Chips Active State
       document.querySelectorAll('.quick-chip-btn').forEach(btn => {
-        const verbObj = ALL_VERBS.find(x => x.v1 === btn.dataset.verb);
+        const verbObj = VERB_DATABASE.find(x => x.v1 === btn.dataset.verb);
         const isIntrans = verbObj && !verbObj.isTransitive;
         if (btn.dataset.verb === d.v1) {
           btn.className = 'quick-chip-btn px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all';
@@ -2034,7 +2359,7 @@
       });
     }
 
-    // Build Individual Bento Card
+    // Build an Individual Bento Tense Card HTML
     function createTenseCardElement(tense) {
       const isPas = state.isPassive;
       const canPassive = state.verbData.isTransitive;
@@ -2062,6 +2387,7 @@
         perf_cont: 'HT Tiếp diễn'
       };
 
+      // Choose primary sentence for single polarity mode
       let primaryRaw = conj.affRaw;
       let primaryHtml = conj.affHtml;
       if (state.polarity === 'neg') {
@@ -2073,8 +2399,10 @@
       }
 
       const speakerSvg = `<svg class="w-3.5 h-3.5 shrink-0 text-zinc-400 dark:text-slate-500 group-hover/sent:text-indigo-500 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
+
       let sentenceDisplayBlock = '';
 
+      // CASE 1: Passive Voice is ON, but the selected verb is an INTRANSITIVE VERB
       if (isPas && !canPassive) {
         sentenceDisplayBlock = `
           <div class="my-3.5 p-4 rounded-2xl bg-amber-500/[0.07] dark:bg-amber-500/[0.09] border border-amber-500/25 text-amber-900 dark:text-amber-200 space-y-1.5">
@@ -2142,6 +2470,7 @@
 
       card.innerHTML = `
         <div>
+          <!-- Top Meta Row -->
           <div class="flex items-center justify-between gap-2 mb-2">
             <div class="flex flex-wrap items-center gap-1.5">
               <span class="font-mono text-[10px] font-bold uppercase px-2 py-0.5 rounded-md border ${badgeStyle}">
@@ -2153,25 +2482,32 @@
               ${isPas ? `<span class="font-mono text-[10px] font-bold px-2 py-0.5 rounded-md bg-violet-500/15 text-violet-600 dark:text-violet-300 border border-violet-500/25">Passive</span>` : ''}
             </div>
 
+            <!-- Action Icons (Pure Inline SVG) -->
             <div class="flex items-center gap-1">
-              <button type="button" class="btn-card-speak w-7 h-7 rounded-lg text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Nghe phát âm câu">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              <button type="button" class="btn-card-speak w-7 h-7 rounded-lg text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Nghe phát âm câu" aria-label="Nghe phát âm câu">
+                <svg class="w-3.5 h-3.5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                <span class="sr-only">Nghe phát âm câu</span>
               </button>
-              <button type="button" class="btn-card-copy w-7 h-7 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Sao chép câu">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <button type="button" class="btn-card-copy w-7 h-7 rounded-lg text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors" title="Sao chép câu" aria-label="Sao chép câu">
+                <svg class="w-3.5 h-3.5" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span class="sr-only">Sao chép câu</span>
               </button>
             </div>
           </div>
 
+          <!-- Title & English Subtitle -->
           <div class="flex items-baseline justify-between gap-2">
             <h3 class="font-bold text-base sm:text-lg text-zinc-900 dark:text-white tracking-tight">${tense.viTitle}</h3>
             <span class="font-mono text-[11px] text-zinc-400 dark:text-slate-500">${tense.enTitle}</span>
           </div>
 
           <p class="text-xs text-zinc-500 dark:text-slate-400 mt-1 line-clamp-1">${tense.summary}</p>
+
+          <!-- Main Conjugated Sentence Box -->
           ${sentenceDisplayBlock}
         </div>
 
+        <!-- Bottom Formula & Detail Trigger -->
         <div class="pt-3 border-t border-[#E5E2DC] dark:border-[#23293A] flex items-center justify-between gap-2">
           <div class="font-mono text-[11px] sm:text-xs font-semibold ${isPas ? 'text-violet-700 dark:text-violet-300 bg-violet-500/10' : 'text-zinc-700 dark:text-slate-300 bg-zinc-100/80 dark:bg-slate-800/80'} px-2.5 py-1 rounded-lg truncate" title="${activeOrPassiveFormula}">
             ${activeOrPassiveFormula}
@@ -2183,10 +2519,14 @@
         </div>
       `;
 
+      // Bind sentence click-to-speak rows
       card.querySelectorAll('.sent-speak-row').forEach(row => {
-        row.addEventListener('click', () => speak(row.dataset.speakText, 'en-US', row));
+        row.addEventListener('click', () => {
+          speak(row.dataset.speakText, 'en-US', row);
+        });
       });
 
+      // Bind card button events
       const speakBtn = card.querySelector('.btn-card-speak');
       speakBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -2212,10 +2552,11 @@
       return card;
     }
 
-    // Render Matrix Stage
+    // Render Matrix Stage According to Selected Layout
     function renderMatrix() {
       matrixStage.innerHTML = '';
 
+      // If Passive Voice is active and current verb is Intransitive, render a global gentle notice banner at the top of the matrix
       if (state.isPassive && !state.verbData.isTransitive) {
         const noticeBanner = document.createElement('div');
         noticeBanner.className = 'p-4 sm:p-5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 animate-card-in';
@@ -2249,6 +2590,7 @@
       }
 
       if (state.layout === 'columns') {
+        // 3 Columns Header (Present | Past | Future) on Desktop
         const headerRow = document.createElement('div');
         headerRow.className = 'hidden lg:grid lg:grid-cols-3 gap-6';
         headerRow.innerHTML = `
@@ -2316,7 +2658,7 @@
     }
 
     /* =========================================================================
-     * MODAL DETAIL LOGIC
+     * 7. UPGRADED 4-SECTION DETAIL MODAL & CHEATSHEET MODAL LOGIC
      * ========================================================================= */
     const detailModal = document.getElementById('detail-modal');
     const modalBadge = document.getElementById('modal-badge');
@@ -2361,6 +2703,7 @@
         modalBadge.textContent = '3. Mốc Tương lai • Future';
       }
 
+      // Render Live Sentences (+, -, ?, Passive)
       const modalSpeakerSvg = `<svg class="w-3.5 h-3.5 text-zinc-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
 
       const passiveRowHtml = state.verbData.isTransitive
@@ -2409,6 +2752,7 @@
         el.addEventListener('click', () => speak(el.dataset.modalSpeak, 'en-US', el));
       });
 
+      // SECTION 1: General Formulas (+, -, ?, Passive)
       modalSec1Formulas.innerHTML = `
         <div class="p-2.5 rounded-xl bg-white dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] flex items-center justify-between gap-2">
           <span class="text-emerald-600 dark:text-emerald-400 font-bold">(+) Khẳng định:</span>
@@ -2428,6 +2772,7 @@
         </div>
       `;
 
+      // SECTION 2: Signal Words Bullets
       modalSec2Signals.innerHTML = tense.signalBullets.map(item => `
         <li class="flex items-start gap-2.5 leading-relaxed">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
@@ -2435,6 +2780,7 @@
         </li>
       `).join('');
 
+      // SECTION 3: Grammar Traps & Exam Notes
       modalSec3Traps.innerHTML = tense.grammarTraps.map(trap => `
         <li class="flex items-start gap-2.5 leading-relaxed">
           <i class="fa-solid fa-bolt text-amber-500 mt-1 text-xs shrink-0"></i>
@@ -2442,6 +2788,7 @@
         </li>
       `).join('');
 
+      // SECTION 4: Extended Structures & Interactive Sub-tabs
       modalSec4Tabs.innerHTML = '';
       const extList = tense.extendedStructures || [];
 
@@ -2501,7 +2848,7 @@
     });
 
     /* =========================================================================
-     * BỘ ĐIỀU KHIỂN SỰ KIỆN & TÌM KIẾM TỨC THÌ TỪ VERB_DATABASE
+     * 8. PASSIVE VOICE TOGGLE, AUTOCOMPLETE SEARCH & EVENT BINDINGS
      * ========================================================================= */
     function togglePassiveMode(forceState) {
       state.isPassive = typeof forceState === 'boolean' ? forceState : !state.isPassive;
@@ -2531,6 +2878,7 @@
 
     btnPassiveToggle.addEventListener('click', () => togglePassiveMode());
 
+    // Clickable [vt.] / [vi.] Transitivity Pill Toggle
     verbTransitivityPill.addEventListener('click', () => {
       state.verbData.isTransitive = !state.verbData.isTransitive;
       if (state.verbData.isTransitive && !state.verbData.passiveSubject) {
@@ -2545,6 +2893,7 @@
       renderMatrix();
     });
 
+    // Live Custom Object / Context Input & Preset Chips
     function applyCustomObject(newObjStr) {
       const val = (newObjStr || '').trim();
       state.verbData.activeObject = val;
@@ -2594,9 +2943,7 @@
       renderMatrix();
     }
 
-    /**
-     * TÌM KIẾM TỨC THÌ THEO V1, V2, V3 VÀ NGHĨA TIẾNG VIỆT
-     */
+    // Real-time Autocomplete supporting V1, V2, V3, V-ing and Vietnamese Meaning (accented & unaccented)
     function updateAutocomplete(val) {
       const q = (val || '').toLowerCase().trim();
       state.suggestionIndex = -1;
@@ -2608,10 +2955,10 @@
 
       const qNoTone = removeVietnameseTones(q);
 
-      const matches = ALL_VERBS.filter(item => {
+      const matches = VERB_DATABASE.filter(item => {
         const viNorm = removeVietnameseTones(item.meaning);
         return (
-          item.v1.toLowerCase().includes(q) ||
+          item.v1.includes(q) ||
           item.v2.toLowerCase().includes(q) ||
           item.v3.toLowerCase().includes(q) ||
           item.ving.toLowerCase().includes(q) ||
@@ -2619,8 +2966,9 @@
           viNorm.includes(qNoTone)
         );
       }).sort((a, b) => {
-        const aStarts = a.v1.toLowerCase().startsWith(q) ? 0 : 1;
-        const bStarts = b.v1.toLowerCase().startsWith(q) ? 0 : 1;
+        // Prioritize startsWith on V1
+        const aStarts = a.v1.startsWith(q) ? 0 : 1;
+        const bStarts = b.v1.startsWith(q) ? 0 : 1;
         return aStarts - bStarts;
       }).slice(0, 8);
 
@@ -2675,14 +3023,10 @@
       });
     }
 
-    let searchDebounceTimer = null;
     verbInput.addEventListener('input', (e) => {
       const val = e.target.value;
       btnClear.classList.toggle('hidden', !val);
-      clearTimeout(searchDebounceTimer);
-      searchDebounceTimer = setTimeout(() => {
-        updateAutocomplete(val);
-      }, 200);
+      updateAutocomplete(val);
     });
 
     verbInput.addEventListener('keydown', (e) => {
@@ -2717,6 +3061,7 @@
       verbInput.focus();
     });
 
+    // Global Keyboard Shortcut `/` to focus search
     document.addEventListener('keydown', (e) => {
       if (e.key === '/' && document.activeElement !== verbInput) {
         e.preventDefault();
@@ -2729,12 +3074,14 @@
       }
     });
 
+    // Close autocomplete when clicking outside
     document.addEventListener('click', (e) => {
       if (!verbInput.contains(e.target) && !suggestionsDropdown.contains(e.target)) {
         suggestionsDropdown.classList.add('hidden');
       }
     });
 
+    // 5 Core Verb Form Bento Cells Click -> Speak & Copy
     document.querySelectorAll('.verb-form-cell').forEach(cell => {
       cell.addEventListener('click', () => {
         const key = cell.dataset.formKey;
@@ -2744,11 +3091,13 @@
       });
     });
 
+    // US / UK Pronunciation Buttons
     const btnSpeakUS = document.getElementById('btn-speak-us');
     const btnSpeakUK = document.getElementById('btn-speak-uk');
     btnSpeakUS.addEventListener('click', () => speak(state.verbData.v1, 'en-US', btnSpeakUS));
     btnSpeakUK.addEventListener('click', () => speak(state.verbData.v1, 'en-GB', btnSpeakUK));
 
+    // Subject Selector
     document.querySelectorAll('.subj-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.subj-btn').forEach(b => {
@@ -2761,6 +3110,7 @@
       });
     });
 
+    // Polarity Selector
     document.querySelectorAll('.pol-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.pol-btn').forEach(b => {
@@ -2777,6 +3127,7 @@
       });
     });
 
+    // Layout Selector
     document.querySelectorAll('.layout-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.layout-btn').forEach(b => {
@@ -2789,6 +3140,7 @@
       });
     });
 
+    // Timeframe Tabs (when in 'tabs' layout)
     document.querySelectorAll('.tf-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.tf-tab-btn').forEach(b => {
@@ -2802,6 +3154,7 @@
       });
     });
 
+    // Theme Toggle (Warm Nordic Light <-> Obsidian Dark)
     const themeToggleBtn = document.getElementById('btn-theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     themeToggleBtn.addEventListener('click', () => {
@@ -2809,16 +3162,8 @@
       themeIcon.className = isDark ? 'fa-solid fa-sun text-xs' : 'fa-solid fa-moon text-xs';
     });
 
-    /**
-     * KHỞI ĐỘNG ỨNG DỤNG - NẠP DANH SÁCH TỪ VERB_DATABASE
-     */
+    // Initialize Quick Chips & Default Verb
     function initApp() {
-      // Cập nhật huy hiệu số lượng từ trên thanh tiêu đề
-      if (headerCountBadge) {
-        headerCountBadge.textContent = `${ALL_VERBS.length} Động từ`;
-      }
-
-      // Khởi tạo thẻ gợi ý nhanh
       quickChipsContainer.innerHTML = '';
       QUICK_CHIPS.forEach(v => {
         const btn = document.createElement('button');
@@ -2827,12 +3172,11 @@
         btn.addEventListener('click', () => selectVerb(v));
         quickChipsContainer.appendChild(btn);
       });
-
-      // Mặc định chọn từ 'write' (hoặc từ đầu tiên trong danh mục)
       selectVerb('write');
     }
 
     window.addEventListener('DOMContentLoaded', initApp);
   </script>
 </body>
+
 </html>
