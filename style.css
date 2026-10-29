@@ -108,3 +108,19 @@ html:not(.dark) footer {
   color: #64748b;
 }
 
+/* =========================================================================
+ * Micro-Matrix Animation Delays (Extracted from index.html inline styles)
+ * ========================================================================= */
+.matrix-dot-delay-0   { animation-delay: 0ms; }
+.matrix-dot-delay-90  { animation-delay: 90ms; }
+.matrix-dot-delay-120 { animation-delay: 120ms; }
+.matrix-dot-delay-180 { animation-delay: 180ms; }
+.matrix-dot-delay-210 { animation-delay: 210ms; }
+.matrix-dot-delay-240 { animation-delay: 240ms; }
+.matrix-dot-delay-270 { animation-delay: 270ms; }
+.matrix-dot-delay-300 { animation-delay: 300ms; }
+.matrix-dot-delay-330 { animation-delay: 330ms; }
+.matrix-dot-delay-390 { animation-delay: 390ms; }
+.matrix-dot-delay-420 { animation-delay: 420ms; }
+.matrix-dot-delay-510 { animation-delay: 510ms; }
+
