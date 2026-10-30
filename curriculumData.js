@@ -1,177 +1,178 @@
-﻿/**
+/**
  * =========================================================================
  * LEXIMATRIX - KHO DỮ LIỆU CHƯƠNG TRÌNH SGK TIẾNG ANH LỚP 1 - LỚP 12
- * 170 Units - 670 Từ vựng trọng tâm kèm IPA, ngữ pháp & câu ví dụ
+ * 170 Units - 670 Từ vựng trọng tâm chuẩn SGK Global Success
+ * Trích xuất trực tiếp từ Google NotebookLM Studio
  * =========================================================================
  */
-var CURRICULUM_DATA = [
+const CURRICULUM_DATA = [
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 1,
     "title": "In the school playground",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "apple",
-        "ipa": "/ËˆĂ¦p.É™l/",
+        "ipa": "/ˈæp.əl/",
         "pos": "n",
-        "meaning": "quáº£ tĂ¡o",
+        "meaning": "quả táo",
         "collocation": "an apple",
         "example": "It is an apple."
       },
       {
         "word": "bag",
-        "ipa": "/bĂ¦É¡/",
+        "ipa": "/bæɡ/",
         "pos": "n",
-        "meaning": "cĂ¡i cáº·p",
+        "meaning": "cái cặp",
         "collocation": "school bag",
         "example": "Touch your bag, please."
       },
       {
         "word": "book",
-        "ipa": "/bÊk/",
+        "ipa": "/bʊk/",
         "pos": "n",
-        "meaning": "quyá»ƒn sĂ¡ch",
+        "meaning": "quyển sách",
         "collocation": "open book",
         "example": "Open your book, please."
       },
       {
         "word": "cat",
-        "ipa": "/kĂ¦t/",
+        "ipa": "/kæt/",
         "pos": "n",
-        "meaning": "con mĂ¨o",
+        "meaning": "con mèo",
         "collocation": "a cat",
         "example": "I see a cat."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 2,
     "title": "In the dining room",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "ball",
-        "ipa": "/bÉ”Ël/",
+        "ipa": "/bɔːl/",
         "pos": "n",
-        "meaning": "quáº£ bĂ³ng",
+        "meaning": "quả bóng",
         "collocation": "look at ball",
         "example": "Look at the ball."
       },
       {
         "word": "bike",
-        "ipa": "/baÉªk/",
+        "ipa": "/baɪk/",
         "pos": "n",
-        "meaning": "xe Ä‘áº¡p",
+        "meaning": "xe đạp",
         "collocation": "ride a bike",
         "example": "Ride a bike."
       },
       {
         "word": "bus",
-        "ipa": "/bÊŒs/",
+        "ipa": "/bʌs/",
         "pos": "n",
-        "meaning": "xe buĂ½t",
+        "meaning": "xe buýt",
         "collocation": "yellow bus",
         "example": "It's a yellow bus."
       },
       {
         "word": "book",
-        "ipa": "/bÊk/",
+        "ipa": "/bʊk/",
         "pos": "n",
-        "meaning": "quyá»ƒn sĂ¡ch",
+        "meaning": "quyển sách",
         "collocation": "my book",
         "example": "This is my book."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 3,
     "title": "At the zoo",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "car",
-        "ipa": "/kÉ‘Ë(r)/",
+        "ipa": "/kɑː(r)/",
         "pos": "n",
-        "meaning": "xe Ă´ tĂ´",
+        "meaning": "xe ô tô",
         "collocation": "drive a car",
         "example": "Drive a car."
       },
       {
         "word": "cake",
-        "ipa": "/keÉªk/",
+        "ipa": "/keɪk/",
         "pos": "n",
-        "meaning": "bĂ¡nh ngá»t",
+        "meaning": "bánh ngọt",
         "collocation": "eat cake",
         "example": "Eat some cake."
       },
       {
         "word": "cup",
-        "ipa": "/kÊŒp/",
+        "ipa": "/kʌp/",
         "pos": "n",
-        "meaning": "cĂ¡i cá»‘c",
+        "meaning": "cái cốc",
         "collocation": "red cup",
         "example": "It's a red cup."
       },
       {
         "word": "cat",
-        "ipa": "/kĂ¦t/",
+        "ipa": "/kæt/",
         "pos": "n",
-        "meaning": "con mĂ¨o",
+        "meaning": "con mèo",
         "collocation": "on the chair",
         "example": "The cat is on the chair."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 4,
     "title": "In the bedroom",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "door",
-        "ipa": "/dÉ”Ë(r)/",
+        "ipa": "/dɔː(r)/",
         "pos": "n",
-        "meaning": "cĂ¡nh cá»­a",
+        "meaning": "cánh cửa",
         "collocation": "open door",
         "example": "Open the door, please."
       },
       {
         "word": "dog",
-        "ipa": "/dÉ’É¡/",
+        "ipa": "/dɒɡ/",
         "pos": "n",
-        "meaning": "con chĂ³",
+        "meaning": "con chó",
         "collocation": "look at dog",
         "example": "Look at the dog."
       },
@@ -179,52 +180,52 @@ var CURRICULUM_DATA = [
         "word": "desk",
         "ipa": "/desk/",
         "pos": "n",
-        "meaning": "bĂ n há»c",
+        "meaning": "bàn học",
         "collocation": "brown desk",
         "example": "It's a brown desk."
       },
       {
         "word": "doll",
-        "ipa": "/dÉ’l/",
+        "ipa": "/dɒl/",
         "pos": "n",
-        "meaning": "bĂºp bĂª",
+        "meaning": "búp bê",
         "collocation": "have a doll",
         "example": "I have a doll."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 5,
     "title": "In the classroom",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "egg",
-        "ipa": "/eÉ¡/",
+        "ipa": "/eɡ/",
         "pos": "n",
-        "meaning": "quáº£ trá»©ng",
+        "meaning": "quả trứng",
         "collocation": "eat an egg",
         "example": "Eat an egg."
       },
       {
         "word": "eraser",
-        "ipa": "/ÉªËˆreÉª.zÉ™(r)/",
+        "ipa": "/ɪˈreɪ.zə(r)/",
         "pos": "n",
-        "meaning": "cá»¥c táº©y",
+        "meaning": "cục tẩy",
         "collocation": "an eraser",
         "example": "It's an eraser."
       },
       {
         "word": "elephant",
-        "ipa": "/Ëˆel.Éª.fÉ™nt/",
+        "ipa": "/ˈel.ɪ.fənt/",
         "pos": "n",
         "meaning": "con voi",
         "collocation": "big elephant",
@@ -234,406 +235,406 @@ var CURRICULUM_DATA = [
         "word": "pen",
         "ipa": "/pen/",
         "pos": "n",
-        "meaning": "cĂ¡i bĂºt má»±c",
+        "meaning": "cái bút mực",
         "collocation": "blue pen",
         "example": "I have a blue pen."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 6,
     "title": "In the park",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "fish",
-        "ipa": "/fÉªÊƒ/",
+        "ipa": "/fɪʃ/",
         "pos": "n",
-        "meaning": "con cĂ¡",
+        "meaning": "con cá",
         "collocation": "can swim",
         "example": "The fish can swim."
       },
       {
         "word": "frog",
-        "ipa": "/frÉ’É¡/",
+        "ipa": "/frɒɡ/",
         "pos": "n",
-        "meaning": "con áº¿ch",
+        "meaning": "con ếch",
         "collocation": "green frog",
         "example": "A green frog."
       },
       {
         "word": "foot",
-        "ipa": "/fÊt/",
+        "ipa": "/fʊt/",
         "pos": "n",
-        "meaning": "bĂ n chĂ¢n",
+        "meaning": "bàn chân",
         "collocation": "touch foot",
         "example": "Touch your foot."
       },
       {
         "word": "fox",
-        "ipa": "/fÉ’ks/",
+        "ipa": "/fɒks/",
         "pos": "n",
-        "meaning": "con cĂ¡o",
+        "meaning": "con cáo",
         "collocation": "red fox",
         "example": "Look at the fox."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 7,
     "title": "In the kitchen",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "goat",
-        "ipa": "/É¡É™Êt/",
+        "ipa": "/ɡəʊt/",
         "pos": "n",
-        "meaning": "con dĂª",
+        "meaning": "con dê",
         "collocation": "eat grass",
         "example": "The goat is eating grass."
       },
       {
         "word": "garden",
-        "ipa": "/ËˆÉ¡É‘Ë.dÉ™n/",
+        "ipa": "/ˈɡɑː.dən/",
         "pos": "n",
-        "meaning": "khu vÆ°á»n",
+        "meaning": "khu vườn",
         "collocation": "walk in garden",
         "example": "Walk in the garden."
       },
       {
         "word": "girl",
-        "ipa": "/É¡ÉœËl/",
+        "ipa": "/ɡɜːl/",
         "pos": "n",
-        "meaning": "cĂ´ gĂ¡i",
+        "meaning": "cô gái",
         "collocation": "nice girl",
         "example": "She is a nice girl."
       },
       {
         "word": "glass",
-        "ipa": "/É¡lÉ‘Ës/",
+        "ipa": "/ɡlɑːs/",
         "pos": "n",
-        "meaning": "cá»‘c thá»§y tinh",
+        "meaning": "cốc thủy tinh",
         "collocation": "glass of water",
         "example": "A glass of water."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 8,
     "title": "In the yard",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "hand",
-        "ipa": "/hĂ¦nd/",
+        "ipa": "/hænd/",
         "pos": "n",
-        "meaning": "bĂ n tay",
+        "meaning": "bàn tay",
         "collocation": "wash hand",
         "example": "Wash your hand."
       },
       {
         "word": "hat",
-        "ipa": "/hĂ¦t/",
+        "ipa": "/hæt/",
         "pos": "n",
-        "meaning": "cĂ¡i mÅ©",
+        "meaning": "cái mũ",
         "collocation": "wear a hat",
         "example": "Wear a hat."
       },
       {
         "word": "house",
-        "ipa": "/haÊs/",
+        "ipa": "/haʊs/",
         "pos": "n",
-        "meaning": "ngĂ´i nhĂ ",
+        "meaning": "ngôi nhà",
         "collocation": "my house",
         "example": "This is my house."
       },
       {
         "word": "horse",
-        "ipa": "/hÉ”Ës/",
+        "ipa": "/hɔːs/",
         "pos": "n",
-        "meaning": "con ngá»±a",
+        "meaning": "con ngựa",
         "collocation": "ride a horse",
         "example": "Ride a horse."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 9,
     "title": "In the grocery store",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "ink",
-        "ipa": "/ÉªÅ‹k/",
+        "ipa": "/ɪŋk/",
         "pos": "n",
-        "meaning": "má»±c in",
+        "meaning": "mực in",
         "collocation": "bottle of ink",
         "example": "A bottle of ink."
       },
       {
         "word": "insect",
-        "ipa": "/ËˆÉªn.sekt/",
+        "ipa": "/ˈɪn.sekt/",
         "pos": "n",
-        "meaning": "cĂ´n trĂ¹ng",
+        "meaning": "côn trùng",
         "collocation": "small insect",
         "example": "Look at the insect."
       },
       {
         "word": "bin",
-        "ipa": "/bÉªn/",
+        "ipa": "/bɪn/",
         "pos": "n",
-        "meaning": "thĂ¹ng rĂ¡c",
+        "meaning": "thùng rác",
         "collocation": "in the bin",
         "example": "Put it in the bin."
       },
       {
         "word": "tin",
-        "ipa": "/tÉªn/",
+        "ipa": "/tɪn/",
         "pos": "n",
-        "meaning": "há»™p thiáº¿c",
+        "meaning": "hộp thiếc",
         "collocation": "tin of soup",
         "example": "A tin of soup."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 10,
     "title": "In the park",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "jam",
-        "ipa": "/dÊ’Ă¦m/",
+        "ipa": "/dʒæm/",
         "pos": "n",
-        "meaning": "má»©t",
+        "meaning": "mứt",
         "collocation": "bread with jam",
         "example": "Eat bread with jam."
       },
       {
         "word": "juice",
-        "ipa": "/dÊ’uËs/",
+        "ipa": "/dʒuːs/",
         "pos": "n",
-        "meaning": "nÆ°á»›c trĂ¡i cĂ¢y",
+        "meaning": "nước trái cây",
         "collocation": "orange juice",
         "example": "Drink orange juice."
       },
       {
         "word": "jug",
-        "ipa": "/dÊ’ÊŒÉ¡/",
+        "ipa": "/dʒʌɡ/",
         "pos": "n",
-        "meaning": "cĂ¡i bĂ¬nh",
+        "meaning": "cái bình",
         "collocation": "jug of milk",
         "example": "A jug of milk."
       },
       {
         "word": "jelly",
-        "ipa": "/ËˆdÊ’el.i/",
+        "ipa": "/ˈdʒel.i/",
         "pos": "n",
-        "meaning": "tháº¡ch",
+        "meaning": "thạch",
         "collocation": "fruit jelly",
         "example": "Do you like jelly?"
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 11,
     "title": "In the playground",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "kite",
-        "ipa": "/kaÉªt/",
+        "ipa": "/kaɪt/",
         "pos": "n",
-        "meaning": "cĂ¡i diá»u",
+        "meaning": "cái diều",
         "collocation": "fly a kite",
         "example": "Fly a kite."
       },
       {
         "word": "kitten",
-        "ipa": "/ËˆkÉªt.É™n/",
+        "ipa": "/ˈkɪt.ən/",
         "pos": "n",
-        "meaning": "con mĂ¨o con",
+        "meaning": "con mèo con",
         "collocation": "cute kitten",
         "example": "Look at the cute kitten."
       },
       {
         "word": "key",
-        "ipa": "/kiË/",
+        "ipa": "/kiː/",
         "pos": "n",
-        "meaning": "chĂ¬a khĂ³a",
+        "meaning": "chìa khóa",
         "collocation": "have a key",
         "example": "I have a key."
       },
       {
         "word": "kangaroo",
-        "ipa": "/ËŒkĂ¦Å‹.É¡É™rËˆuË/",
+        "ipa": "/ˌkæŋ.ɡərˈuː/",
         "pos": "n",
-        "meaning": "chuá»™t tĂºi",
+        "meaning": "chuột túi",
         "collocation": "big kangaroo",
         "example": "A big kangaroo."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 12,
     "title": "At the lakeside",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "lake",
-        "ipa": "/leÉªk/",
+        "ipa": "/leɪk/",
         "pos": "n",
-        "meaning": "há»“ nÆ°á»›c",
+        "meaning": "hồ nước",
         "collocation": "in the lake",
         "example": "Swim in the lake."
       },
       {
         "word": "leaf",
-        "ipa": "/liËf/",
+        "ipa": "/liːf/",
         "pos": "n",
-        "meaning": "chiáº¿c lĂ¡",
+        "meaning": "chiếc lá",
         "collocation": "green leaf",
         "example": "A green leaf."
       },
       {
         "word": "lemon",
-        "ipa": "/Ëˆlem.É™n/",
+        "ipa": "/ˈlem.ən/",
         "pos": "n",
-        "meaning": "quáº£ chanh",
+        "meaning": "quả chanh",
         "collocation": "yellow lemon",
         "example": "A yellow lemon."
       },
       {
         "word": "lion",
-        "ipa": "/ËˆlaÉª.É™n/",
+        "ipa": "/ˈlaɪ.ən/",
         "pos": "n",
-        "meaning": "con sÆ° tá»­",
+        "meaning": "con sư tử",
         "collocation": "lion roar",
         "example": "Hear the lion roar."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 13,
     "title": "In the countryside",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "monkey",
-        "ipa": "/ËˆmÊŒÅ‹.ki/",
+        "ipa": "/ˈmʌŋ.ki/",
         "pos": "n",
-        "meaning": "con khá»‰",
+        "meaning": "con khỉ",
         "collocation": "monkey swinging",
         "example": "The monkey is swinging."
       },
       {
         "word": "mother",
-        "ipa": "/ËˆmÊŒĂ°.É™(r)/",
+        "ipa": "/ˈmʌð.ə(r)/",
         "pos": "n",
-        "meaning": "máº¹",
+        "meaning": "mẹ",
         "collocation": "love mother",
         "example": "I love my mother."
       },
       {
         "word": "milk",
-        "ipa": "/mÉªlk/",
+        "ipa": "/mɪlk/",
         "pos": "n",
-        "meaning": "sá»¯a",
+        "meaning": "sữa",
         "collocation": "drink milk",
         "example": "Drink your milk."
       },
       {
         "word": "mouse",
-        "ipa": "/maÊs/",
+        "ipa": "/maʊs/",
         "pos": "n",
-        "meaning": "con chuá»™t",
+        "meaning": "con chuột",
         "collocation": "small mouse",
         "example": "A small mouse."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 14,
     "title": "In the toy shop",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "nut",
-        "ipa": "/nÊŒt/",
+        "ipa": "/nʌt/",
         "pos": "n",
-        "meaning": "háº¡t",
+        "meaning": "hạt",
         "collocation": "eat a nut",
         "example": "Eat a nut."
       },
@@ -641,7 +642,7 @@ var CURRICULUM_DATA = [
         "word": "nest",
         "ipa": "/nest/",
         "pos": "n",
-        "meaning": "tá»• chim",
+        "meaning": "tổ chim",
         "collocation": "in the nest",
         "example": "A bird in the nest."
       },
@@ -649,281 +650,281 @@ var CURRICULUM_DATA = [
         "word": "net",
         "ipa": "/net/",
         "pos": "n",
-        "meaning": "cĂ¡i lÆ°á»›i",
+        "meaning": "cái lưới",
         "collocation": "catch with net",
         "example": "Catch with a net."
       },
       {
         "word": "nose",
-        "ipa": "/nÉ™Êz/",
+        "ipa": "/nəʊz/",
         "pos": "n",
-        "meaning": "cĂ¡i mÅ©i",
+        "meaning": "cái mũi",
         "collocation": "touch nose",
         "example": "Touch your nose."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 15,
     "title": "At the birthday party",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "orange",
-        "ipa": "/ËˆÉ’r.ÉªndÊ’/",
+        "ipa": "/ˈɒr.ɪndʒ/",
         "pos": "n",
-        "meaning": "quáº£ cam",
+        "meaning": "quả cam",
         "collocation": "an orange",
         "example": "An orange on the table."
       },
       {
         "word": "owl",
-        "ipa": "/aÊl/",
+        "ipa": "/aʊl/",
         "pos": "n",
-        "meaning": "con cĂº",
+        "meaning": "con cú",
         "collocation": "night owl",
         "example": "The owl flies at night."
       },
       {
         "word": "octopus",
-        "ipa": "/ËˆÉ’k.tÉ™.pÉ™s/",
+        "ipa": "/ˈɒk.tə.pəs/",
         "pos": "n",
-        "meaning": "báº¡ch tuá»™c",
+        "meaning": "bạch tuộc",
         "collocation": "in the sea",
         "example": "An octopus in the sea."
       },
       {
         "word": "ox",
-        "ipa": "/É’ks/",
+        "ipa": "/ɒks/",
         "pos": "n",
-        "meaning": "con bĂ² Ä‘á»±c",
+        "meaning": "con bò đực",
         "collocation": "strong ox",
         "example": "A strong ox."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 1",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 1",
     "unit": 16,
     "title": "At the campsite",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
-      "Máº¡o tá»« a/an",
-      "Má»‡nh lá»‡nh cĂ¡ch"
+      "Mạo từ a/an",
+      "Mệnh lệnh cách"
     ],
     "vocabulary": [
       {
         "word": "pen",
         "ipa": "/pen/",
         "pos": "n",
-        "meaning": "cĂ¡i bĂºt má»±c",
+        "meaning": "cái bút mực",
         "collocation": "write with pen",
         "example": "Write with a pen."
       },
       {
         "word": "pencil",
-        "ipa": "/Ëˆpen.sÉ™l/",
+        "ipa": "/ˈpen.səl/",
         "pos": "n",
-        "meaning": "cĂ¡i bĂºt chĂ¬",
+        "meaning": "cái bút chì",
         "collocation": "draw with pencil",
         "example": "Draw with a pencil."
       },
       {
         "word": "pig",
-        "ipa": "/pÉªÉ¡/",
+        "ipa": "/pɪɡ/",
         "pos": "n",
-        "meaning": "con lá»£n",
+        "meaning": "con lợn",
         "collocation": "pink pig",
         "example": "A pink pig."
       },
       {
         "word": "panda",
-        "ipa": "/ËˆpĂ¦n.dÉ™/",
+        "ipa": "/ˈpæn.də/",
         "pos": "n",
-        "meaning": "gáº¥u trĂºc",
+        "meaning": "gấu trúc",
         "collocation": "cute panda",
         "example": "Look at the panda."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 1,
     "title": "In the bakery",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "quiet",
-        "ipa": "/ËˆkwaÉª.É™t/",
+        "ipa": "/ˈkwaɪ.ət/",
         "pos": "adj",
-        "meaning": "yĂªn láº·ng",
+        "meaning": "yên lặng",
         "collocation": "be quiet",
         "example": "Be quiet, please."
       },
       {
         "word": "queen",
-        "ipa": "/kwiËn/",
+        "ipa": "/kwiːn/",
         "pos": "n",
-        "meaning": "ná»¯ hoĂ ng",
+        "meaning": "nữ hoàng",
         "collocation": "look at queen",
         "example": "Look at the queen."
       },
       {
         "word": "quilt",
-        "ipa": "/kwÉªlt/",
+        "ipa": "/kwɪlt/",
         "pos": "n",
-        "meaning": "chÄƒn bĂ´ng",
+        "meaning": "chăn bông",
         "collocation": "warm quilt",
         "example": "A warm quilt."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 2,
     "title": "In the countryside",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "river",
-        "ipa": "/ËˆrÉªv.É™(r)/",
+        "ipa": "/ˈrɪv.ə(r)/",
         "pos": "n",
-        "meaning": "dĂ²ng sĂ´ng",
+        "meaning": "dòng sông",
         "collocation": "swim in river",
         "example": "Swim in the river."
       },
       {
         "word": "road",
-        "ipa": "/rÉ™Êd/",
+        "ipa": "/rəʊd/",
         "pos": "n",
-        "meaning": "con Ä‘Æ°á»ng",
+        "meaning": "con đường",
         "collocation": "cross the road",
         "example": "Cross the road."
       },
       {
         "word": "rainbow",
-        "ipa": "/ËˆreÉªn.bÉ™Ê/",
+        "ipa": "/ˈreɪn.bəʊ/",
         "pos": "n",
-        "meaning": "cáº§u vá»“ng",
+        "meaning": "cầu vồng",
         "collocation": "look at rainbow",
         "example": "Look at the rainbow."
       },
       {
         "word": "runner",
-        "ipa": "/ËˆrÊŒn.É™(r)/",
+        "ipa": "/ˈrʌn.ə(r)/",
         "pos": "n",
-        "meaning": "ngÆ°á»i cháº¡y",
+        "meaning": "người chạy",
         "collocation": "fast runner",
         "example": "He is a fast runner."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 3,
     "title": "At the seaside",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "sea",
-        "ipa": "/siË/",
+        "ipa": "/siː/",
         "pos": "n",
-        "meaning": "biá»ƒn",
+        "meaning": "biển",
         "collocation": "like the sea",
         "example": "I like the sea."
       },
       {
         "word": "sun",
-        "ipa": "/sÊŒn/",
+        "ipa": "/sʌn/",
         "pos": "n",
-        "meaning": "máº·t trá»i",
+        "meaning": "mặt trời",
         "collocation": "sun is shining",
         "example": "The sun is shining."
       },
       {
         "word": "sand",
-        "ipa": "/sĂ¦nd/",
+        "ipa": "/sænd/",
         "pos": "n",
-        "meaning": "cĂ¡t",
+        "meaning": "cát",
         "collocation": "play on sand",
         "example": "Play on the sand."
       },
       {
         "word": "sail",
-        "ipa": "/seÉªl/",
+        "ipa": "/seɪl/",
         "pos": "v",
-        "meaning": "giÄƒng buá»“m",
+        "meaning": "giăng buồm",
         "collocation": "sail a boat",
         "example": "Sail a boat."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 4,
     "title": "In the garden",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "tiger",
-        "ipa": "/ËˆtaÉª.É¡É™(r)/",
+        "ipa": "/ˈtaɪ.ɡə(r)/",
         "pos": "n",
-        "meaning": "con há»•",
+        "meaning": "con hổ",
         "collocation": "big tiger",
         "example": "A big tiger."
       },
       {
         "word": "turtle",
-        "ipa": "/ËˆtÉœË.tÉ™l/",
+        "ipa": "/ˈtɜː.təl/",
         "pos": "n",
-        "meaning": "con rĂ¹a",
+        "meaning": "con rùa",
         "collocation": "moves slowly",
         "example": "The turtle moves slowly."
       },
       {
         "word": "tree",
-        "ipa": "/triË/",
+        "ipa": "/triː/",
         "pos": "n",
-        "meaning": "cĂ¡i cĂ¢y",
+        "meaning": "cái cây",
         "collocation": "climb the tree",
         "example": "Climb the tree."
       },
@@ -931,420 +932,420 @@ var CURRICULUM_DATA = [
         "word": "tent",
         "ipa": "/tent/",
         "pos": "n",
-        "meaning": "cĂ¡i lá»u",
+        "meaning": "cái lều",
         "collocation": "sleep in tent",
         "example": "Sleep in the tent."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 5,
     "title": "In the classroom",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "umbrella",
-        "ipa": "/ÊŒmËˆbrel.É™/",
+        "ipa": "/ʌmˈbrel.ə/",
         "pos": "n",
-        "meaning": "cĂ¡i Ă´",
+        "meaning": "cái ô",
         "collocation": "open umbrella",
         "example": "Open the umbrella."
       },
       {
         "word": "uncle",
-        "ipa": "/ËˆÊŒÅ‹.kÉ™l/",
+        "ipa": "/ˈʌŋ.kəl/",
         "pos": "n",
-        "meaning": "chĂº, bĂ¡c",
+        "meaning": "chú, bác",
         "collocation": "my uncle",
         "example": "My uncle is tall."
       },
       {
         "word": "truck",
-        "ipa": "/trÊŒk/",
+        "ipa": "/trʌk/",
         "pos": "n",
-        "meaning": "xe táº£i",
+        "meaning": "xe tải",
         "collocation": "drive a truck",
         "example": "Drive a truck."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 6,
     "title": "On the farm",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "van",
-        "ipa": "/vĂ¦n/",
+        "ipa": "/væn/",
         "pos": "n",
-        "meaning": "xe táº£i nhá»",
+        "meaning": "xe tải nhỏ",
         "collocation": "blue van",
         "example": "A blue van."
       },
       {
         "word": "vase",
-        "ipa": "/vÉ‘Ëz/",
+        "ipa": "/vɑːz/",
         "pos": "n",
-        "meaning": "bĂ¬nh hoa",
+        "meaning": "bình hoa",
         "collocation": "in the vase",
         "example": "Flowers in the vase."
       },
       {
         "word": "village",
-        "ipa": "/ËˆvÉªl.ÉªdÊ’/",
+        "ipa": "/ˈvɪl.ɪdʒ/",
         "pos": "n",
-        "meaning": "ngĂ´i lĂ ng",
+        "meaning": "ngôi làng",
         "collocation": "live in village",
         "example": "Live in a village."
       },
       {
         "word": "violin",
-        "ipa": "/ËŒvaÉªÉ™ËˆlÉªn/",
+        "ipa": "/ˌvaɪəˈlɪn/",
         "pos": "n",
-        "meaning": "Ä‘Ă n vi-Ă´-lĂ´ng",
+        "meaning": "đàn vi-ô-lông",
         "collocation": "play violin",
         "example": "Play the violin."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 7,
     "title": "In the playground",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "window",
-        "ipa": "/ËˆwÉªn.dÉ™Ê/",
+        "ipa": "/ˈwɪn.dəʊ/",
         "pos": "n",
-        "meaning": "cá»­a sá»•",
+        "meaning": "cửa sổ",
         "collocation": "look out window",
         "example": "Look out the window."
       },
       {
         "word": "water",
-        "ipa": "/ËˆwÉ”Ë.tÉ™(r)/",
+        "ipa": "/ˈwɔː.tə(r)/",
         "pos": "n",
-        "meaning": "nÆ°á»›c",
+        "meaning": "nước",
         "collocation": "drink water",
         "example": "Drink some water."
       },
       {
         "word": "wood",
-        "ipa": "/wÊd/",
+        "ipa": "/wʊd/",
         "pos": "n",
-        "meaning": "gá»—",
+        "meaning": "gỗ",
         "collocation": "made of wood",
         "example": "Made of wood."
       },
       {
         "word": "wall",
-        "ipa": "/wÉ”Ël/",
+        "ipa": "/wɔːl/",
         "pos": "n",
-        "meaning": "bá»©c tÆ°á»ng",
+        "meaning": "bức tường",
         "collocation": "high wall",
         "example": "A high wall."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 8,
     "title": "At the zoo",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "box",
-        "ipa": "/bÉ’ks/",
+        "ipa": "/bɒks/",
         "pos": "n",
-        "meaning": "cĂ¡i há»™p",
+        "meaning": "cái hộp",
         "collocation": "open the box",
         "example": "Open the box."
       },
       {
         "word": "fox",
-        "ipa": "/fÉ’ks/",
+        "ipa": "/fɒks/",
         "pos": "n",
-        "meaning": "con cĂ¡o",
+        "meaning": "con cáo",
         "collocation": "fox is running",
         "example": "The fox is running."
       },
       {
         "word": "six",
-        "ipa": "/sÉªks/",
+        "ipa": "/sɪks/",
         "pos": "num",
-        "meaning": "sá»‘ sĂ¡u",
+        "meaning": "số sáu",
         "collocation": "six pencils",
         "example": "I have six pencils."
       },
       {
         "word": "taxi",
-        "ipa": "/ËˆtĂ¦k.si/",
+        "ipa": "/ˈtæk.si/",
         "pos": "n",
-        "meaning": "xe táº¯c-xi",
+        "meaning": "xe tắc-xi",
         "collocation": "take a taxi",
         "example": "Take a taxi."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 9,
     "title": "In the grocery store",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "yo-yo",
-        "ipa": "/ËˆjÉ™Ê.jÉ™Ê/",
+        "ipa": "/ˈjəʊ.jəʊ/",
         "pos": "n",
-        "meaning": "cĂ¡i yĂ´-yĂ´",
+        "meaning": "cái yô-yô",
         "collocation": "play with yo-yo",
         "example": "Play with a yo-yo."
       },
       {
         "word": "yogurt",
-        "ipa": "/ËˆjÉ’É¡.É™t/",
+        "ipa": "/ˈjɒɡ.ət/",
         "pos": "n",
-        "meaning": "sá»¯a chua",
+        "meaning": "sữa chua",
         "collocation": "eat yogurt",
         "example": "Eat some yogurt."
       },
       {
         "word": "yak",
-        "ipa": "/jĂ¦k/",
+        "ipa": "/jæk/",
         "pos": "n",
-        "meaning": "bĂ² TĂ¢y Táº¡ng",
+        "meaning": "bò Tây Tạng",
         "collocation": "big yak",
         "example": "A big yak."
       },
       {
         "word": "yacht",
-        "ipa": "/jÉ’t/",
+        "ipa": "/jɒt/",
         "pos": "n",
-        "meaning": "du thuyá»n",
+        "meaning": "du thuyền",
         "collocation": "sail a yacht",
         "example": "Sail a yacht."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 10,
     "title": "At the park",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "zoo",
-        "ipa": "/zuË/",
+        "ipa": "/zuː/",
         "pos": "n",
-        "meaning": "sá»Ÿ thĂº",
+        "meaning": "sở thú",
         "collocation": "go to zoo",
         "example": "Go to the zoo."
       },
       {
         "word": "zebra",
-        "ipa": "/Ëˆzeb.rÉ™/",
+        "ipa": "/ˈzeb.rə/",
         "pos": "n",
-        "meaning": "ngá»±a váº±n",
+        "meaning": "ngựa vằn",
         "collocation": "look at zebra",
         "example": "Look at the zebra."
       },
       {
         "word": "zero",
-        "ipa": "/ËˆzÉªÉ™.rÉ™Ê/",
+        "ipa": "/ˈzɪə.rəʊ/",
         "pos": "num",
-        "meaning": "sá»‘ khĂ´ng",
+        "meaning": "số không",
         "collocation": "number zero",
         "example": "Number zero."
       },
       {
         "word": "zipper",
-        "ipa": "/ËˆzÉªp.É™(r)/",
+        "ipa": "/ˈzɪp.ə(r)/",
         "pos": "n",
-        "meaning": "khĂ³a kĂ©o",
+        "meaning": "khóa kéo",
         "collocation": "pull zipper",
         "example": "Pull the zipper."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 11,
     "title": "In the forest",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "fish",
-        "ipa": "/fÉªÊƒ/",
+        "ipa": "/fɪʃ/",
         "pos": "n",
-        "meaning": "con cĂ¡",
+        "meaning": "con cá",
         "collocation": "catch a fish",
         "example": "Catch a fish."
       },
       {
         "word": "dish",
-        "ipa": "/dÉªÊƒ/",
+        "ipa": "/dɪʃ/",
         "pos": "n",
-        "meaning": "cĂ¡i Ä‘Ä©a",
+        "meaning": "cái đĩa",
         "collocation": "wash the dish",
         "example": "Wash the dish."
       },
       {
         "word": "ship",
-        "ipa": "/ÊƒÉªp/",
+        "ipa": "/ʃɪp/",
         "pos": "n",
-        "meaning": "con tĂ u",
+        "meaning": "con tàu",
         "collocation": "big ship",
         "example": "A big ship."
       },
       {
         "word": "shoe",
-        "ipa": "/ÊƒuË/",
+        "ipa": "/ʃuː/",
         "pos": "n",
-        "meaning": "chiáº¿c giĂ y",
+        "meaning": "chiếc giày",
         "collocation": "put on shoe",
         "example": "Put on your shoe."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 12,
     "title": "In the cafe",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "chicken",
-        "ipa": "/ËˆtÊƒÉªk.Éªn/",
+        "ipa": "/ˈtʃɪk.ɪn/",
         "pos": "n",
-        "meaning": "con gĂ ",
+        "meaning": "con gà",
         "collocation": "fried chicken",
         "example": "Eat fried chicken."
       },
       {
         "word": "chip",
-        "ipa": "/tÊƒÉªp/",
+        "ipa": "/tʃɪp/",
         "pos": "n",
-        "meaning": "khoai tĂ¢y chiĂªn",
+        "meaning": "khoai tây chiên",
         "collocation": "like chips",
         "example": "I like chips."
       },
       {
         "word": "chair",
-        "ipa": "/tÊƒeÉ™(r)/",
+        "ipa": "/tʃeə(r)/",
         "pos": "n",
-        "meaning": "cĂ¡i gháº¿",
+        "meaning": "cái ghế",
         "collocation": "sit on chair",
         "example": "Sit on the chair."
       },
       {
         "word": "cheese",
-        "ipa": "/tÊƒeËz/",
+        "ipa": "/tʃeːz/",
         "pos": "n",
-        "meaning": "pho mĂ¡t",
+        "meaning": "pho mát",
         "collocation": "slice cheese",
         "example": "Slice the cheese."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 13,
     "title": "In the math class",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "three",
-        "ipa": "/Î¸riË/",
+        "ipa": "/θriː/",
         "pos": "num",
-        "meaning": "sá»‘ ba",
+        "meaning": "số ba",
         "collocation": "number three",
         "example": "Number three."
       },
       {
         "word": "mother",
-        "ipa": "/ËˆmÊŒĂ°.É™(r)/",
+        "ipa": "/ˈmʌð.ə(r)/",
         "pos": "n",
-        "meaning": "máº¹",
+        "meaning": "mẹ",
         "collocation": "this is mother",
         "example": "This is my mother."
       },
       {
         "word": "father",
-        "ipa": "/ËˆfÉ‘Ë.Ă°É™(r)/",
+        "ipa": "/ˈfɑː.ðə(r)/",
         "pos": "n",
-        "meaning": "bá»‘",
+        "meaning": "bố",
         "collocation": "this is father",
         "example": "This is my father."
       },
       {
         "word": "brother",
-        "ipa": "/ËˆbrÊŒĂ°.É™(r)/",
+        "ipa": "/ˈbrʌð.ə(r)/",
         "pos": "n",
         "meaning": "anh/em trai",
         "collocation": "smart brother",
@@ -1353,129 +1354,129 @@ var CURRICULUM_DATA = [
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 14,
     "title": "At the toy shop",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "blue",
-        "ipa": "/bluË/",
+        "ipa": "/bluː/",
         "pos": "adj",
-        "meaning": "mĂ u xanh dÆ°Æ¡ng",
+        "meaning": "màu xanh dương",
         "collocation": "blue balloon",
         "example": "A blue balloon."
       },
       {
         "word": "clock",
-        "ipa": "/klÉ’k/",
+        "ipa": "/klɒk/",
         "pos": "n",
-        "meaning": "Ä‘á»“ng há»“",
+        "meaning": "đồng hồ",
         "collocation": "look at clock",
         "example": "Look at the clock."
       },
       {
         "word": "flower",
-        "ipa": "/ËˆflaÊ.É™(r)/",
+        "ipa": "/ˈflaʊ.ə(r)/",
         "pos": "n",
-        "meaning": "bĂ´ng hoa",
+        "meaning": "bông hoa",
         "collocation": "beautiful flower",
         "example": "A beautiful flower."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 15,
     "title": "At the supermarket",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "bread",
         "ipa": "/bred/",
         "pos": "n",
-        "meaning": "bĂ¡nh mĂ¬",
+        "meaning": "bánh mì",
         "collocation": "buy bread",
         "example": "Buy some bread."
       },
       {
         "word": "cry",
-        "ipa": "/kraÉª/",
+        "ipa": "/kraɪ/",
         "pos": "v",
-        "meaning": "khĂ³c",
+        "meaning": "khóc",
         "collocation": "don't cry",
         "example": "Don't cry."
       },
       {
         "word": "frog",
-        "ipa": "/frÉ’É¡/",
+        "ipa": "/frɒɡ/",
         "pos": "n",
-        "meaning": "con áº¿ch",
+        "meaning": "con ếch",
         "collocation": "green frog",
         "example": "A green frog."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 2",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 2",
     "unit": 16,
     "title": "At the sports center",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n cÆ¡ báº£n"
+      "Hiện tại đơn cơ bản"
     ],
     "grammar_topics": [
       "Can/Can't",
-      "Giá»›i tá»« chá»‰ vá»‹ trĂ­"
+      "Giới từ chỉ vị trí"
     ],
     "vocabulary": [
       {
         "word": "star",
-        "ipa": "/stÉ‘Ë(r)/",
+        "ipa": "/stɑː(r)/",
         "pos": "n",
-        "meaning": "ngĂ´i sao",
+        "meaning": "ngôi sao",
         "collocation": "look at star",
         "example": "Look at the star."
       },
       {
         "word": "sky",
-        "ipa": "/skaÉª/",
+        "ipa": "/skaɪ/",
         "pos": "n",
-        "meaning": "báº§u trá»i",
+        "meaning": "bầu trời",
         "collocation": "blue sky",
         "example": "Blue sky."
       },
       {
         "word": "spider",
-        "ipa": "/ËˆspaÉª.dÉ™(r)/",
+        "ipa": "/ˈspaɪ.də(r)/",
         "pos": "n",
-        "meaning": "con nhá»‡n",
+        "meaning": "con nhện",
         "collocation": "small spider",
         "example": "A small spider."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 1,
     "title": "Hello",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1485,45 +1486,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "hello",
-        "ipa": "/hÉ™ËˆlÉ™Ê/",
+        "ipa": "/həˈləʊ/",
         "pos": "interj",
-        "meaning": "xin chĂ o",
+        "meaning": "xin chào",
         "collocation": "hello Mai",
         "example": "Hello, I'm Mai."
       },
       {
         "word": "hi",
-        "ipa": "/haÉª/",
+        "ipa": "/haɪ/",
         "pos": "interj",
-        "meaning": "chĂ o",
+        "meaning": "chào",
         "collocation": "hi Minh",
         "example": "Hi, Minh."
       },
       {
         "word": "fine",
-        "ipa": "/faÉªn/",
+        "ipa": "/faɪn/",
         "pos": "adj",
-        "meaning": "khá»e",
+        "meaning": "khỏe",
         "collocation": "I'm fine",
         "example": "I'm fine, thank you."
       },
       {
         "word": "bye",
-        "ipa": "/baÉª/",
+        "ipa": "/baɪ/",
         "pos": "interj",
-        "meaning": "táº¡m biá»‡t",
+        "meaning": "tạm biệt",
         "collocation": "bye Miss Hoa",
         "example": "Bye, Miss Hoa."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 2,
     "title": "Our names",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1533,9 +1534,9 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "name",
-        "ipa": "/neÉªm/",
+        "ipa": "/neɪm/",
         "pos": "n",
-        "meaning": "tĂªn",
+        "meaning": "tên",
         "collocation": "my name",
         "example": "My name is Lucy."
       },
@@ -1543,27 +1544,27 @@ var CURRICULUM_DATA = [
         "word": "spell",
         "ipa": "/spel/",
         "pos": "v",
-        "meaning": "Ä‘Ă¡nh váº§n",
+        "meaning": "đánh vần",
         "collocation": "spell name",
         "example": "How do you spell your name?"
       },
       {
         "word": "what",
-        "ipa": "/wÉ’t/",
+        "ipa": "/wɒt/",
         "pos": "pron",
-        "meaning": "cĂ¡i gĂ¬",
+        "meaning": "cái gì",
         "collocation": "what is",
         "example": "What is your name?"
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 3,
     "title": "Our friends",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1575,43 +1576,43 @@ var CURRICULUM_DATA = [
         "word": "friend",
         "ipa": "/frend/",
         "pos": "n",
-        "meaning": "báº¡n bĂ¨",
+        "meaning": "bạn bè",
         "collocation": "my friend",
         "example": "This is my friend, Mary."
       },
       {
         "word": "new",
-        "ipa": "/njuË/",
+        "ipa": "/njuː/",
         "pos": "adj",
-        "meaning": "má»›i",
+        "meaning": "mới",
         "collocation": "new friend",
         "example": "She is my new friend."
       },
       {
         "word": "Mr",
-        "ipa": "/ËˆmÉªs.tÉ™(r)/",
+        "ipa": "/ˈmɪs.tə(r)/",
         "pos": "n",
-        "meaning": "tháº§y, Ă´ng",
+        "meaning": "thầy, ông",
         "collocation": "Mr Long",
         "example": "This is Mr Long."
       },
       {
         "word": "Ms",
-        "ipa": "/mÉªz/",
+        "ipa": "/mɪz/",
         "pos": "n",
-        "meaning": "cĂ´, bĂ ",
+        "meaning": "cô, bà",
         "collocation": "Ms Hoa",
         "example": "Good morning, Ms Hoa."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 4,
     "title": "Our bodies",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1621,45 +1622,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "face",
-        "ipa": "/feÉªs/",
+        "ipa": "/feɪs/",
         "pos": "n",
-        "meaning": "khuĂ´n máº·t",
+        "meaning": "khuôn mặt",
         "collocation": "touch face",
         "example": "Touch your face."
       },
       {
         "word": "eye",
-        "ipa": "/aÉª/",
+        "ipa": "/aɪ/",
         "pos": "n",
-        "meaning": "con máº¯t",
+        "meaning": "con mắt",
         "collocation": "open eyes",
         "example": "Open your eyes."
       },
       {
         "word": "ear",
-        "ipa": "/ÉªÉ™(r)/",
+        "ipa": "/ɪə(r)/",
         "pos": "n",
-        "meaning": "cĂ¡i tai",
+        "meaning": "cái tai",
         "collocation": "touch ears",
         "example": "Touch your ears."
       },
       {
         "word": "hand",
-        "ipa": "/hĂ¦nd/",
+        "ipa": "/hænd/",
         "pos": "n",
-        "meaning": "bĂ n tay",
+        "meaning": "bàn tay",
         "collocation": "wash hands",
         "example": "Wash your hands."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 5,
     "title": "My hobbies",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1669,45 +1670,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "hobby",
-        "ipa": "/ËˆhÉ’b.i/",
+        "ipa": "/ˈhɒb.i/",
         "pos": "n",
-        "meaning": "sá»Ÿ thĂ­ch",
+        "meaning": "sở thích",
         "collocation": "my hobby",
         "example": "What is your hobby?"
       },
       {
         "word": "singing",
-        "ipa": "/ËˆsÉªÅ‹.ÉªÅ‹/",
+        "ipa": "/ˈsɪŋ.ɪŋ/",
         "pos": "n",
-        "meaning": "viá»‡c hĂ¡t",
+        "meaning": "việc hát",
         "collocation": "like singing",
         "example": "My hobby is singing."
       },
       {
         "word": "dancing",
-        "ipa": "/ËˆdÉ‘Ën.sÉªÅ‹/",
+        "ipa": "/ˈdɑːn.sɪŋ/",
         "pos": "n",
-        "meaning": "nháº£y mĂºa",
+        "meaning": "nhảy múa",
         "collocation": "like dancing",
         "example": "I like dancing."
       },
       {
         "word": "cooking",
-        "ipa": "/ËˆkÊk.ÉªÅ‹/",
+        "ipa": "/ˈkʊk.ɪŋ/",
         "pos": "n",
-        "meaning": "náº¥u Äƒn",
+        "meaning": "nấu ăn",
         "collocation": "her hobby",
         "example": "Her hobby is cooking."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 6,
     "title": "Our school",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1717,45 +1718,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "school",
-        "ipa": "/skuËl/",
+        "ipa": "/skuːl/",
         "pos": "n",
-        "meaning": "trÆ°á»ng há»c",
+        "meaning": "trường học",
         "collocation": "my school",
         "example": "Look at my school."
       },
       {
         "word": "classroom",
-        "ipa": "/ËˆklÉ‘Ës.ruËm/",
+        "ipa": "/ˈklɑːs.ruːm/",
         "pos": "n",
-        "meaning": "phĂ²ng há»c",
+        "meaning": "phòng học",
         "collocation": "our classroom",
         "example": "Is this our classroom?"
       },
       {
         "word": "library",
-        "ipa": "/ËˆlaÉª.brÉ™r.i/",
+        "ipa": "/ˈlaɪ.brər.i/",
         "pos": "n",
-        "meaning": "thÆ° viá»‡n",
+        "meaning": "thư viện",
         "collocation": "go to library",
         "example": "Go to the library."
       },
       {
         "word": "gym",
-        "ipa": "/dÊ’Éªm/",
+        "ipa": "/dʒɪm/",
         "pos": "n",
-        "meaning": "phĂ²ng thá»ƒ dá»¥c",
+        "meaning": "phòng thể dục",
         "collocation": "in the gym",
         "example": "Play in the gym."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 7,
     "title": "Classroom instructions",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1765,45 +1766,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "open",
-        "ipa": "/ËˆÉ™Ê.pÉ™n/",
+        "ipa": "/ˈəʊ.pən/",
         "pos": "v",
-        "meaning": "má»Ÿ",
+        "meaning": "mở",
         "collocation": "open book",
         "example": "Open your book, please."
       },
       {
         "word": "close",
-        "ipa": "/klÉ™Êz/",
+        "ipa": "/kləʊz/",
         "pos": "v",
-        "meaning": "Ä‘Ă³ng",
+        "meaning": "đóng",
         "collocation": "close notebook",
         "example": "Close your notebook."
       },
       {
         "word": "speak",
-        "ipa": "/spiËk/",
+        "ipa": "/spiːk/",
         "pos": "v",
-        "meaning": "nĂ³i",
+        "meaning": "nói",
         "collocation": "don't speak",
         "example": "Don't speak, please."
       },
       {
         "word": "sit",
-        "ipa": "/sÉªt/",
+        "ipa": "/sɪt/",
         "pos": "v",
-        "meaning": "ngá»“i",
+        "meaning": "ngồi",
         "collocation": "sit down",
         "example": "Sit down, please."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 8,
     "title": "My school things",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1815,43 +1816,43 @@ var CURRICULUM_DATA = [
         "word": "pen",
         "ipa": "/pen/",
         "pos": "n",
-        "meaning": "bĂºt má»±c",
+        "meaning": "bút mực",
         "collocation": "red pen",
         "example": "I have a red pen."
       },
       {
         "word": "pencil",
-        "ipa": "/Ëˆpen.sÉ™l/",
+        "ipa": "/ˈpen.səl/",
         "pos": "n",
-        "meaning": "bĂºt chĂ¬",
+        "meaning": "bút chì",
         "collocation": "my pencil",
         "example": "Look at my pencil."
       },
       {
         "word": "ruler",
-        "ipa": "/ËˆruË.lÉ™(r)/",
+        "ipa": "/ˈruː.lə(r)/",
         "pos": "n",
-        "meaning": "thÆ°á»›c káº»",
+        "meaning": "thước kẻ",
         "collocation": "a ruler",
         "example": "Is this a ruler?"
       },
       {
         "word": "rubber",
-        "ipa": "/ËˆrÊŒb.É™(r)/",
+        "ipa": "/ˈrʌb.ə(r)/",
         "pos": "n",
-        "meaning": "cá»¥c táº©y",
+        "meaning": "cục tẩy",
         "collocation": "bring rubber",
         "example": "Bring your rubber."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 9,
     "title": "Colours",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1861,9 +1862,9 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "colour",
-        "ipa": "/ËˆkÊŒl.É™(r)/",
+        "ipa": "/ˈkʌl.ə(r)/",
         "pos": "n",
-        "meaning": "mĂ u sáº¯c",
+        "meaning": "màu sắc",
         "collocation": "what colour",
         "example": "What colour is it?"
       },
@@ -1871,35 +1872,35 @@ var CURRICULUM_DATA = [
         "word": "red",
         "ipa": "/red/",
         "pos": "adj",
-        "meaning": "mĂ u Ä‘á»",
+        "meaning": "màu đỏ",
         "collocation": "red pen",
         "example": "It is a red pen."
       },
       {
         "word": "blue",
-        "ipa": "/bluË/",
+        "ipa": "/bluː/",
         "pos": "adj",
-        "meaning": "xanh dÆ°Æ¡ng",
+        "meaning": "xanh dương",
         "collocation": "blue bag",
         "example": "My bag is blue."
       },
       {
         "word": "yellow",
-        "ipa": "/Ëˆjel.É™Ê/",
+        "ipa": "/ˈjel.əʊ/",
         "pos": "adj",
-        "meaning": "mĂ u vĂ ng",
+        "meaning": "màu vàng",
         "collocation": "yellow pencil",
         "example": "A yellow pencil."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 10,
     "title": "Breaktime activities",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1909,45 +1910,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "breaktime",
-        "ipa": "/ËˆbreÉªk.taÉªm/",
+        "ipa": "/ˈbreɪk.taɪm/",
         "pos": "n",
-        "meaning": "giá» ra chÆ¡i",
+        "meaning": "giờ ra chơi",
         "collocation": "at breaktime",
         "example": "What do you do at breaktime?"
       },
       {
         "word": "chess",
-        "ipa": "/tÊƒes/",
+        "ipa": "/tʃes/",
         "pos": "n",
-        "meaning": "cá» vua",
+        "meaning": "cờ vua",
         "collocation": "play chess",
         "example": "I play chess."
       },
       {
         "word": "football",
-        "ipa": "/ËˆfÊt.bÉ”Ël/",
+        "ipa": "/ˈfʊt.bɔːl/",
         "pos": "n",
-        "meaning": "bĂ³ng Ä‘Ă¡",
+        "meaning": "bóng đá",
         "collocation": "play football",
         "example": "They play football."
       },
       {
         "word": "badminton",
-        "ipa": "/ËˆbĂ¦d.mÉªn.tÉ™n/",
+        "ipa": "/ˈbæd.mɪn.tən/",
         "pos": "n",
-        "meaning": "cáº§u lĂ´ng",
+        "meaning": "cầu lông",
         "collocation": "play badminton",
         "example": "Play badminton in the yard."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 11,
     "title": "My family",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -1957,31 +1958,31 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "family",
-        "ipa": "/ËˆfĂ¦m.É™l.i/",
+        "ipa": "/ˈfæm.əl.i/",
         "pos": "n",
-        "meaning": "gia Ä‘Ă¬nh",
+        "meaning": "gia đình",
         "collocation": "my family",
         "example": "This is my family."
       },
       {
         "word": "father",
-        "ipa": "/ËˆfÉ‘Ë.Ă°É™(r)/",
+        "ipa": "/ˈfɑː.ðə(r)/",
         "pos": "n",
-        "meaning": "bá»‘",
+        "meaning": "bố",
         "collocation": "my father",
         "example": "My father is thirty-five."
       },
       {
         "word": "mother",
-        "ipa": "/ËˆmÊŒĂ°.É™(r)/",
+        "ipa": "/ˈmʌð.ə(r)/",
         "pos": "n",
-        "meaning": "máº¹",
+        "meaning": "mẹ",
         "collocation": "my mother",
         "example": "My mother is young."
       },
       {
         "word": "brother",
-        "ipa": "/ËˆbrÊŒĂ°.É™(r)/",
+        "ipa": "/ˈbrʌð.ə(r)/",
         "pos": "n",
         "meaning": "anh/em trai",
         "collocation": "my brother",
@@ -1990,12 +1991,12 @@ var CURRICULUM_DATA = [
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 12,
     "title": "Jobs",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2005,45 +2006,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "job",
-        "ipa": "/dÊ’É’b/",
+        "ipa": "/dʒɒb/",
         "pos": "n",
-        "meaning": "nghá» nghiá»‡p",
+        "meaning": "nghề nghiệp",
         "collocation": "his job",
         "example": "What is his job?"
       },
       {
         "word": "doctor",
-        "ipa": "/ËˆdÉ’k.tÉ™(r)/",
+        "ipa": "/ˈdɒk.tə(r)/",
         "pos": "n",
-        "meaning": "bĂ¡c sÄ©",
+        "meaning": "bác sĩ",
         "collocation": "a doctor",
         "example": "My father is a doctor."
       },
       {
         "word": "teacher",
-        "ipa": "/ËˆtiË.tÊƒÉ™(r)/",
+        "ipa": "/ˈtiː.tʃə(r)/",
         "pos": "n",
-        "meaning": "giĂ¡o viĂªn",
+        "meaning": "giáo viên",
         "collocation": "English teacher",
         "example": "She is an English teacher."
       },
       {
         "word": "driver",
-        "ipa": "/ËˆdraÉª.vÉ™(r)/",
+        "ipa": "/ˈdraɪ.və(r)/",
         "pos": "n",
-        "meaning": "tĂ i xáº¿",
+        "meaning": "tài xế",
         "collocation": "bus driver",
         "example": "He is a bus driver."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 13,
     "title": "My house",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2053,45 +2054,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "house",
-        "ipa": "/haÊs/",
+        "ipa": "/haʊs/",
         "pos": "n",
-        "meaning": "ngĂ´i nhĂ ",
+        "meaning": "ngôi nhà",
         "collocation": "my house",
         "example": "Welcome to my house."
       },
       {
         "word": "living room",
-        "ipa": "/ËˆlÉªv.ÉªÅ‹ ËŒruËm/",
+        "ipa": "/ˈlɪv.ɪŋ ˌruːm/",
         "pos": "n",
-        "meaning": "phĂ²ng khĂ¡ch",
+        "meaning": "phòng khách",
         "collocation": "in living room",
         "example": "Sit in the living room."
       },
       {
         "word": "bedroom",
-        "ipa": "/Ëˆbed.ruËm/",
+        "ipa": "/ˈbed.ruːm/",
         "pos": "n",
-        "meaning": "phĂ²ng ngá»§",
+        "meaning": "phòng ngủ",
         "collocation": "my bedroom",
         "example": "This is my bedroom."
       },
       {
         "word": "kitchen",
-        "ipa": "/ËˆkÉªtÊƒ.É™n/",
+        "ipa": "/ˈkɪtʃ.ən/",
         "pos": "n",
-        "meaning": "phĂ²ng báº¿p",
+        "meaning": "phòng bếp",
         "collocation": "in kitchen",
         "example": "Mother is in the kitchen."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 14,
     "title": "My bedroom",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2103,7 +2104,7 @@ var CURRICULUM_DATA = [
         "word": "bed",
         "ipa": "/bed/",
         "pos": "n",
-        "meaning": "cĂ¡i giÆ°á»ng",
+        "meaning": "cái giường",
         "collocation": "big bed",
         "example": "The bed is big."
       },
@@ -2111,35 +2112,35 @@ var CURRICULUM_DATA = [
         "word": "desk",
         "ipa": "/desk/",
         "pos": "n",
-        "meaning": "bĂ n há»c",
+        "meaning": "bàn học",
         "collocation": "on desk",
         "example": "Put the book on the desk."
       },
       {
         "word": "chair",
-        "ipa": "/tÊƒeÉ™(r)/",
+        "ipa": "/tʃeə(r)/",
         "pos": "n",
-        "meaning": "cĂ¡i gháº¿",
+        "meaning": "cái ghế",
         "collocation": "brown chair",
         "example": "A brown chair."
       },
       {
         "word": "door",
-        "ipa": "/dÉ”Ë(r)/",
+        "ipa": "/dɔː(r)/",
         "pos": "n",
-        "meaning": "cá»­a ra vĂ o",
+        "meaning": "cửa ra vào",
         "collocation": "close door",
         "example": "Close the door."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 15,
     "title": "At the dining table",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2149,45 +2150,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "table",
-        "ipa": "/ËˆteÉª.bÉ™l/",
+        "ipa": "/ˈteɪ.bəl/",
         "pos": "n",
-        "meaning": "cĂ¡i bĂ n",
+        "meaning": "cái bàn",
         "collocation": "dining table",
         "example": "On the dining table."
       },
       {
         "word": "bowl",
-        "ipa": "/bÉ™Êl/",
+        "ipa": "/bəʊl/",
         "pos": "n",
-        "meaning": "cĂ¡i bĂ¡t",
+        "meaning": "cái bát",
         "collocation": "bowl of rice",
         "example": "A bowl of rice."
       },
       {
         "word": "glass",
-        "ipa": "/É¡lÉ‘Ës/",
+        "ipa": "/ɡlɑːs/",
         "pos": "n",
-        "meaning": "cĂ¡i cá»‘c",
+        "meaning": "cái cốc",
         "collocation": "glass of milk",
         "example": "A glass of milk."
       },
       {
         "word": "spoon",
-        "ipa": "/spuËn/",
+        "ipa": "/spuːn/",
         "pos": "n",
-        "meaning": "cĂ¡i thĂ¬a",
+        "meaning": "cái thìa",
         "collocation": "pass spoon",
         "example": "Pass me the spoon."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 16,
     "title": "Do you have any pets?",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2199,43 +2200,43 @@ var CURRICULUM_DATA = [
         "word": "pet",
         "ipa": "/pet/",
         "pos": "n",
-        "meaning": "thĂº cÆ°ng",
+        "meaning": "thú cưng",
         "collocation": "any pets",
         "example": "Do you have any pets?"
       },
       {
         "word": "dog",
-        "ipa": "/dÉ’É¡/",
+        "ipa": "/dɒɡ/",
         "pos": "n",
-        "meaning": "con chĂ³",
+        "meaning": "con chó",
         "collocation": "small dog",
         "example": "I have a small dog."
       },
       {
         "word": "cat",
-        "ipa": "/kĂ¦t/",
+        "ipa": "/kæt/",
         "pos": "n",
-        "meaning": "con mĂ¨o",
+        "meaning": "con mèo",
         "collocation": "two cats",
         "example": "She has two cats."
       },
       {
         "word": "parrot",
-        "ipa": "/ËˆpĂ¦r.É™t/",
+        "ipa": "/ˈpær.ət/",
         "pos": "n",
-        "meaning": "con váº¹t",
+        "meaning": "con vẹt",
         "collocation": "green parrot",
         "example": "Look at the green parrot."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 17,
     "title": "Our toys",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2245,45 +2246,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "toy",
-        "ipa": "/tÉ”Éª/",
+        "ipa": "/tɔɪ/",
         "pos": "n",
-        "meaning": "Ä‘á»“ chÆ¡i",
+        "meaning": "đồ chơi",
         "collocation": "what toys",
         "example": "What toys do you have?"
       },
       {
         "word": "car",
-        "ipa": "/kÉ‘Ë(r)/",
+        "ipa": "/kɑː(r)/",
         "pos": "n",
-        "meaning": "Ă´ tĂ´ Ä‘á»“ chÆ¡i",
+        "meaning": "ô tô đồ chơi",
         "collocation": "red car",
         "example": "I have a red car."
       },
       {
         "word": "doll",
-        "ipa": "/dÉ’l/",
+        "ipa": "/dɒl/",
         "pos": "n",
-        "meaning": "bĂºp bĂª",
+        "meaning": "búp bê",
         "collocation": "beautiful doll",
         "example": "She has a beautiful doll."
       },
       {
         "word": "plane",
-        "ipa": "/pleÉªn/",
+        "ipa": "/pleɪn/",
         "pos": "n",
-        "meaning": "mĂ¡y bay Ä‘á»“ chÆ¡i",
+        "meaning": "máy bay đồ chơi",
         "collocation": "blue plane",
         "example": "A blue plane."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 18,
     "title": "Playing sports and games",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2293,45 +2294,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "sport",
-        "ipa": "/spÉ”Ët/",
+        "ipa": "/spɔːt/",
         "pos": "n",
-        "meaning": "thá»ƒ thao",
+        "meaning": "thể thao",
         "collocation": "like sports",
         "example": "I like sports."
       },
       {
         "word": "basketball",
-        "ipa": "/ËˆbÉ‘Ë.skÉªt.bÉ”Ël/",
+        "ipa": "/ˈbɑː.skɪt.bɔːl/",
         "pos": "n",
-        "meaning": "bĂ³ng rá»•",
+        "meaning": "bóng rổ",
         "collocation": "play basketball",
         "example": "Play basketball together."
       },
       {
         "word": "volleyball",
-        "ipa": "/ËˆvÉ’l.i.bÉ”Ël/",
+        "ipa": "/ˈvɒl.i.bɔːl/",
         "pos": "n",
-        "meaning": "bĂ³ng chuyá»n",
+        "meaning": "bóng chuyền",
         "collocation": "playing volleyball",
         "example": "They are playing volleyball."
       },
       {
         "word": "tennis",
-        "ipa": "/Ëˆten.Éªs/",
+        "ipa": "/ˈten.ɪs/",
         "pos": "n",
-        "meaning": "quáº§n vá»£t",
+        "meaning": "quần vợt",
         "collocation": "play tennis",
         "example": "She plays tennis."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 19,
     "title": "Outdoor activities",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2341,45 +2342,45 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "outdoor",
-        "ipa": "/ËˆaÊt.dÉ”Ë(r)/",
+        "ipa": "/ˈaʊt.dɔː(r)/",
         "pos": "adj",
-        "meaning": "ngoĂ i trá»i",
+        "meaning": "ngoài trời",
         "collocation": "outdoor activity",
         "example": "Outdoor activities are fun."
       },
       {
         "word": "cycling",
-        "ipa": "/ËˆsaÉª.klÉªÅ‹/",
+        "ipa": "/ˈsaɪ.klɪŋ/",
         "pos": "n",
-        "meaning": "Ä‘i xe Ä‘áº¡p",
+        "meaning": "đi xe đạp",
         "collocation": "like cycling",
         "example": "I like cycling in the park."
       },
       {
         "word": "skating",
-        "ipa": "/ËˆskeÉª.tÉªÅ‹/",
+        "ipa": "/ˈskeɪ.tɪŋ/",
         "pos": "n",
-        "meaning": "trÆ°á»£t pa-tin",
+        "meaning": "trượt pa-tin",
         "collocation": "is skating",
         "example": "He is skating."
       },
       {
         "word": "walking",
-        "ipa": "/ËˆwÉ”Ë.kÉªÅ‹/",
+        "ipa": "/ˈwɔː.kɪŋ/",
         "pos": "n",
-        "meaning": "Ä‘i bá»™",
+        "meaning": "đi bộ",
         "collocation": "likes walking",
         "example": "She likes walking."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 3",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 3",
     "unit": 20,
     "title": "At the zoo",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n"
+      "Hiện tại đơn"
     ],
     "grammar_topics": [
       "To be",
@@ -2389,23 +2390,23 @@ var CURRICULUM_DATA = [
     "vocabulary": [
       {
         "word": "zoo",
-        "ipa": "/zuË/",
+        "ipa": "/zuː/",
         "pos": "n",
-        "meaning": "sá»Ÿ thĂº",
+        "meaning": "sở thú",
         "collocation": "at the zoo",
         "example": "We are at the zoo."
       },
       {
         "word": "monkey",
-        "ipa": "/ËˆmÊŒÅ‹.ki/",
+        "ipa": "/ˈmʌŋ.ki/",
         "pos": "n",
-        "meaning": "con khá»‰",
+        "meaning": "con khỉ",
         "collocation": "look at monkey",
         "example": "Look at the monkey."
       },
       {
         "word": "elephant",
-        "ipa": "/Ëˆel.Éª.fÉ™nt/",
+        "ipa": "/ˈel.ɪ.fənt/",
         "pos": "n",
         "meaning": "con voi",
         "collocation": "big elephant",
@@ -2413,941 +2414,941 @@ var CURRICULUM_DATA = [
       },
       {
         "word": "tiger",
-        "ipa": "/ËˆtaÉª.É¡É™(r)/",
+        "ipa": "/ˈtaɪ.ɡə(r)/",
         "pos": "n",
-        "meaning": "con há»•",
+        "meaning": "con hổ",
         "collocation": "fast tiger",
         "example": "A fast tiger."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 1,
     "title": "My friends",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "America",
-        "ipa": "/É™Ëˆmer.Éª.kÉ™/",
+        "ipa": "/əˈmer.ɪ.kə/",
         "pos": "n",
-        "meaning": "nÆ°á»›c Má»¹",
+        "meaning": "nước Mỹ",
         "collocation": "from America",
         "example": "He is from America."
       },
       {
         "word": "Australia",
-        "ipa": "/É’sËˆtreÉª.li.É™/",
+        "ipa": "/ɒsˈtreɪ.li.ə/",
         "pos": "n",
-        "meaning": "nÆ°á»›c Ăc",
+        "meaning": "nước Úc",
         "collocation": "in Australia",
         "example": "She lives in Australia."
       },
       {
         "word": "Britain",
-        "ipa": "/ËˆbrÉªt.É™n/",
+        "ipa": "/ˈbrɪt.ən/",
         "pos": "n",
-        "meaning": "nÆ°á»›c Anh",
+        "meaning": "nước Anh",
         "collocation": "from Britain",
         "example": "I am from Britain."
       },
       {
         "word": "Japan",
-        "ipa": "/dÊ’É™ËˆpĂ¦n/",
+        "ipa": "/dʒəˈpæn/",
         "pos": "n",
-        "meaning": "nÆ°á»›c Nháº­t",
+        "meaning": "nước Nhật",
         "collocation": "from Japan",
         "example": "They are from Japan."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 2,
     "title": "Time and daily routines",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "o'clock",
-        "ipa": "/É™ËˆklÉ’k/",
+        "ipa": "/əˈklɒk/",
         "pos": "adv",
-        "meaning": "giá» Ä‘Ăºng",
+        "meaning": "giờ đúng",
         "collocation": "seven o'clock",
         "example": "It's seven o'clock."
       },
       {
         "word": "morning",
-        "ipa": "/ËˆmÉ”Ë.nÉªÅ‹/",
+        "ipa": "/ˈmɔː.nɪŋ/",
         "pos": "n",
-        "meaning": "buá»•i sĂ¡ng",
+        "meaning": "buổi sáng",
         "collocation": "good morning",
         "example": "Good morning, teacher."
       },
       {
         "word": "afternoon",
-        "ipa": "/ËŒÉ‘Ëf.tÉ™ËˆnuËn/",
+        "ipa": "/ˌɑːf.təˈnuːn/",
         "pos": "n",
-        "meaning": "buá»•i chiá»u",
+        "meaning": "buổi chiều",
         "collocation": "in the afternoon",
         "example": "In the afternoon, I play games."
       },
       {
         "word": "evening",
-        "ipa": "/ËˆiËv.nÉªÅ‹/",
+        "ipa": "/ˈiːv.nɪŋ/",
         "pos": "n",
-        "meaning": "buá»•i tá»‘i",
+        "meaning": "buổi tối",
         "collocation": "in the evening",
         "example": "I do homework in the evening."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 3,
     "title": "My week",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "Monday",
-        "ipa": "/ËˆmÊŒn.deÉª/",
+        "ipa": "/ˈmʌn.deɪ/",
         "pos": "n",
-        "meaning": "thá»© Hai",
+        "meaning": "thứ Hai",
         "collocation": "on Monday",
         "example": "We have English on Monday."
       },
       {
         "word": "Tuesday",
-        "ipa": "/ËˆtÊƒuËz.deÉª/",
+        "ipa": "/ˈtʃuːz.deɪ/",
         "pos": "n",
-        "meaning": "thá»© Ba",
+        "meaning": "thứ Ba",
         "collocation": "on Tuesday",
         "example": "I play football on Tuesday."
       },
       {
         "word": "Wednesday",
-        "ipa": "/Ëˆwenz.deÉª/",
+        "ipa": "/ˈwenz.deɪ/",
         "pos": "n",
-        "meaning": "thá»© TÆ°",
+        "meaning": "thứ Tư",
         "collocation": "today Wednesday",
         "example": "Today is Wednesday."
       },
       {
         "word": "weekend",
-        "ipa": "/ËŒwiËkËˆend/",
+        "ipa": "/ˌwiːkˈend/",
         "pos": "n",
-        "meaning": "cuá»‘i tuáº§n",
+        "meaning": "cuối tuần",
         "collocation": "at the weekend",
         "example": "I stay home at the weekend."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 4,
     "title": "My birthday party",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "January",
-        "ipa": "/ËˆdÊ’Ă¦n.ju.É™r.i/",
+        "ipa": "/ˈdʒæn.ju.ər.i/",
         "pos": "n",
-        "meaning": "thĂ¡ng Má»™t",
+        "meaning": "tháng Một",
         "collocation": "in January",
         "example": "My birthday is in January."
       },
       {
         "word": "February",
-        "ipa": "/Ëˆfeb.ru.É™r.i/",
+        "ipa": "/ˈfeb.ru.ər.i/",
         "pos": "n",
-        "meaning": "thĂ¡ng Hai",
+        "meaning": "tháng Hai",
         "collocation": "in February",
         "example": "Her party is in February."
       },
       {
         "word": "March",
-        "ipa": "/mÉ‘ËtÊƒ/",
+        "ipa": "/mɑːtʃ/",
         "pos": "n",
-        "meaning": "thĂ¡ng Ba",
+        "meaning": "tháng Ba",
         "collocation": "after February",
         "example": "March comes after February."
       },
       {
         "word": "party",
-        "ipa": "/ËˆpÉ‘Ë.ti/",
+        "ipa": "/ˈpɑː.ti/",
         "pos": "n",
-        "meaning": "bá»¯a tiá»‡c",
+        "meaning": "bữa tiệc",
         "collocation": "birthday party",
         "example": "Welcome to my birthday party."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 5,
     "title": "Things we can do",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "swim",
-        "ipa": "/swÉªm/",
+        "ipa": "/swɪm/",
         "pos": "v",
-        "meaning": "bÆ¡i",
+        "meaning": "bơi",
         "collocation": "swim well",
         "example": "I can swim very well."
       },
       {
         "word": "dance",
-        "ipa": "/dÉ‘Ëns/",
+        "ipa": "/dɑːns/",
         "pos": "v",
-        "meaning": "nháº£y mĂºa",
+        "meaning": "nhảy múa",
         "collocation": "can dance",
         "example": "She can dance."
       },
       {
         "word": "guitar",
-        "ipa": "/É¡ÉªËˆtÉ‘Ë(r)/",
+        "ipa": "/ɡɪˈtɑː(r)/",
         "pos": "n",
-        "meaning": "Ä‘Ă n ghi-ta",
+        "meaning": "đàn ghi-ta",
         "collocation": "play guitar",
         "example": "Play the guitar."
       },
       {
         "word": "cook",
-        "ipa": "/kÊk/",
+        "ipa": "/kʊk/",
         "pos": "v",
-        "meaning": "náº¥u Äƒn",
+        "meaning": "nấu ăn",
         "collocation": "can cook",
         "example": "My mother can cook."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 6,
     "title": "Our school facilities",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "playground",
-        "ipa": "/ËˆpleÉª.É¡raÊnd/",
+        "ipa": "/ˈpleɪ.ɡraʊnd/",
         "pos": "n",
-        "meaning": "sĂ¢n trÆ°á»ng",
+        "meaning": "sân trường",
         "collocation": "in playground",
         "example": "Run in the playground."
       },
       {
         "word": "computer room",
-        "ipa": "/kÉ™mËˆpjuË.tÉ™ ËŒruËm/",
+        "ipa": "/kəmˈpjuː.tə ˌruːm/",
         "pos": "n",
-        "meaning": "phĂ²ng mĂ¡y tĂ­nh",
+        "meaning": "phòng máy tính",
         "collocation": "in computer room",
         "example": "Study in the computer room."
       },
       {
         "word": "garden",
-        "ipa": "/ËˆÉ¡É‘Ë.dÉ™n/",
+        "ipa": "/ˈɡɑː.dən/",
         "pos": "n",
-        "meaning": "khu vÆ°á»n",
+        "meaning": "khu vườn",
         "collocation": "school garden",
         "example": "Flowers in the school garden."
       },
       {
         "word": "art room",
-        "ipa": "/ËˆÉ‘Ët ËŒruËm/",
+        "ipa": "/ˈɑːt ˌruːm/",
         "pos": "n",
-        "meaning": "phĂ²ng má»¹ thuáº­t",
+        "meaning": "phòng mỹ thuật",
         "collocation": "in art room",
         "example": "Draw in the art room."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 7,
     "title": "Our subjects",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "Maths",
-        "ipa": "/mĂ¦Î¸s/",
+        "ipa": "/mæθs/",
         "pos": "n",
-        "meaning": "mĂ´n ToĂ¡n",
+        "meaning": "môn Toán",
         "collocation": "have Maths",
         "example": "I have Maths today."
       },
       {
         "word": "Science",
-        "ipa": "/ËˆsaÉª.É™ns/",
+        "ipa": "/ˈsaɪ.əns/",
         "pos": "n",
-        "meaning": "mĂ´n Khoa há»c",
+        "meaning": "môn Khoa học",
         "collocation": "study Science",
         "example": "We study Science."
       },
       {
         "word": "IT",
-        "ipa": "/ËŒaÉªËˆtiË/",
+        "ipa": "/ˌaɪˈtiː/",
         "pos": "n",
-        "meaning": "mĂ´n Tin há»c",
+        "meaning": "môn Tin học",
         "collocation": "like IT",
         "example": "I like IT."
       },
       {
         "word": "Music",
-        "ipa": "/ËˆmjuË.zÉªk/",
+        "ipa": "/ˈmjuː.zɪk/",
         "pos": "n",
-        "meaning": "mĂ´n Ă‚m nháº¡c",
+        "meaning": "môn Âm nhạc",
         "collocation": "sing in Music",
         "example": "Sing songs in Music."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 8,
     "title": "My favourite subject",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "favourite",
-        "ipa": "/ËˆfeÉª.vÉ™r.Éªt/",
+        "ipa": "/ˈfeɪ.vər.ɪt/",
         "pos": "adj",
-        "meaning": "yĂªu thĂ­ch",
+        "meaning": "yêu thích",
         "collocation": "favourite subject",
         "example": "What is your favourite subject?"
       },
       {
         "word": "subject",
-        "ipa": "/ËˆsÊŒb.dÊ’Éªkt/",
+        "ipa": "/ˈsʌb.dʒɪkt/",
         "pos": "n",
-        "meaning": "mĂ´n há»c",
+        "meaning": "môn học",
         "collocation": "my subject",
         "example": "English is my favourite subject."
       },
       {
         "word": "why",
-        "ipa": "/waÉª/",
+        "ipa": "/waɪ/",
         "pos": "adv",
-        "meaning": "táº¡i sao",
+        "meaning": "tại sao",
         "collocation": "why like",
         "example": "Why do you like Art?"
       },
       {
         "word": "because",
-        "ipa": "/bÉªËˆkÉ’z/",
+        "ipa": "/bɪˈkɒz/",
         "pos": "conj",
-        "meaning": "bá»Ÿi vĂ¬",
+        "meaning": "bởi vì",
         "collocation": "because like",
         "example": "Because I like drawing."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 9,
     "title": "Our sports day",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "Sports Day",
-        "ipa": "/ËˆspÉ”Ëts ËŒdeÉª/",
+        "ipa": "/ˈspɔːts ˌdeɪ/",
         "pos": "n",
-        "meaning": "ngĂ y há»™i thá»ƒ thao",
+        "meaning": "ngày hội thể thao",
         "collocation": "when Sports Day",
         "example": "When is your Sports Day?"
       },
       {
         "word": "Teachers' Day",
-        "ipa": "/ËˆtiË.tÊƒÉ™z ËŒdeÉª/",
+        "ipa": "/ˈtiː.tʃəz ˌdeɪ/",
         "pos": "n",
-        "meaning": "ngĂ y NhĂ  giĂ¡o",
+        "meaning": "ngày Nhà giáo",
         "collocation": "on November 20th",
         "example": "November 20th is Teachers' Day."
       },
       {
         "word": "contest",
-        "ipa": "/ËˆkÉ’n.test/",
+        "ipa": "/ˈkɒn.test/",
         "pos": "n",
-        "meaning": "cuá»™c thi",
+        "meaning": "cuộc thi",
         "collocation": "singing contest",
         "example": "A singing contest."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 10,
     "title": "Where's your school?",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "street",
-        "ipa": "/striËt/",
+        "ipa": "/striːt/",
         "pos": "n",
-        "meaning": "Ä‘Æ°á»ng phá»‘",
+        "meaning": "đường phố",
         "collocation": "in the street",
         "example": "My school is in Hoa Binh Street."
       },
       {
         "word": "road",
-        "ipa": "/rÉ™Êd/",
+        "ipa": "/rəʊd/",
         "pos": "n",
-        "meaning": "con Ä‘Æ°á»ng",
+        "meaning": "con đường",
         "collocation": "in the road",
         "example": "It is in Nguyen Du Road."
       },
       {
         "word": "village",
-        "ipa": "/ËˆvÉªl.ÉªdÊ’/",
+        "ipa": "/ˈvɪl.ɪdʒ/",
         "pos": "n",
-        "meaning": "ngĂ´i lĂ ng",
+        "meaning": "ngôi làng",
         "collocation": "in the village",
         "example": "A school in the village."
       },
       {
         "word": "district",
-        "ipa": "/ËˆdÉªs.trÉªkt/",
+        "ipa": "/ˈdɪs.trɪkt/",
         "pos": "n",
-        "meaning": "quáº­n, huyá»‡n",
+        "meaning": "quận, huyện",
         "collocation": "in district",
         "example": "Ba Dinh District."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 11,
     "title": "My home",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "address",
-        "ipa": "/É™Ëˆdres/",
+        "ipa": "/əˈdres/",
         "pos": "n",
-        "meaning": "Ä‘á»‹a chá»‰",
+        "meaning": "địa chỉ",
         "collocation": "my address",
         "example": "What is your address?"
       },
       {
         "word": "flat",
-        "ipa": "/flĂ¦t/",
+        "ipa": "/flæt/",
         "pos": "n",
-        "meaning": "cÄƒn há»™",
+        "meaning": "căn hộ",
         "collocation": "live in flat",
         "example": "I live in flat 302."
       },
       {
         "word": "floor",
-        "ipa": "/flÉ”Ë(r)/",
+        "ipa": "/flɔː(r)/",
         "pos": "n",
-        "meaning": "táº§ng nhĂ ",
+        "meaning": "tầng nhà",
         "collocation": "second floor",
         "example": "On the second floor."
       },
       {
         "word": "tower",
-        "ipa": "/ËˆtaÊ.É™(r)/",
+        "ipa": "/ˈtaʊ.ə(r)/",
         "pos": "n",
-        "meaning": "tĂ²a thĂ¡p",
+        "meaning": "tòa tháp",
         "collocation": "high tower",
         "example": "A high tower."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 12,
     "title": "Jobs and workplaces",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "worker",
-        "ipa": "/ËˆwÉœË.kÉ™(r)/",
+        "ipa": "/ˈwɜː.kə(r)/",
         "pos": "n",
-        "meaning": "cĂ´ng nhĂ¢n",
+        "meaning": "công nhân",
         "collocation": "factory worker",
         "example": "My uncle is a worker."
       },
       {
         "word": "farmer",
-        "ipa": "/ËˆfÉ‘Ë.mÉ™(r)/",
+        "ipa": "/ˈfɑː.mə(r)/",
         "pos": "n",
-        "meaning": "nĂ´ng dĂ¢n",
+        "meaning": "nông dân",
         "collocation": "on a farm",
         "example": "A farmer works on a farm."
       },
       {
         "word": "nurse",
-        "ipa": "/nÉœËs/",
+        "ipa": "/nɜːs/",
         "pos": "n",
-        "meaning": "y sÄ©, y tĂ¡",
+        "meaning": "y sĩ, y tá",
         "collocation": "in hospital",
         "example": "A nurse helps sick people."
       },
       {
         "word": "factory",
-        "ipa": "/ËˆfĂ¦k.tÉ™r.i/",
+        "ipa": "/ˈfæk.tər.i/",
         "pos": "n",
-        "meaning": "nhĂ  mĂ¡y",
+        "meaning": "nhà máy",
         "collocation": "in a factory",
         "example": "He works in a factory."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 13,
     "title": "Field trip",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "field trip",
-        "ipa": "/ËˆfiËld ËŒtrÉªp/",
+        "ipa": "/ˈfiːld ˌtrɪp/",
         "pos": "n",
-        "meaning": "chuyáº¿n Ä‘i thá»±c táº¿",
+        "meaning": "chuyến đi thực tế",
         "collocation": "on field trip",
         "example": "We are on a field trip."
       },
       {
         "word": "campsite",
-        "ipa": "/ËˆkĂ¦mp.saÉªt/",
+        "ipa": "/ˈkæmp.saɪt/",
         "pos": "n",
-        "meaning": "Ä‘á»‹a Ä‘iá»ƒm cáº¯m tráº¡i",
+        "meaning": "địa điểm cắm trại",
         "collocation": "at campsite",
         "example": "Arrive at the campsite."
       },
       {
         "word": "museum",
-        "ipa": "/mjuËËˆziË.É™m/",
+        "ipa": "/mjuːˈziː.əm/",
         "pos": "n",
-        "meaning": "báº£o tĂ ng",
+        "meaning": "bảo tàng",
         "collocation": "visit museum",
         "example": "Visit the history museum."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 14,
     "title": "Daily activities",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "wash",
-        "ipa": "/wÉ’Êƒ/",
+        "ipa": "/wɒʃ/",
         "pos": "v",
-        "meaning": "giáº·t, rá»­a",
+        "meaning": "giặt, rửa",
         "collocation": "wash clothes",
         "example": "Wash clothes at home."
       },
       {
         "word": "clean",
-        "ipa": "/kliËn/",
+        "ipa": "/kliːn/",
         "pos": "v",
-        "meaning": "lau dá»n",
+        "meaning": "lau dọn",
         "collocation": "clean floor",
         "example": "Clean the floor."
       },
       {
         "word": "sweep",
-        "ipa": "/swiËp/",
+        "ipa": "/swiːp/",
         "pos": "v",
-        "meaning": "quĂ©t",
+        "meaning": "quét",
         "collocation": "sweep house",
         "example": "Sweep the house."
       },
       {
         "word": "water",
-        "ipa": "/ËˆwÉ”Ë.tÉ™(r)/",
+        "ipa": "/ˈwɔː.tə(r)/",
         "pos": "v",
-        "meaning": "tÆ°á»›i nÆ°á»›c",
+        "meaning": "tưới nước",
         "collocation": "water flowers",
         "example": "Water the flowers."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 15,
     "title": "At the shopping centre",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "shopping centre",
-        "ipa": "/ËˆÊƒÉ’p.ÉªÅ‹ ËŒsen.tÉ™(r)/",
+        "ipa": "/ˈʃɒp.ɪŋ ˌsen.tə(r)/",
         "pos": "n",
-        "meaning": "trung tĂ¢m thÆ°Æ¡ng máº¡i",
+        "meaning": "trung tâm thương mại",
         "collocation": "go to shopping centre",
         "example": "Go to the shopping centre."
       },
       {
         "word": "bakery",
-        "ipa": "/ËˆbeÉª.kÉ™r.i/",
+        "ipa": "/ˈbeɪ.kər.i/",
         "pos": "n",
-        "meaning": "cá»­a hĂ ng bĂ¡nh",
+        "meaning": "cửa hàng bánh",
         "collocation": "at bakery",
         "example": "Buy bread at the bakery."
       },
       {
         "word": "pharmacy",
-        "ipa": "/ËˆfÉ‘Ë.mÉ™.si/",
+        "ipa": "/ˈfɑː.mə.si/",
         "pos": "n",
-        "meaning": "hiá»‡u thuá»‘c",
+        "meaning": "hiệu thuốc",
         "collocation": "at pharmacy",
         "example": "Buy medicine at the pharmacy."
       },
       {
         "word": "bookshop",
-        "ipa": "/ËˆbÊk.ÊƒÉ’p/",
+        "ipa": "/ˈbʊk.ʃɒp/",
         "pos": "n",
-        "meaning": "nhĂ  sĂ¡ch",
+        "meaning": "nhà sách",
         "collocation": "in bookshop",
         "example": "Buy books in the bookshop."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 16,
     "title": "At the zoo",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "crocodile",
-        "ipa": "/ËˆkrÉ’k.É™.daÉªl/",
+        "ipa": "/ˈkrɒk.ə.daɪl/",
         "pos": "n",
-        "meaning": "cĂ¡ sáº¥u",
+        "meaning": "cá sấu",
         "collocation": "look at crocodile",
         "example": "Look at the crocodile."
       },
       {
         "word": "hippo",
-        "ipa": "/ËˆhÉªp.É™Ê/",
+        "ipa": "/ˈhɪp.əʊ/",
         "pos": "n",
-        "meaning": "hĂ  mĂ£",
+        "meaning": "hà mã",
         "collocation": "swimming hippo",
         "example": "The hippo is swimming."
       },
       {
         "word": "giraffe",
-        "ipa": "/dÊ’ÉªËˆrÉ‘Ëf/",
+        "ipa": "/dʒɪˈrɑːf/",
         "pos": "n",
-        "meaning": "hÆ°Æ¡u cao cá»•",
+        "meaning": "hươu cao cổ",
         "collocation": "tall giraffe",
         "example": "A tall giraffe."
       },
       {
         "word": "zebra",
-        "ipa": "/Ëˆzeb.rÉ™/",
+        "ipa": "/ˈzeb.rə/",
         "pos": "n",
-        "meaning": "ngá»±a váº±n",
+        "meaning": "ngựa vằn",
         "collocation": "black and white",
         "example": "Black and white zebra."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 17,
     "title": "In the city",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "city",
-        "ipa": "/ËˆsÉªt.i/",
+        "ipa": "/ˈsɪt.i/",
         "pos": "n",
-        "meaning": "thĂ nh phá»‘",
+        "meaning": "thành phố",
         "collocation": "in the city",
         "example": "Life in the city."
       },
       {
         "word": "noisy",
-        "ipa": "/ËˆnÉ”Éª.zi/",
+        "ipa": "/ˈnɔɪ.zi/",
         "pos": "adj",
-        "meaning": "á»“n Ă o",
+        "meaning": "ồn ào",
         "collocation": "noisy street",
         "example": "The street is noisy."
       },
       {
         "word": "quiet",
-        "ipa": "/ËˆkwaÉª.É™t/",
+        "ipa": "/ˈkwaɪ.ət/",
         "pos": "adj",
-        "meaning": "yĂªn tÄ©nh",
+        "meaning": "yên tĩnh",
         "collocation": "quiet village",
         "example": "A quiet village."
       },
       {
         "word": "crowded",
-        "ipa": "/ËˆkraÊ.dÉªd/",
+        "ipa": "/ˈkraʊ.dɪd/",
         "pos": "adj",
-        "meaning": "Ä‘Ă´ng Ä‘Ăºc",
+        "meaning": "đông đúc",
         "collocation": "crowded bus",
         "example": "A crowded bus."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 18,
     "title": "At the park",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "fountain",
-        "ipa": "/ËˆfaÊn.tÉªn/",
+        "ipa": "/ˈfaʊn.tɪn/",
         "pos": "n",
-        "meaning": "Ä‘Ă i phun nÆ°á»›c",
+        "meaning": "đài phun nước",
         "collocation": "water fountain",
         "example": "A water fountain."
       },
       {
         "word": "bench",
-        "ipa": "/bentÊƒ/",
+        "ipa": "/bentʃ/",
         "pos": "n",
-        "meaning": "gháº¿ dĂ i",
+        "meaning": "ghế dài",
         "collocation": "on the bench",
         "example": "Sit on the bench."
       },
       {
         "word": "path",
-        "ipa": "/pÉ‘ËÎ¸/",
+        "ipa": "/pɑːθ/",
         "pos": "n",
-        "meaning": "con Ä‘Æ°á»ng nhá»",
+        "meaning": "con đường nhỏ",
         "collocation": "along path",
         "example": "Walk along the path."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 19,
     "title": "Summer holidays",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "summer",
-        "ipa": "/ËˆsÊŒm.É™(r)/",
+        "ipa": "/ˈsʌm.ə(r)/",
         "pos": "n",
-        "meaning": "mĂ¹a hĂ¨",
+        "meaning": "mùa hè",
         "collocation": "in summer",
         "example": "Summer is fun."
       },
       {
         "word": "holiday",
-        "ipa": "/ËˆhÉ’l.É™-deÉª/",
+        "ipa": "/ˈhɒl.ə-deɪ/",
         "pos": "n",
-        "meaning": "ká»³ nghá»‰",
+        "meaning": "kỳ nghỉ",
         "collocation": "summer holiday",
         "example": "On my summer holiday."
       },
       {
         "word": "beach",
-        "ipa": "/biËtÊƒ/",
+        "ipa": "/biːtʃ/",
         "pos": "n",
-        "meaning": "bĂ£i biá»ƒn",
+        "meaning": "bãi biển",
         "collocation": "on the beach",
         "example": "Play on the beach."
       },
       {
         "word": "seafood",
-        "ipa": "/ËˆsiË.fuËd/",
+        "ipa": "/ˈsiː.fuːd/",
         "pos": "n",
-        "meaning": "háº£i sáº£n",
+        "meaning": "hải sản",
         "collocation": "eat seafood",
         "example": "Eat fresh seafood."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 4",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 4",
     "unit": 20,
     "title": "At the summer camp",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại tiếp diễn"
     ],
     "grammar_topics": [
-      "Há»i thá»i gian",
-      "So sĂ¡nh",
-      "MĂ´n há»c"
+      "Hỏi thời gian",
+      "So sánh",
+      "Môn học"
     ],
     "vocabulary": [
       {
         "word": "bonfire",
-        "ipa": "/ËˆbÉ’n.faÉªe(r)/",
+        "ipa": "/ˈbɒn.faɪe(r)/",
         "pos": "n",
-        "meaning": "lá»­a tráº¡i",
+        "meaning": "lửa trại",
         "collocation": "around bonfire",
         "example": "Dance around the bonfire."
       },
@@ -3355,421 +3356,421 @@ var CURRICULUM_DATA = [
         "word": "tent",
         "ipa": "/tent/",
         "pos": "n",
-        "meaning": "cĂ¡i lá»u",
+        "meaning": "cái lều",
         "collocation": "put up tent",
         "example": "Put up a tent."
       },
       {
         "word": "activity",
-        "ipa": "/Ă¦kËˆtÉªv.É™.ti/",
+        "ipa": "/ækˈtɪv.ə.ti/",
         "pos": "n",
-        "meaning": "hoáº¡t Ä‘á»™ng",
+        "meaning": "hoạt động",
         "collocation": "outdoor activity",
         "example": "Fun outdoor activity."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 1,
     "title": "All about me",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "address",
-        "ipa": "/É™Ëˆdres/",
+        "ipa": "/əˈdres/",
         "pos": "n",
-        "meaning": "Ä‘á»‹a chá»‰",
+        "meaning": "địa chỉ",
         "collocation": "my address",
         "example": "What's your address?"
       },
       {
         "word": "lane",
-        "ipa": "/leÉªn/",
+        "ipa": "/leɪn/",
         "pos": "n",
-        "meaning": "ngĂµ, háº»m",
+        "meaning": "ngõ, hẻm",
         "collocation": "quiet lane",
         "example": "I live in a quiet lane."
       },
       {
         "word": "tower",
-        "ipa": "/ËˆtaÊ.É™(r)/",
+        "ipa": "/ˈtaʊ.ə(r)/",
         "pos": "n",
-        "meaning": "tĂ²a thĂ¡p",
+        "meaning": "tòa tháp",
         "collocation": "high tower",
         "example": "He lives in a high tower."
       },
       {
         "word": "hometown",
-        "ipa": "/ËˆhÉ™Êm.taÊn/",
+        "ipa": "/ˈhəʊm.taʊn/",
         "pos": "n",
-        "meaning": "quĂª hÆ°Æ¡ng",
+        "meaning": "quê hương",
         "collocation": "peaceful hometown",
         "example": "My hometown is peaceful."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 2,
     "title": "Our homes",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "flat",
-        "ipa": "/flĂ¦t/",
+        "ipa": "/flæt/",
         "pos": "n",
-        "meaning": "cÄƒn há»™",
+        "meaning": "căn hộ",
         "collocation": "modern flat",
         "example": "I live in a modern flat."
       },
       {
         "word": "quiet",
-        "ipa": "/ËˆkwaÉª.É™t/",
+        "ipa": "/ˈkwaɪ.ət/",
         "pos": "adj",
-        "meaning": "yĂªn tÄ©nh",
+        "meaning": "yên tĩnh",
         "collocation": "quiet village",
         "example": "It is a quiet village."
       },
       {
         "word": "crowded",
-        "ipa": "/ËˆkraÊ.dÉªd/",
+        "ipa": "/ˈkraʊ.dɪd/",
         "pos": "adj",
-        "meaning": "Ä‘Ă´ng Ä‘Ăºc",
+        "meaning": "đông đúc",
         "collocation": "big city",
         "example": "The city is big and crowded."
       },
       {
         "word": "island",
-        "ipa": "/ËˆaÉª.lÉ™nd/",
+        "ipa": "/ˈaɪ.lənd/",
         "pos": "n",
-        "meaning": "hĂ²n Ä‘áº£o",
+        "meaning": "hòn đảo",
         "collocation": "small island",
         "example": "She lives on a small island."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 3,
     "title": "My foreign friends",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "foreign",
-        "ipa": "/ËˆfÉ’r.É™n/",
+        "ipa": "/ˈfɒr.ən/",
         "pos": "adj",
-        "meaning": "nÆ°á»›c ngoĂ i",
+        "meaning": "nước ngoài",
         "collocation": "foreign friends",
         "example": "I have many foreign friends."
       },
       {
         "word": "friendly",
-        "ipa": "/Ëˆfrend.li/",
+        "ipa": "/ˈfrend.li/",
         "pos": "adj",
-        "meaning": "thĂ¢n thiá»‡n",
+        "meaning": "thân thiện",
         "collocation": "friendly people",
         "example": "People in my town are friendly."
       },
       {
         "word": "helpful",
-        "ipa": "/Ëˆhelp.fÉ™l/",
+        "ipa": "/ˈhelp.fəl/",
         "pos": "adj",
-        "meaning": "hay giĂºp Ä‘á»¡",
+        "meaning": "hay giúp đỡ",
         "collocation": "very helpful",
         "example": "He is very helpful."
       },
       {
         "word": "clever",
-        "ipa": "/Ëˆklev.É™(r)/",
+        "ipa": "/ˈklev.ə(r)/",
         "pos": "adj",
-        "meaning": "thĂ´ng minh",
+        "meaning": "thông minh",
         "collocation": "clever student",
         "example": "She is a clever student."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 4,
     "title": "Our free time activities",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "free time",
-        "ipa": "/friË taÉªm/",
+        "ipa": "/friː taɪm/",
         "pos": "n",
-        "meaning": "thá»i gian ráº£nh",
+        "meaning": "thời gian rảnh",
         "collocation": "in free time",
         "example": "What do you do in your free time?"
       },
       {
         "word": "go fishing",
-        "ipa": "/É¡É™Ê ËˆfÉªÊƒ.ÉªÅ‹/",
+        "ipa": "/ɡəʊ ˈfɪʃ.ɪŋ/",
         "pos": "v phr",
-        "meaning": "Ä‘i cĂ¢u cĂ¡",
+        "meaning": "đi câu cá",
         "collocation": "go fishing",
         "example": "I go fishing with my father."
       },
       {
         "word": "surf the internet",
-        "ipa": "/sÉœËf Ă°É™ ËˆÉªn.tÉ™.net/",
+        "ipa": "/sɜːf ðə ˈɪn.tə.net/",
         "pos": "v phr",
-        "meaning": "lÆ°á»›t máº¡ng",
+        "meaning": "lướt mạng",
         "collocation": "surf internet",
         "example": "He surfs the internet in the evening."
       },
       {
         "word": "karate",
-        "ipa": "/kÉ™ËˆrÉ‘Ë.ti/",
+        "ipa": "/kəˈrɑː.ti/",
         "pos": "n",
-        "meaning": "vĂµ ka-ra-te",
+        "meaning": "võ ka-ra-te",
         "collocation": "do karate",
         "example": "She does karate on Sundays."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 5,
     "title": "My future job",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "pilot",
-        "ipa": "/ËˆpaÉª.lÉ™t/",
+        "ipa": "/ˈpaɪ.lət/",
         "pos": "n",
-        "meaning": "phi cĂ´ng",
+        "meaning": "phi công",
         "collocation": "be a pilot",
         "example": "I'd like to be a pilot."
       },
       {
         "word": "architect",
-        "ipa": "/ËˆÉ‘Ë.kÉª.tekt/",
+        "ipa": "/ˈɑː.kɪ.tekt/",
         "pos": "n",
-        "meaning": "kiáº¿n trĂºc sÆ°",
+        "meaning": "kiến trúc sư",
         "collocation": "an architect",
         "example": "He wants to be an architect."
       },
       {
         "word": "astronaut",
-        "ipa": "/ËˆĂ¦s.trÉ™.nÉ”Ët/",
+        "ipa": "/ˈæs.trə.nɔːt/",
         "pos": "n",
-        "meaning": "phi hĂ nh gia",
+        "meaning": "phi hành gia",
         "collocation": "an astronaut",
         "example": "She dreams of being an astronaut."
       },
       {
         "word": "writer",
-        "ipa": "/ËˆraÉª.tÉ™(r)/",
+        "ipa": "/ˈraɪ.tə(r)/",
         "pos": "n",
-        "meaning": "nhĂ  vÄƒn",
+        "meaning": "nhà văn",
         "collocation": "be a writer",
         "example": "I want to be a writer."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 6,
     "title": "Our school trip",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "school trip",
-        "ipa": "/skuËl trÉªp/",
+        "ipa": "/skuːl trɪp/",
         "pos": "n",
-        "meaning": "chuyáº¿n tham quan",
+        "meaning": "chuyến tham quan",
         "collocation": "great school trip",
         "example": "We had a great school trip."
       },
       {
         "word": "countryside",
-        "ipa": "/ËˆkÊŒn.tri.saÉªd/",
+        "ipa": "/ˈkʌn.tri.saɪd/",
         "pos": "n",
-        "meaning": "nĂ´ng thĂ´n",
+        "meaning": "nông thôn",
         "collocation": "in countryside",
         "example": "We visited the countryside."
       },
       {
         "word": "ancient",
-        "ipa": "/ËˆeÉªn.ÊƒÉ™nt/",
+        "ipa": "/ˈeɪn.ʃənt/",
         "pos": "adj",
-        "meaning": "cá»• kĂ­nh",
+        "meaning": "cổ kính",
         "collocation": "ancient town",
         "example": "Look at the ancient town."
       },
       {
         "word": "cave",
-        "ipa": "/keÉªv/",
+        "ipa": "/keɪv/",
         "pos": "n",
-        "meaning": "hang Ä‘á»™ng",
+        "meaning": "hang động",
         "collocation": "explore cave",
         "example": "They explored a big cave."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 7,
     "title": "Our favourite school activities",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "activity",
-        "ipa": "/Ă¦kËˆtÉªv.É™.ti/",
+        "ipa": "/ækˈtɪv.ə.ti/",
         "pos": "n",
-        "meaning": "hoáº¡t Ä‘á»™ng",
+        "meaning": "hoạt động",
         "collocation": "outdoor activity",
         "example": "I like outdoor activities."
       },
       {
         "word": "science club",
-        "ipa": "/ËˆsaÉª.É™ns klÊŒb/",
+        "ipa": "/ˈsaɪ.əns klʌb/",
         "pos": "n",
-        "meaning": "CLB khoa há»c",
+        "meaning": "CLB khoa học",
         "collocation": "join science club",
         "example": "Join the science club."
       },
       {
         "word": "project",
-        "ipa": "/ËˆprÉ’dÊ’.ekt/",
+        "ipa": "/ˈprɒdʒ.ekt/",
         "pos": "n",
-        "meaning": "dá»± Ă¡n",
+        "meaning": "dự án",
         "collocation": "group project",
         "example": "Work on a group project."
       },
       {
         "word": "quiz",
-        "ipa": "/kwÉªz/",
+        "ipa": "/kwɪz/",
         "pos": "n",
-        "meaning": "cuá»™c thi Ä‘á»‘",
+        "meaning": "cuộc thi đố",
         "collocation": "English quiz",
         "example": "Take part in an English quiz."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 8,
     "title": "In our cooking class",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "ingredient",
-        "ipa": "/ÉªnËˆÉ¡riË.di.É™nt/",
+        "ipa": "/ɪnˈɡriː.di.ənt/",
         "pos": "n",
-        "meaning": "nguyĂªn liá»‡u",
+        "meaning": "nguyên liệu",
         "collocation": "fresh ingredient",
         "example": "Prepare the ingredients."
       },
       {
         "word": "recipe",
-        "ipa": "/Ëˆres.Éª.pi/",
+        "ipa": "/ˈres.ɪ.pi/",
         "pos": "n",
-        "meaning": "cĂ´ng thá»©c",
+        "meaning": "công thức",
         "collocation": "follow recipe",
         "example": "Follow the recipe."
       },
       {
         "word": "bake",
-        "ipa": "/beÉªk/",
+        "ipa": "/beɪk/",
         "pos": "v",
-        "meaning": "nÆ°á»›ng bĂ¡nh",
+        "meaning": "nướng bánh",
         "collocation": "bake a cake",
         "example": "Bake a cake in the oven."
       },
       {
         "word": "stir",
-        "ipa": "/stÉœË(r)/",
+        "ipa": "/stɜː(r)/",
         "pos": "v",
-        "meaning": "khuáº¥y",
+        "meaning": "khuấy",
         "collocation": "stir soup",
         "example": "Stir the soup gently."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 9,
     "title": "Our sports day",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "take part in",
-        "ipa": "/teÉªk pÉ‘Ët Éªn/",
+        "ipa": "/teɪk pɑːt ɪn/",
         "pos": "v phr",
         "meaning": "tham gia",
         "collocation": "take part in",
@@ -3777,161 +3778,161 @@ var CURRICULUM_DATA = [
       },
       {
         "word": "race",
-        "ipa": "/reÉªs/",
+        "ipa": "/reɪs/",
         "pos": "n",
-        "meaning": "cuá»™c Ä‘ua",
+        "meaning": "cuộc đua",
         "collocation": "running race",
         "example": "Win the running race."
       },
       {
         "word": "match",
-        "ipa": "/mĂ¦tÊƒ/",
+        "ipa": "/mætʃ/",
         "pos": "n",
-        "meaning": "tráº­n Ä‘áº¥u",
+        "meaning": "trận đấu",
         "collocation": "football match",
         "example": "A football match."
       },
       {
         "word": "champion",
-        "ipa": "/ËˆtÊƒĂ¦m.pi.É™n/",
+        "ipa": "/ˈtʃæm.pi.ən/",
         "pos": "n",
-        "meaning": "nhĂ  vĂ´ Ä‘á»‹ch",
+        "meaning": "nhà vô địch",
         "collocation": "be champion",
         "example": "He is the champion."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 10,
     "title": "Our school arts festival",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "festival",
-        "ipa": "/Ëˆfes.tÉª.vÉ™l/",
+        "ipa": "/ˈfes.tɪ.vəl/",
         "pos": "n",
-        "meaning": "lá»… há»™i",
+        "meaning": "lễ hội",
         "collocation": "arts festival",
         "example": "The school arts festival is coming."
       },
       {
         "word": "perform",
-        "ipa": "/pÉ™ËˆfÉ”Ëm/",
+        "ipa": "/pəˈfɔːm/",
         "pos": "v",
-        "meaning": "biá»ƒu diá»…n",
+        "meaning": "biểu diễn",
         "collocation": "perform dance",
         "example": "They perform a dance on stage."
       },
       {
         "word": "puppet",
-        "ipa": "/ËˆpÊŒp.Éªt/",
+        "ipa": "/ˈpʌp.ɪt/",
         "pos": "n",
-        "meaning": "con rá»‘i",
+        "meaning": "con rối",
         "collocation": "water puppet",
         "example": "A water puppet show."
       },
       {
         "word": "instrument",
-        "ipa": "/ËˆÉªn.strÉ™.mÉ™nt/",
+        "ipa": "/ˈɪn.strə.mənt/",
         "pos": "n",
-        "meaning": "nháº¡c cá»¥",
+        "meaning": "nhạc cụ",
         "collocation": "musical instrument",
         "example": "Play a musical instrument."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 11,
     "title": "Family time",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "spend time",
-        "ipa": "/spend taÉªm/",
+        "ipa": "/spend taɪm/",
         "pos": "v phr",
-        "meaning": "dĂ nh thá»i gian",
+        "meaning": "dành thời gian",
         "collocation": "spend time",
         "example": "Spend time with family."
       },
       {
         "word": "picnic",
-        "ipa": "/ËˆpÉªk.nÉªk/",
+        "ipa": "/ˈpɪk.nɪk/",
         "pos": "n",
-        "meaning": "buá»•i dĂ£ ngoáº¡i",
+        "meaning": "buổi dã ngoại",
         "collocation": "have a picnic",
         "example": "Have a picnic in the park."
       },
       {
         "word": "gathering",
-        "ipa": "/ËˆÉ¡Ă¦Ă°.É™r.ÉªÅ‹/",
+        "ipa": "/ˈɡæð.ər.ɪŋ/",
         "pos": "n",
-        "meaning": "sá»± tá»¥ há»p",
+        "meaning": "sự tụ họp",
         "collocation": "family gathering",
         "example": "A family gathering."
       },
       {
         "word": "weekend",
-        "ipa": "/ËŒwiËkËˆend/",
+        "ipa": "/ˌwiːkˈend/",
         "pos": "n",
-        "meaning": "cuá»‘i tuáº§n",
+        "meaning": "cuối tuần",
         "collocation": "at weekend",
         "example": "Go out at the weekend."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 12,
     "title": "Our health",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "headache",
-        "ipa": "/Ëˆhed.eÉªk/",
+        "ipa": "/ˈhed.eɪk/",
         "pos": "n",
-        "meaning": "Ä‘au Ä‘áº§u",
+        "meaning": "đau đầu",
         "collocation": "have headache",
         "example": "I have a headache."
       },
       {
         "word": "fever",
-        "ipa": "/ËˆfiË.vÉ™(r)/",
+        "ipa": "/ˈfiː.və(r)/",
         "pos": "n",
-        "meaning": "sá»‘t",
+        "meaning": "sốt",
         "collocation": "high fever",
         "example": "She has a high fever."
       },
       {
         "word": "toothache",
-        "ipa": "/ËˆtuËÎ¸.eÉªk/",
+        "ipa": "/ˈtuːθ.eɪk/",
         "pos": "n",
-        "meaning": "Ä‘au rÄƒng",
+        "meaning": "đau răng",
         "collocation": "have toothache",
         "example": "Go to the dentist for a toothache."
       },
@@ -3939,85 +3940,85 @@ var CURRICULUM_DATA = [
         "word": "rest",
         "ipa": "/rest/",
         "pos": "n",
-        "meaning": "nghá»‰ ngÆ¡i",
+        "meaning": "nghỉ ngơi",
         "collocation": "take a rest",
         "example": "You should take a rest."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 13,
     "title": "Our special days",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "celebrate",
-        "ipa": "/Ëˆsel.É™.breÉªt/",
+        "ipa": "/ˈsel.ə.breɪt/",
         "pos": "v",
-        "meaning": "ká»· niá»‡m",
+        "meaning": "kỷ niệm",
         "collocation": "celebrate day",
         "example": "Celebrate Teachers' Day."
       },
       {
         "word": "event",
-        "ipa": "/ÉªËˆvent/",
+        "ipa": "/ɪˈvent/",
         "pos": "n",
-        "meaning": "sá»± kiá»‡n",
+        "meaning": "sự kiện",
         "collocation": "special event",
         "example": "A special event."
       },
       {
         "word": "present",
-        "ipa": "/Ëˆprez.É™nt/",
+        "ipa": "/ˈprez.ənt/",
         "pos": "n",
-        "meaning": "quĂ  táº·ng",
+        "meaning": "quà tặng",
         "collocation": "give present",
         "example": "Give a present to my mother."
       },
       {
         "word": "decoration",
-        "ipa": "/ËŒdek.É™ËˆreÉª.ÊƒÉ™n/",
+        "ipa": "/ˌdek.əˈreɪ.ʃən/",
         "pos": "n",
-        "meaning": "Ä‘á»“ trang trĂ­",
+        "meaning": "đồ trang trí",
         "collocation": "beautiful decoration",
         "example": "Beautiful decorations."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 14,
     "title": "Staying safe at home",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "safe",
-        "ipa": "/seÉªf/",
+        "ipa": "/seɪf/",
         "pos": "adj",
-        "meaning": "an toĂ n",
+        "meaning": "an toàn",
         "collocation": "stay safe",
         "example": "Stay safe at home."
       },
       {
         "word": "knife",
-        "ipa": "/naÉªf/",
+        "ipa": "/naɪf/",
         "pos": "n",
         "meaning": "con dao",
         "collocation": "sharp knife",
@@ -4025,159 +4026,159 @@ var CURRICULUM_DATA = [
       },
       {
         "word": "match",
-        "ipa": "/mĂ¦tÊƒ/",
+        "ipa": "/mætʃ/",
         "pos": "n",
-        "meaning": "que diĂªm",
+        "meaning": "que diêm",
         "collocation": "touch match",
         "example": "Don't touch the matches!"
       },
       {
         "word": "burn",
-        "ipa": "/bÉœËn/",
+        "ipa": "/bɜːn/",
         "pos": "n",
-        "meaning": "váº¿t bá»ng",
+        "meaning": "vết bỏng",
         "collocation": "get a burn",
         "example": "You may get a burn."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 15,
     "title": "Our green world",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "protect",
-        "ipa": "/prÉ™Ëˆtekt/",
+        "ipa": "/prəˈtekt/",
         "pos": "v",
-        "meaning": "báº£o vá»‡",
+        "meaning": "bảo vệ",
         "collocation": "protect environment",
         "example": "Protect the environment."
       },
       {
         "word": "environment",
-        "ipa": "/ÉªnËˆvaÉª.rÉ™n.mÉ™nt/",
+        "ipa": "/ɪnˈvaɪ.rən.mənt/",
         "pos": "n",
-        "meaning": "mĂ´i trÆ°á»ng",
+        "meaning": "môi trường",
         "collocation": "clean environment",
         "example": "Keep the environment clean."
       },
       {
         "word": "recycle",
-        "ipa": "/ËŒriËËˆsaÉª.kÉ™l/",
+        "ipa": "/ˌriːˈsaɪ.kəl/",
         "pos": "v",
-        "meaning": "tĂ¡i cháº¿",
+        "meaning": "tái chế",
         "collocation": "recycle plastic",
         "example": "Recycle plastic bottles."
       },
       {
         "word": "save",
-        "ipa": "/seÉªv/",
+        "ipa": "/seɪv/",
         "pos": "v",
-        "meaning": "tiáº¿t kiá»‡m",
+        "meaning": "tiết kiệm",
         "collocation": "save energy",
         "example": "Save energy and water."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 16,
     "title": "Seasons and weather",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "season",
-        "ipa": "/ËˆsiË.zÉ™n/",
+        "ipa": "/ˈsiː.zən/",
         "pos": "n",
-        "meaning": "mĂ¹a",
+        "meaning": "mùa",
         "collocation": "four seasons",
         "example": "There are four seasons in a year."
       },
       {
         "word": "weather",
-        "ipa": "/ËˆweĂ°.É™(r)/",
+        "ipa": "/ˈweð.ə(r)/",
         "pos": "n",
-        "meaning": "thá»i tiáº¿t",
+        "meaning": "thời tiết",
         "collocation": "weather like",
         "example": "What's the weather like today?"
       },
       {
         "word": "dry",
-        "ipa": "/draÉª/",
+        "ipa": "/draɪ/",
         "pos": "adj",
-        "meaning": "khĂ´ rĂ¡o",
+        "meaning": "khô ráo",
         "collocation": "dry season",
         "example": "The dry season is hot."
       },
       {
         "word": "rainy",
-        "ipa": "/ËˆreÉª.ni/",
+        "ipa": "/ˈreɪ.ni/",
         "pos": "adj",
-        "meaning": "cĂ³ mÆ°a",
+        "meaning": "có mưa",
         "collocation": "rainy season",
         "example": "The rainy season starts in May."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 17,
     "title": "Stories for children",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "story",
-        "ipa": "/ËˆstÉ”Ë.ri/",
+        "ipa": "/ˈstɔː.ri/",
         "pos": "n",
-        "meaning": "cĂ¢u chuyá»‡n",
+        "meaning": "câu chuyện",
         "collocation": "folk story",
         "example": "Read a folk story."
       },
       {
         "word": "character",
-        "ipa": "/ËˆkĂ¦r.É™k.tÉ™(r)/",
+        "ipa": "/ˈkær.ək.tə(r)/",
         "pos": "n",
-        "meaning": "nhĂ¢n váº­t",
+        "meaning": "nhân vật",
         "collocation": "main character",
         "example": "Who is the main character?"
       },
       {
         "word": "kind",
-        "ipa": "/kaÉªnd/",
+        "ipa": "/kaɪnd/",
         "pos": "adj",
-        "meaning": "tá»‘t bá»¥ng",
+        "meaning": "tốt bụng",
         "collocation": "kind princess",
         "example": "The princess is very kind."
       },
       {
         "word": "greedy",
-        "ipa": "/ËˆÉ¡riË.di/",
+        "ipa": "/ˈɡriː.di/",
         "pos": "adj",
         "meaning": "tham lam",
         "collocation": "greedy brother",
@@ -4186,812 +4187,812 @@ var CURRICULUM_DATA = [
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 18,
     "title": "Means of transport",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "transport",
-        "ipa": "/ËˆtrĂ¦n.spÉ”Ët/",
+        "ipa": "/ˈtræn.spɔːt/",
         "pos": "n",
-        "meaning": "phÆ°Æ¡ng tiá»‡n",
+        "meaning": "phương tiện",
         "collocation": "means of transport",
         "example": "Means of transport."
       },
       {
         "word": "underground",
-        "ipa": "/ËŒÊŒn.dÉ™ËˆÉ¡raÊnd/",
+        "ipa": "/ˌʌn.dəˈɡraʊnd/",
         "pos": "n",
-        "meaning": "tĂ u Ä‘iá»‡n ngáº§m",
+        "meaning": "tàu điện ngầm",
         "collocation": "by underground",
         "example": "Go by underground."
       },
       {
         "word": "coach",
-        "ipa": "/kÉ™ÊtÊƒ/",
+        "ipa": "/kəʊtʃ/",
         "pos": "n",
-        "meaning": "xe khĂ¡ch",
+        "meaning": "xe khách",
         "collocation": "travel by coach",
         "example": "Travel by coach."
       },
       {
         "word": "motorbike",
-        "ipa": "/ËˆmÉ™Ê.tÉ™.baÉªk/",
+        "ipa": "/ˈməʊ.tə.baɪk/",
         "pos": "n",
-        "meaning": "xe mĂ¡y",
+        "meaning": "xe máy",
         "collocation": "ride motorbike",
         "example": "Ride a motorbike."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 19,
     "title": "Places of interest",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "place of interest",
-        "ipa": "/pleÉªs É™v ËˆÉªn.trÉ™st/",
+        "ipa": "/pleɪs əv ˈɪn.trəst/",
         "pos": "n phr",
-        "meaning": "danh tháº¯ng",
+        "meaning": "danh thắng",
         "collocation": "visit place",
         "example": "Visit a place of interest."
       },
       {
         "word": "pagoda",
-        "ipa": "/pÉ™ËˆÉ¡É™Ê.dÉ™/",
+        "ipa": "/pəˈɡəʊ.də/",
         "pos": "n",
-        "meaning": "chĂ¹a",
+        "meaning": "chùa",
         "collocation": "visit pagoda",
         "example": "Visit One Pillar Pagoda."
       },
       {
         "word": "bridge",
-        "ipa": "/brÉªdÊ’/",
+        "ipa": "/brɪdʒ/",
         "pos": "n",
-        "meaning": "cĂ¢y cáº§u",
+        "meaning": "cây cầu",
         "collocation": "famous bridge",
         "example": "Trang Tien Bridge."
       },
       {
         "word": "island",
-        "ipa": "/ËˆaÉª.lÉ™nd/",
+        "ipa": "/ˈaɪ.lənd/",
         "pos": "n",
-        "meaning": "hĂ²n Ä‘áº£o",
+        "meaning": "hòn đảo",
         "collocation": "Phu Quoc island",
         "example": "Phu Quoc Island."
       }
     ]
   },
   {
-    "level": "Cáº¥p 1 (Tiá»ƒu há»c)",
-    "grade": "Lá»›p 5",
+    "level": "Cấp 1 (Tiểu học)",
+    "grade": "Lớp 5",
     "unit": 20,
     "title": "Our summer holiday",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai gáº§n"
+      "Quá khứ đơn",
+      "Tương lai gần"
     ],
     "grammar_topics": [
-      "Lá»i khuyĂªn nĂªn/khĂ´ng nĂªn",
-      "CĂ¢u há»i Ä‘á»‹a chá»‰"
+      "Lời khuyên nên/không nên",
+      "Câu hỏi địa chỉ"
     ],
     "vocabulary": [
       {
         "word": "summer holiday",
-        "ipa": "/ËˆsÊŒm.É™ ËˆhÉ’l.É™-deÉª/",
+        "ipa": "/ˈsʌm.ə ˈhɒl.ə-deɪ/",
         "pos": "n phr",
-        "meaning": "ká»³ nghá»‰ hĂ¨",
+        "meaning": "kỳ nghỉ hè",
         "collocation": "on holiday",
         "example": "Where are you going this summer holiday?"
       },
       {
         "word": "seaside",
-        "ipa": "/ËˆsiË.saÉªd/",
+        "ipa": "/ˈsiː.saɪd/",
         "pos": "n",
-        "meaning": "bá» biá»ƒn",
+        "meaning": "bờ biển",
         "collocation": "go to seaside",
         "example": "Go to the seaside."
       },
       {
         "word": "stay",
-        "ipa": "/steÉª/",
+        "ipa": "/steɪ/",
         "pos": "v",
-        "meaning": "á»Ÿ láº¡i",
+        "meaning": "ở lại",
         "collocation": "stay in hotel",
         "example": "Stay in a hotel."
       },
       {
         "word": "seafood",
-        "ipa": "/ËˆsiË.fuËd/",
+        "ipa": "/ˈsiː.fuːd/",
         "pos": "n",
-        "meaning": "háº£i sáº£n",
+        "meaning": "hải sản",
         "collocation": "delicious seafood",
         "example": "Eat delicious seafood."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 1,
     "title": "My New School",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "calculator",
-        "ipa": "/ËˆkĂ¦l.kjÉ™.leÉª.tÉ™(r)/",
+        "ipa": "/ˈkæl.kjə.leɪ.tə(r)/",
         "pos": "n",
-        "meaning": "mĂ¡y tĂ­nh bá» tĂºi",
+        "meaning": "máy tính bỏ túi",
         "collocation": "maths calculator",
         "example": "I use my calculator in maths class."
       },
       {
         "word": "uniform",
-        "ipa": "/ËˆjuË.nÉª.fÉ”Ëm/",
+        "ipa": "/ˈjuː.nɪ.fɔːm/",
         "pos": "n",
-        "meaning": "Ä‘á»“ng phá»¥c",
+        "meaning": "đồng phục",
         "collocation": "school uniform",
         "example": "We wear our uniform on Mondays."
       },
       {
         "word": "compass",
-        "ipa": "/ËˆkÊŒm.pÉ™s/",
+        "ipa": "/ˈkʌm.pəs/",
         "pos": "n",
-        "meaning": "cĂ¡i com-pa",
+        "meaning": "cái com-pa",
         "collocation": "draw with compass",
         "example": "She draws a circle with a compass."
       },
       {
         "word": "boarding school",
-        "ipa": "/ËˆbÉ”Ë.dÉªÅ‹ ËŒskuËl/",
+        "ipa": "/ˈbɔː.dɪŋ ˌskuːl/",
         "pos": "n",
-        "meaning": "trÆ°á»ng ná»™i trĂº",
+        "meaning": "trường nội trú",
         "collocation": "live in boarding school",
         "example": "An lives in a boarding school."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 2,
     "title": "My House",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "balcony",
-        "ipa": "/ËˆbĂ¦l.kÉ™.ni/",
+        "ipa": "/ˈbæl.kə.ni/",
         "pos": "n",
-        "meaning": "ban cĂ´ng",
+        "meaning": "ban công",
         "collocation": "on balcony",
         "example": "There are many flowers on the balcony."
       },
       {
         "word": "townhouse",
-        "ipa": "/ËˆtaÊn.haÊs/",
+        "ipa": "/ˈtaʊn.haʊs/",
         "pos": "n",
-        "meaning": "nhĂ  phá»‘",
+        "meaning": "nhà phố",
         "collocation": "small townhouse",
         "example": "They live in a small townhouse."
       },
       {
         "word": "cupboard",
-        "ipa": "/ËˆkÊŒb.É™d/",
+        "ipa": "/ˈkʌb.əd/",
         "pos": "n",
-        "meaning": "tá»§ chĂ©n bĂ¡t",
+        "meaning": "tủ chén bát",
         "collocation": "in cupboard",
         "example": "The plates are in the cupboard."
       },
       {
         "word": "stilt house",
-        "ipa": "/ËˆstÉªlt ËŒhaÊs/",
+        "ipa": "/ˈstɪlt ˌhaʊs/",
         "pos": "n",
-        "meaning": "nhĂ  sĂ n",
+        "meaning": "nhà sàn",
         "collocation": "live in stilt house",
         "example": "Tay people live in a stilt house."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 3,
     "title": "My Friends",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "clever",
-        "ipa": "/Ëˆklev.É™(r)/",
+        "ipa": "/ˈklev.ə(r)/",
         "pos": "adj",
-        "meaning": "thĂ´ng minh",
+        "meaning": "thông minh",
         "collocation": "clever student",
         "example": "Nam is a clever student."
       },
       {
         "word": "patient",
-        "ipa": "/ËˆpeÉª.ÊƒÉ™nt/",
+        "ipa": "/ˈpeɪ.ʃənt/",
         "pos": "adj",
-        "meaning": "kiĂªn nháº«n",
+        "meaning": "kiên nhẫn",
         "collocation": "patient teacher",
         "example": "Our teacher is very patient."
       },
       {
         "word": "talkative",
-        "ipa": "/ËˆtÉ”Ë.kÉ™.tÉªv/",
+        "ipa": "/ˈtɔː.kə.tɪv/",
         "pos": "adj",
-        "meaning": "hay nĂ³i",
+        "meaning": "hay nói",
         "collocation": "friendly and talkative",
         "example": "She is friendly and talkative."
       },
       {
         "word": "ponytail",
-        "ipa": "/ËˆpÉ™Ê.ni.teÉªl/",
+        "ipa": "/ˈpəʊ.ni.teɪl/",
         "pos": "n",
-        "meaning": "tĂ³c Ä‘uĂ´i ngá»±a",
+        "meaning": "tóc đuôi ngựa",
         "collocation": "hair in ponytail",
         "example": "She has long hair in a ponytail."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 4,
     "title": "My Neighbourhood",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "cathedral",
-        "ipa": "/kÉ™ËˆÎ¸iË.drÉ™l/",
+        "ipa": "/kəˈθiː.drəl/",
         "pos": "n",
-        "meaning": "nhĂ  thá» lá»›n",
+        "meaning": "nhà thờ lớn",
         "collocation": "town cathedral",
         "example": "The cathedral is in the town centre."
       },
       {
         "word": "historic",
-        "ipa": "/hÉªËˆstÉ’r.Éªk/",
+        "ipa": "/hɪˈstɒr.ɪk/",
         "pos": "adj",
-        "meaning": "cá»• kĂ­nh",
+        "meaning": "cổ kính",
         "collocation": "historic town",
         "example": "Hoi An is a historic town."
       },
       {
         "word": "convenient",
-        "ipa": "/kÉ™nËˆviË.ni.É™nt/",
+        "ipa": "/kənˈviː.ni.ənt/",
         "pos": "adj",
-        "meaning": "tiá»‡n lá»£i",
+        "meaning": "tiện lợi",
         "collocation": "living in city",
         "example": "Living in the city is very convenient."
       },
       {
         "word": "railway station",
-        "ipa": "/ËˆreÉªl.weÉª ËŒsteÉª.ÊƒÉ™n/",
+        "ipa": "/ˈreɪl.weɪ ˌsteɪ.ʃən/",
         "pos": "n",
-        "meaning": "ga tĂ u há»a",
+        "meaning": "ga tàu hỏa",
         "collocation": "at railway station",
         "example": "We met at the railway station."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 5,
     "title": "Natural Wonders of the World",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "waterfall",
-        "ipa": "/ËˆwÉ”Ë.tÉ™.fÉ”Ël/",
+        "ipa": "/ˈwɔː.tə.fɔːl/",
         "pos": "n",
-        "meaning": "thĂ¡c nÆ°á»›c",
+        "meaning": "thác nước",
         "collocation": "famous waterfall",
         "example": "Ban Gioc is a famous waterfall."
       },
       {
         "word": "plaster",
-        "ipa": "/ËˆplÉ‘Ë.stÉ™(r)/",
+        "ipa": "/ˈplɑː.stə(r)/",
         "pos": "n",
-        "meaning": "bÄƒng cĂ¡ nhĂ¢n",
+        "meaning": "băng cá nhân",
         "collocation": "put plaster",
         "example": "Put a plaster on your cut."
       },
       {
         "word": "sleeping bag",
-        "ipa": "/ËˆsliË.pÉªÅ‹ ËŒbĂ¦É¡/",
+        "ipa": "/ˈsliː.pɪŋ ˌbæɡ/",
         "pos": "n",
-        "meaning": "tĂºi ngá»§",
+        "meaning": "túi ngủ",
         "collocation": "bring sleeping bag",
         "example": "Bring a sleeping bag for camping."
       },
       {
         "word": "desert",
-        "ipa": "/Ëˆdez.É™t/",
+        "ipa": "/ˈdez.ət/",
         "pos": "n",
-        "meaning": "sa máº¡c",
+        "meaning": "sa mạc",
         "collocation": "dry desert",
         "example": "It is very dry in the desert."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 6,
     "title": "Our Tet Holiday",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "blossom",
-        "ipa": "/ËˆblÉ’s.É™m/",
+        "ipa": "/ˈblɒs.əm/",
         "pos": "n",
-        "meaning": "hoa Ä‘Ă o/mai",
+        "meaning": "hoa đào/mai",
         "collocation": "peach blossom",
         "example": "Peach blossom blooms at Tet."
       },
       {
         "word": "fireworks",
-        "ipa": "/ËˆfaÉªÉ™.wÉœËks/",
+        "ipa": "/ˈfaɪə.wɜːks/",
         "pos": "n",
-        "meaning": "phĂ¡o hoa",
+        "meaning": "pháo hoa",
         "collocation": "watch fireworks",
         "example": "We watch fireworks on New Year's Eve."
       },
       {
         "word": "lucky money",
-        "ipa": "/ËˆlÊŒk.i ËˆmÊŒn.i/",
+        "ipa": "/ˈlʌk.i ˈmʌn.i/",
         "pos": "n",
-        "meaning": "tiá»n lĂ¬ xĂ¬",
+        "meaning": "tiền lì xì",
         "collocation": "get lucky money",
         "example": "Children get lucky money at Tet."
       },
       {
         "word": "relative",
-        "ipa": "/Ëˆrel.É™.tÉªv/",
+        "ipa": "/ˈrel.ə.tɪv/",
         "pos": "n",
-        "meaning": "há» hĂ ng",
+        "meaning": "họ hàng",
         "collocation": "visit relatives",
         "example": "We visit our relatives during Tet."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 7,
     "title": "Television",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "documentary",
-        "ipa": "/ËŒdÉ’k.jÉ™Ëˆmen.tri/",
+        "ipa": "/ˌdɒk.jəˈmen.tri/",
         "pos": "n",
-        "meaning": "phim tĂ i liá»‡u",
+        "meaning": "phim tài liệu",
         "collocation": "watch documentary",
         "example": "I watch a documentary about nature."
       },
       {
         "word": "educational",
-        "ipa": "/ËŒedÊ’.ÊËˆkeÉª.ÊƒÉ™n.É™l/",
+        "ipa": "/ˌedʒ.ʊˈkeɪ.ʃən.əl/",
         "pos": "adj",
-        "meaning": "mang tĂ­nh giĂ¡o dá»¥c",
+        "meaning": "mang tính giáo dục",
         "collocation": "educational game",
         "example": "This game show is very educational."
       },
       {
         "word": "viewer",
-        "ipa": "/ËˆvjuË.É™(r)/",
+        "ipa": "/ˈvjuː.ə(r)/",
         "pos": "n",
-        "meaning": "khĂ¡n giáº£",
+        "meaning": "khán giả",
         "collocation": "millions of viewers",
         "example": "Millions of viewers watch the show."
       },
       {
         "word": "comedy",
-        "ipa": "/ËˆkÉ’m.É™.di/",
+        "ipa": "/ˈkɒm.ə.di/",
         "pos": "n",
-        "meaning": "phim hĂ i",
+        "meaning": "phim hài",
         "collocation": "watch comedy",
         "example": "We laugh a lot when watching comedy."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 8,
     "title": "Sports and Games",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "goggles",
-        "ipa": "/ËˆÉ¡É’É¡.É™lz/",
+        "ipa": "/ˈɡɒɡ.əlz/",
         "pos": "n",
-        "meaning": "kĂ­nh bÆ¡i",
+        "meaning": "kính bơi",
         "collocation": "wear goggles",
         "example": "Wear goggles when you swim."
       },
       {
         "word": "marathon",
-        "ipa": "/ËˆmĂ¦r.É™.Î¸É™n/",
+        "ipa": "/ˈmær.ə.θən/",
         "pos": "n",
-        "meaning": "cháº¡y ma-ra-tĂ´ng",
+        "meaning": "chạy ma-ra-tông",
         "collocation": "run marathon",
         "example": "He ran in the Hanoi marathon."
       },
       {
         "word": "racket",
-        "ipa": "/ËˆrĂ¦k.Éªt/",
+        "ipa": "/ˈræk.ɪt/",
         "pos": "n",
-        "meaning": "vá»£t",
+        "meaning": "vợt",
         "collocation": "badminton racket",
         "example": "I need a new badminton racket."
       },
       {
         "word": "stadium",
-        "ipa": "/ËˆsteÉª.di.É™m/",
+        "ipa": "/ˈsteɪ.di.əm/",
         "pos": "n",
-        "meaning": "sĂ¢n váº­n Ä‘á»™ng",
+        "meaning": "sân vận động",
         "collocation": "at the stadium",
         "example": "The match was at My Dinh stadium."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 9,
     "title": "Cities of the World",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "landmark",
-        "ipa": "/ËˆlĂ¦nd.mÉ‘Ëk/",
+        "ipa": "/ˈlænd.mɑːk/",
         "pos": "n",
-        "meaning": "danh tháº¯ng",
+        "meaning": "danh thắng",
         "collocation": "famous landmark",
         "example": "The Eiffel Tower is a famous landmark."
       },
       {
         "word": "palace",
-        "ipa": "/ËˆpĂ¦l.Éªs/",
+        "ipa": "/ˈpæl.ɪs/",
         "pos": "n",
-        "meaning": "cung Ä‘iá»‡n",
+        "meaning": "cung điện",
         "collocation": "royal palace",
         "example": "The royal family lives in the palace."
       },
       {
         "word": "continent",
-        "ipa": "/ËˆkÉ’n.tÉª.nÉ™nt/",
+        "ipa": "/ˈkɒn.tɪ.nənt/",
         "pos": "n",
-        "meaning": "chĂ¢u lá»¥c",
+        "meaning": "châu lục",
         "collocation": "largest continent",
         "example": "Asia is the largest continent."
       },
       {
         "word": "crowded",
-        "ipa": "/ËˆkraÊ.dÉªd/",
+        "ipa": "/ˈkraʊ.dɪd/",
         "pos": "adj",
-        "meaning": "Ä‘Ă´ng Ä‘Ăºc",
+        "meaning": "đông đúc",
         "collocation": "crowded city",
         "example": "Tokyo is a crowded city."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 10,
     "title": "Our Houses in the Future",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "skyscraper",
-        "ipa": "/ËˆskaÉªËŒskreÉª.pÉ™(r)/",
+        "ipa": "/ˈskaɪˌskreɪ.pə(r)/",
         "pos": "n",
-        "meaning": "nhĂ  cao táº§ng",
+        "meaning": "nhà cao tầng",
         "collocation": "live in skyscraper",
         "example": "They will live in a skyscraper."
       },
       {
         "word": "appliance",
-        "ipa": "/É™ËˆplaÉª.É™ns/",
+        "ipa": "/əˈplaɪ.əns/",
         "pos": "n",
-        "meaning": "thiáº¿t bá»‹ gia dá»¥ng",
+        "meaning": "thiết bị gia dụng",
         "collocation": "smart appliance",
         "example": "Smart appliances save energy."
       },
       {
         "word": "solar energy",
-        "ipa": "/ËˆsÉ™Ê.lÉ™ Ëˆen.É™.dÊ’i/",
+        "ipa": "/ˈsəʊ.lə ˈen.ə.dʒi/",
         "pos": "n phr",
-        "meaning": "nÄƒng lÆ°á»£ng máº·t trá»i",
+        "meaning": "năng lượng mặt trời",
         "collocation": "use solar energy",
         "example": "The house uses solar energy."
       },
       {
         "word": "houseboat",
-        "ipa": "/ËˆhaÊs.bÉ™Êt/",
+        "ipa": "/ˈhaʊs.bəʊt/",
         "pos": "n",
-        "meaning": "nhĂ  thuyá»n",
+        "meaning": "nhà thuyền",
         "collocation": "live on houseboat",
         "example": "People live on a houseboat on the river."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 11,
     "title": "Our Green World",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "recycle",
-        "ipa": "/ËŒriËËˆsaÉª.kÉ™l/",
+        "ipa": "/ˌriːˈsaɪ.kəl/",
         "pos": "v",
-        "meaning": "tĂ¡i cháº¿",
+        "meaning": "tái chế",
         "collocation": "recycle plastic",
         "example": "We should recycle plastic bottles."
       },
       {
         "word": "environment",
-        "ipa": "/ÉªnËˆvaÉª.rÉ™n.mÉ™nt/",
+        "ipa": "/ɪnˈvaɪ.rən.mənt/",
         "pos": "n",
-        "meaning": "mĂ´i trÆ°á»ng",
+        "meaning": "môi trường",
         "collocation": "green environment",
         "example": "Protect our green environment."
       },
       {
         "word": "container",
-        "ipa": "/kÉ™nËˆteÉª.nÉ™(r)/",
+        "ipa": "/kənˈteɪ.nə(r)/",
         "pos": "n",
-        "meaning": "há»™p chá»©a",
+        "meaning": "hộp chứa",
         "collocation": "reusable container",
         "example": "Use reusable containers for food."
       },
       {
         "word": "pollute",
-        "ipa": "/pÉ™ËˆluËt/",
+        "ipa": "/pəˈluːt/",
         "pos": "v",
-        "meaning": "gĂ¢y Ă´ nhiá»…m",
+        "meaning": "gây ô nhiễm",
         "collocation": "pollute water",
         "example": "Don't pollute the water source."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 6",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 6",
     "unit": 12,
     "title": "Robots",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "TÆ°Æ¡ng lai Ä‘Æ¡n"
+      "Hiện tại đơn",
+      "Quá khứ đơn",
+      "Tương lai đơn"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tĂ­nh tá»«",
+      "So sánh tính từ",
       "Should/Must"
     ],
     "vocabulary": [
       {
         "word": "automatic",
-        "ipa": "/ËŒÉ”Ë.tÉ™ËˆmĂ¦t.Éªk/",
+        "ipa": "/ˌɔː.təˈmæt.ɪk/",
         "pos": "adj",
-        "meaning": "tá»± Ä‘á»™ng",
+        "meaning": "tự động",
         "collocation": "automatic machine",
         "example": "An automatic washing machine."
       },
       {
         "word": "guard",
-        "ipa": "/É¡É‘Ëd/",
+        "ipa": "/ɡɑːd/",
         "pos": "v",
-        "meaning": "báº£o vá»‡",
+        "meaning": "bảo vệ",
         "collocation": "guard homes",
         "example": "Robots will guard our homes."
       },
       {
         "word": "space station",
-        "ipa": "/ËˆspeÉªs ËŒsteÉª.ÊƒÉ™n/",
+        "ipa": "/ˈspeɪs ˌsteɪ.ʃən/",
         "pos": "n",
-        "meaning": "tráº¡m vÅ© trá»¥",
+        "meaning": "trạm vũ trụ",
         "collocation": "in space station",
         "example": "Astronauts work in a space station."
       },
       {
         "word": "do the laundry",
-        "ipa": "/duË Ă°É™ ËˆlÉ”Ën.dri/",
+        "ipa": "/duː ðə ˈlɔːn.dri/",
         "pos": "v phr",
-        "meaning": "giáº·t quáº§n Ă¡o",
+        "meaning": "giặt quần áo",
         "collocation": "robot laundry",
         "example": "The robot can do the laundry."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 1,
     "title": "Hobbies",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "dollhouse",
-        "ipa": "/ËˆdÉ’l.haÊs/",
+        "ipa": "/ˈdɒl.haʊs/",
         "pos": "n",
-        "meaning": "nhĂ  bĂºp bĂª",
+        "meaning": "nhà búp bê",
         "collocation": "make dollhouse",
         "example": "Making a dollhouse is my hobby."
       },
       {
         "word": "gardening",
-        "ipa": "/ËˆÉ¡É‘Ë.dÉ™n.ÉªÅ‹/",
+        "ipa": "/ˈɡɑː.dən.ɪŋ/",
         "pos": "n",
-        "meaning": "lĂ m vÆ°á»n",
+        "meaning": "làm vườn",
         "collocation": "loves gardening",
         "example": "My grandmother loves gardening."
       },
       {
         "word": "horse riding",
-        "ipa": "/ËˆhÉ”Ës ËŒraÉª.dÉªÅ‹/",
+        "ipa": "/ˈhɔːs ˌraɪ.dɪŋ/",
         "pos": "n",
-        "meaning": "cÆ°á»¡i ngá»±a",
+        "meaning": "cưỡi ngựa",
         "collocation": "go horse riding",
         "example": "He goes horse riding on Sundays."
       },
       {
         "word": "collecting",
-        "ipa": "/kÉ™Ëˆlek.tÉªÅ‹/",
+        "ipa": "/kəˈlek.tɪŋ/",
         "pos": "n",
-        "meaning": "sÆ°u táº§m",
+        "meaning": "sưu tầm",
         "collocation": "collecting stamps",
         "example": "Her hobby is collecting stamps."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 2,
     "title": "Healthy Living",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "allergy",
-        "ipa": "/ËˆĂ¦l.É™.dÊ’i/",
+        "ipa": "/ˈæl.ə.dʒi/",
         "pos": "n",
-        "meaning": "dá»‹ á»©ng",
+        "meaning": "dị ứng",
         "collocation": "have an allergy",
         "example": "I have an allergy to seafood."
       },
       {
         "word": "calorie",
-        "ipa": "/ËˆkĂ¦l.É™r.i/",
+        "ipa": "/ˈkæl.ər.i/",
         "pos": "n",
         "meaning": "calo",
         "collocation": "burn calories",
@@ -4999,3173 +5000,3173 @@ var CURRICULUM_DATA = [
       },
       {
         "word": "sunburn",
-        "ipa": "/ËˆsÊŒn.bÉœËn/",
+        "ipa": "/ˈsʌn.bɜːn/",
         "pos": "n",
-        "meaning": "chĂ¡y náº¯ng",
+        "meaning": "cháy nắng",
         "collocation": "avoid sunburn",
         "example": "Wear a hat to avoid sunburn."
       },
       {
         "word": "vegetarian",
-        "ipa": "/ËŒvedÊ’.ÉªËˆteÉ™.ri.É™n/",
+        "ipa": "/ˌvedʒ.ɪˈteə.ri.ən/",
         "pos": "n",
-        "meaning": "ngÆ°á»i Äƒn chay",
+        "meaning": "người ăn chay",
         "collocation": "is a vegetarian",
         "example": "My sister is a vegetarian."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 3,
     "title": "Community Service",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "donate",
-        "ipa": "/dÉ™ÊËˆneÉªt/",
+        "ipa": "/dəʊˈneɪt/",
         "pos": "v",
-        "meaning": "quyĂªn gĂ³p",
+        "meaning": "quyên góp",
         "collocation": "donate books",
         "example": "We donate books to poor children."
       },
       {
         "word": "nursing home",
-        "ipa": "/ËˆnÉœË.sÉªÅ‹ ËŒhÉ™Êm/",
+        "ipa": "/ˈnɜː.sɪŋ ˌhəʊm/",
         "pos": "n",
-        "meaning": "viá»‡n dÆ°á»¡ng lĂ£o",
+        "meaning": "viện dưỡng lão",
         "collocation": "visit nursing home",
         "example": "Volunteers visit a nursing home."
       },
       {
         "word": "community",
-        "ipa": "/kÉ™ËˆmjuË.nÉ™.ti/",
+        "ipa": "/kəˈmjuː.nə.ti/",
         "pos": "n",
-        "meaning": "cá»™ng Ä‘á»“ng",
+        "meaning": "cộng đồng",
         "collocation": "local community",
         "example": "Help people in the local community."
       },
       {
         "word": "tutor",
-        "ipa": "/ËˆtÊƒuË.tÉ™(r)/",
+        "ipa": "/ˈtʃuː.tə(r)/",
         "pos": "v",
-        "meaning": "dáº¡y kĂ¨m",
+        "meaning": "dạy kèm",
         "collocation": "tutor children",
         "example": "They tutor homeless children."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 4,
     "title": "Music and Arts",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "composer",
-        "ipa": "/kÉ™mËˆpÉ™Ê.zÉ™(r)/",
+        "ipa": "/kəmˈpəʊ.zə(r)/",
         "pos": "n",
-        "meaning": "nhĂ  soáº¡n nháº¡c",
+        "meaning": "nhà soạn nhạc",
         "collocation": "famous composer",
         "example": "Trinh Cong Son is a famous composer."
       },
       {
         "word": "water puppetry",
-        "ipa": "/ËˆwÉ”Ë.tÉ™ ËˆpÊŒp.Éª.tri/",
+        "ipa": "/ˈwɔː.tə ˈpʌp.ɪ.tri/",
         "pos": "n",
-        "meaning": "mĂºa rá»‘i nÆ°á»›c",
+        "meaning": "múa rối nước",
         "collocation": "traditional art",
         "example": "Water puppetry is a traditional art."
       },
       {
         "word": "landscape",
-        "ipa": "/ËˆlĂ¦nd.skeÉªp/",
+        "ipa": "/ˈlænd.skeɪp/",
         "pos": "n",
-        "meaning": "tranh phong cáº£nh",
+        "meaning": "tranh phong cảnh",
         "collocation": "painted landscape",
         "example": "He painted a beautiful landscape."
       },
       {
         "word": "anthem",
-        "ipa": "/ËˆĂ¦n.Î¸É™m/",
+        "ipa": "/ˈæn.θəm/",
         "pos": "n",
-        "meaning": "quá»‘c ca",
+        "meaning": "quốc ca",
         "collocation": "national anthem",
         "example": "Tien Quan Ca is Vietnam's national anthem."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 5,
     "title": "Food and Drink",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "broth",
-        "ipa": "/brÉ’Î¸/",
+        "ipa": "/brɒθ/",
         "pos": "n",
-        "meaning": "nÆ°á»›c dĂ¹ng",
+        "meaning": "nước dùng",
         "collocation": "broth for Pho",
         "example": "The broth for Pho is very tasty."
       },
       {
         "word": "omelette",
-        "ipa": "/ËˆÉ’m.lÉ™t/",
+        "ipa": "/ˈɒm.lət/",
         "pos": "n",
-        "meaning": "trá»©ng cuá»™n",
+        "meaning": "trứng cuộn",
         "collocation": "have an omelette",
         "example": "I have an omelette for breakfast."
       },
       {
         "word": "ingredient",
-        "ipa": "/ÉªnËˆÉ¡riË.di.É™nt/",
+        "ipa": "/ɪnˈɡriː.di.ənt/",
         "pos": "n",
-        "meaning": "thĂ nh pháº§n",
+        "meaning": "thành phần",
         "collocation": "main ingredient",
         "example": "Flour is a main ingredient in bread."
       },
       {
         "word": "turmeric",
-        "ipa": "/ËˆtÉœË.mÉ™r.Éªk/",
+        "ipa": "/ˈtɜː.mər.ɪk/",
         "pos": "n",
-        "meaning": "cá»§ nghá»‡",
+        "meaning": "củ nghệ",
         "collocation": "add turmeric",
         "example": "Add turmeric for a yellow colour."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 6,
     "title": "A Visit to a School",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "courtyard",
-        "ipa": "/ËˆkÉ”Ët.jÉ‘Ëd/",
+        "ipa": "/ˈkɔːt.jɑːd/",
         "pos": "n",
-        "meaning": "sĂ¢n trÆ°á»ng",
+        "meaning": "sân trường",
         "collocation": "gather in courtyard",
         "example": "Students gather in the courtyard."
       },
       {
         "word": "entrance exam",
-        "ipa": "/Ëˆen.trÉ™ns ÉªÉ¡ËˆzĂ¦m/",
+        "ipa": "/ˈen.trəns ɪɡˈzæm/",
         "pos": "n",
-        "meaning": "ká»³ thi Ä‘áº§u vĂ o",
+        "meaning": "kỳ thi đầu vào",
         "collocation": "pass entrance exam",
         "example": "She passed the entrance exam."
       },
       {
         "word": "laboratory",
-        "ipa": "/lÉ™ËˆbÉ’r.É™.tri/",
+        "ipa": "/ləˈbɒr.ə.tri/",
         "pos": "n",
-        "meaning": "phĂ²ng thĂ­ nghiá»‡m",
+        "meaning": "phòng thí nghiệm",
         "collocation": "in laboratory",
         "example": "We study Science in the laboratory."
       },
       {
         "word": "monument",
-        "ipa": "/ËˆmÉ’n.jÉ™.mÉ™nt/",
+        "ipa": "/ˈmɒn.jə.mənt/",
         "pos": "n",
-        "meaning": "bia Ä‘Ă¡",
+        "meaning": "bia đá",
         "collocation": "ancient monuments",
         "example": "The Temple of Literature has ancient monuments."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 7,
     "title": "Traffic",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "pedestrian",
-        "ipa": "/pÉ™Ëˆdes.tri.É™n/",
+        "ipa": "/pəˈdes.tri.ən/",
         "pos": "n",
-        "meaning": "ngÆ°á»i Ä‘i bá»™",
+        "meaning": "người đi bộ",
         "collocation": "pedestrian lane",
         "example": "Walk on the pedestrian lane."
       },
       {
         "word": "traffic jam",
-        "ipa": "/ËˆtrĂ¦f.Éªk ËŒdÊ’Ă¦m/",
+        "ipa": "/ˈtræf.ɪk ˌdʒæm/",
         "pos": "n",
-        "meaning": "káº¹t xe",
+        "meaning": "kẹt xe",
         "collocation": "heavy traffic jam",
         "example": "There is a traffic jam every morning."
       },
       {
         "word": "seatbelt",
-        "ipa": "/ËˆsiËt.belt/",
+        "ipa": "/ˈsiːt.belt/",
         "pos": "n",
-        "meaning": "dĂ¢y an toĂ n",
+        "meaning": "dây an toàn",
         "collocation": "fasten seatbelt",
         "example": "Fasten your seatbelt in the car."
       },
       {
         "word": "helmet",
-        "ipa": "/Ëˆhel.mÉ™t/",
+        "ipa": "/ˈhel.mət/",
         "pos": "n",
-        "meaning": "mÅ© báº£o hiá»ƒm",
+        "meaning": "mũ bảo hiểm",
         "collocation": "wear a helmet",
         "example": "Wear a helmet when riding a motorbike."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 8,
     "title": "Films",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "documentary",
-        "ipa": "/ËŒdÉ’k.jÉ™Ëˆmen.tri/",
+        "ipa": "/ˌdɒk.jəˈmen.tri/",
         "pos": "n",
-        "meaning": "phim tĂ i liá»‡u",
+        "meaning": "phim tài liệu",
         "collocation": "watched documentary",
         "example": "I watched a documentary about nature."
       },
       {
         "word": "critic",
-        "ipa": "/ËˆkrÉªt.Éªk/",
+        "ipa": "/ˈkrɪt.ɪk/",
         "pos": "n",
-        "meaning": "nhĂ  bĂ¬nh luáº­n",
+        "meaning": "nhà bình luận",
         "collocation": "film critic",
         "example": "Film critics praised the movie."
       },
       {
         "word": "scary",
-        "ipa": "/ËˆskeÉ™.ri/",
+        "ipa": "/ˈskeə.ri/",
         "pos": "adj",
-        "meaning": "Ä‘Ă¡ng sá»£",
+        "meaning": "đáng sợ",
         "collocation": "scary film",
         "example": "It was a very scary film."
       },
       {
         "word": "director",
-        "ipa": "/daÉªËˆrek.tÉ™(r)/",
+        "ipa": "/daɪˈrek.tə(r)/",
         "pos": "n",
-        "meaning": "Ä‘áº¡o diá»…n",
+        "meaning": "đạo diễn",
         "collocation": "movie director",
         "example": "Who is the director of this movie?"
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 9,
     "title": "Festivals Around the World",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "carnival",
-        "ipa": "/ËˆkÉ‘Ë.nÉª.vÉ™l/",
+        "ipa": "/ˈkɑː.nɪ.vəl/",
         "pos": "n",
-        "meaning": "lá»… há»™i hĂ³a trang",
+        "meaning": "lễ hội hóa trang",
         "collocation": "Rio carnival",
         "example": "The Rio carnival is famous worldwide."
       },
       {
         "word": "parade",
-        "ipa": "/pÉ™ËˆreÉªd/",
+        "ipa": "/pəˈreɪd/",
         "pos": "n",
-        "meaning": "cuá»™c diá»…u hĂ nh",
+        "meaning": "cuộc diễu hành",
         "collocation": "street parade",
         "example": "People watch the street parade."
       },
       {
         "word": "superstitious",
-        "ipa": "/ËŒsuË.pÉ™ËˆstÉªÊƒ.É™s/",
+        "ipa": "/ˌsuː.pəˈstɪʃ.əs/",
         "pos": "adj",
-        "meaning": "mĂª tĂ­n",
+        "meaning": "mê tín",
         "collocation": "feel superstitious",
         "example": "Some people are superstitious."
       },
       {
         "word": "costume",
-        "ipa": "/ËˆkÉ’s.tÊƒuËm/",
+        "ipa": "/ˈkɒs.tʃuːm/",
         "pos": "n",
-        "meaning": "trang phá»¥c",
+        "meaning": "trang phục",
         "collocation": "colourful costume",
         "example": "They wear colourful costumes."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 10,
     "title": "Energy Sources",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "renewable",
-        "ipa": "/rÉªËˆnjuË.É™.bÉ™l/",
+        "ipa": "/rɪˈnjuː.ə.bəl/",
         "pos": "adj",
-        "meaning": "tĂ¡i táº¡o",
+        "meaning": "tái tạo",
         "collocation": "renewable energy",
         "example": "Solar power is a renewable energy source."
       },
       {
         "word": "biogas",
-        "ipa": "/ËˆbaÉª.É™ÊËŒÉ¡Ă¦s/",
+        "ipa": "/ˈbaɪ.əʊˌɡæs/",
         "pos": "n",
-        "meaning": "khĂ­ sinh há»c",
+        "meaning": "khí sinh học",
         "collocation": "use biogas",
         "example": "Farmers use biogas for cooking."
       },
       {
         "word": "footprint",
-        "ipa": "/ËˆfÊt.prÉªnt/",
+        "ipa": "/ˈfʊt.prɪnt/",
         "pos": "n",
-        "meaning": "lÆ°á»£ng khĂ­ tháº£i",
+        "meaning": "lượng khí thải",
         "collocation": "carbon footprint",
         "example": "Reduce your carbon footprint."
       },
       {
         "word": "solar panel",
-        "ipa": "/ËˆsÉ™Ê.lÉ™ ËˆpĂ¦n.É™l/",
+        "ipa": "/ˈsəʊ.lə ˈpæn.əl/",
         "pos": "n",
-        "meaning": "táº¥m pin máº·t trá»i",
+        "meaning": "tấm pin mặt trời",
         "collocation": "install solar panel",
         "example": "They installed solar panels on the roof."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 11,
     "title": "Travelling in the Future",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "driverless",
-        "ipa": "/ËˆdraÉª.vÉ™.lÉ™s/",
+        "ipa": "/ˈdraɪ.və.ləs/",
         "pos": "adj",
-        "meaning": "khĂ´ng ngÆ°á»i lĂ¡i",
+        "meaning": "không người lái",
         "collocation": "driverless car",
         "example": "We will travel in driverless cars."
       },
       {
         "word": "eco-friendly",
-        "ipa": "/ËŒiË.kÉ™ÊËˆfrend.li/",
+        "ipa": "/ˌiː.kəʊˈfrend.li/",
         "pos": "adj",
-        "meaning": "thĂ¢n thiá»‡n mĂ´i trÆ°á»ng",
+        "meaning": "thân thiện môi trường",
         "collocation": "eco-friendly bus",
         "example": "Electric buses are eco-friendly."
       },
       {
         "word": "hyperloop",
-        "ipa": "/ËˆhaÉª.pÉ™.luËp/",
+        "ipa": "/ˈhaɪ.pə.luːp/",
         "pos": "n",
-        "meaning": "tĂ u siĂªu tá»‘c á»‘ng",
+        "meaning": "tàu siêu tốc ống",
         "collocation": "hyperloop speed",
         "example": "Hyperloop will move at high speeds."
       },
       {
         "word": "teleporter",
-        "ipa": "/Ëˆtel.Éª.pÉ”Ë.tÉ™(r)/",
+        "ipa": "/ˈtel.ɪ.pɔː.tə(r)/",
         "pos": "n",
-        "meaning": "mĂ¡y dá»‹ch chuyá»ƒn",
+        "meaning": "máy dịch chuyển",
         "collocation": "teleporter machine",
         "example": "A teleporter takes you anywhere instantly."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 7",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 7",
     "unit": 12,
     "title": "English-speaking Countries",
     "tenses_focus": [
-      "QuĂ¡ khá»© Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ đơn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "LiĂªn tá»«",
+      "Câu bị động",
+      "Liên từ",
       "Used to"
     ],
     "vocabulary": [
       {
         "word": "native speaker",
-        "ipa": "/ËˆneÉª.tÉªv ËˆspiË.kÉ™(r)/",
+        "ipa": "/ˈneɪ.tɪv ˈspiː.kə(r)/",
         "pos": "n phr",
-        "meaning": "ngÆ°á»i báº£n ngá»¯",
+        "meaning": "người bản ngữ",
         "collocation": "practice with native",
         "example": "Practice English with a native speaker."
       },
       {
         "word": "attraction",
-        "ipa": "/É™ËˆtrĂ¦k.ÊƒÉ™n/",
+        "ipa": "/əˈtræk.ʃən/",
         "pos": "n",
-        "meaning": "Ä‘iá»ƒm thu hĂºt",
+        "meaning": "điểm thu hút",
         "collocation": "tourist attraction",
         "example": "Niagara Falls is a top attraction."
       },
       {
         "word": "kilt",
-        "ipa": "/kÉªlt/",
+        "ipa": "/kɪlt/",
         "pos": "n",
-        "meaning": "vĂ¡y ca-rĂ´ Scotland",
+        "meaning": "váy ca-rô Scotland",
         "collocation": "wear a kilt",
         "example": "Scottish men wear a kilt."
       },
       {
         "word": "official language",
-        "ipa": "/É™ËˆfÉªÊƒ.É™l ËˆlĂ¦Å‹.É¡wÉªdÊ’/",
+        "ipa": "/əˈfɪʃ.əl ˈlæŋ.ɡwɪdʒ/",
         "pos": "n phr",
-        "meaning": "ngĂ´n ngá»¯ chĂ­nh thá»©c",
+        "meaning": "ngôn ngữ chính thức",
         "collocation": "official language",
         "example": "English is an official language in Canada."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 1,
     "title": "Leisure Time",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "origami",
-        "ipa": "/ËŒÉ’r.ÉªËˆÉ¡É‘Ë.mi/",
+        "ipa": "/ˌɒr.ɪˈɡɑː.mi/",
         "pos": "n",
-        "meaning": "gáº¥p giáº¥y",
+        "meaning": "gấp giấy",
         "collocation": "paper origami",
         "example": "Paper folding is called origami."
       },
       {
         "word": "knitting",
-        "ipa": "/ËˆnÉªt.ÉªÅ‹/",
+        "ipa": "/ˈnɪt.ɪŋ/",
         "pos": "n",
-        "meaning": "Ä‘an len",
+        "meaning": "đan len",
         "collocation": "enjoys knitting",
         "example": "My grandmother enjoys knitting."
       },
       {
         "word": "resort",
-        "ipa": "/rÉªËˆzÉ”Ët/",
+        "ipa": "/rɪˈzɔːt/",
         "pos": "n",
-        "meaning": "khu nghá»‰ dÆ°á»¡ng",
+        "meaning": "khu nghỉ dưỡng",
         "collocation": "beach resort",
         "example": "We stayed at a beach resort."
       },
       {
         "word": "leisure activity",
-        "ipa": "/ËˆleÊ’.É™r Ă¦kËˆtÉªv.É™.ti/",
+        "ipa": "/ˈleʒ.ər ækˈtɪv.ə.ti/",
         "pos": "n phr",
-        "meaning": "hoáº¡t Ä‘á»™ng ráº£nh rá»—i",
+        "meaning": "hoạt động rảnh rỗi",
         "collocation": "healthy activity",
         "example": "Swimming is a healthy leisure activity."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 2,
     "title": "Life in the Countryside",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "harvest time",
-        "ipa": "/ËˆhÉ‘Ë.vÉªst taÉªm/",
+        "ipa": "/ˈhɑː.vɪst taɪm/",
         "pos": "n",
-        "meaning": "mĂ¹a thu hoáº¡ch",
+        "meaning": "mùa thu hoạch",
         "collocation": "busy in harvest",
         "example": "Farmers are busy during harvest time."
       },
       {
         "word": "orchard",
-        "ipa": "/ËˆÉ”Ë.tÊƒÉ™d/",
+        "ipa": "/ˈɔː.tʃəd/",
         "pos": "n",
-        "meaning": "vÆ°á»n cĂ¢y Äƒn quáº£",
+        "meaning": "vườn cây ăn quả",
         "collocation": "apple orchard",
         "example": "They pick apples in the orchard."
       },
       {
         "word": "vast",
-        "ipa": "/vÉ‘Ëst/",
+        "ipa": "/vɑːst/",
         "pos": "adj",
-        "meaning": "rá»™ng lá»›n",
+        "meaning": "rộng lớn",
         "collocation": "vast fields",
         "example": "The rice fields are vast and green."
       },
       {
         "word": "canal",
-        "ipa": "/kÉ™ËˆnĂ¦l/",
+        "ipa": "/kəˈnæl/",
         "pos": "n",
-        "meaning": "kĂªnh Ä‘Ă o",
+        "meaning": "kênh đào",
         "collocation": "along canal",
         "example": "Boats travel along the canal."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 3,
     "title": "Teenagers",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "peer pressure",
-        "ipa": "/pÉªÉ™ ËˆpreÊƒ.É™(r)/",
+        "ipa": "/pɪə ˈpreʃ.ə(r)/",
         "pos": "n phr",
-        "meaning": "Ă¡p lá»±c báº¡n bĂ¨",
+        "meaning": "áp lực bạn bè",
         "collocation": "face peer pressure",
         "example": "Teenagers often face peer pressure."
       },
       {
         "word": "bully",
-        "ipa": "/ËˆbÊl.i/",
+        "ipa": "/ˈbʊl.i/",
         "pos": "v",
-        "meaning": "báº¯t náº¡t",
+        "meaning": "bắt nạt",
         "collocation": "school bullying",
         "example": "Schools must prevent school bullying."
       },
       {
         "word": "forum",
-        "ipa": "/ËˆfÉ”Ë.rÉ™m/",
+        "ipa": "/ˈfɔː.rəm/",
         "pos": "n",
-        "meaning": "diá»…n Ä‘Ă n",
+        "meaning": "diễn đàn",
         "collocation": "teen forum",
         "example": "I posted my question on the teen forum."
       },
       {
         "word": "stressful",
-        "ipa": "/Ëˆstres.fÉ™l/",
+        "ipa": "/ˈstres.fəl/",
         "pos": "adj",
-        "meaning": "gĂ¢y cÄƒng tháº³ng",
+        "meaning": "gây căng thẳng",
         "collocation": "stressful exam",
         "example": "Preparing for exams can be stressful."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 4,
     "title": "Ethnic Groups of Viet Nam",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "ethnic minority",
-        "ipa": "/ËˆeÎ¸.nÉªk maÉªËˆnÉ’r.É™.ti/",
+        "ipa": "/ˈeθ.nɪk maɪˈnɒr.ə.ti/",
         "pos": "n phr",
-        "meaning": "dĂ¢n tá»™c thiá»ƒu sá»‘",
+        "meaning": "dân tộc thiểu số",
         "collocation": "ethnic minority group",
         "example": "The Tay is an ethnic minority group."
       },
       {
         "word": "terraced field",
-        "ipa": "/Ëˆter.É™st fiËld/",
+        "ipa": "/ˈter.əst fiːld/",
         "pos": "n phr",
-        "meaning": "ruá»™ng báº­c thang",
+        "meaning": "ruộng bậc thang",
         "collocation": "famous terraced fields",
         "example": "Sa Pa is famous for terraced fields."
       },
       {
         "word": "communal house",
-        "ipa": "/kÉ™ËˆmjuË.nÉ™l haÊs/",
+        "ipa": "/kəˈmjuː.nəl haʊs/",
         "pos": "n phr",
-        "meaning": "nhĂ  rĂ´ng",
+        "meaning": "nhà rông",
         "collocation": "at communal house",
         "example": "Villagers gather at the communal house."
       },
       {
         "word": "stilt house",
-        "ipa": "/ËˆstÉªlt ËŒhaÊs/",
+        "ipa": "/ˈstɪlt ˌhaʊs/",
         "pos": "n phr",
-        "meaning": "nhĂ  sĂ n",
+        "meaning": "nhà sàn",
         "collocation": "live in stilt house",
         "example": "Many ethnic groups live in a stilt house."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 5,
     "title": "Our Customs and Traditions",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "custom",
-        "ipa": "/ËˆkÊŒs.tÉ™m/",
+        "ipa": "/ˈkʌs.təm/",
         "pos": "n",
-        "meaning": "phong tá»¥c",
+        "meaning": "phong tục",
         "collocation": "traditional custom",
         "example": "It is a custom to visit relatives at Tet."
       },
       {
         "word": "table manners",
-        "ipa": "/ËˆteÉª.bÉ™l ËŒmĂ¦n.É™z/",
+        "ipa": "/ˈteɪ.bəl ˌmæn.əz/",
         "pos": "n phr",
-        "meaning": "quy táº¯c bĂ n Äƒn",
+        "meaning": "quy tắc bàn ăn",
         "collocation": "Vietnamese table manners",
         "example": "You should learn Vietnamese table manners."
       },
       {
         "word": "worship",
-        "ipa": "/ËˆwÉœË.ÊƒÉªp/",
+        "ipa": "/ˈwɜː.ʃɪp/",
         "pos": "v",
-        "meaning": "thá» cĂºng",
+        "meaning": "thờ cúng",
         "collocation": "worship ancestors",
         "example": "Families worship their ancestors."
       },
       {
         "word": "generation",
-        "ipa": "/ËŒdÊ’en.É™ËˆreÉª.ÊƒÉ™n/",
+        "ipa": "/ˌdʒen.əˈreɪ.ʃən/",
         "pos": "n",
-        "meaning": "tháº¿ há»‡",
+        "meaning": "thế hệ",
         "collocation": "through generations",
         "example": "Traditions pass through generations."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 6,
     "title": "Lifestyles",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "native",
-        "ipa": "/ËˆneÉª.tÉªv/",
+        "ipa": "/ˈneɪ.tɪv/",
         "pos": "adj",
-        "meaning": "báº£n Ä‘á»‹a",
+        "meaning": "bản địa",
         "collocation": "native culture",
         "example": "Protect the native culture of the region."
       },
       {
         "word": "greeting",
-        "ipa": "/ËˆgriË.tÉªÅ‹/",
+        "ipa": "/ˈgriː.tɪŋ/",
         "pos": "n",
-        "meaning": "lá»i chĂ o",
+        "meaning": "lời chào",
         "collocation": "traditional greeting",
         "example": "Bowing is a traditional greeting in Japan."
       },
       {
         "word": "artisan",
-        "ipa": "/ËŒÉ‘Ë.tÉªËˆzĂ¦n/",
+        "ipa": "/ˌɑː.tɪˈzæn/",
         "pos": "n",
-        "meaning": "nghá»‡ nhĂ¢n",
+        "meaning": "nghệ nhân",
         "collocation": "local artisan",
         "example": "Local artisans make beautiful pottery."
       },
       {
         "word": "lifestyle",
-        "ipa": "/ËˆlaÉªf.staÉªl/",
+        "ipa": "/ˈlaɪf.staɪl/",
         "pos": "n",
-        "meaning": "lá»‘i sá»‘ng",
+        "meaning": "lối sống",
         "collocation": "healthy lifestyle",
         "example": "Exercise leads to a healthy lifestyle."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 7,
     "title": "Environmental Protection",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "ecosystem",
-        "ipa": "/ËˆiË.kÉ™ÊËŒsÉªs.tÉ™m/",
+        "ipa": "/ˈiː.kəʊˌsɪs.təm/",
         "pos": "n",
-        "meaning": "há»‡ sinh thĂ¡i",
+        "meaning": "hệ sinh thái",
         "collocation": "marine ecosystem",
         "example": "Pollution damages the marine ecosystem."
       },
       {
         "word": "endangered species",
-        "ipa": "/ÉªnËˆdeÉªn.dÊ’É™d ËˆspiË.ÊƒiËz/",
+        "ipa": "/ɪnˈdeɪn.dʒəd ˈspiː.ʃiːz/",
         "pos": "n phr",
-        "meaning": "loĂ i nguy cáº¥p",
+        "meaning": "loài nguy cấp",
         "collocation": "endangered species",
         "example": "Tigers are an endangered species."
       },
       {
         "word": "habitat",
-        "ipa": "/ËˆhĂ¦b.Éª.tĂ¦t/",
+        "ipa": "/ˈhæb.ɪ.tæt/",
         "pos": "n",
-        "meaning": "mĂ´i trÆ°á»ng sá»‘ng",
+        "meaning": "môi trường sống",
         "collocation": "wildlife habitat",
         "example": "Deforestation destroys wildlife habitat."
       },
       {
         "word": "single-use",
-        "ipa": "/ËŒsÉªÅ‹.É¡É™lËˆjuËs/",
+        "ipa": "/ˌsɪŋ.ɡəlˈjuːs/",
         "pos": "adj",
-        "meaning": "dĂ¹ng má»™t láº§n",
+        "meaning": "dùng một lần",
         "collocation": "single-use plastic",
         "example": "Reduce the use of single-use plastics."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 8,
     "title": "Shopping",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "bargain",
-        "ipa": "/ËˆbÉ‘Ë.É¡Éªn/",
+        "ipa": "/ˈbɑː.ɡɪn/",
         "pos": "v",
-        "meaning": "máº·c cáº£",
+        "meaning": "mặc cả",
         "collocation": "love to bargain",
         "example": "She loves to bargain at the market."
       },
       {
         "word": "convenience store",
-        "ipa": "/kÉ™nËˆviË.ni.É™ns stÉ”Ë(r)/",
+        "ipa": "/kənˈviː.ni.əns stɔː(r)/",
         "pos": "n phr",
-        "meaning": "cá»­a hĂ ng tiá»‡n lá»£i",
+        "meaning": "cửa hàng tiện lợi",
         "collocation": "open 24/7",
         "example": "The convenience store opens 24/7."
       },
       {
         "word": "discount",
-        "ipa": "/ËˆdÉªs.kaÊnt/",
+        "ipa": "/ˈdɪs.kaʊnt/",
         "pos": "n",
-        "meaning": "giáº£m giĂ¡",
+        "meaning": "giảm giá",
         "collocation": "20% discount",
         "example": "They offer a 20% discount today."
       },
       {
         "word": "open-air market",
-        "ipa": "/ËŒÉ™Ê.pÉ™nËˆeÉ™ ËˆmÉ‘Ë.kÉªt/",
+        "ipa": "/ˌəʊ.pənˈeə ˈmɑː.kɪt/",
         "pos": "n phr",
-        "meaning": "chá»£ ngoĂ i trá»i",
+        "meaning": "chợ ngoài trời",
         "collocation": "fresh fruit at market",
         "example": "Buy fresh fruit at the open-air market."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 9,
     "title": "Natural Disasters",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "tsunami",
-        "ipa": "/tsuËËˆnÉ‘Ë.mi/",
+        "ipa": "/tsuːˈnɑː.mi/",
         "pos": "n",
-        "meaning": "sĂ³ng tháº§n",
+        "meaning": "sóng thần",
         "collocation": "violent tsunami",
         "example": "A violent earthquake caused a tsunami."
       },
       {
         "word": "volcanic eruption",
-        "ipa": "/vÉ’lËˆkĂ¦n.Éªk ÉªËˆrÊŒp.ÊƒÉ™n/",
+        "ipa": "/vɒlˈkæn.ɪk ɪˈrʌp.ʃən/",
         "pos": "n phr",
-        "meaning": "phun trĂ o nĂºi lá»­a",
+        "meaning": "phun trào núi lửa",
         "collocation": "volcanic eruption",
         "example": "The volcanic eruption destroyed the town."
       },
       {
         "word": "rescue worker",
-        "ipa": "/Ëˆres.kjuË ËˆwÉœË.kÉ™(r)/",
+        "ipa": "/ˈres.kjuː ˈwɜː.kə(r)/",
         "pos": "n phr",
-        "meaning": "nhĂ¢n viĂªn cá»©u há»™",
+        "meaning": "nhân viên cứu hộ",
         "collocation": "saved victims",
         "example": "Rescue workers saved many victims."
       },
       {
         "word": "landslide",
-        "ipa": "/ËˆlĂ¦nd.slaÉªd/",
+        "ipa": "/ˈlænd.slaɪd/",
         "pos": "n",
-        "meaning": "sáº¡t lá»Ÿ Ä‘áº¥t",
+        "meaning": "sạt lở đất",
         "collocation": "triggered landslide",
         "example": "Heavy rain triggered a dangerous landslide."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 10,
     "title": "Communication in the Future",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "hologram",
-        "ipa": "/ËˆhÉ’l.É™.É¡rĂ¦m/",
+        "ipa": "/ˈhɒl.ə.ɡræm/",
         "pos": "n",
-        "meaning": "áº£nh 3D",
+        "meaning": "ảnh 3D",
         "collocation": "using hologram",
         "example": "We will communicate using holograms."
       },
       {
         "word": "telepathy",
-        "ipa": "/tÉ™Ëˆlep.É™.Î¸i/",
+        "ipa": "/təˈlep.ə.θi/",
         "pos": "n",
-        "meaning": "tháº§n giao cĂ¡ch cáº£m",
+        "meaning": "thần giao cách cảm",
         "collocation": "by telepathy",
         "example": "Communicating by telepathy is amazing."
       },
       {
         "word": "video conference",
-        "ipa": "/ËˆvÉªd.i.É™Ê ËˆkÉ’n.fÉ™r.É™ns/",
+        "ipa": "/ˈvɪd.i.əʊ ˈkɒn.fər.əns/",
         "pos": "n phr",
-        "meaning": "há»p video",
+        "meaning": "họp video",
         "collocation": "international conference",
         "example": "They held an international video conference."
       },
       {
         "word": "translation device",
-        "ipa": "/trĂ¦nsËˆleÉª.ÊƒÉ™n dÉªËˆvaÉªs/",
+        "ipa": "/trænsˈleɪ.ʃən dɪˈvaɪs/",
         "pos": "n phr",
-        "meaning": "thiáº¿t bá»‹ dá»‹ch",
+        "meaning": "thiết bị dịch",
         "collocation": "instant translation",
         "example": "A translation device helps tourists instantly."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 11,
     "title": "Science and Technology",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "artificial intelligence",
-        "ipa": "/ËŒÉ‘Ë.tÉªËˆfÉªÊƒ.É™l ÉªnËˆtel.Éª.dÊ’É™ns/",
+        "ipa": "/ˌɑː.tɪˈfɪʃ.əl ɪnˈtel.ɪ.dʒəns/",
         "pos": "n phr",
-        "meaning": "trĂ­ tuá»‡ nhĂ¢n táº¡o",
+        "meaning": "trí tuệ nhân tạo",
         "collocation": "changing world",
         "example": "Artificial intelligence is changing the world."
       },
       {
         "word": "biometric",
-        "ipa": "/ËŒbaÉª.É™ÊËˆmet.rÉªk/",
+        "ipa": "/ˌbaɪ.əʊˈmet.rɪk/",
         "pos": "adj",
-        "meaning": "sinh tráº¯c há»c",
+        "meaning": "sinh trắc học",
         "collocation": "biometric security",
         "example": "Smartphones use biometric security."
       },
       {
         "word": "invention",
-        "ipa": "/ÉªnËˆven.ÊƒÉ™n/",
+        "ipa": "/ɪnˈven.ʃən/",
         "pos": "n",
-        "meaning": "phĂ¡t minh",
+        "meaning": "phát minh",
         "collocation": "great invention",
         "example": "The telephone was a great invention."
       },
       {
         "word": "astronaut",
-        "ipa": "/ËˆĂ¦s.trÉ™.nÉ”Ët/",
+        "ipa": "/ˈæs.trə.nɔːt/",
         "pos": "n",
-        "meaning": "phi hĂ nh gia",
+        "meaning": "phi hành gia",
         "collocation": "into space",
         "example": "An astronaut travels into space."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 8",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 8",
     "unit": 12,
     "title": "Life on Other Planets",
     "tenses_focus": [
-      "QuĂ¡ khá»© tiáº¿p diá»…n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh"
+      "Quá khứ tiếp diễn",
+      "Hiện tại hoàn thành"
     ],
     "grammar_topics": [
-      "So sĂ¡nh tráº¡ng tá»«",
-      "CĂ¢u giĂ¡n tiáº¿p"
+      "So sánh trạng từ",
+      "Câu gián tiếp"
     ],
     "vocabulary": [
       {
         "word": "alien",
-        "ipa": "/ËˆeÉª.li.É™n/",
+        "ipa": "/ˈeɪ.li.ən/",
         "pos": "n",
-        "meaning": "ngÆ°á»i ngoĂ i hĂ nh tinh",
+        "meaning": "người ngoài hành tinh",
         "collocation": "believe in aliens",
         "example": "Do you believe in aliens?"
       },
       {
         "word": "flying saucer",
-        "ipa": "/ËŒflaÉª.ÉªÅ‹ ËˆsÉ”Ë.sÉ™(r)/",
+        "ipa": "/ˌflaɪ.ɪŋ ˈsɔː.sə(r)/",
         "pos": "n phr",
-        "meaning": "Ä‘Ä©a bay",
+        "meaning": "đĩa bay",
         "collocation": "landed saucer",
         "example": "A flying saucer landed in the field."
       },
       {
         "word": "solar system",
-        "ipa": "/ËˆsÉ™Ê.lÉ™ ËŒsÉªs.tÉ™m/",
+        "ipa": "/ˈsəʊ.lə ˌsɪs.təm/",
         "pos": "n phr",
-        "meaning": "há»‡ máº·t trá»i",
+        "meaning": "hệ mặt trời",
         "collocation": "in solar system",
         "example": "Earth is in the solar system."
       },
       {
         "word": "space buggy",
-        "ipa": "/ËˆspeÉªs ËŒbÊŒÉ¡.i/",
+        "ipa": "/ˈspeɪs ˌbʌɡ.i/",
         "pos": "n phr",
-        "meaning": "xe thĂ¡m hiá»ƒm",
+        "meaning": "xe thám hiểm",
         "collocation": "space buggy on Mars",
         "example": "Astronauts drove a space buggy on Mars."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 1,
     "title": "Local Community",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "craft village",
-        "ipa": "/ËˆkrÉ‘Ëft ËŒvÉªl.ÉªdÊ’/",
+        "ipa": "/ˈkrɑːft ˌvɪl.ɪdʒ/",
         "pos": "n phr",
-        "meaning": "lĂ ng nghá»",
+        "meaning": "làng nghề",
         "collocation": "famous craft village",
         "example": "Bat Trang is a famous craft village."
       },
       {
         "word": "pottery",
-        "ipa": "/ËˆpÉ’t.É™r.i/",
+        "ipa": "/ˈpɒt.ər.i/",
         "pos": "n",
-        "meaning": "gá»‘m sá»©",
+        "meaning": "gốm sứ",
         "collocation": "make pottery",
         "example": "Artisans make beautiful pottery."
       },
       {
         "word": "hand down",
-        "ipa": "/hĂ¦nd daÊn/",
+        "ipa": "/hænd daʊn/",
         "pos": "phrasal v",
-        "meaning": "truyá»n láº¡i",
+        "meaning": "truyền lại",
         "collocation": "handed down",
         "example": "Skills are handed down through generations."
       },
       {
         "word": "preservation",
-        "ipa": "/ËŒprez.É™ËˆveÉª.ÊƒÉ™n/",
+        "ipa": "/ˌprez.əˈveɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± báº£o tá»“n",
+        "meaning": "sự bảo tồn",
         "collocation": "preservation of craft",
         "example": "The preservation of old crafts is vital."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 2,
     "title": "City Life",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "bustling",
-        "ipa": "/ËˆbÊŒs.lÉªÅ‹/",
+        "ipa": "/ˈbʌs.lɪŋ/",
         "pos": "adj",
-        "meaning": "nhá»™n nhá»‹p",
+        "meaning": "nhộn nhịp",
         "collocation": "bustling city",
         "example": "New York is a bustling city."
       },
       {
         "word": "concrete jungle",
-        "ipa": "/ËŒkÉ’Å‹.kriËt ËˆdÊ’ÊŒÅ‹.É¡É™l/",
+        "ipa": "/ˌkɒŋ.kriːt ˈdʒʌŋ.ɡəl/",
         "pos": "n phr",
-        "meaning": "Ä‘Ă´ thá»‹ bĂª tĂ´ng",
+        "meaning": "đô thị bê tông",
         "collocation": "feel like jungle",
         "example": "Big cities often feel like a concrete jungle."
       },
       {
         "word": "metro",
-        "ipa": "/Ëˆmet.rÉ™Ê/",
+        "ipa": "/ˈmet.rəʊ/",
         "pos": "n",
-        "meaning": "xe Ä‘iá»‡n ngáº§m",
+        "meaning": "xe điện ngầm",
         "collocation": "by metro",
         "example": "Travelling by metro is convenient."
       },
       {
         "word": "skywalk",
-        "ipa": "/ËˆskaÉª.wÉ”Ëk/",
+        "ipa": "/ˈskaɪ.wɔːk/",
         "pos": "n",
-        "meaning": "cáº§u vÆ°á»£t Ä‘i bá»™",
+        "meaning": "cầu vượt đi bộ",
         "collocation": "use skywalk",
         "example": "Pedestrians use the skywalk safely."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 3,
     "title": "Healthy Living for Teens",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "well-balanced",
-        "ipa": "/ËŒwel ËˆbĂ¦l.É™nst/",
+        "ipa": "/ˌwel ˈbæl.ənst/",
         "pos": "adj",
-        "meaning": "cĂ¢n báº±ng",
+        "meaning": "cân bằng",
         "collocation": "well-balanced diet",
         "example": "Eat a well-balanced diet for good health."
       },
       {
         "word": "anxiety",
-        "ipa": "/Ă¦Å‹ËˆzaÉª.É™.ti/",
+        "ipa": "/æŋˈzaɪ.ə.ti/",
         "pos": "n",
-        "meaning": "sá»± lo Ă¢u",
+        "meaning": "sự lo âu",
         "collocation": "reduce anxiety",
         "example": "Exercise helps reduce student anxiety."
       },
       {
         "word": "priority",
-        "ipa": "/praÉªËˆÉ’r.É™.ti/",
+        "ipa": "/praɪˈɒr.ə.ti/",
         "pos": "n",
-        "meaning": "sá»± Æ°u tiĂªn",
+        "meaning": "sự ưu tiên",
         "collocation": "top priority",
         "example": "Health should be your top priority."
       },
       {
         "word": "optimistic",
-        "ipa": "/ËŒÉ’p.tÉªËˆmÉªs.tÉªk/",
+        "ipa": "/ˌɒp.tɪˈmɪs.tɪk/",
         "pos": "adj",
-        "meaning": "láº¡c quan",
+        "meaning": "lạc quan",
         "collocation": "optimistic attitude",
         "example": "Maintain an optimistic attitude."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 4,
     "title": "Remembering the Past",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "illiterate",
-        "ipa": "/ÉªËˆlÉªt.É™r.É™t/",
+        "ipa": "/ɪˈlɪt.ər.ət/",
         "pos": "adj",
-        "meaning": "mĂ¹ chá»¯",
+        "meaning": "mù chữ",
         "collocation": "were illiterate",
         "example": "Many villagers were illiterate in the past."
       },
       {
         "word": "barefoot",
-        "ipa": "/ËˆbeÉ™.fÊt/",
+        "ipa": "/ˈbeə.fʊt/",
         "pos": "adj",
-        "meaning": "chĂ¢n Ä‘áº¥t",
+        "meaning": "chân đất",
         "collocation": "walk barefoot",
         "example": "Children used to walk barefoot to school."
       },
       {
         "word": "deep-rooted",
-        "ipa": "/ËŒdiËpËˆruË.tÉªd/",
+        "ipa": "/ˌdiːpˈruː.tɪd/",
         "pos": "adj",
-        "meaning": "Äƒn sĂ¢u bĂ¡m rá»…",
+        "meaning": "ăn sâu bám rễ",
         "collocation": "deep-rooted custom",
         "example": "Respecting elders is a deep-rooted custom."
       },
       {
         "word": "extended family",
-        "ipa": "/ÉªkËˆsten.dÉªd ËˆfĂ¦m.É™l.i/",
+        "ipa": "/ɪkˈsten.dɪd ˈfæm.əl.i/",
         "pos": "n phr",
-        "meaning": "gia Ä‘Ă¬nh Ä‘a tháº¿ há»‡",
+        "meaning": "gia đình đa thế hệ",
         "collocation": "live in extended family",
         "example": "Three generations live in an extended family."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 5,
     "title": "Our Experiences",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "memorable",
-        "ipa": "/Ëˆmem.É™r.É™.bÉ™l/",
+        "ipa": "/ˈmem.ər.ə.bəl/",
         "pos": "adj",
-        "meaning": "Ä‘Ă¡ng nhá»›",
+        "meaning": "đáng nhớ",
         "collocation": "memorable experience",
         "example": "The school trip was a memorable experience."
       },
       {
         "word": "obstacle",
-        "ipa": "/ËˆÉ’b.stÉ™.kÉ™l/",
+        "ipa": "/ˈɒb.stə.kəl/",
         "pos": "n",
-        "meaning": "trá»Ÿ ngáº¡i",
+        "meaning": "trở ngại",
         "collocation": "overcame obstacle",
         "example": "She overcame every obstacle to succeed."
       },
       {
         "word": "self-confidence",
-        "ipa": "/ËŒselfËˆkÉ’n.fÉª.dÉ™ns/",
+        "ipa": "/ˌselfˈkɒn.fɪ.dəns/",
         "pos": "n",
-        "meaning": "sá»± tá»± tin",
+        "meaning": "sự tự tin",
         "collocation": "build self-confidence",
         "example": "Public speaking builds self-confidence."
       },
       {
         "word": "challenge",
-        "ipa": "/ËˆtÊƒĂ¦l.ÉªndÊ’/",
+        "ipa": "/ˈtʃæl.ɪndʒ/",
         "pos": "n",
-        "meaning": "thá»­ thĂ¡ch",
+        "meaning": "thử thách",
         "collocation": "huge challenge",
         "example": "Climbing the mountain was a huge challenge."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 6,
     "title": "Vietnamese Lifestyles Then and Now",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "nuclear family",
-        "ipa": "/ËŒnjuË.kli.É™ ËˆfĂ¦m.É™l.i/",
+        "ipa": "/ˌnjuː.kli.ə ˈfæm.əl.i/",
         "pos": "n phr",
-        "meaning": "gia Ä‘Ă¬nh 2 tháº¿ há»‡",
+        "meaning": "gia đình 2 thế hệ",
         "collocation": "live in nuclear family",
         "example": "Most urban people live in a nuclear family."
       },
       {
         "word": "street vendor",
-        "ipa": "/striËt Ëˆven.dÉ™(r)/",
+        "ipa": "/striːt ˈven.də(r)/",
         "pos": "n phr",
-        "meaning": "ngÆ°á»i bĂ¡n hĂ ng rong",
+        "meaning": "người bán hàng rong",
         "collocation": "from street vendor",
         "example": "I bought snacks from a street vendor."
       },
       {
         "word": "tram",
-        "ipa": "/trĂ¦m/",
+        "ipa": "/træm/",
         "pos": "n",
-        "meaning": "xe Ä‘iá»‡n máº·t Ä‘áº¥t",
+        "meaning": "xe điện mặt đất",
         "collocation": "tram system",
         "example": "Hanoi used to have a tram system."
       },
       {
         "word": "modernise",
-        "ipa": "/ËˆmÉ’d.É™n.aÉªz/",
+        "ipa": "/ˈmɒd.ən.aɪz/",
         "pos": "v",
-        "meaning": "hiá»‡n Ä‘áº¡i hĂ³a",
+        "meaning": "hiện đại hóa",
         "collocation": "rapidly modernising",
         "example": "The city is rapidly modernising."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 7,
     "title": "Natural Wonders of the World",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "breathtaking",
-        "ipa": "/ËˆbreÎ¸ËŒteÉª.kÉªÅ‹/",
+        "ipa": "/ˈbreθˌteɪ.kɪŋ/",
         "pos": "adj",
-        "meaning": "ngoáº¡n má»¥c",
+        "meaning": "ngoạn mục",
         "collocation": "breathtaking scenery",
         "example": "Ha Long Bay has breathtaking scenery."
       },
       {
         "word": "biodiversity",
-        "ipa": "/ËŒbaÉª.É™Ê.daÉªËˆvÉœË.sÉ™.ti/",
+        "ipa": "/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/",
         "pos": "n",
-        "meaning": "Ä‘a dáº¡ng sinh há»c",
+        "meaning": "đa dạng sinh học",
         "collocation": "preserves biodiversity",
         "example": "The national park preserves biodiversity."
       },
       {
         "word": "geological",
-        "ipa": "/ËŒdÊ’iË.É™ËˆlÉ’dÊ’.Éª.kÉ™l/",
+        "ipa": "/ˌdʒiː.əˈlɒdʒ.ɪ.kəl/",
         "pos": "adj",
-        "meaning": "Ä‘á»‹a cháº¥t",
+        "meaning": "địa chất",
         "collocation": "geological features",
         "example": "Phong Nha has unique geological features."
       },
       {
         "word": "conservationist",
-        "ipa": "/ËŒkÉ’n.sÉ™ËˆveÉª.ÊƒÉ™n.Éªst/",
+        "ipa": "/ˌkɒn.səˈveɪ.ʃən.ɪst/",
         "pos": "n",
-        "meaning": "nhĂ  báº£o tá»“n",
+        "meaning": "nhà bảo tồn",
         "collocation": "conservationists protect",
         "example": "Conservationists protect rare wild animals."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 8,
     "title": "Tourism",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "package tour",
-        "ipa": "/ËˆpĂ¦k.ÉªdÊ’ tÊÉ™(r)/",
+        "ipa": "/ˈpæk.ɪdʒ tʊə(r)/",
         "pos": "n phr",
-        "meaning": "du lá»‹ch trá»n gĂ³i",
+        "meaning": "du lịch trọn gói",
         "collocation": "booked package tour",
         "example": "They booked an all-inclusive package tour."
       },
       {
         "word": "destination",
-        "ipa": "/ËŒdes.tÉªËˆneÉª.ÊƒÉ™n/",
+        "ipa": "/ˌdes.tɪˈneɪ.ʃən/",
         "pos": "n",
-        "meaning": "Ä‘iá»ƒm Ä‘áº¿n",
+        "meaning": "điểm đến",
         "collocation": "tourist destination",
         "example": "Da Nang is a popular tourist destination."
       },
       {
         "word": "expedition",
-        "ipa": "/ËŒek.spÉ™ËˆdÉªÊƒ.É™n/",
+        "ipa": "/ˌek.spəˈdɪʃ.ən/",
         "pos": "n",
-        "meaning": "cuá»™c thĂ¡m hiá»ƒm",
+        "meaning": "cuộc thám hiểm",
         "collocation": "expedition to cave",
         "example": "Scientists made an expedition to Son Doong."
       },
       {
         "word": "souvenir",
-        "ipa": "/ËŒsuË.vÉ™nËˆÉªÉ™(r)/",
+        "ipa": "/ˌsuː.vənˈɪə(r)/",
         "pos": "n",
-        "meaning": "quĂ  lÆ°u niá»‡m",
+        "meaning": "quà lưu niệm",
         "collocation": "buy souvenir",
         "example": "Buy handicrafts as a souvenir."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 9,
     "title": "World Englishes",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "official language",
-        "ipa": "/É™ËˆfÉªÊƒ.É™l ËˆlĂ¦Å‹.É¡wÉªdÊ’/",
+        "ipa": "/əˈfɪʃ.əl ˈlæŋ.ɡwɪdʒ/",
         "pos": "n phr",
-        "meaning": "ngĂ´n ngá»¯ chĂ­nh thá»©c",
+        "meaning": "ngôn ngữ chính thức",
         "collocation": "official language",
         "example": "English is an official language in Singapore."
       },
       {
         "word": "bilingual",
-        "ipa": "/baÉªËˆlÉªÅ‹.É¡wÉ™l/",
+        "ipa": "/baɪˈlɪŋ.ɡwəl/",
         "pos": "adj",
-        "meaning": "song ngá»¯",
+        "meaning": "song ngữ",
         "collocation": "bilingual family",
         "example": "She grew up in a bilingual family."
       },
       {
         "word": "accent",
-        "ipa": "/ËˆĂ¦k.sÉ™nt/",
+        "ipa": "/ˈæk.sənt/",
         "pos": "n",
-        "meaning": "giá»ng Ä‘iá»‡u",
+        "meaning": "giọng điệu",
         "collocation": "Scottish accent",
         "example": "He speaks English with a Scottish accent."
       },
       {
         "word": "dialect",
-        "ipa": "/ËˆdaÉª.É™.lekt/",
+        "ipa": "/ˈdaɪ.ə.lekt/",
         "pos": "n",
-        "meaning": "tiáº¿ng Ä‘á»‹a phÆ°Æ¡ng",
+        "meaning": "tiếng địa phương",
         "collocation": "own dialect",
         "example": "Each region has its own dialect."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 10,
     "title": "Planet Earth",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "atmosphere",
-        "ipa": "/ËˆĂ¦t.mÉ™s.fÉªÉ™(r)/",
+        "ipa": "/ˈæt.məs.fɪə(r)/",
         "pos": "n",
-        "meaning": "khĂ­ quyá»ƒn",
+        "meaning": "khí quyển",
         "collocation": "damages atmosphere",
         "example": "Pollution damages the Earth's atmosphere."
       },
       {
         "word": "deforestation",
-        "ipa": "/diËËŒfÉ’r.ÉªËˆsteÉª.ÊƒÉ™n/",
+        "ipa": "/diːˌfɒr.ɪˈsteɪ.ʃən/",
         "pos": "n",
-        "meaning": "náº¡n phĂ¡ rá»«ng",
+        "meaning": "nạn phá rừng",
         "collocation": "causes erosion",
         "example": "Deforestation causes soil erosion."
       },
       {
         "word": "climate change",
-        "ipa": "/ËˆklaÉª.mÉ™t tÊƒeÉªndÊ’/",
+        "ipa": "/ˈklaɪ.mət tʃeɪndʒ/",
         "pos": "n phr",
-        "meaning": "biáº¿n Ä‘á»•i khĂ­ háº­u",
+        "meaning": "biến đổi khí hậu",
         "collocation": "leads to change",
         "example": "Global warming leads to climate change."
       },
       {
         "word": "solar system",
-        "ipa": "/ËˆsÉ™Ê.lÉ™ ËŒsÉªs.tÉ™m/",
+        "ipa": "/ˈsəʊ.lə ˌsɪs.təm/",
         "pos": "n phr",
-        "meaning": "há»‡ máº·t trá»i",
+        "meaning": "hệ mặt trời",
         "collocation": "third planet",
         "example": "Earth is the third planet in the solar system."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 11,
     "title": "Electronic Devices",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "virtual reality",
-        "ipa": "/ËŒvÉœË.tÊƒu.É™l riËˆĂ¦l.É™.ti/",
+        "ipa": "/ˌvɜː.tʃu.əl riˈæl.ə.ti/",
         "pos": "n phr",
-        "meaning": "thá»±c táº¿ áº£o",
+        "meaning": "thực tế ảo",
         "collocation": "through VR",
         "example": "Students learn History through virtual reality."
       },
       {
         "word": "touch screen",
-        "ipa": "/ËˆtÊŒtÊƒ skriËn/",
+        "ipa": "/ˈtʌtʃ skriːn/",
         "pos": "n phr",
-        "meaning": "mĂ n hĂ¬nh cáº£m á»©ng",
+        "meaning": "màn hình cảm ứng",
         "collocation": "touch screen",
         "example": "Smartphones feature a sensitive touch screen."
       },
       {
         "word": "interactive",
-        "ipa": "/ËŒÉªn.tÉ™ËˆrĂ¦k.tÉªv/",
+        "ipa": "/ˌɪn.təˈræk.tɪv/",
         "pos": "adj",
-        "meaning": "tÆ°Æ¡ng tĂ¡c",
+        "meaning": "tương tác",
         "collocation": "interactive software",
         "example": "The lesson used interactive software."
       },
       {
         "word": "gadget",
-        "ipa": "/ËˆÉ¡Ă¦dÊ’.Éªt/",
+        "ipa": "/ˈɡædʒ.ɪt/",
         "pos": "n",
-        "meaning": "thiáº¿t bá»‹ cĂ´ng nghá»‡",
+        "meaning": "thiết bị công nghệ",
         "collocation": "useful gadget",
         "example": "A smartwatch is a useful electronic gadget."
       }
     ]
   },
   {
-    "level": "Cáº¥p 2 (THCS)",
-    "grade": "Lá»›p 9",
+    "level": "Cấp 2 (THCS)",
+    "grade": "Lớp 9",
     "unit": 12,
     "title": "Career Choices",
     "tenses_focus": [
-      "HoĂ n thĂ nh tiáº¿p diá»…n",
-      "QuĂ¡ khá»© hoĂ n thĂ nh"
+      "Hoàn thành tiếp diễn",
+      "Quá khứ hoàn thành"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2",
-      "CĂ¢u tÆ°á»ng thuáº­t",
-      "Cá»¥m Ä‘á»™ng tá»«"
+      "Mệnh đề quan hệ",
+      "Câu điều kiện 1, 2",
+      "Câu tường thuật",
+      "Cụm động từ"
     ],
     "vocabulary": [
       {
         "word": "career path",
-        "ipa": "/kÉ™ËˆrÉªÉ™ pÉ‘ËÎ¸/",
+        "ipa": "/kəˈrɪə pɑːθ/",
         "pos": "n phr",
-        "meaning": "con Ä‘Æ°á»ng sá»± nghiá»‡p",
+        "meaning": "con đường sự nghiệp",
         "collocation": "choose career path",
         "example": "Choosing a clear career path is important."
       },
       {
         "word": "vocational",
-        "ipa": "/vÉ™ÊËˆkeÉª.ÊƒÉ™n.É™l/",
+        "ipa": "/vəʊˈkeɪ.ʃən.əl/",
         "pos": "adj",
-        "meaning": "hÆ°á»›ng nghiá»‡p",
+        "meaning": "hướng nghiệp",
         "collocation": "vocational training",
         "example": "He attends a vocational training school."
       },
       {
         "word": "profession",
-        "ipa": "/prÉ™ËˆfeÊƒ.É™n/",
+        "ipa": "/prəˈfeʃ.ən/",
         "pos": "n",
-        "meaning": "nghá» nghiá»‡p",
+        "meaning": "nghề nghiệp",
         "collocation": "noble profession",
         "example": "Teaching is a noble profession."
       },
       {
         "word": "passion",
-        "ipa": "/ËˆpĂ¦Êƒ.É™n/",
+        "ipa": "/ˈpæʃ.ən/",
         "pos": "n",
-        "meaning": "Ä‘am Ä‘am mĂª",
+        "meaning": "đam đam mê",
         "collocation": "pursue passion",
         "example": "Pursue your passion with dedication."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 1,
     "title": "Family Life",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "household chore",
-        "ipa": "/ËˆhaÊs.hÉ™Êld tÊƒÉ”Ë(r)/",
+        "ipa": "/ˈhaʊs.həʊld tʃɔː(r)/",
         "pos": "n phr",
-        "meaning": "viá»‡c nhĂ ",
+        "meaning": "việc nhà",
         "collocation": "split chores",
         "example": "Splitting household chores keeps families happy."
       },
       {
         "word": "breadwinner",
-        "ipa": "/ËˆbredËŒwÉªn.É™(r)/",
+        "ipa": "/ˈbredˌwɪn.ə(r)/",
         "pos": "n",
-        "meaning": "trá»¥ cá»™t",
+        "meaning": "trụ cột",
         "collocation": "main breadwinner",
         "example": "My father is the main breadwinner in my family."
       },
       {
         "word": "homemaker",
-        "ipa": "/ËˆhÉ™ÊmËŒmeÉª.kÉ™(r)/",
+        "ipa": "/ˈhəʊmˌmeɪ.kə(r)/",
         "pos": "n",
-        "meaning": "ngÆ°á»i ná»™i trá»£",
+        "meaning": "người nội trợ",
         "collocation": "be a homemaker",
         "example": "She decided to stay home and be a homemaker."
       },
       {
         "word": "heavy lifting",
-        "ipa": "/ËŒhev.i ËˆlÉªf.tÉªÅ‹/",
+        "ipa": "/ˌhev.i ˈlɪf.tɪŋ/",
         "pos": "n phr",
-        "meaning": "viá»‡c náº·ng",
+        "meaning": "việc nặng",
         "collocation": "do heavy lifting",
         "example": "Men usually do the heavy lifting in the house."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 2,
     "title": "Humans and the Environment",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "carbon footprint",
-        "ipa": "/ËŒkÉ‘Ë.bÉ™n ËˆfÊt.prÉªnt/",
+        "ipa": "/ˌkɑː.bən ˈfʊt.prɪnt/",
         "pos": "n phr",
-        "meaning": "váº¿t carbon",
+        "meaning": "vết carbon",
         "collocation": "reduce footprint",
         "example": "Reduce your carbon footprint by cycling."
       },
       {
         "word": "eco-friendly",
-        "ipa": "/ËŒiË.kÉ™ÊËˆfrend.li/",
+        "ipa": "/ˌiː.kəʊˈfrend.li/",
         "pos": "adj",
-        "meaning": "thĂ¢n thiá»‡n mĂ´i trÆ°á»ng",
+        "meaning": "thân thiện môi trường",
         "collocation": "eco-friendly products",
         "example": "Use eco-friendly products to save nature."
       },
       {
         "word": "single-use",
-        "ipa": "/ËŒsÉªÅ‹.É¡É™lËˆjuËs/",
+        "ipa": "/ˌsɪŋ.ɡəlˈjuːs/",
         "pos": "adj",
-        "meaning": "dĂ¹ng má»™t láº§n",
+        "meaning": "dùng một lần",
         "collocation": "single-use plastic",
         "example": "Avoid buying single-use plastic bottles."
       },
       {
         "word": "adopt",
-        "ipa": "/É™ËˆdÉ’pt/",
+        "ipa": "/əˈdɒpt/",
         "pos": "v",
-        "meaning": "Ă¡p dá»¥ng",
+        "meaning": "áp dụng",
         "collocation": "adopt lifestyle",
         "example": "Many towns adopt a green lifestyle."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 3,
     "title": "Music",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "contestant",
-        "ipa": "/kÉ™nËˆtes.tÉ™nt/",
+        "ipa": "/kənˈtes.tənt/",
         "pos": "n",
-        "meaning": "thĂ­ sinh",
+        "meaning": "thí sinh",
         "collocation": "the contestant",
         "example": "The contestant performed a wonderful song."
       },
       {
         "word": "audience",
-        "ipa": "/ËˆÉ”Ë.di.É™ns/",
+        "ipa": "/ˈɔː.di.əns/",
         "pos": "n",
-        "meaning": "khĂ¡n giáº£",
+        "meaning": "khán giả",
         "collocation": "audience applauded",
         "example": "The audience applauded enthusiastically."
       },
       {
         "word": "talent show",
-        "ipa": "/ËˆtĂ¦l.É™nt ÊƒÉ™Ê/",
+        "ipa": "/ˈtæl.ənt ʃəʊ/",
         "pos": "n phr",
-        "meaning": "cuá»™c thi tĂ i nÄƒng",
+        "meaning": "cuộc thi tài năng",
         "collocation": "national talent show",
         "example": "She won first prize in the national talent show."
       },
       {
         "word": "idol",
-        "ipa": "/ËˆaÉª.dÉ™l/",
+        "ipa": "/ˈaɪ.dəl/",
         "pos": "n",
-        "meaning": "tháº§n tÆ°á»£ng",
+        "meaning": "thần tượng",
         "collocation": "pop idol",
         "example": "Many teenagers admire that pop idol."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 4,
     "title": "For a Better Community",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "volunteer",
-        "ipa": "/ËŒvÉ’l.É™nËˆtÉªÉ™(r)/",
+        "ipa": "/ˌvɒl.ənˈtɪə(r)/",
         "pos": "n",
-        "meaning": "tĂ¬nh nguyá»‡n viĂªn",
+        "meaning": "tình nguyện viên",
         "collocation": "volunteer to teach",
         "example": "Many students volunteer to teach poor children."
       },
       {
         "word": "donation",
-        "ipa": "/dÉ™ÊËˆneÉª.ÊƒÉ™n/",
+        "ipa": "/dəʊˈneɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± quyĂªn gĂ³p",
+        "meaning": "sự quyên góp",
         "collocation": "generous donation",
         "example": "They made a generous donation to the charity."
       },
       {
         "word": "community service",
-        "ipa": "/kÉ™ËˆmjuË.nÉ™.ti ËŒsÉœË.vÉªs/",
+        "ipa": "/kəˈmjuː.nə.ti ˌsɜː.vɪs/",
         "pos": "n phr",
-        "meaning": "dá»‹ch vá»¥ cá»™ng Ä‘á»“ng",
+        "meaning": "dịch vụ cộng đồng",
         "collocation": "doing service",
         "example": "Doing community service helps students grow."
       },
       {
         "word": "non-profit",
-        "ipa": "/ËŒnÉ’nËˆprÉ’f.Éªt/",
+        "ipa": "/ˌnɒnˈprɒf.ɪt/",
         "pos": "adj",
-        "meaning": "phi lá»£i nhuáº­n",
+        "meaning": "phi lợi nhuận",
         "collocation": "non-profit org",
         "example": "She works for a non-profit organisation."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 5,
     "title": "Inventions",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "artificial intelligence",
-        "ipa": "/ËŒÉ‘Ë.tÉªËˆfÉªÊƒ.É™l ÉªnËˆtel.Éª.dÊ’É™ns/",
+        "ipa": "/ˌɑː.tɪˈfɪʃ.əl ɪnˈtel.ɪ.dʒəns/",
         "pos": "n phr",
-        "meaning": "trĂ­ tuá»‡ nhĂ¢n táº¡o",
+        "meaning": "trí tuệ nhân tạo",
         "collocation": "powers smartphones",
         "example": "Artificial intelligence powers modern smartphones."
       },
       {
         "word": "invention",
-        "ipa": "/ÉªnËˆven.ÊƒÉ™n/",
+        "ipa": "/ɪnˈven.ʃən/",
         "pos": "n",
-        "meaning": "sá»± phĂ¡t minh",
+        "meaning": "sự phát minh",
         "collocation": "revolutionary invention",
         "example": "The Internet is a revolutionary invention."
       },
       {
         "word": "laboratory",
-        "ipa": "/lÉ™ËˆbÉ’r.É™.tri/",
+        "ipa": "/ləˈbɒr.ə.tri/",
         "pos": "n",
-        "meaning": "phĂ²ng thĂ­ nghiá»‡m",
+        "meaning": "phòng thí nghiệm",
         "collocation": "conduct experiments",
         "example": "Scientists conduct experiments in the laboratory."
       },
       {
         "word": "patent",
-        "ipa": "/ËˆpeÉª.tÉ™nt/",
+        "ipa": "/ˈpeɪ.tənt/",
         "pos": "n",
-        "meaning": "báº±ng sĂ¡ng cháº¿",
+        "meaning": "bằng sáng chế",
         "collocation": "applied for patent",
         "example": "He applied for a patent for his new device."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 6,
     "title": "Gender Equality",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "gender equality",
-        "ipa": "/ËˆdÊ’en.dÉ™ iËˆkwÉ’l.É™.ti/",
+        "ipa": "/ˈdʒen.də iˈkwɒl.ə.ti/",
         "pos": "n phr",
-        "meaning": "bĂ¬nh Ä‘áº³ng giá»›i",
+        "meaning": "bình đẳng giới",
         "collocation": "human right",
         "example": "Gender equality is a fundamental human right."
       },
       {
         "word": "discrimination",
-        "ipa": "/dÉªËŒskrÉªm.ÉªËˆneÉª.ÊƒÉ™n/",
+        "ipa": "/dɪˌskrɪm.ɪˈneɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± phĂ¢n biá»‡t",
+        "meaning": "sự phân biệt",
         "collocation": "eliminate discrimination",
         "example": "We must eliminate gender discrimination at work."
       },
       {
         "word": "wage gap",
-        "ipa": "/ËˆweÉªdÊ’ ËŒÉ¡Ă¦p/",
+        "ipa": "/ˈweɪdʒ ˌɡæp/",
         "pos": "n phr",
-        "meaning": "khoáº£ng cĂ¡ch thu nháº­p",
+        "meaning": "khoảng cách thu nhập",
         "collocation": "close wage gap",
         "example": "Governments work to close the gender wage gap."
       },
       {
         "word": "workforce",
-        "ipa": "/ËˆwÉœËk.fÉ”Ës/",
+        "ipa": "/ˈwɜːk.fɔːs/",
         "pos": "n",
-        "meaning": "lá»±c lÆ°á»£ng lao Ä‘á»™ng",
+        "meaning": "lực lượng lao động",
         "collocation": "joining workforce",
         "example": "More women are joining the formal workforce."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 7,
     "title": "Viet Nam and International Organisations",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "international organisation",
-        "ipa": "/ËŒÉªn.tÉ™ËˆnĂ¦Êƒ.É™n.É™l ËŒÉ”Ë.É¡É™n.aÉªËˆzeÉª.ÊƒÉ™n/",
+        "ipa": "/ˌɪn.təˈnæʃ.ən.əl ˌɔː.ɡən.aɪˈzeɪ.ʃən/",
         "pos": "n phr",
-        "meaning": "tá»• chá»©c quá»‘c táº¿",
+        "meaning": "tổ chức quốc tế",
         "collocation": "UNICEF is major",
         "example": "UNICEF is a major international organisation."
       },
       {
         "word": "integration",
-        "ipa": "/ËŒÉªn.tÉªËˆÉ¡reÉª.ÊƒÉ™n/",
+        "ipa": "/ˌɪn.tɪˈɡreɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± há»™i nháº­p",
+        "meaning": "sự hội nhập",
         "collocation": "economic integration",
         "example": "Economic integration brings new opportunities."
       },
       {
         "word": "treaty",
-        "ipa": "/ËˆtriË.ti/",
+        "ipa": "/ˈtriː.ti/",
         "pos": "n",
-        "meaning": "hiá»‡p Æ°á»›c",
+        "meaning": "hiệp ước",
         "collocation": "signed treaty",
         "example": "Member nations signed a peace treaty."
       },
       {
         "word": "economic growth",
-        "ipa": "/ËŒiË.kÉ™ËˆnÉ’m.Éªk É¡rÉ™ÊÎ¸/",
+        "ipa": "/ˌiː.kəˈnɒm.ɪk ɡrəʊθ/",
         "pos": "n phr",
-        "meaning": "tÄƒng trÆ°á»Ÿng kinh táº¿",
+        "meaning": "tăng trưởng kinh tế",
         "collocation": "contributes to growth",
         "example": "Tourism contributes to national economic growth."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 8,
     "title": "New Ways to Learn",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "blended learning",
-        "ipa": "/ËŒblen.dÉªd ËˆlÉœË.nÉªÅ‹/",
+        "ipa": "/ˌblen.dɪd ˈlɜː.nɪŋ/",
         "pos": "n phr",
-        "meaning": "há»c táº­p káº¿t há»£p",
+        "meaning": "học tập kết hợp",
         "collocation": "combines online",
         "example": "Blended learning combines online and class lessons."
       },
       {
         "word": "digital device",
-        "ipa": "/ËŒdÉªdÊ’.Éª.tÉ™l dÉªËˆvaÉªs/",
+        "ipa": "/ˌdɪdʒ.ɪ.təl dɪˈvaɪs/",
         "pos": "n phr",
-        "meaning": "thiáº¿t bá»‹ ká»¹ thuáº­t sá»‘",
+        "meaning": "thiết bị kỹ thuật số",
         "collocation": "access material",
         "example": "Students use a digital device to access material."
       },
       {
         "word": "interaction",
-        "ipa": "/ËŒÉªn.tÉ™ËˆrĂ¦k.ÊƒÉ™n/",
+        "ipa": "/ˌɪn.təˈræk.ʃən/",
         "pos": "n",
-        "meaning": "sá»± tÆ°Æ¡ng tĂ¡c",
+        "meaning": "sự tương tác",
         "collocation": "encourage interaction",
         "example": "Online platforms encourage teacher-student interaction."
       },
       {
         "word": "online course",
-        "ipa": "/ËŒÉ’n.laÉªn ËˆkÉ”Ës/",
+        "ipa": "/ˌɒn.laɪn ˈkɔːs/",
         "pos": "n phr",
-        "meaning": "khĂ³a há»c trá»±c tuyáº¿n",
+        "meaning": "khóa học trực tuyến",
         "collocation": "interactive course",
         "example": "He enrolled in an interactive online course."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 9,
     "title": "Protecting the Environment",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "global warming",
-        "ipa": "/ËŒÉ¡lÉ™Ê.bÉ™l ËˆwÉ”Ë.mÉªÅ‹/",
+        "ipa": "/ˌɡləʊ.bəl ˈwɔː.mɪŋ/",
         "pos": "n phr",
-        "meaning": "nĂ³ng lĂªn toĂ n cáº§u",
+        "meaning": "nóng lên toàn cầu",
         "collocation": "causes ice melt",
         "example": "Global warming causes polar ice to melt."
       },
       {
         "word": "climate change",
-        "ipa": "/ËˆklaÉª.mÉ™t tÊƒeÉªndÊ’/",
+        "ipa": "/ˈklaɪ.mət tʃeɪndʒ/",
         "pos": "n phr",
-        "meaning": "biáº¿n Ä‘á»•i khĂ­ háº­u",
+        "meaning": "biến đổi khí hậu",
         "collocation": "result of change",
         "example": "Extreme weather is a result of climate change."
       },
       {
         "word": "ecosystem",
-        "ipa": "/ËˆiË.kÉ™ÊËŒsÉªs.tÉ™m/",
+        "ipa": "/ˈiː.kəʊˌsɪs.təm/",
         "pos": "n",
-        "meaning": "há»‡ sinh thĂ¡i",
+        "meaning": "hệ sinh thái",
         "collocation": "threatens ecosystem",
         "example": "Pollution threatens the forest ecosystem."
       },
       {
         "word": "loss of habitat",
-        "ipa": "/lÉ’s É™v ËˆhĂ¦b.Éª.tĂ¦t/",
+        "ipa": "/lɒs əv ˈhæb.ɪ.tæt/",
         "pos": "n phr",
-        "meaning": "máº¥t mĂ´i trÆ°á»ng sá»‘ng",
+        "meaning": "mất môi trường sống",
         "collocation": "leads to loss",
         "example": "Deforestation leads to severe loss of habitat."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 10",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 10",
     "unit": 10,
     "title": "Ecotourism",
     "tenses_focus": [
-      "Hiá»‡n táº¡i Ä‘Æ¡n",
-      "Hiá»‡n táº¡i hoĂ n thĂ nh",
-      "QuĂ¡ khá»© tiáº¿p diá»…n"
+      "Hiện tại đơn",
+      "Hiện tại hoàn thành",
+      "Quá khứ tiếp diễn"
     ],
     "grammar_topics": [
-      "Má»‡nh Ä‘á» quan há»‡",
-      "CĂ¢u bá»‹ Ä‘á»™ng",
-      "CĂ¢u Ä‘iá»u kiá»‡n 1, 2"
+      "Mệnh đề quan hệ",
+      "Câu bị động",
+      "Câu điều kiện 1, 2"
     ],
     "vocabulary": [
       {
         "word": "ecotourism",
-        "ipa": "/ËˆiË.kÉ™ÊËŒtÊÉ™.rÉª.zÉ™m/",
+        "ipa": "/ˈiː.kəʊˌtʊə.rɪ.zəm/",
         "pos": "n",
-        "meaning": "du lá»‹ch sinh thĂ¡i",
+        "meaning": "du lịch sinh thái",
         "collocation": "promotes conservation",
         "example": "Ecotourism promotes environmental conservation."
       },
       {
         "word": "sustainable",
-        "ipa": "/sÉ™ËˆsteÉª.nÉ™.bÉ™l/",
+        "ipa": "/səˈsteɪ.nə.bəl/",
         "pos": "adj",
-        "meaning": "bá»n vá»¯ng",
+        "meaning": "bền vững",
         "collocation": "sustainable practices",
         "example": "We need sustainable tourism practices."
       },
       {
         "word": "flora and fauna",
-        "ipa": "/ËŒflÉ”Ë.rÉ™ É™nd ËˆfÉ”Ë.nÉ™/",
+        "ipa": "/ˌflɔː.rə ənd ˈfɔː.nə/",
         "pos": "n phr",
-        "meaning": "há»‡ Ä‘á»™ng thá»±c váº­t",
+        "meaning": "hệ động thực vật",
         "collocation": "boasts flora fauna",
         "example": "The national park boasts rich flora and fauna."
       },
       {
         "word": "destination",
-        "ipa": "/ËŒdes.tÉªËˆneÉª.ÊƒÉ™n/",
+        "ipa": "/ˌdes.tɪˈneɪ.ʃən/",
         "pos": "n",
-        "meaning": "Ä‘iá»ƒm Ä‘áº¿n",
+        "meaning": "điểm đến",
         "collocation": "eco destination",
         "example": "Phu Quoc is a famous eco-friendly destination."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 1,
     "title": "A Long and Healthy Life",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "longevity",
-        "ipa": "/lÉ’nËˆdÊ’ev.É™.ti/",
+        "ipa": "/lɒnˈdʒev.ə.ti/",
         "pos": "n",
-        "meaning": "tuá»•i thá»",
+        "meaning": "tuổi thọ",
         "collocation": "contributes to longevity",
         "example": "Regular exercise contributes to longevity."
       },
       {
         "word": "immune system",
-        "ipa": "/ÉªËˆmjuËn ËŒsÉªs.tÉ™m/",
+        "ipa": "/ɪˈmjuːn ˌsɪs.təm/",
         "pos": "n phr",
-        "meaning": "há»‡ miá»…n dá»‹ch",
+        "meaning": "hệ miễn dịch",
         "collocation": "strengthens system",
         "example": "Vitamin C strengthens your immune system."
       },
       {
         "word": "prescription",
-        "ipa": "/prÉªËˆskrÉªp.ÊƒÉ™n/",
+        "ipa": "/prɪˈskrɪp.ʃən/",
         "pos": "n",
-        "meaning": "Ä‘Æ¡n thuá»‘c",
+        "meaning": "đơn thuốc",
         "collocation": "wrote prescription",
         "example": "The doctor wrote a prescription for antibiotics."
       },
       {
         "word": "workout",
-        "ipa": "/ËˆwÉœËk.aÊt/",
+        "ipa": "/ˈwɜːk.aʊt/",
         "pos": "n",
-        "meaning": "buá»•i táº­p",
+        "meaning": "buổi tập",
         "collocation": "morning workout",
         "example": "A morning workout boosts your energy."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 2,
     "title": "The Generation Gap",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "generation gap",
-        "ipa": "/dÊ’en.É™ËˆreÉª.ÊƒÉ™n ËŒÉ¡Ă¦p/",
+        "ipa": "/dʒen.əˈreɪ.ʃən ˌɡæp/",
         "pos": "n phr",
-        "meaning": "khoáº£ng cĂ¡ch tháº¿ há»‡",
+        "meaning": "khoảng cách thế hệ",
         "collocation": "solves gap",
         "example": "Communication solves the generation gap."
       },
       {
         "word": "conflict",
-        "ipa": "/ËˆkÉ’n.flÉªkt/",
+        "ipa": "/ˈkɒn.flɪkt/",
         "pos": "n",
-        "meaning": "xung Ä‘á»™t",
+        "meaning": "xung đột",
         "collocation": "family conflict",
         "example": "Differences in views can lead to family conflict."
       },
       {
         "word": "viewpoint",
-        "ipa": "/ËˆvjuË.pÉ”Éªnt/",
+        "ipa": "/ˈvjuː.pɔɪnt/",
         "pos": "n",
-        "meaning": "quan Ä‘iá»ƒm",
+        "meaning": "quan điểm",
         "collocation": "respect viewpoint",
         "example": "Respecting each other's viewpoint is essential."
       },
       {
         "word": "curfew",
-        "ipa": "/ËˆkÉœË.fjuË/",
+        "ipa": "/ˈkɜː.fjuː/",
         "pos": "n",
-        "meaning": "giá» giá»›i nghiĂªm",
+        "meaning": "giờ giới nghiêm",
         "collocation": "strict curfew",
         "example": "My parents set a strict 10 p.m. curfew."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 3,
     "title": "Cities of the Future",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "smart city",
-        "ipa": "/smÉ‘Ët ËˆsÉªt.i/",
+        "ipa": "/smɑːt ˈsɪt.i/",
         "pos": "n phr",
-        "meaning": "thĂ nh phá»‘ thĂ´ng minh",
+        "meaning": "thành phố thông minh",
         "collocation": "relies on tech",
         "example": "A smart city relies on modern technology."
       },
       {
         "word": "infrastructure",
-        "ipa": "/ËˆÉªn.frÉ™ËŒstrÊŒk.tÊƒÉ™(r)/",
+        "ipa": "/ˈɪn.frəˌstrʌk.tʃə(r)/",
         "pos": "n",
-        "meaning": "cÆ¡ sá»Ÿ háº¡ táº§ng",
+        "meaning": "cơ sở hạ tầng",
         "collocation": "invests in infrastructure",
         "example": "The government invests in urban infrastructure."
       },
       {
         "word": "sustainable development",
-        "ipa": "/sÉ™ËŒsteÉª.nÉ™.bÉ™l dÉªËˆvel.É™p.mÉ™nt/",
+        "ipa": "/səˌsteɪ.nə.bəl dɪˈvel.əp.mənt/",
         "pos": "n phr",
-        "meaning": "phĂ¡t triá»ƒn bá»n vá»¯ng",
+        "meaning": "phát triển bền vững",
         "collocation": "vital for development",
         "example": "Green energy is vital for sustainable development."
       },
       {
         "word": "urban planner",
-        "ipa": "/ËˆÉœË.bÉ™n ËˆplĂ¦n.É™(r)/",
+        "ipa": "/ˈɜː.bən ˈplæn.ə(r)/",
         "pos": "n phr",
-        "meaning": "nhĂ  hoáº¡ch Ä‘á»‹nh Ä‘Ă´ thá»‹",
+        "meaning": "nhà hoạch định đô thị",
         "collocation": "designs zones",
         "example": "An urban planner designs efficient city zones."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 4,
     "title": "ASEAN and Viet Nam",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "charter",
-        "ipa": "/ËˆtÊƒÉ‘Ë.tÉ™(r)/",
+        "ipa": "/ˈtʃɑː.tə(r)/",
         "pos": "n",
-        "meaning": "hiáº¿n chÆ°Æ¡ng",
+        "meaning": "hiến chương",
         "collocation": "adhere to charter",
         "example": "Member states strictly adhere to the ASEAN charter."
       },
       {
         "word": "solidarity",
-        "ipa": "/ËŒsÉ’l.ÉªËˆdĂ¦r.É™.ti/",
+        "ipa": "/ˌsɒl.ɪˈdær.ə.ti/",
         "pos": "n",
-        "meaning": "sá»± Ä‘oĂ n káº¿t",
+        "meaning": "sự đoàn kết",
         "collocation": "regional solidarity",
         "example": "Regional solidarity promotes economic stability."
       },
       {
         "word": "bloc",
-        "ipa": "/blÉ’k/",
+        "ipa": "/blɒk/",
         "pos": "n",
-        "meaning": "khá»‘i liĂªn minh",
+        "meaning": "khối liên minh",
         "collocation": "dynamic bloc",
         "example": "ASEAN is a dynamic regional bloc."
       },
       {
         "word": "cultural exchange",
-        "ipa": "/ËˆkÊŒl.tÊƒÉ™r.É™l ÉªksËˆtÊƒeÉªndÊ’/",
+        "ipa": "/ˈkʌl.tʃər.əl ɪksˈtʃeɪndʒ/",
         "pos": "n phr",
-        "meaning": "giao lÆ°u vÄƒn hĂ³a",
+        "meaning": "giao lưu văn hóa",
         "collocation": "foster exchange",
         "example": "Youth festivals foster cultural exchange."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 5,
     "title": "Global Warming",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "greenhouse gas",
-        "ipa": "/ËˆÉ¡riËn.haÊs ËŒÉ¡Ă¦s/",
+        "ipa": "/ˈɡriːn.haʊs ˌɡæs/",
         "pos": "n phr",
-        "meaning": "khĂ­ nhĂ  kĂ­nh",
+        "meaning": "khí nhà kính",
         "collocation": "releases gas",
         "example": "Burning fossil fuels releases greenhouse gas."
       },
       {
         "word": "emission",
-        "ipa": "/iËˆmÉªÊƒ.É™n/",
+        "ipa": "/iˈmɪʃ.ən/",
         "pos": "n",
-        "meaning": "sá»± phĂ¡t tháº£i",
+        "meaning": "sự phát thải",
         "collocation": "cut emissions",
         "example": "Factories must cut carbon emissions."
       },
       {
         "word": "deforestation",
-        "ipa": "/diËËŒfÉ’r.ÉªËˆsteÉª.ÊƒÉ™n/",
+        "ipa": "/diːˌfɒr.ɪˈsteɪ.ʃən/",
         "pos": "n",
-        "meaning": "náº¡n phĂ¡ rá»«ng",
+        "meaning": "nạn phá rừng",
         "collocation": "massive deforestation",
         "example": "Massive deforestation threatens wild species."
       },
       {
         "word": "carbon dioxide",
-        "ipa": "/ËŒkÉ‘Ë.bÉ™n daÉªËˆÉ’k.saÉªd/",
+        "ipa": "/ˌkɑː.bən daɪˈɒk.saɪd/",
         "pos": "n phr",
-        "meaning": "khĂ­ CO2",
+        "meaning": "khí CO2",
         "collocation": "absorb carbon dioxide",
         "example": "Trees absorb carbon dioxide and produce oxygen."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 6,
     "title": "Preserving Our Heritage",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "heritage site",
-        "ipa": "/Ëˆher.Éª.tÉªdÊ’ saÉªt/",
+        "ipa": "/ˈher.ɪ.tɪdʒ saɪt/",
         "pos": "n phr",
-        "meaning": "di sáº£n",
+        "meaning": "di sản",
         "collocation": "recognized site",
         "example": "Trang An is a recognized World Heritage site."
       },
       {
         "word": "restoration",
-        "ipa": "/ËŒres.tÉ™ËˆreÉª.ÊƒÉ™n/",
+        "ipa": "/ˌres.təˈreɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± trĂ¹ng tu",
+        "meaning": "sự trùng tu",
         "collocation": "undergoes restoration",
         "example": "The ancient temple undergoes careful restoration."
       },
       {
         "word": "monument",
-        "ipa": "/ËˆmÉ’n.jÉ™.mÉ™nt/",
+        "ipa": "/ˈmɒn.jə.mənt/",
         "pos": "n",
-        "meaning": "di tĂ­ch",
+        "meaning": "di tích",
         "collocation": "historical monuments",
         "example": "Tourists visit historical monuments in Hanoi."
       },
       {
         "word": "preserve",
-        "ipa": "/prÉªËˆzÉœËv/",
+        "ipa": "/prɪˈzɜːv/",
         "pos": "v",
-        "meaning": "báº£o tá»“n",
+        "meaning": "bảo tồn",
         "collocation": "preserve traditions",
         "example": "Local communities help preserve folk traditions."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 7,
     "title": "Education Options After School",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "higher education",
-        "ipa": "/ËŒhaÉª.É™r edÊ’.ÊËˆkeÉª.ÊƒÉ™n/",
+        "ipa": "/ˌhaɪ.ər edʒ.ʊˈkeɪ.ʃən/",
         "pos": "n phr",
-        "meaning": "giĂ¡o dá»¥c Ä‘áº¡i há»c",
+        "meaning": "giáo dục đại học",
         "collocation": "pursue higher education",
         "example": "Many graduates pursue higher education."
       },
       {
         "word": "vocational school",
-        "ipa": "/vÉ™ÊËˆkeÉª.ÊƒÉ™n.É™l skuËl/",
+        "ipa": "/vəʊˈkeɪ.ʃən.əl skuːl/",
         "pos": "n phr",
-        "meaning": "trÆ°á»ng dáº¡y nghá»",
+        "meaning": "trường dạy nghề",
         "collocation": "practical skills",
         "example": "A vocational school provides practical skills."
       },
       {
         "word": "apprenticeship",
-        "ipa": "/É™Ëˆpren.tÉªs.ÊƒÉªp/",
+        "ipa": "/əˈpren.tɪs.ʃɪp/",
         "pos": "n",
-        "meaning": "há»c viá»‡c",
+        "meaning": "học việc",
         "collocation": "completed apprenticeship",
         "example": "He completed a two-year apprenticeship."
       },
       {
         "word": "degree",
-        "ipa": "/dÉªËˆÉ¡riË/",
+        "ipa": "/dɪˈɡriː/",
         "pos": "n",
-        "meaning": "báº±ng Ä‘áº¡i há»c",
+        "meaning": "bằng đại học",
         "collocation": "bachelor's degree",
         "example": "She earned a bachelor's degree in Business."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 8,
     "title": "Becoming Independent",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "self-reliance",
-        "ipa": "/ËŒself.rÉªËˆlaÉª.É™ns/",
+        "ipa": "/ˌself.rɪˈlaɪ.əns/",
         "pos": "n",
-        "meaning": "sá»± tá»± lá»±c",
+        "meaning": "sự tự lực",
         "collocation": "builds self-reliance",
         "example": "Living alone builds strong self-reliance."
       },
       {
         "word": "time management",
-        "ipa": "/ËˆtaÉªm ËŒmĂ¦n.ÉªdÊ’.mÉ™nt/",
+        "ipa": "/ˈtaɪm ˌmæn.ɪdʒ.mənt/",
         "pos": "n phr",
-        "meaning": "quáº£n lĂ½ thá»i gian",
+        "meaning": "quản lý thời gian",
         "collocation": "reduces stress",
         "example": "Good time management reduces exam stress."
       },
       {
         "word": "decision-making",
-        "ipa": "/dÉªËˆsÉªÊ’.É™nËŒmeÉª.kÉªÅ‹/",
+        "ipa": "/dɪˈsɪʒ.ənˌmeɪ.kɪŋ/",
         "pos": "n phr",
-        "meaning": "Ä‘Æ°a quyáº¿t Ä‘á»‹nh",
+        "meaning": "đưa quyết định",
         "collocation": "independent decision-making",
         "example": "Teens should develop independent decision-making."
       },
       {
         "word": "budget",
-        "ipa": "/ËˆbÊŒdÊ’.Éªt/",
+        "ipa": "/ˈbʌdʒ.ɪt/",
         "pos": "n",
-        "meaning": "ngĂ¢n sĂ¡ch",
+        "meaning": "ngân sách",
         "collocation": "managing budget",
         "example": "Managing a monthly budget is an essential skill."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 9,
     "title": "Social Issues",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "cyberbullying",
-        "ipa": "/ËˆsaÉª.bÉ™ËŒbÊl.i.ÉªÅ‹/",
+        "ipa": "/ˈsaɪ.bəˌbʊl.i.ɪŋ/",
         "pos": "n",
-        "meaning": "báº¯t náº¡t trĂªn máº¡ng",
+        "meaning": "bắt nạt trên mạng",
         "collocation": "against cyberbullying",
         "example": "Schools take strict measures against cyberbullying."
       },
       {
         "word": "peer pressure",
-        "ipa": "/ËˆpÉªÉ™ ËŒpreÊƒ.É™(r)/",
+        "ipa": "/ˈpɪə ˌpreʃ.ə(r)/",
         "pos": "n phr",
-        "meaning": "Ă¡p lá»±c Ä‘á»“ng lá»©a",
+        "meaning": "áp lực đồng lứa",
         "collocation": "yield to pressure",
         "example": "Teenagers often yield to peer pressure."
       },
       {
         "word": "poverty",
-        "ipa": "/ËˆpÉ’v.É™.ti/",
+        "ipa": "/ˈpɒv.ə.ti/",
         "pos": "n",
-        "meaning": "sá»± nghĂ¨o khĂ³",
+        "meaning": "sự nghèo khó",
         "collocation": "reducing poverty",
         "example": "Education is key to reducing poverty."
       },
       {
         "word": "awareness",
-        "ipa": "/É™ËˆweÉ™.nÉ™s/",
+        "ipa": "/əˈweə.nəs/",
         "pos": "n",
-        "meaning": "nháº­n thá»©c",
+        "meaning": "nhận thức",
         "collocation": "raising awareness",
         "example": "Raising awareness helps solve social issues."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 11",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 11",
     "unit": 10,
     "title": "The Ecosystem",
     "tenses_focus": [
-      "QuĂ¡ khá»© hoĂ n thĂ nh",
-      "Danh Ä‘á»™ng tá»« hoĂ n thĂ nh"
+      "Quá khứ hoàn thành",
+      "Danh động từ hoàn thành"
     ],
     "grammar_topics": [
-      "Äá»™ng tá»« ná»‘i",
-      "CĂ¢u cháº»",
-      "PhĂ¢n tá»« hoĂ n thĂ nh"
+      "Động từ nối",
+      "Câu chẻ",
+      "Phân từ hoàn thành"
     ],
     "vocabulary": [
       {
         "word": "biodiversity",
-        "ipa": "/ËŒbaÉª.É™Ê.daÉªËˆvÉœË.sÉ™.ti/",
+        "ipa": "/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/",
         "pos": "n",
-        "meaning": "Ä‘a dáº¡ng sinh há»c",
+        "meaning": "đa dạng sinh học",
         "collocation": "harbour biodiversity",
         "example": "Rainforests harbour immense biodiversity."
       },
       {
         "word": "conservation",
-        "ipa": "/ËŒkÉ’n.sÉ™ËˆveÉª.ÊƒÉ™n/",
+        "ipa": "/ˌkɒn.səˈveɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± báº£o tá»“n",
+        "meaning": "sự bảo tồn",
         "collocation": "wildlife conservation",
         "example": "Wildlife conservation requires global effort."
       },
       {
         "word": "wildlife reserve",
-        "ipa": "/ËˆwaÉªld.laÉªf rÉªËŒzÉœËv/",
+        "ipa": "/ˈwaɪld.laɪf rɪˌzɜːv/",
         "pos": "n phr",
-        "meaning": "khu báº£o tá»“n",
+        "meaning": "khu bảo tồn",
         "collocation": "live safely",
         "example": "Rare species live safely in a wildlife reserve."
       },
       {
         "word": "ecology",
-        "ipa": "/iËˆkÉ’l.É™.dÊ’i/",
+        "ipa": "/iˈkɒl.ə.dʒi/",
         "pos": "n",
-        "meaning": "sinh thĂ¡i há»c",
+        "meaning": "sinh thái học",
         "collocation": "harms ecology",
         "example": "Industrial pollution harms the local ecology."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 1,
     "title": "Life Stories We Admire",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "impressive",
-        "ipa": "/ÉªmËˆpres.Éªv/",
+        "ipa": "/ɪmˈpres.ɪv/",
         "pos": "adj",
-        "meaning": "gĂ¢y áº¥n tÆ°á»£ng",
+        "meaning": "gây ấn tượng",
         "collocation": "truly impressive",
         "example": "His achievements were truly impressive."
       },
       {
         "word": "achievement",
-        "ipa": "/É™ËˆtÊƒiËv.mÉ™nt/",
+        "ipa": "/əˈtʃiːv.mənt/",
         "pos": "n",
-        "meaning": "thĂ nh tá»±u",
+        "meaning": "thành tựu",
         "collocation": "great achievement",
         "example": "Winning the prize was a great achievement."
       },
       {
         "word": "dedicated",
-        "ipa": "/Ëˆded.Éª.keÉª.tÉªd/",
+        "ipa": "/ˈded.ɪ.keɪ.tɪd/",
         "pos": "adj",
-        "meaning": "táº­n tá»¥y",
+        "meaning": "tận tụy",
         "collocation": "dedicated teacher",
         "example": "She is a dedicated teacher."
       },
       {
         "word": "biography",
-        "ipa": "/baÉªËˆÉ’É¡.rÉ™.fi/",
+        "ipa": "/baɪˈɒɡ.rə.fi/",
         "pos": "n",
-        "meaning": "tiá»ƒu sá»­",
+        "meaning": "tiểu sử",
         "collocation": "read biography",
         "example": "I read a biography of Uncle Ho."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 2,
     "title": "A Multicultural World",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "multicultural",
-        "ipa": "/ËŒmÊŒl.tiËˆkÊŒl.tÊƒÉ™r.É™l/",
+        "ipa": "/ˌmʌl.tiˈkʌl.tʃər.əl/",
         "pos": "adj",
-        "meaning": "Ä‘a vÄƒn hĂ³a",
+        "meaning": "đa văn hóa",
         "collocation": "multicultural city",
         "example": "London is a vibrant multicultural city."
       },
       {
         "word": "diversity",
-        "ipa": "/daÉªËˆvÉœË.sÉ™.ti/",
+        "ipa": "/daɪˈvɜː.sə.ti/",
         "pos": "n",
-        "meaning": "sá»± Ä‘a dáº¡ng",
+        "meaning": "sự đa dạng",
         "collocation": "cultural diversity",
         "example": "Cultural diversity enriches our community."
       },
       {
         "word": "assimilate",
-        "ipa": "/É™ËˆsÉªm.Éª.leÉªt/",
+        "ipa": "/əˈsɪm.ɪ.leɪt/",
         "pos": "v",
-        "meaning": "hĂ²a nháº­p",
+        "meaning": "hòa nhập",
         "collocation": "assimilate society",
         "example": "Immigrants assimilate into the new society."
       },
       {
         "word": "identity",
-        "ipa": "/aÉªËˆden.tÉ™.ti/",
+        "ipa": "/aɪˈden.tə.ti/",
         "pos": "n",
-        "meaning": "báº£n sáº¯c",
+        "meaning": "bản sắc",
         "collocation": "cultural identity",
         "example": "Preserve your national cultural identity."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 3,
     "title": "Green Living",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "eco-friendly",
-        "ipa": "/ËŒiË.kÉ™ÊËˆfrend.li/",
+        "ipa": "/ˌiː.kəʊˈfrend.li/",
         "pos": "adj",
-        "meaning": "thĂ¢n thiá»‡n mĂ´i trÆ°á»ng",
+        "meaning": "thân thiện môi trường",
         "collocation": "eco-friendly packaging",
         "example": "Use eco-friendly packaging materials."
       },
       {
         "word": "sustainable",
-        "ipa": "/sÉ™ËˆsteÉª.nÉ™.bÉ™l/",
+        "ipa": "/səˈsteɪ.nə.bəl/",
         "pos": "adj",
-        "meaning": "bá»n vá»¯ng",
+        "meaning": "bền vững",
         "collocation": "sustainable solutions",
         "example": "We need sustainable energy solutions."
       },
       {
         "word": "landfill",
-        "ipa": "/ËˆlĂ¦nd.fÉªl/",
+        "ipa": "/ˈlænd.fɪl/",
         "pos": "n",
-        "meaning": "bĂ£i chĂ´n rĂ¡c",
+        "meaning": "bãi chôn rác",
         "collocation": "sent to landfills",
         "example": "Reduce plastic waste sent to landfills."
       },
       {
         "word": "organic",
-        "ipa": "/É”ËËˆÉ¡Ă¦n.Éªk/",
+        "ipa": "/ɔːˈɡæn.ɪk/",
         "pos": "adj",
-        "meaning": "há»¯u cÆ¡",
+        "meaning": "hữu cơ",
         "collocation": "organic farming",
         "example": "Organic farming protects the soil."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 4,
     "title": "Urbanisation",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "urbanisation",
-        "ipa": "/ËŒÉœË.bÉ™n.aÉªËˆzeÉª.ÊƒÉ™n/",
+        "ipa": "/ˌɜː.bən.aɪˈzeɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± Ä‘Ă´ thá»‹ hĂ³a",
+        "meaning": "sự đô thị hóa",
         "collocation": "rapid urbanisation",
         "example": "Rapid urbanisation transforms rural areas."
       },
       {
         "word": "slum",
-        "ipa": "/slÊŒm/",
+        "ipa": "/slʌm/",
         "pos": "n",
-        "meaning": "khu á»• chuá»™t",
+        "meaning": "khu ổ chuột",
         "collocation": "slum housing",
         "example": "Governments work to upgrade slum housing."
       },
       {
         "word": "migration",
-        "ipa": "/maÉªËˆÉ¡reÉª.ÊƒÉ™n/",
+        "ipa": "/maɪˈɡreɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± di cÆ°",
+        "meaning": "sự di cư",
         "collocation": "rural migration",
         "example": "Rural-to-urban migration is increasing."
       },
       {
         "word": "overcrowding",
-        "ipa": "/ËŒÉ™Ê.vÉ™ËˆkraÊ.dÉªÅ‹/",
+        "ipa": "/ˌəʊ.vəˈkraʊ.dɪŋ/",
         "pos": "n",
-        "meaning": "quĂ¡ táº£i dĂ¢n sá»‘",
+        "meaning": "quá tải dân số",
         "collocation": "causes congestion",
         "example": "Overcrowding causes traffic congestion."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 5,
     "title": "The World of Work",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "qualification",
-        "ipa": "/ËŒkwÉ’l.Éª.fÉªËˆkeÉª.ÊƒÉ™n/",
+        "ipa": "/ˌkwɒl.ɪ.fɪˈkeɪ.ʃən/",
         "pos": "n",
-        "meaning": "báº±ng cáº¥p",
+        "meaning": "bằng cấp",
         "collocation": "academic qualification",
         "example": "She has excellent academic qualifications."
       },
       {
         "word": "resume",
-        "ipa": "/Ëˆrez.juË.meÉª/",
+        "ipa": "/ˈrez.juː.meɪ/",
         "pos": "n",
-        "meaning": "sÆ¡ yáº¿u lĂ½ lá»‹ch",
+        "meaning": "sơ yếu lý lịch",
         "collocation": "send resume",
         "example": "Send your resume to the employer."
       },
       {
         "word": "entrepreneur",
-        "ipa": "/ËŒÉ’n.trÉ™.prÉ™ËˆnÉœË(r)/",
+        "ipa": "/ˌɒn.trə.prəˈnɜː(r)/",
         "pos": "n",
-        "meaning": "nhĂ  khá»Ÿi nghiá»‡p",
+        "meaning": "nhà khởi nghiệp",
         "collocation": "young entrepreneur",
         "example": "The young entrepreneur founded a tech startup."
       },
       {
         "word": "recruiter",
-        "ipa": "/rÉªËˆkruË.tÉ™(r)/",
+        "ipa": "/rɪˈkruː.tə(r)/",
         "pos": "n",
-        "meaning": "nhĂ  tuyá»ƒn dá»¥ng",
+        "meaning": "nhà tuyển dụng",
         "collocation": "the recruiter",
         "example": "The recruiter interviewed the top candidates."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 6,
     "title": "Artificial Intelligence",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "automation",
-        "ipa": "/ËŒÉ”Ë.tÉ™ËˆmeÉª.ÊƒÉ™n/",
+        "ipa": "/ˌɔː.təˈmeɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± tá»± Ä‘á»™ng hĂ³a",
+        "meaning": "sự tự động hóa",
         "collocation": "factory automation",
         "example": "Factory automation speeds up production."
       },
       {
         "word": "algorithm",
-        "ipa": "/ËˆĂ¦l.É¡É™.rÉª.Ă°É™m/",
+        "ipa": "/ˈæl.ɡə.rɪ.ðəm/",
         "pos": "n",
-        "meaning": "thuáº­t toĂ¡n",
+        "meaning": "thuật toán",
         "collocation": "search algorithms",
         "example": "Search engines use complex algorithms."
       },
       {
         "word": "machine learning",
-        "ipa": "/mÉ™ËˆÊƒiËn ËŒlÉœË.nÉªÅ‹/",
+        "ipa": "/məˈʃiːn ˌlɜː.nɪŋ/",
         "pos": "n phr",
-        "meaning": "há»c mĂ¡y",
+        "meaning": "học máy",
         "collocation": "machine learning",
         "example": "Machine learning improves system accuracy."
       },
       {
         "word": "virtual assistant",
-        "ipa": "/ËŒvÉœË.tÊƒu.É™l É™ËˆsÉªs.tÉ™nt/",
+        "ipa": "/ˌvɜː.tʃu.əl əˈsɪs.tənt/",
         "pos": "n phr",
-        "meaning": "trá»£ lĂ½ áº£o",
+        "meaning": "trợ lý ảo",
         "collocation": "virtual assistant",
         "example": "A virtual assistant answers user queries."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 7,
     "title": "The World of Mass Media",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "mass media",
-        "ipa": "/ËŒmĂ¦s ËˆmiË.di.É™/",
+        "ipa": "/ˌmæs ˈmiː.di.ə/",
         "pos": "n phr",
-        "meaning": "truyá»n thĂ´ng Ä‘áº¡i chĂºng",
+        "meaning": "truyền thông đại chúng",
         "collocation": "mass media role",
         "example": "Mass media plays a crucial role in society."
       },
       {
         "word": "broadcast",
-        "ipa": "/ËˆbrÉ”Ëd.kÉ‘Ëst/",
+        "ipa": "/ˈbrɔːd.kɑːst/",
         "pos": "v",
-        "meaning": "phĂ¡t sĂ³ng",
+        "meaning": "phát sóng",
         "collocation": "broadcast live",
         "example": "The match was broadcast live globally."
       },
       {
         "word": "censorship",
-        "ipa": "/Ëˆsen.sÉ™.ÊƒÉªp/",
+        "ipa": "/ˈsen.sə.ʃɪp/",
         "pos": "n",
-        "meaning": "sá»± kiá»ƒm duyá»‡t",
+        "meaning": "sự kiểm duyệt",
         "collocation": "online censorship",
         "example": "Online censorship regulates harmful content."
       },
       {
         "word": "journalist",
-        "ipa": "/ËˆdÊ’ÉœË.nÉ™.lÉªst/",
+        "ipa": "/ˈdʒɜː.nə.lɪst/",
         "pos": "n",
-        "meaning": "nhĂ  bĂ¡o",
+        "meaning": "nhà báo",
         "collocation": "investigative journalist",
         "example": "An investigative journalist exposed the story."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 8,
     "title": "Wildlife Conservation",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "conservation",
-        "ipa": "/ËŒkÉ’n.sÉ™ËˆveÉª.ÊƒÉ™n/",
+        "ipa": "/ˌkɒn.səˈveɪ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± báº£o tá»“n",
+        "meaning": "sự bảo tồn",
         "collocation": "wildlife conservation",
         "example": "Wildlife conservation protects rare species."
       },
       {
         "word": "poaching",
-        "ipa": "/ËˆpÉ™Ê.tÊƒÉªÅ‹/",
+        "ipa": "/ˈpəʊ.tʃɪŋ/",
         "pos": "n",
-        "meaning": "sÄƒn báº¯t trĂ¡i phĂ©p",
+        "meaning": "săn bắt trái phép",
         "collocation": "illegal poaching",
         "example": "Illegal poaching threatens elephants."
       },
       {
         "word": "sanctuary",
-        "ipa": "/ËˆsĂ¦Å‹k.tÊƒu.É™r.i/",
+        "ipa": "/ˈsæŋk.tʃu.ər.i/",
         "pos": "n",
-        "meaning": "khu báº£o tá»“n",
+        "meaning": "khu bảo tồn",
         "collocation": "bird sanctuary",
         "example": "Birds live safely in the sanctuary."
       },
       {
         "word": "biodiversity",
-        "ipa": "/ËŒbaÉª.É™Ê.daÉªËˆvÉœË.sÉ™.ti/",
+        "ipa": "/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/",
         "pos": "n",
-        "meaning": "Ä‘a dáº¡ng sinh há»c",
+        "meaning": "đa dạng sinh học",
         "collocation": "maintain biodiversity",
         "example": "Rainforests maintain high biodiversity."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 9,
     "title": "Career Paths",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "career path",
-        "ipa": "/kÉ™ËˆrÉªÉ™ pÉ‘ËÎ¸/",
+        "ipa": "/kəˈrɪə pɑːθ/",
         "pos": "n phr",
-        "meaning": "con Ä‘Æ°á»ng sá»± nghiá»‡p",
+        "meaning": "con đường sự nghiệp",
         "collocation": "choose career path",
         "example": "Choose a career path that suits your skills."
       },
       {
         "word": "occupation",
-        "ipa": "/ËŒÉ’k.jÉ™ËˆpeÉª.ÊƒÉ™n/",
+        "ipa": "/ˌɒk.jəˈpeɪ.ʃən/",
         "pos": "n",
-        "meaning": "nghá» nghiá»‡p",
+        "meaning": "nghề nghiệp",
         "collocation": "state occupation",
         "example": "Please state your name and occupation."
       },
       {
         "word": "promotion",
-        "ipa": "/prÉ™ËˆmÉ™Ê.ÊƒÉ™n/",
+        "ipa": "/prəˈməʊ.ʃən/",
         "pos": "n",
-        "meaning": "sá»± thÄƒng tiáº¿n",
+        "meaning": "sự thăng tiến",
         "collocation": "led to promotion",
         "example": "Hard work led to her promotion."
       },
       {
         "word": "intern",
-        "ipa": "/ËˆÉªn.tÉœËn/",
+        "ipa": "/ˈɪn.tɜːn/",
         "pos": "n",
-        "meaning": "thá»±c táº­p sinh",
+        "meaning": "thực tập sinh",
         "collocation": "marketing intern",
         "example": "She worked as a marketing intern."
       }
     ]
   },
   {
-    "level": "Cáº¥p 3 (THPT)",
-    "grade": "Lá»›p 12",
+    "level": "Cấp 3 (THPT)",
+    "grade": "Lớp 12",
     "unit": 10,
     "title": "Lifelong Learning",
     "tenses_focus": [
-      "Hiá»‡n táº¡i hoĂ n thĂ nh má»Ÿ rá»™ng",
-      "TÆ°Æ¡ng lai má»Ÿ rá»™ng"
+      "Hiện tại hoàn thành mở rộng",
+      "Tương lai mở rộng"
     ],
     "grammar_topics": [
-      "Máº¡o tá»«",
-      "So sĂ¡nh kĂ©p",
-      "Bá»‹ Ä‘á»™ng sai khiáº¿n",
-      "Äáº£o ngá»¯"
+      "Mạo từ",
+      "So sánh kép",
+      "Bị động sai khiến",
+      "Đảo ngữ"
     ],
     "vocabulary": [
       {
         "word": "lifelong learning",
-        "ipa": "/ËŒlaÉªf.lÉ’Å‹ ËˆlÉœË.nÉªÅ‹/",
+        "ipa": "/ˌlaɪf.lɒŋ ˈlɜː.nɪŋ/",
         "pos": "n phr",
-        "meaning": "há»c táº­p suá»‘t Ä‘á»i",
+        "meaning": "học tập suốt đời",
         "collocation": "lifelong learning",
         "example": "Lifelong learning keeps your mind active."
       },
       {
         "word": "self-directed",
-        "ipa": "/ËŒself.daÉªËˆrek.tÉªd/",
+        "ipa": "/ˌself.daɪˈrek.tɪd/",
         "pos": "adj",
-        "meaning": "tá»± Ä‘á»‹nh hÆ°á»›ng",
+        "meaning": "tự định hướng",
         "collocation": "self-directed learning",
         "example": "Self-directed learning builds independence."
       },
       {
         "word": "adapt",
-        "ipa": "/É™ËˆdĂ¦pt/",
+        "ipa": "/əˈdæpt/",
         "pos": "v",
-        "meaning": "thĂ­ch nghi",
+        "meaning": "thích nghi",
         "collocation": "adapt to change",
         "example": "Continuous study helps workers adapt to change."
       },
       {
         "word": "knowledge base",
-        "ipa": "/ËˆnÉ’l.ÉªdÊ’ beÉªs/",
+        "ipa": "/ˈnɒl.ɪdʒ beɪs/",
         "pos": "n phr",
-        "meaning": "ná»n táº£ng kiáº¿n thá»©c",
+        "meaning": "nền tảng kiến thức",
         "collocation": "expand knowledge base",
         "example": "Expand your professional knowledge base."
       }
@@ -8177,5 +8178,5 @@ if (typeof window !== 'undefined') {
   window.CURRICULUM_DATA = CURRICULUM_DATA;
 }
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { CURRICULUM_DATA };
+  module.exports = { CURRICULUM_DATA, default: CURRICULUM_DATA };
 }
