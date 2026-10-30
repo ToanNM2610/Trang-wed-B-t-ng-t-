@@ -283,3 +283,39 @@ html, body {
   }
 }
 
+/* =========================================================================
+ * 5 VERB FORMS FULL TEXT DISPLAY (Fix 'writt...', 'writi...' truncation)
+ * ========================================================================= */
+.verb-form-cell div[id^="cell-"] {
+  white-space: normal !important;
+  text-overflow: clip !important;
+  overflow: visible !important;
+  word-break: break-word !important;
+  line-height: 1.25 !important;
+}
+
+/* =========================================================================
+ * CURRICULUM GRADE 1 - 12 INTERACTIVE STYLING
+ * ========================================================================= */
+.curriculum-card {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.curriculum-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.12);
+}
+
+.tab-btn.active-tab {
+  background-color: #ffffff !important;
+  color: #18181b !important;
+  font-weight: 700 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+html.dark .tab-btn.active-tab {
+  background-color: #27272a !important;
+  color: #ffffff !important;
+}
+
+

@@ -405,27 +405,24 @@
         </div>
       </div>
 
-      <!-- Center Quick Legend (Hidden on Mobile) -->
-      <div class="hidden md:flex items-center gap-5 text-xs font-medium text-zinc-500 dark:text-slate-400">
-        <span class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          Hiện tại (Present)
-        </span>
-        <span class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-          Quá khứ (Past)
-        </span>
-        <span class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
-          Tương lai (Future)
-        </span>
-      </div>
+      <!-- Navigation Tabs (Matrix vs Curriculum) -->
+      <nav id="topbar-tabs" class="flex items-center p-1 rounded-xl bg-zinc-200/70 dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] text-xs font-semibold">
+        <button id="tab-btn-matrix" type="button" class="tab-btn active-tab px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-bolt text-amber-500 text-xs"></i>
+          <span>Ma trận 12 Thì &amp; 388 Động từ</span>
+        </button>
+        <button id="tab-btn-curriculum" type="button" class="tab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-book-bookmark text-indigo-500 text-xs"></i>
+          <span>Lộ trình SGK Lớp 1 - 12</span>
+          <span class="font-mono text-[10px] px-1.5 py-0.5 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 hidden md:inline-block">170 Units</span>
+        </button>
+      </nav>
 
       <!-- Right Actions: Formula Guide & Theme Switcher -->
       <div class="flex items-center gap-2">
         <button id="btn-open-cheatsheet" type="button" title="Mở sơ đồ công thức 3×4"
           aria-label="Mở sơ đồ công thức 3×4"
-          class="px-3 py-1.5 rounded-lg text-xs font-semibold text-zinc-700 dark:text-slate-300 hover:bg-zinc-200/60 dark:hover:bg-slate-800/80 border border-[#E5E2DC] dark:border-[#23293A] transition-all flex items-center gap-1.5">
+          class="hidden lg:flex px-3 py-1.5 rounded-lg text-xs font-semibold text-zinc-700 dark:text-slate-300 hover:bg-zinc-200/60 dark:hover:bg-slate-800/80 border border-[#E5E2DC] dark:border-[#23293A] transition-all items-center gap-1.5">
           <i class="fa-solid fa-table-columns text-zinc-400 dark:text-slate-400" aria-hidden="true"></i>
           <span>Sơ đồ 3×4</span>
         </button>
@@ -440,24 +437,27 @@
   </header>
 
   <!-- MAIN WORKSPACE -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-6 sm:space-y-8">
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-3.5 sm:py-5 space-y-4 sm:space-y-5">
+
+    <!-- TAB 1: 12-TENSE MATRIX & 388 VERBS VIEW -->
+    <div id="view-matrix" class="space-y-4 sm:space-y-5">
 
     <!-- 1. SPOTLIGHT SEARCH HEADER & QUICK CHIPS -->
-    <section class="max-w-3xl mx-auto text-center space-y-4">
+    <section class="max-w-3xl mx-auto text-center space-y-2.5">
       <div
-        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] text-[11px] font-medium text-zinc-600 dark:text-slate-400 shadow-2xs">
+        class="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-white dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] text-[11px] font-medium text-zinc-600 dark:text-slate-400 shadow-2xs">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
         <span>3 Mốc Thời Gian × 4 Trạng Thái = 12 Thì Tiếng Anh (Chủ động &amp; Bị động)</span>
       </div>
 
       <h1
-        class="font-serif text-3xl sm:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-tight">
+        class="font-serif text-2xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white leading-tight">
         Từ điển Chia Động Từ &amp; <span class="italic font-normal text-indigo-600 dark:text-indigo-400">Ma trận 12
           Thì</span>
       </h1>
 
       <!-- Spotlight Search Box -->
-      <div class="relative max-w-2xl mx-auto pt-2 text-left">
+      <div class="relative max-w-2xl mx-auto pt-1 text-left">
         <div
           class="relative flex items-center bg-white dark:bg-[#121620] rounded-2xl border border-[#D6D3CD] dark:border-[#2A3146] shadow-lg shadow-zinc-900/[0.03] dark:shadow-black/40 focus-within:ring-2 focus-within:ring-indigo-500/30 focus-within:border-indigo-500 dark:focus-within:border-indigo-400 transition-all">
           <div class="pl-4 pr-3 text-zinc-400 dark:text-slate-500 pointer-events-none">
@@ -467,7 +467,7 @@
             title="Tìm kiếm động từ tiếng Anh (V1, V2, V3) hoặc nghĩa tiếng Việt"
             aria-label="Tìm kiếm động từ tiếng Anh (V1, V2, V3) hoặc nghĩa tiếng Việt"
             placeholder="Tìm V1, V2, V3 hoặc nghĩa tiếng Việt (VD: write, wrote, viết, go, xây dựng)..."
-            class="w-full py-3.5 sm:py-4 pr-28 bg-transparent text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-slate-500 text-sm sm:text-base font-medium focus:outline-none" />
+            class="w-full py-2.5 sm:py-3 pr-28 bg-transparent text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-slate-500 text-sm sm:text-base font-medium focus:outline-none" />
           <div class="absolute right-2.5 flex items-center gap-1.5">
             <button id="btn-clear" type="button" title="Xóa từ khóa tìm kiếm" aria-label="Xóa từ khóa tìm kiếm"
               class="hidden w-7 h-7 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-slate-800 flex items-center justify-center transition-colors">
@@ -476,7 +476,7 @@
             </button>
             <span id="shortcut-hint" class="kbd-badge hidden sm:inline-block" title="Nhấn phím / để tìm nhanh">/</span>
             <button id="btn-search" type="button" title="Tra cứu động từ" aria-label="Tra cứu động từ"
-              class="bg-zinc-900 hover:bg-zinc-800 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition-all shadow-xs">
+              class="bg-zinc-900 hover:bg-zinc-800 dark:bg-indigo-600 dark:hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-1.5 rounded-xl transition-all shadow-xs">
               Tra từ
             </button>
           </div>
@@ -490,20 +490,20 @@
       </div>
 
       <!-- Curated Quick Verb Chips (Touch Swipeable) -->
-      <div class="flex items-center justify-start sm:justify-center gap-2 pt-1 w-full overflow-hidden">
+      <div class="flex items-center justify-start sm:justify-center gap-2 pt-0.5 w-full overflow-hidden">
         <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">Từ phổ biến:</span>
-        <div id="quick-chips" class="quick-chips-scroll flex items-center gap-1.5 overflow-x-auto w-full no-scrollbar py-1">
+        <div id="quick-chips" class="quick-chips-scroll flex items-center gap-1.5 overflow-x-auto w-full no-scrollbar py-0.5">
           <!-- Populated by JS -->
         </div>
       </div>
     </section>
 
     <!-- 2. EDITORIAL DICTIONARY HERO CARD (5 CORE VERB FORMS BENTO) -->
-    <section class="bento-card rounded-3xl p-5 sm:p-7 shadow-xs space-y-5">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+    <section class="bento-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-xs space-y-3.5">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
 
         <!-- Left: Dictionary Entry Headword, IPA, Transitivity, Meaning, Audio -->
-        <div class="space-y-2.5 flex-1">
+        <div class="space-y-2 flex-1">
           <div class="flex flex-wrap items-center gap-2">
             <!-- Regular / Irregular Badge -->
             <span id="verb-type-pill"
@@ -602,7 +602,7 @@
               </svg>
             </div>
             <div id="cell-v1"
-              class="font-mono text-base sm:text-lg font-bold text-zinc-900 dark:text-white mt-1.5 truncate">write</div>
+              class="font-mono text-sm sm:text-base md:text-lg font-bold text-zinc-900 dark:text-white mt-1 break-words">write</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Infinitive</span>
           </button>
 
@@ -620,7 +620,7 @@
               </svg>
             </div>
             <div id="cell-vs"
-              class="font-mono text-base sm:text-lg font-bold text-emerald-700 dark:text-emerald-300 mt-1.5 truncate">
+              class="font-mono text-sm sm:text-base md:text-lg font-bold text-emerald-700 dark:text-emerald-300 mt-1 break-words">
               writes</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">He / She / It</span>
           </button>
@@ -640,7 +640,7 @@
               </svg>
             </div>
             <div id="cell-v2"
-              class="font-mono text-base sm:text-lg font-bold text-amber-700 dark:text-amber-300 mt-1.5 truncate">wrote
+              class="font-mono text-sm sm:text-base md:text-lg font-bold text-amber-700 dark:text-amber-300 mt-1 break-words">wrote
             </div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Past Simple</span>
           </button>
@@ -660,7 +660,7 @@
               </svg>
             </div>
             <div id="cell-v3"
-              class="font-mono text-base sm:text-lg font-bold text-purple-700 dark:text-purple-300 mt-1.5 truncate">
+              class="font-mono text-sm sm:text-base md:text-lg font-bold text-purple-700 dark:text-purple-300 mt-1 break-words">
               written</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Perfect &amp; Passive</span>
           </button>
@@ -680,7 +680,7 @@
               </svg>
             </div>
             <div id="cell-ving"
-              class="font-mono text-base sm:text-lg font-bold text-indigo-700 dark:text-indigo-300 mt-1.5 truncate">
+              class="font-mono text-sm sm:text-base md:text-lg font-bold text-indigo-700 dark:text-indigo-300 mt-1 break-words">
               writing</div>
             <span class="text-[10px] text-zinc-400 dark:text-slate-500">Continuous (Be +)</span>
           </button>
@@ -947,6 +947,119 @@
       </div>
     </section>
 
+    </div> <!-- /#view-matrix -->
+
+    <!-- TAB 2: CURRICULUM GRADE 1 - 12 ROADMAP VIEW -->
+    <section id="view-curriculum" class="hidden space-y-6 animate-card-in">
+      <!-- Curriculum Hero Banner -->
+      <div class="bento-card rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-xs space-y-4">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="space-y-1.5 flex-1">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                📚 SGK Global Success
+              </span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                Lớp 1 — Lớp 12
+              </span>
+              <span id="curriculum-stats-pill" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono text-zinc-500 dark:text-slate-400 bg-zinc-100 dark:bg-slate-800">
+                170 Units • 670 Từ vựng
+              </span>
+            </div>
+            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-white tracking-tight">
+              Lộ trình Từ vựng &amp; Ngữ pháp Chuẩn Phổ thông
+            </h2>
+            <p class="text-xs sm:text-sm text-zinc-500 dark:text-slate-400">
+              Tra cứu theo từng Lớp và từng Unit: hệ thống từ vựng kèm phát âm IPA, từ loại, cụm collocation, ngữ cảnh câu ví dụ và phát âm bản ngữ.
+            </p>
+          </div>
+
+          <!-- Quick Search in Curriculum -->
+          <div class="w-full lg:w-80 shrink-0">
+            <div class="relative flex items-center bg-[#F6F5F2] dark:bg-[#0B0D13] rounded-xl border border-[#E5E2DC] dark:border-[#23293A] focus-within:ring-2 focus-within:ring-indigo-500/30 transition-all">
+              <i class="fa-solid fa-magnifying-glass text-xs text-zinc-400 dark:text-slate-500 pl-3"></i>
+              <input id="curriculum-search-input" type="text" autocomplete="off"
+                placeholder="Tìm từ vựng, Unit, IPA, nghĩa..."
+                class="w-full py-2.5 px-2.5 bg-transparent text-xs sm:text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-slate-500 focus:outline-none" />
+              <button id="btn-clear-curriculum-search" type="button" class="hidden pr-3 text-zinc-400 hover:text-zinc-600 dark:hover:text-white text-xs">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level Selector & Grade Selector Strip -->
+        <div class="pt-3 border-t border-[#E5E2DC] dark:border-[#23293A] space-y-3">
+          <!-- Level Category Pills -->
+          <div class="flex items-center gap-2 overflow-x-auto touch-scroll-row no-scrollbar pb-0.5">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">Cấp học:</span>
+            <div id="curriculum-level-filters" class="flex items-center gap-1.5 shrink-0">
+              <button data-level="all" class="level-filter-btn px-3 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all touch-target-btn">Tất cả (1-12)</button>
+              <button data-level="Cấp 1 (Tiểu học)" class="level-filter-btn px-3 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white bg-[#F6F5F2] dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] transition-all touch-target-btn">Tiểu học (1-5)</button>
+              <button data-level="Cấp 2 (THCS)" class="level-filter-btn px-3 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white bg-[#F6F5F2] dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] transition-all touch-target-btn">THCS (6-9)</button>
+              <button data-level="Cấp 3 (THPT)" class="level-filter-btn px-3 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white bg-[#F6F5F2] dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] transition-all touch-target-btn">THPT (10-12)</button>
+            </div>
+          </div>
+
+          <!-- Grade 1 to 12 Buttons (Horizontal Touch Swipeable) -->
+          <div class="flex items-center gap-2 overflow-x-auto touch-scroll-row no-scrollbar py-0.5">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">Chọn Lớp:</span>
+            <div id="curriculum-grade-buttons" class="flex items-center gap-1.5 shrink-0">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit Selector Strip & Meta Box -->
+      <div class="bento-card rounded-2xl p-4 sm:p-5 shadow-xs space-y-3.5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span id="current-unit-badge" class="font-mono text-xs font-bold px-3 py-1 rounded-xl bg-indigo-600 text-white shadow-xs">
+              Lớp 1 • Unit 1
+            </span>
+            <h3 id="current-unit-title" class="font-serif text-lg sm:text-xl font-bold text-zinc-900 dark:text-white">
+              In the school playground
+            </h3>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <label for="curriculum-unit-select" class="text-xs font-mono text-zinc-400 shrink-0">Chọn Unit:</label>
+            <select id="curriculum-unit-select" class="px-3 py-1.5 rounded-xl text-xs font-mono font-semibold bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] text-zinc-800 dark:text-slate-200 focus:outline-none focus:border-indigo-500 cursor-pointer">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+        </div>
+
+        <!-- Unit Grammar & Tenses Meta Tags -->
+        <div class="flex flex-wrap items-center gap-2 pt-2.5 border-t border-[#E5E2DC] dark:border-[#23293A] text-xs">
+          <span class="font-mono text-[11px] uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">Trọng tâm thì:</span>
+          <div id="unit-tenses-tags" class="flex flex-wrap gap-1.5 items-center">
+            <!-- Injected -->
+          </div>
+          <span class="text-zinc-300 dark:text-slate-700 hidden sm:inline">•</span>
+          <span class="font-mono text-[11px] uppercase tracking-wider text-zinc-400 dark:text-slate-500 shrink-0">Chủ điểm ngữ pháp:</span>
+          <div id="unit-grammar-tags" class="flex flex-wrap gap-1.5 items-center">
+            <!-- Injected -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Vocabulary Cards Grid -->
+      <div id="curriculum-vocab-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Empty State Container -->
+      <div id="curriculum-empty-state" class="hidden text-center py-12 space-y-2">
+        <div class="w-12 h-12 rounded-2xl bg-zinc-100 dark:bg-slate-800 flex items-center justify-center mx-auto text-zinc-400 text-lg">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="font-semibold text-zinc-800 dark:text-white">Không tìm thấy từ vựng khớp từ khóa</div>
+        <div class="text-xs text-zinc-500 dark:text-slate-400">Hãy thử nhập từ khóa khác hoặc chuyển sang Unit khác.</div>
+      </div>
+    </section>
+
   </main>
 
   <!-- TENSE DETAIL & VISUAL TIMELINE MODAL (UPGRADED 4-SECTION ARCHITECTURE) -->
@@ -1143,10 +1256,16 @@
   <!-- KHO DỮ LIỆU ĐỘNG TỪ BẤT QUY TẮC -->
   <script src="verbsData.js"></script>
 
+  <!-- KHO DỮ LIỆU CHƯƠNG TRÌNH SGK TIẾNG ANH LỚP 1 - LỚP 12 -->
+  <script src="curriculumData.js"></script>
+
   <!-- INTRO SPLASH SCREEN LOGIC -->
   <script src="intro.js"></script>
 
-  <!-- APPLICATION SCRIPT -->
+  <!-- APPLICATION COMPANION SCRIPT -->
+  <script src="app.js"></script>
+
+  <!-- CORE LEXIMATRIX APPLICATION ENGINE -->
   <script>
     /**
      * Chuẩn hoá linh hoạt 2 chuẩn dữ liệu:
@@ -3247,6 +3366,343 @@
       const isDark = document.documentElement.classList.toggle('dark');
       themeIcon.className = isDark ? 'fa-solid fa-sun text-xs' : 'fa-solid fa-moon text-xs';
     });
+
+    // =========================================================================
+    // TOPBAR NAVIGATION TABS: MATRIX VS CURRICULUM
+    // =========================================================================
+    const tabBtnMatrix = document.getElementById('tab-btn-matrix');
+    const tabBtnCurriculum = document.getElementById('tab-btn-curriculum');
+    const viewMatrix = document.getElementById('view-matrix');
+    const viewCurriculum = document.getElementById('view-curriculum');
+
+    function switchView(target) {
+      if (target === 'matrix') {
+        if (viewMatrix) viewMatrix.classList.remove('hidden');
+        if (viewCurriculum) viewCurriculum.classList.add('hidden');
+        if (tabBtnMatrix) tabBtnMatrix.className = 'tab-btn active-tab px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer';
+        if (tabBtnCurriculum) tabBtnCurriculum.className = 'tab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5 cursor-pointer';
+      } else if (target === 'curriculum') {
+        if (viewMatrix) viewMatrix.classList.add('hidden');
+        if (viewCurriculum) viewCurriculum.classList.remove('hidden');
+        if (tabBtnCurriculum) tabBtnCurriculum.className = 'tab-btn active-tab px-3 py-1.5 rounded-lg bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white font-bold shadow-2xs transition-all flex items-center gap-1.5 cursor-pointer';
+        if (tabBtnMatrix) tabBtnMatrix.className = 'tab-btn px-3 py-1.5 rounded-lg text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white transition-all flex items-center gap-1.5 cursor-pointer';
+        initCurriculumModule();
+      }
+    }
+    window.switchView = switchView;
+
+    if (tabBtnMatrix) tabBtnMatrix.addEventListener('click', () => switchView('matrix'));
+    if (tabBtnCurriculum) tabBtnCurriculum.addEventListener('click', () => switchView('curriculum'));
+
+    // =========================================================================
+    // PHÂN HỆ LỘ TRÌNH SGK GLOBAL SUCCESS LỚP 1 - LỚP 12
+    // =========================================================================
+    const curriculumData = (typeof CURRICULUM_DATA !== 'undefined' && Array.isArray(CURRICULUM_DATA))
+      ? CURRICULUM_DATA
+      : (typeof window !== 'undefined' && Array.isArray(window.CURRICULUM_DATA) ? window.CURRICULUM_DATA : []);
+
+    const curriculumState = {
+      level: 'all',
+      grade: 'Lớp 1',
+      unitIndex: 0,
+      searchQuery: '',
+      initialized: false
+    };
+
+    const levelGradeMap = {
+      'Cấp 1 (Tiểu học)': ['Lớp 1', 'Lớp 2', 'Lớp 3', 'Lớp 4', 'Lớp 5'],
+      'Cấp 2 (THCS)': ['Lớp 6', 'Lớp 7', 'Lớp 8', 'Lớp 9'],
+      'Cấp 3 (THPT)': ['Lớp 10', 'Lớp 11', 'Lớp 12']
+    };
+
+    const allGrades = ['Lớp 1', 'Lớp 2', 'Lớp 3', 'Lớp 4', 'Lớp 5', 'Lớp 6', 'Lớp 7', 'Lớp 8', 'Lớp 9', 'Lớp 10', 'Lớp 11', 'Lớp 12'];
+
+    function initCurriculumModule() {
+      if (curriculumState.initialized) return;
+      curriculumState.initialized = true;
+
+      const gradeContainer = document.getElementById('curriculum-grade-buttons');
+      const unitSelect = document.getElementById('curriculum-unit-select');
+      const searchInput = document.getElementById('curriculum-search-input');
+      const btnClearSearch = document.getElementById('btn-clear-curriculum-search');
+      const levelButtons = document.querySelectorAll('.level-filter-btn');
+
+      // Bind Level Filter buttons
+      levelButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          levelButtons.forEach(b => {
+            b.className = 'level-filter-btn px-3 py-1 rounded-lg text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white bg-[#F6F5F2] dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] transition-all touch-target-btn';
+          });
+          btn.className = 'level-filter-btn px-3 py-1 rounded-lg text-xs font-bold bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-2xs transition-all touch-target-btn';
+          curriculumState.level = btn.dataset.level;
+          
+          if (curriculumState.level !== 'all') {
+            const allowedGrades = levelGradeMap[curriculumState.level] || [];
+            if (!allowedGrades.includes(curriculumState.grade)) {
+              curriculumState.grade = allowedGrades[0] || 'Lớp 1';
+              curriculumState.unitIndex = 0;
+            }
+          }
+          renderGradeButtons();
+          populateUnits();
+          renderVocabList();
+        });
+      });
+
+      function renderGradeButtons() {
+        if (!gradeContainer) return;
+        gradeContainer.innerHTML = '';
+        const visibleGrades = curriculumState.level === 'all'
+          ? allGrades
+          : (levelGradeMap[curriculumState.level] || allGrades);
+
+        visibleGrades.forEach(gradeName => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = gradeName;
+          const isActive = gradeName === curriculumState.grade;
+          btn.className = isActive
+            ? 'px-3.5 py-1.5 min-h-[38px] rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-xs transition-all shrink-0 touch-target-btn'
+            : 'px-3.5 py-1.5 min-h-[38px] rounded-xl text-xs font-semibold text-zinc-600 dark:text-slate-400 hover:text-zinc-900 dark:hover:text-white bg-[#F6F5F2] dark:bg-[#121620] border border-[#E5E2DC] dark:border-[#23293A] transition-all shrink-0 touch-target-btn';
+          
+          btn.addEventListener('click', () => {
+            curriculumState.grade = gradeName;
+            curriculumState.unitIndex = 0;
+            curriculumState.searchQuery = '';
+            if (searchInput) searchInput.value = '';
+            if (btnClearSearch) btnClearSearch.classList.add('hidden');
+            renderGradeButtons();
+            populateUnits();
+            renderVocabList();
+          });
+          gradeContainer.appendChild(btn);
+        });
+      }
+
+      function populateUnits() {
+        if (!unitSelect) return;
+        const unitsOfGrade = curriculumData.filter(u => u.grade === curriculumState.grade);
+        unitSelect.innerHTML = '';
+
+        if (unitsOfGrade.length === 0) {
+          const opt = document.createElement('option');
+          opt.textContent = 'Chưa có dữ liệu Unit';
+          unitSelect.appendChild(opt);
+          return;
+        }
+
+        unitsOfGrade.forEach((u, idx) => {
+          const opt = document.createElement('option');
+          opt.value = idx;
+          opt.textContent = `Unit ${u.unit}: ${u.title}`;
+          unitSelect.appendChild(opt);
+        });
+
+        unitSelect.value = curriculumState.unitIndex;
+        updateUnitMeta(unitsOfGrade[curriculumState.unitIndex]);
+      }
+
+      function updateUnitMeta(unit) {
+        if (!unit) return;
+        const badge = document.getElementById('current-unit-badge');
+        const title = document.getElementById('current-unit-title');
+        const tensesContainer = document.getElementById('unit-tenses-tags');
+        const grammarContainer = document.getElementById('unit-grammar-tags');
+
+        if (badge) badge.textContent = `${unit.grade} • Unit ${unit.unit}`;
+        if (title) title.textContent = unit.title;
+
+        if (tensesContainer) {
+          tensesContainer.innerHTML = '';
+          (unit.tenses_focus || []).forEach(t => {
+            const span = document.createElement('span');
+            span.className = 'font-mono text-[11px] font-semibold px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20';
+            span.textContent = t;
+            tensesContainer.appendChild(span);
+          });
+        }
+
+        if (grammarContainer) {
+          grammarContainer.innerHTML = '';
+          (unit.grammar_topics || []).forEach(g => {
+            const span = document.createElement('span');
+            span.className = 'font-mono text-[11px] font-semibold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20';
+            span.textContent = g;
+            grammarContainer.appendChild(span);
+          });
+        }
+      }
+
+      if (unitSelect) {
+        unitSelect.addEventListener('change', () => {
+          curriculumState.unitIndex = parseInt(unitSelect.value, 10) || 0;
+          const unitsOfGrade = curriculumData.filter(u => u.grade === curriculumState.grade);
+          updateUnitMeta(unitsOfGrade[curriculumState.unitIndex]);
+          renderVocabList();
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          curriculumState.searchQuery = e.target.value.trim().toLowerCase();
+          if (btnClearSearch) {
+            btnClearSearch.classList.toggle('hidden', !curriculumState.searchQuery);
+          }
+          renderVocabList();
+        });
+      }
+
+      if (btnClearSearch) {
+        btnClearSearch.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          curriculumState.searchQuery = '';
+          btnClearSearch.classList.add('hidden');
+          renderVocabList();
+        });
+      }
+
+      renderGradeButtons();
+      populateUnits();
+      renderVocabList();
+    }
+
+    function renderVocabList() {
+      const vocabGrid = document.getElementById('curriculum-vocab-grid');
+      const emptyState = document.getElementById('curriculum-empty-state');
+      if (!vocabGrid) return;
+      vocabGrid.innerHTML = '';
+
+      const unitsOfGrade = curriculumData.filter(u => u.grade === curriculumState.grade);
+      const currentUnit = unitsOfGrade[curriculumState.unitIndex];
+
+      let vocabItems = [];
+      if (curriculumState.searchQuery) {
+        unitsOfGrade.forEach(u => {
+          (u.vocabulary || []).forEach(v => {
+            const matchWord = (v.word || '').toLowerCase().includes(curriculumState.searchQuery);
+            const matchMeaning = (v.meaning || '').toLowerCase().includes(curriculumState.searchQuery);
+            const matchIpa = (v.ipa || '').toLowerCase().includes(curriculumState.searchQuery);
+            const matchColloc = (v.collocation || '').toLowerCase().includes(curriculumState.searchQuery);
+            if (matchWord || matchMeaning || matchIpa || matchColloc) {
+              vocabItems.push({ ...v, unitNum: u.unit, unitTitle: u.title });
+            }
+          });
+        });
+      } else if (currentUnit) {
+        vocabItems = (currentUnit.vocabulary || []).map(v => ({ ...v, unitNum: currentUnit.unit, unitTitle: currentUnit.title }));
+      }
+
+      if (vocabItems.length === 0) {
+        if (emptyState) emptyState.classList.remove('hidden');
+        return;
+      }
+      if (emptyState) emptyState.classList.add('hidden');
+
+      vocabItems.forEach(v => {
+        const card = document.createElement('div');
+        card.className = 'curriculum-card bento-card rounded-2xl p-4 flex flex-col justify-between space-y-3 border border-[#E5E2DC] dark:border-[#23293A] bg-white dark:bg-[#121620] hover:border-indigo-500/40 transition-all';
+
+        const cleanWord = (v.word || '').trim().toLowerCase();
+        const matchedIrregVerb = VERB_DATABASE.find(x => x.v1 && x.v1.toLowerCase() === cleanWord);
+
+        const posColorMap = {
+          'n': 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20',
+          'v': 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20',
+          'adj': 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20',
+          'adv': 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20',
+          'phr': 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20'
+        };
+        const posClass = posColorMap[v.pos] || 'bg-zinc-100 dark:bg-slate-800 text-zinc-600 dark:text-slate-300 border-zinc-200 dark:border-slate-700';
+
+        card.innerHTML = `
+          <div class="space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <h4 class="font-bold text-base sm:text-lg text-zinc-900 dark:text-white">${v.word}</h4>
+                  <span class="font-mono text-[10px] uppercase font-bold px-1.5 py-0.5 rounded border ${posClass}">${v.pos}</span>
+                </div>
+                <div class="font-mono text-xs text-zinc-400 dark:text-slate-400 mt-0.5">${v.ipa || ''}</div>
+              </div>
+
+              <button type="button" class="btn-vocab-speak w-8 h-8 rounded-lg bg-zinc-100 hover:bg-indigo-500/15 dark:bg-slate-800 dark:hover:bg-indigo-500/25 text-zinc-600 hover:text-indigo-600 dark:text-slate-300 dark:hover:text-indigo-400 flex items-center justify-center transition-colors touch-target-btn cursor-pointer" title="Nghe phát âm từ: ${v.word}">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+
+            <div class="space-y-1 pt-1 border-t border-[#E5E2DC] dark:border-[#23293A]">
+              <div class="text-xs sm:text-sm font-semibold text-zinc-800 dark:text-slate-200">
+                ${v.meaning || ''}
+              </div>
+              ${v.collocation ? `
+                <div class="text-[11px] font-mono text-indigo-600 dark:text-indigo-400">
+                  <span class="text-zinc-400">Cụm từ:</span> ${v.collocation}
+                </div>
+              ` : ''}
+            </div>
+
+            ${v.example ? `
+              <div class="p-2.5 rounded-xl bg-[#F6F5F2] dark:bg-[#0B0D13] border border-[#E5E2DC] dark:border-[#23293A] text-xs text-zinc-600 dark:text-slate-300 italic flex items-center justify-between gap-2 group/sent cursor-pointer btn-example-speak" title="Nhấp để nghe phát âm câu ví dụ">
+                <span>"${v.example}"</span>
+                <i class="fa-solid fa-play text-[10px] text-zinc-400 group-hover/sent:text-emerald-500 transition-colors shrink-0"></i>
+              </div>
+            ` : ''}
+          </div>
+
+          <div class="pt-2 border-t border-[#E5E2DC] dark:border-[#23293A] flex items-center justify-between gap-2 text-xs">
+            <button type="button" class="btn-vocab-copy text-[11px] text-zinc-400 hover:text-zinc-700 dark:hover:text-slate-200 flex items-center gap-1 transition-colors cursor-pointer">
+              <i class="fa-regular fa-copy text-[10px]"></i>
+              <span>Sao chép</span>
+            </button>
+
+            ${matchedIrregVerb ? `
+              <button type="button" class="btn-jump-matrix px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 flex items-center gap-1 transition-all cursor-pointer" title="Mở Ma trận 12 thì của động từ ${matchedIrregVerb.v1}">
+                <i class="fa-solid fa-bolt text-[9px]"></i>
+                <span>Tra 12 thì</span>
+              </button>
+            ` : `
+              <span class="text-[10px] font-mono text-zinc-400 dark:text-slate-500">Unit ${v.unitNum}</span>
+            `}
+          </div>
+        `;
+
+        const speakBtn = card.querySelector('.btn-vocab-speak');
+        if (speakBtn) {
+          speakBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            speak(v.word, 'en-US', speakBtn);
+          });
+        }
+
+        const exampleBtn = card.querySelector('.btn-example-speak');
+        if (exampleBtn) {
+          exampleBtn.addEventListener('click', () => {
+            speak(v.example, 'en-US', exampleBtn);
+          });
+        }
+
+        const copyBtn = card.querySelector('.btn-vocab-copy');
+        if (copyBtn) {
+          copyBtn.addEventListener('click', () => {
+            copyText(`${v.word} (${v.ipa || ''}) - ${v.meaning || ''}\nVí dụ: ${v.example || ''}`);
+          });
+        }
+
+        const jumpBtn = card.querySelector('.btn-jump-matrix');
+        if (jumpBtn && matchedIrregVerb) {
+          jumpBtn.addEventListener('click', () => {
+            switchView('matrix');
+            selectVerb(matchedIrregVerb.v1);
+            showToast(`Đã chuyển sang ma trận 12 thì của "${matchedIrregVerb.v1}"`);
+          });
+        }
+
+        vocabGrid.appendChild(card);
+      });
+    }
+
+    // Expose selectVerb globally
+    window.selectVerb = selectVerb;
 
     // Initialize Quick Chips & Default Verb
     function initApp() {
