@@ -1805,11 +1805,13 @@ if (typeof window !== 'undefined') {
       arenaFlashcardStage.classList.add('hidden');
       btnArenaQuiz.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-md transition-all cursor-pointer';
       btnArenaFlashcard.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-white transition-all cursor-pointer';
-      generateDynamicQuestion();
+      if (typeof window.generateDynamicQuestion === 'function') window.generateDynamicQuestion();
+      else if (typeof generateDynamicQuestion === 'function') generateDynamicQuestion();
     });
 
     btnArenaFlashcard.addEventListener('click', () => {
-      stopArenaTimer();
+      if (typeof window.stopArenaTimer === 'function') window.stopArenaTimer();
+      else if (typeof stopArenaTimer === 'function') stopArenaTimer();
       arenaQuizStage.classList.add('hidden');
       arenaFlashcardStage.classList.remove('hidden');
       btnArenaFlashcard.className = 'px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-md transition-all cursor-pointer';
@@ -1818,7 +1820,8 @@ if (typeof window !== 'undefined') {
     });
 
     document.getElementById('btn-quiz-next').addEventListener('click', () => {
-      generateDynamicQuestion();
+      if (typeof window.generateDynamicQuestion === 'function') window.generateDynamicQuestion();
+      else if (typeof generateDynamicQuestion === 'function') generateDynamicQuestion();
     });
 
     // Question Type Filter Buttons
@@ -1828,31 +1831,63 @@ if (typeof window !== 'undefined') {
           b.className = 'arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-cyan-400 cursor-pointer shrink-0';
         });
         btn.className = 'arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-xs cursor-pointer shrink-0';
-        ArenaState.questionTypeFilter = btn.dataset.qtype;
-        generateDynamicQuestion();
+        if (typeof window.ArenaState !== 'undefined') {
+          window.ArenaState.questionTypeFilter = btn.dataset.qtype;
+        } else if (typeof ArenaState !== 'undefined') {
+          ArenaState.questionTypeFilter = btn.dataset.qtype;
+        }
+        if (typeof window.generateDynamicQuestion === 'function') window.generateDynamicQuestion();
+        else if (typeof generateDynamicQuestion === 'function') generateDynamicQuestion();
       });
     });
 
     // Cyber Shop Bindings
-    document.getElementById('btn-open-cyber-shop').addEventListener('click', openCyberShop);
-    document.getElementById('btn-close-cyber-shop').addEventListener('click', closeCyberShop);
-    document.getElementById('cyber-shop-modal').addEventListener('click', (e) => {
-      if (e.target.id === 'cyber-shop-modal') closeCyberShop();
+    document.getElementById('btn-open-cyber-shop').addEventListener('click', () => {
+      if (typeof window.openCyberShop === 'function') window.openCyberShop();
+      else if (typeof openCyberShop === 'function') openCyberShop();
     });
-    document.getElementById('btn-buy-multiplier').addEventListener('click', () => buyShopUpgrade('multiplier'));
-    document.getElementById('btn-buy-booster').addEventListener('click', () => buyShopUpgrade('booster'));
-    document.getElementById('btn-buy-insurance').addEventListener('click', () => buyShopUpgrade('insurance'));
+    document.getElementById('btn-close-cyber-shop').addEventListener('click', () => {
+      if (typeof window.closeCyberShop === 'function') window.closeCyberShop();
+      else if (typeof closeCyberShop === 'function') closeCyberShop();
+    });
+    document.getElementById('cyber-shop-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'cyber-shop-modal') {
+        if (typeof window.closeCyberShop === 'function') window.closeCyberShop();
+        else if (typeof closeCyberShop === 'function') closeCyberShop();
+      }
+    });
+    document.getElementById('btn-buy-multiplier').addEventListener('click', () => {
+      if (typeof window.buyShopUpgrade === 'function') window.buyShopUpgrade('multiplier');
+      else if (typeof buyShopUpgrade === 'function') buyShopUpgrade('multiplier');
+    });
+    document.getElementById('btn-buy-booster').addEventListener('click', () => {
+      if (typeof window.buyShopUpgrade === 'function') window.buyShopUpgrade('booster');
+      else if (typeof buyShopUpgrade === 'function') buyShopUpgrade('booster');
+    });
+    document.getElementById('btn-buy-insurance').addEventListener('click', () => {
+      if (typeof window.buyShopUpgrade === 'function') window.buyShopUpgrade('insurance');
+      else if (typeof buyShopUpgrade === 'function') buyShopUpgrade('insurance');
+    });
 
     // Sound Mute Toggle
     const btnArenaMute = document.getElementById('btn-arena-mute');
     btnArenaMute.addEventListener('click', () => {
-      ArenaState.soundEnabled = !ArenaState.soundEnabled;
-      btnArenaMute.textContent = ArenaState.soundEnabled ? '🔊 Âm thanh: BẬT' : '🔇 Âm thanh: TẮT';
+      const arenaObj = (typeof window !== 'undefined' && window.ArenaState) ? window.ArenaState : (typeof ArenaState !== 'undefined' ? ArenaState : null);
+      if (arenaObj) {
+        arenaObj.soundEnabled = !arenaObj.soundEnabled;
+        btnArenaMute.textContent = arenaObj.soundEnabled ? '🔊 Âm thanh: BẬT' : '🔇 Âm thanh: TẮT';
+      }
     });
 
     // Podium Bindings
-    document.getElementById('btn-open-podium').addEventListener('click', openArenaPodium);
-    document.getElementById('btn-podium-replay').addEventListener('click', resetArenaGame);
+    document.getElementById('btn-open-podium').addEventListener('click', () => {
+      if (typeof window.openArenaPodium === 'function') window.openArenaPodium();
+      else if (typeof openArenaPodium === 'function') openArenaPodium();
+    });
+    document.getElementById('btn-podium-replay').addEventListener('click', () => {
+      if (typeof window.resetArenaGame === 'function') window.resetArenaGame();
+      else if (typeof resetArenaGame === 'function') resetArenaGame();
+    });
     document.getElementById('btn-podium-back-dict').addEventListener('click', () => {
       document.getElementById('arena-podium-modal').classList.add('hidden');
       switchModuleTab('matrix');

@@ -24,3 +24,11 @@ Thumbs.db
 dist/
 build/
 
+# Local backup and test workspace
+code game và giao dien/
+"code game v*"
+scratch/
+deep_audit_runner.js
+test_*.js
+
+

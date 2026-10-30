@@ -1,0 +1,8 @@
+# Ignore heavy duplicate design assets and test artifacts
+code game và giao dien/
+code game*
+scratch/
+test_*.js
+deep_audit_runner.js
+*.bat
+

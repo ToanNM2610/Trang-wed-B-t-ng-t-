@@ -83,6 +83,22 @@ function firstVariant(formStr) {
   return String(formStr).split('/')[0].trim();
 }
 
+function safeSpeak(text, lang = "en-US") {
+  if (typeof window !== "undefined" && typeof window.speak === "function") {
+    window.speak(text, lang);
+  } else if (typeof speak === "function") {
+    try { speak(text, lang); } catch (e) {}
+  }
+}
+
+function safeToast(msg, icon) {
+  if (typeof window !== "undefined" && typeof window.showToast === "function") {
+    window.showToast(msg, icon);
+  } else if (typeof showToast === "function") {
+    try { showToast(msg, icon); } catch (e) {}
+  }
+}
+
 
 function getCurriculumPool() {
   if (typeof window !== 'undefined' && Array.isArray(window.CURRICULUM_DATA) && window.CURRICULUM_DATA.length > 0) {
@@ -280,15 +296,24 @@ function generateDynamicQuestion() {
     const subj = subjects[Math.floor(Math.random() * subjects.length)];
     const correctConj = conjFn(t.id, v, subj, false).affRaw;
 
-    const wrongTenses = tensesPool.filter(x => x.id !== t.id).sort(() => 0.5 - Math.random()).slice(0, 3);
     const options = [
-      { text: correctConj, isCorrect: true, detail: `Thì ${t.viTitle} (${t.formula})` },
-      ...wrongTenses.map(wt => ({
-        text: conjFn(wt.id, v, subj, false).affRaw,
-        isCorrect: false,
-        detail: `Thì ${wt.viTitle} (${wt.formula})`
-      }))
-    ].sort(() => 0.5 - Math.random());
+      { text: correctConj, isCorrect: true, detail: `Thì ${t.viTitle} (${t.formula})` }
+    ];
+    const seenTexts = new Set([correctConj]);
+    const shuffledTenses = tensesPool.filter(x => x.id !== t.id).sort(() => 0.5 - Math.random());
+    for (const wt of shuffledTenses) {
+      const conj = conjFn(wt.id, v, subj, false).affRaw;
+      if (!seenTexts.has(conj)) {
+        seenTexts.add(conj);
+        options.push({
+          text: conj,
+          isCorrect: false,
+          detail: `Thì ${wt.viTitle} (${wt.formula})`
+        });
+      }
+      if (options.length >= 4) break;
+    }
+    options.sort(() => 0.5 - Math.random());
 
     qData = {
       type: "type1",
@@ -354,6 +379,7 @@ function generateDynamicQuestion() {
     } else if (rawUnit && Array.isArray(rawUnit.vocabulary) && rawUnit.vocabulary.length > 0) {
       const vocab = rawUnit.vocabulary[Math.floor(Math.random() * rawUnit.vocabulary.length)];
       const vWord = (vocab.word || '').trim();
+      const escWord = vWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       unitItem = {
         id: `${rawUnit.grade}_U${rawUnit.unit}`,
         globalUnitNumber: rawUnit.unit || 1,
@@ -363,7 +389,7 @@ function generateDynamicQuestion() {
         verb: vWord,
         ipa: vocab.ipa || '',
         meaning: vocab.meaning || '',
-        blankSentence: vocab.example ? vocab.example.replace(new RegExp(vWord, 'gi'), '_____') : `We always _____ in this unit project.`
+        blankSentence: vocab.example ? vocab.example.replace(new RegExp(escWord, 'gi'), '_____') : `We always _____ in this unit project.`
       };
     } else {
       const fallbackV = verbsList[0] || { v1: "write", meaning: "viết", ipaUS: "/raɪt/" };
@@ -376,16 +402,25 @@ function generateDynamicQuestion() {
         blankSentence: "We always _____ our homework carefully."
       };
     }
-    const wrongVerbs = verbsList.filter(x => x.v1 !== unitItem.verb).sort(() => 0.5 - Math.random()).slice(0, 3);
-
+    const correctChoiceText = `${unitItem.verb} — ${unitItem.meaning}`;
     const options = [
-      { text: `${unitItem.verb} — ${unitItem.meaning}`, isCorrect: true, detail: unitItem.unitTitle },
-      ...wrongVerbs.map(wv => ({
-        text: `${wv.v1} — ${wv.meaning}`,
-        isCorrect: false,
-        detail: `Từ vựng Lớp ${wv.grade || 6}`
-      }))
-    ].sort(() => 0.5 - Math.random());
+      { text: correctChoiceText, isCorrect: true, detail: unitItem.unitTitle }
+    ];
+    const seenChoices = new Set([correctChoiceText]);
+    const shuffledVerbs = verbsList.filter(x => x.v1 !== unitItem.verb).sort(() => 0.5 - Math.random());
+    for (const wv of shuffledVerbs) {
+      const choice = `${wv.v1} — ${wv.meaning}`;
+      if (!seenChoices.has(choice)) {
+        seenChoices.add(choice);
+        options.push({
+          text: choice,
+          isCorrect: false,
+          detail: `Từ vựng Lớp ${wv.grade || 6}`
+        });
+      }
+      if (options.length >= 4) break;
+    }
+    options.sort(() => 0.5 - Math.random());
 
     qData = {
       type: "type3",
@@ -508,7 +543,7 @@ function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
 
     // Speak correct English phrase
     if (ArenaState.currentQuestion.speakText) {
-      speak(ArenaState.currentQuestion.speakText, "en-US");
+      safeSpeak(ArenaState.currentQuestion.speakText, "en-US");
     }
 
     updateArenaHUD();
@@ -681,39 +716,43 @@ function updateCyberShopUI() {
 function buyShopUpgrade(itemKey) {
   if (itemKey === "multiplier") {
     if (ArenaState.multiplier >= 4.0) {
-      showToast("⚡ Overclock Multiplier đã đạt mức tối đa 4.0x!");
+      safeToast("⚡ Overclock Multiplier đã đạt mức tối đa 4.0x!");
       return;
     }
     if (ArenaState.cyberCredits < 150) {
-      showToast("💡 Cần $150 Cyber-Credits để nâng cấp Overclock Multiplier!");
+      safeToast("💡 Cần $150 Cyber-Credits để nâng cấp Overclock Multiplier!");
       return;
     }
     ArenaState.cyberCredits -= 150;
     ArenaState.multiplier = Math.min(4.0, +(ArenaState.multiplier + 0.5).toFixed(1));
     ArenaAudio.playShopBuy();
-    showToast(`⚡ Đã nâng cấp Overclock Multiplier lên ${ArenaState.multiplier.toFixed(1)}x!`);
+    safeToast(`⚡ Đã nâng cấp Overclock Multiplier lên ${ArenaState.multiplier.toFixed(1)}x!`);
   } else if (itemKey === "booster") {
+    if (ArenaState.streakBonusLevel >= 8) {
+      safeToast("🔥 Streak Booster đã đạt mức tối đa (x8 điểm thưởng chuỗi)!");
+      return;
+    }
     if (ArenaState.cyberCredits < 200) {
-      showToast("💡 Cần $200 Cyber-Credits để mua Streak Booster!");
+      safeToast("💡 Cần $200 Cyber-Credits để mua Streak Booster!");
       return;
     }
     ArenaState.cyberCredits -= 200;
-    ArenaState.streakBonusLevel *= 2;
+    ArenaState.streakBonusLevel = Math.min(8, ArenaState.streakBonusLevel * 2);
     ArenaAudio.playShopBuy();
-    showToast(`🔥 Đã kích hoạt Streak Booster (x${ArenaState.streakBonusLevel} điểm thưởng chuỗi)!`);
+    safeToast(`🔥 Đã kích hoạt Streak Booster (x${ArenaState.streakBonusLevel} điểm thưởng chuỗi)!`);
   } else if (itemKey === "insurance") {
     if (ArenaState.hasInsurance) {
-      showToast("🛡️ Bạn đang có sẵn Firewall Insurance rồi!");
+      safeToast("🛡️ Bạn đang có sẵn Firewall Insurance rồi!");
       return;
     }
     if (ArenaState.cyberCredits < 100) {
-      showToast("💡 Cần $100 Cyber-Credits để mua Firewall Insurance!");
+      safeToast("💡 Cần $100 Cyber-Credits để mua Firewall Insurance!");
       return;
     }
     ArenaState.cyberCredits -= 100;
     ArenaState.hasInsurance = true;
     ArenaAudio.playShopBuy();
-    showToast("🛡️ Đã trang bị Firewall Insurance (Miễn phạt câu sai kế tiếp)!");
+    safeToast("🛡️ Đã trang bị Firewall Insurance (Miễn phạt câu sai kế tiếp)!");
   }
 
   updateArenaHUD();
@@ -877,7 +916,7 @@ function resetArenaGame() {
 
   updateArenaHUD();
   generateDynamicQuestion();
-  showToast("🚀 Đã khởi tạo ván Đấu trường Cyber Arena mới!");
+  safeToast("🚀 Đã khởi tạo ván Đấu trường Cyber Arena mới!");
 }
 
 // Export global Arena API
