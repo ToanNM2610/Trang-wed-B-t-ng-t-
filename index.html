@@ -42,9 +42,10 @@
   </script>
 
   <!-- Modern Cyber-Dashboard Stylesheet (Synchronized with style.css) -->
-  <!-- External Stylesheets -->
+    <!-- External Stylesheets (Synchronized with style.css & intro.css) -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="intro.css">
+
 </head>
 
 <body
@@ -711,39 +712,106 @@
           </div>
         </div>
 
-        <!-- SUB-VIEW 3A: CYBER QUIZ ARENA -->
-        <div id="arena-quiz-stage" class="space-y-5">
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-cyan-500/30 flex items-center justify-between">
-              <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">ĐIỂM SỐ</span>
-              <span id="quiz-score" class="font-mono text-xl font-extrabold text-cyan-500 dark:text-cyan-300">0</span>
+        <!-- SUB-VIEW 3A: CYBER QUIZ ARENA (KAHOOT! + GIMKIT + BLOOKET ENGINE) -->
+        <div id="arena-quiz-stage" class="space-y-4">
+
+          <!-- Top Cyber Control Strip: Question Type Filters + Cyber Upgrade Shop + Sound + Podium -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 p-3 rounded-2xl bg-slate-100/90 dark:bg-slate-950/85 border border-violet-500/30">
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+              <span class="text-[11px] font-mono uppercase text-slate-400 shrink-0 mr-1">Chế độ:</span>
+              <button type="button" data-qtype="all" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-xs cursor-pointer shrink-0">
+                🎲 Tất cả (388 Từ &amp; 170 Units)
+              </button>
+              <button type="button" data-qtype="type1" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-cyan-400 cursor-pointer shrink-0">
+                ⚡ Dạng 1: Chia 12 Thì
+              </button>
+              <button type="button" data-qtype="type2" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-amber-400 cursor-pointer shrink-0">
+                🔥 Dạng 2: Bất quy tắc V2/V3
+              </button>
+              <button type="button" data-qtype="type3" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-emerald-400 cursor-pointer shrink-0">
+                📚 Dạng 3: Từ vựng 170 Units SGK
+              </button>
             </div>
-            <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-amber-500/30 flex items-center justify-between">
-              <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">CHUỖI THẮNG 🔥</span>
-              <span id="quiz-streak" class="font-mono text-xl font-extrabold text-amber-500 dark:text-amber-300">0</span>
-            </div>
-            <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-emerald-500/30 flex items-center justify-between">
-              <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">ĐỘ CHÍNH XÁC</span>
-              <span id="quiz-accuracy" class="font-mono text-xl font-extrabold text-emerald-500 dark:text-emerald-300">100%</span>
-            </div>
-            <div class="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-violet-500/30 flex items-center justify-between">
-              <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">CÂU HỎI</span>
-              <span id="quiz-total" class="font-mono text-xl font-extrabold text-violet-500 dark:text-violet-300">1</span>
+
+            <div class="flex flex-wrap items-center gap-2 shrink-0">
+              <button id="btn-open-cyber-shop" type="button"
+                class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white shadow-md shadow-emerald-600/25 flex items-center gap-2 cursor-pointer">
+                <span>🛒 Cyber Upgrade Shop</span>
+                <span id="quiz-multiplier-badge" class="px-1.5 py-0.5 rounded bg-black/30 font-mono text-[11px] text-amber-300">1.0x</span>
+              </button>
+
+              <button id="btn-arena-mute" type="button" title="Bật/Tắt hiệu ứng âm thanh Web Audio API"
+                class="px-3 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-300 border border-cyan-500/35 hover:border-cyan-400 cursor-pointer">
+                🔊 Âm thanh: BẬT
+              </button>
+
+              <button id="btn-open-podium" type="button"
+                class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500/20 hover:bg-amber-500/30 text-amber-600 dark:text-amber-300 border border-amber-400/40 cursor-pointer">
+                🏆 Tổng kết Vinh danh
+              </button>
             </div>
           </div>
 
-          <div class="p-6 rounded-3xl bg-slate-100/90 dark:bg-slate-950/90 border border-violet-500/35 space-y-5">
-            <div class="flex items-center justify-between gap-2">
+          <!-- 5-Metric HUD Strip (Kahoot Score + Gimkit Cyber-Credits + Streak Fire + Accuracy + Total) -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-cyan-500/35 flex flex-col justify-between">
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">⚡ ĐIỂM KAHOOT</span>
+              <span id="quiz-score" class="font-mono text-xl font-extrabold text-cyan-500 dark:text-cyan-300 mt-0.5">0</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-emerald-500/35 flex flex-col justify-between">
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">💰 CYBER-CREDITS</span>
+              <span id="quiz-credits" class="font-mono text-xl font-extrabold text-emerald-500 dark:text-emerald-300 mt-0.5">$0</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-amber-500/35 flex flex-col justify-between">
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">CHUỖI THẮNG 🔥</span>
+              <span id="quiz-streak" class="font-mono text-xl font-extrabold text-amber-500 dark:text-amber-300 mt-0.5">0 🔥</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-teal-500/35 flex flex-col justify-between">
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">ĐỘ CHÍNH XÁC</span>
+              <span id="quiz-accuracy" class="font-mono text-xl font-extrabold text-teal-500 dark:text-teal-300 mt-0.5">100%</span>
+            </div>
+            <div class="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-violet-500/35 flex flex-col justify-between">
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">CÂU HỎI</span>
+              <span id="quiz-total" class="font-mono text-xl font-extrabold text-violet-500 dark:text-violet-300 mt-0.5">1</span>
+            </div>
+          </div>
+
+          <!-- Active Power-ups & Combo Fire Banner Strip -->
+          <div class="flex flex-wrap items-center justify-between gap-2 min-h-[28px]">
+            <div class="flex flex-wrap items-center gap-2">
+              <span id="quiz-streak-fire-banner" class="hidden">Combo x2 🔥</span>
+              <div id="quiz-active-powerups" class="flex flex-wrap items-center gap-1.5"></div>
+            </div>
+            <span class="text-[11px] font-mono text-slate-400">🎁 Đúng 3 câu liên tiếp mở Hòm Bí Mật Blooket!</span>
+          </div>
+
+          <!-- Main Question Card with Kahoot 15s Time-Decay Bar -->
+          <div id="quiz-question-card" class="p-5 sm:p-6 rounded-3xl bg-slate-100/90 dark:bg-slate-950/90 border border-violet-500/40 space-y-4 transition-all">
+            <!-- Kahoot 15-Second Countdown Bar -->
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-cyan-500 dark:text-cyan-300 font-bold flex items-center gap-1.5">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>KAHOOT TIME-DECAY TIMER (15s)</span>
+                </span>
+                <span id="quiz-timer-text" class="font-extrabold text-sm text-emerald-400">15.0s</span>
+              </div>
+              <div class="timer-bar-track">
+                <div id="quiz-timer-bar" class="timer-bar-fill" style="width: 100%;"></div>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
               <span id="quiz-category-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-400/35">
                 Thử thách Chia Động Từ
               </span>
               <button id="btn-quiz-next" type="button"
-                class="px-4 py-1.5 rounded-xl text-xs font-bold bg-violet-600 hover:bg-violet-500 text-white transition-all cursor-pointer">
+                class="px-4 py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 text-white shadow-md transition-all cursor-pointer">
                 Câu tiếp theo →
               </button>
             </div>
 
-            <div id="quiz-question-text" class="text-lg sm:text-2xl font-bold text-slate-900 dark:text-white leading-relaxed">
+            <div id="quiz-question-text" class="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
             </div>
 
             <div id="quiz-options-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -954,6 +1022,149 @@
     </div>
   </div>
 
+  <!-- GIMKIT CYBER UPGRADE SHOP MODAL -->
+  <div id="cyber-shop-modal"
+    class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="focus-verb-card rounded-3xl max-w-2xl w-full p-6 sm:p-7 shadow-2xl space-y-5 animate-card-in">
+      <div class="flex items-center justify-between border-b border-violet-500/30 pb-4">
+        <div>
+          <span class="font-mono text-xs uppercase text-emerald-400 font-bold">GIMKIT ECONOMY SYSTEM</span>
+          <h3 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mt-0.5">🛒 Cyber Upgrade Shop</h3>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="px-3.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-400/40 font-mono text-sm font-extrabold text-emerald-300">
+            Số dư: <span id="cyber-shop-balance">$0</span>
+          </div>
+          <button id="btn-close-cyber-shop" type="button" title="Đóng Cyber Shop"
+            class="w-9 h-9 rounded-full bg-slate-800 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <!-- Item 1: Overclock Multiplier ($150) -->
+        <div class="cyber-shop-item p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-base font-extrabold text-cyan-300">⚡ Món 1: Overclock Multiplier</span>
+              <span class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono text-xs font-bold">Giá $150</span>
+            </div>
+            <p class="text-xs text-slate-300">Tăng vĩnh viễn hệ số nhân điểm Kahoot &amp; tiền thưởng Gimkit thêm <strong>+0.5x</strong> (Tối đa 4.0x).</p>
+            <div id="shop-mult-status" class="text-[11px] font-mono text-amber-300">Hiện tại: 1.0x / Tối đa 4.0x</div>
+          </div>
+          <button id="btn-buy-multiplier" type="button"
+            class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 to-violet-600 hover:from-cyan-500 hover:to-violet-500 text-white font-mono text-xs font-extrabold shrink-0 cursor-pointer shadow-md">
+            Mua Nâng Cấp ($150)
+          </button>
+        </div>
+
+        <!-- Item 2: Streak Booster ($200) -->
+        <div class="cyber-shop-item p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-base font-extrabold text-amber-300">🔥 Món 2: Streak Booster</span>
+              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-xs font-bold">Giá $200</span>
+            </div>
+            <p class="text-xs text-slate-300">Tăng <strong>gấp đôi (x2)</strong> điểm thưởng cộng thêm mỗi khi duy trì chuỗi Streak liên hoàn.</p>
+            <div id="shop-boost-status" class="text-[11px] font-mono text-amber-300">Cấp thưởng chuỗi hiện tại: x1</div>
+          </div>
+          <button id="btn-buy-booster" type="button"
+            class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-mono text-xs font-extrabold shrink-0 cursor-pointer shadow-md">
+            Mua Nâng Cấp ($200)
+          </button>
+        </div>
+
+        <!-- Item 3: Firewall Insurance ($100) -->
+        <div class="cyber-shop-item p-4 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-base font-extrabold text-emerald-300">🛡️ Món 3: Firewall Insurance</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold">Giá $100</span>
+            </div>
+            <p class="text-xs text-slate-300">Bảo vệ tài khoản không bị trừ tiền phạt (<strong>-$30</strong>) ở câu trả lời sai kế tiếp.</p>
+            <div id="shop-ins-status" class="text-[11px] font-mono text-emerald-300">Trạng thái: Chưa có bảo hiểm</div>
+          </div>
+          <button id="btn-buy-insurance" type="button"
+            class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-mono text-xs font-extrabold shrink-0 cursor-pointer shadow-md">
+            Mua Bảo Hiểm ($100)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOOKET LUCKY CYBER-CRATE MODAL (3 MYSTERY CRATES) -->
+  <div id="blooket-crate-modal"
+    class="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg hidden flex items-center justify-center p-4">
+    <div class="focus-verb-card rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl space-y-5 text-center animate-card-in">
+      <div class="space-y-1.5">
+        <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 font-mono text-xs font-extrabold">
+          🎁 BLOOKET LUCKY CYBER-CRATE • CHUỖI 3 CÂU ĐÚNG LIÊN TIẾP!
+        </span>
+        <h3 class="font-serif text-2xl sm:text-4xl font-bold text-white pt-1">
+          Chọn 1 Trong 3 Hòm Bí Mật (Mystery Crates)
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300">
+          Mỗi hòm chứa ngẫu nhiên: <strong>Cyber Jackpot (+$300)</strong>, <strong>Double Points (x2 Điểm)</strong> hoặc <strong>Cyber Shield (Khiên Bảo Vệ Streak)</strong>!
+        </p>
+      </div>
+
+      <div id="blooket-crates-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+      </div>
+
+      <div id="blooket-crate-result" class="hidden pt-2">
+      </div>
+    </div>
+  </div>
+
+  <!-- CYBER VICTORY / PODIUM MODAL -->
+  <div id="arena-podium-modal"
+    class="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg hidden flex items-center justify-center p-4">
+    <div class="focus-verb-card rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl space-y-6 text-center animate-card-in">
+      <div class="space-y-2">
+        <div class="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold">CYBER ARENA HALL OF FAME</div>
+        <h3 class="font-serif text-3xl sm:text-4xl font-bold text-white">🏆 Bảng Vinh Danh Chung Cuộc</h3>
+        <div class="pt-1">
+          <span id="podium-rank-badge" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-mono text-sm font-extrabold border">
+            👑 CYBER MASTER
+          </span>
+        </div>
+        <p id="podium-rank-desc" class="text-xs sm:text-sm text-slate-300 pt-1"></p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3 text-left">
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-cyan-500/35">
+          <div class="text-[10px] font-mono text-slate-400 uppercase">ĐIỂM CAO NHẤT</div>
+          <div id="podium-final-score" class="font-mono text-2xl font-extrabold text-cyan-300 mt-1">0</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-amber-500/35">
+          <div class="text-[10px] font-mono text-slate-400 uppercase">CHUỖI THẮNG DÀI NHẤT</div>
+          <div id="podium-max-streak" class="font-mono text-2xl font-extrabold text-amber-300 mt-1">0 🔥</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/35">
+          <div class="text-[10px] font-mono text-slate-400 uppercase">TỔNG CYBER-CREDITS</div>
+          <div id="podium-total-credits" class="font-mono text-2xl font-extrabold text-emerald-300 mt-1">$0</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900/90 border border-violet-500/35">
+          <div class="text-[10px] font-mono text-slate-400 uppercase">ĐỘ CHÍNH XÁC</div>
+          <div id="podium-accuracy" class="font-mono text-2xl font-extrabold text-violet-300 mt-1">100%</div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <button id="btn-podium-replay" type="button"
+          class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 text-white text-xs sm:text-sm font-extrabold shadow-lg cursor-pointer">
+          🔄 Chơi lại ván mới
+        </button>
+        <button id="btn-podium-back-dict" type="button"
+          class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 text-xs sm:text-sm font-bold cursor-pointer">
+          📚 Quay về Tra từ điển
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="border-t border-slate-200 dark:border-violet-500/25 py-6 mt-10 text-center text-xs text-slate-400">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -963,19 +1174,17 @@
   </footer>
 
   <!-- =========================================================================
-   * APPLICATION SCRIPTS
+   * APPLICATION & 388 VERBS ENGINE SCRIPT
    * ========================================================================= -->
-  <!-- KHO DỮ LIỆU ĐỘNG TỪ BẤT QUY TẮC & TRỌNG TÂM SGK (388 TỪ) -->
+    <!-- =========================================================================
+   * APPLICATION SCRIPTS (MODULAR ARCHITECTURE)
+   * ========================================================================= -->
   <script src="verbsData.js"></script>
-
-  <!-- KHO DỮ LIỆU CHƯƠNG TRÌNH SGK TIẾNG ANH LỚP 1 - LỚP 12 (170 UNITS - 670 TỪ) -->
   <script src="curriculumData.js"></script>
-
-  <!-- INTRO SPLASH SCREEN LOGIC -->
+  <script src="arenaEngine.js"></script>
   <script src="intro.js"></script>
-
-  <!-- APPLICATION COMPANION & ENGINE SCRIPT -->
   <script src="app.js"></script>
+
 </body>
 
 </html>

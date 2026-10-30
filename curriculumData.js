@@ -8173,6 +8173,9 @@ var CURRICULUM_DATA = [
   }
 ];
 
+if (typeof window !== 'undefined') {
+  window.CURRICULUM_DATA = CURRICULUM_DATA;
+}
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { CURRICULUM_DATA };
 }
