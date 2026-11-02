@@ -354,15 +354,18 @@ const CurriculumVocabAdapter = {
       const targetItem = certifiedPool[Math.floor(Math.random() * certifiedPool.length)];
       const distractors = pipelineModule.generateCertifiedDistractors(targetItem, certifiedPool, 3);
 
-      const correctChoiceText = `${targetItem.target_word} — ${targetItem.primary_meaning_vn}`;
+      // Issue 1 Fix: Show only English word in options — no Vietnamese definition leak
+      const correctChoiceText = targetItem.target_word;
       const options = [
-        { text: correctChoiceText, isCorrect: true, detail: `Chuẩn SGK Lớp ${targetItem.grade_level}` }
+        { text: correctChoiceText, isCorrect: true, rawWord: targetItem.target_word, rawMeaning: targetItem.primary_meaning_vn, detail: `Chuẩn SGK Lớp ${targetItem.grade_level}` }
       ];
 
       distractors.forEach(d => {
         options.push({
-          text: `${d.target_word} — ${d.primary_meaning_vn}`,
+          text: d.target_word,
           isCorrect: false,
+          rawWord: d.target_word,
+          rawMeaning: d.primary_meaning_vn,
           detail: `Từ vựng Lớp ${d.grade_level} (${d.part_of_speech})`
         });
       });
@@ -374,7 +377,7 @@ const CurriculumVocabAdapter = {
           type: "cloze",
           badgeText: `📚 Dạng 3: Từ Vựng SGK • Lớp ${targetItem.grade_level} (${targetItem.cefr_band}) • Unit ${targetItem.unit_number}`,
           promptHtml: `Chọn từ vựng đúng để hoàn thành câu trong chương trình <strong>Lớp ${targetItem.grade_level} (${targetItem.tier})</strong>:<br><span class="text-cyan-300 font-mono text-base sm:text-lg">"${targetItem.prompt_sentence}"</span>`,
-          subHint: `Gợi ý: Từ loại [${targetItem.part_of_speech}] • Mang nghĩa "${targetItem.primary_meaning_vn}" • Unit #${targetItem.unit_number}`
+          subHint: `Gợi ý: Từ loại [${targetItem.part_of_speech}] • Phiên âm: ${targetItem.ipa_us || '/'+ targetItem.target_word +'/'} • Unit #${targetItem.unit_number}`
         },
         primaryTarget: correctChoiceText,
         displayTarget: correctChoiceText,
@@ -429,7 +432,8 @@ const CurriculumVocabAdapter = {
     }
 
     const cluster = getSemanticCluster(unitItem.verb, unitItem.meaning);
-    const correctChoiceText = `${unitItem.verb} — ${unitItem.meaning}`;
+    // Issue 1 Fix: primaryTarget is only the English word — no Vietnamese leak in choices
+    const correctChoiceText = unitItem.verb;
 
     return new CanonicalQuestionItem({
       itemKey: `curriculum_${unitItem.id || 'unit'}_${unitItem.verb}`,
@@ -437,18 +441,21 @@ const CurriculumVocabAdapter = {
         type: "cloze",
         badgeText: `📚 Dạng 3: Từ Vựng 170 Units SGK • ${unitItem.unitTitle}`,
         promptHtml: `Chọn từ vựng đúng để hoàn thành câu trong <strong>${unitItem.unitTitle}</strong>:<br><span class="text-cyan-300 font-mono text-base sm:text-lg">"${unitItem.blankSentence}"</span>`,
-        subHint: `Gợi ý: Mang nghĩa "${unitItem.meaning}" • Phiên âm: ${unitItem.ipa} • Unit #${unitItem.globalUnitNumber}/170`
+        // Remove direct meaning from hint — only IPA is kept to avoid leaking the answer
+        subHint: `Gợi ý: Phiên âm: ${unitItem.ipa || '/' + unitItem.verb + '/'} • Unit #${unitItem.globalUnitNumber}/170`
       },
       primaryTarget: correctChoiceText,
       displayTarget: correctChoiceText,
       semanticClusterId: cluster.clusterId,
       synonyms: cluster.synonyms,
+      // Carry raw meaning separately for post-answer explanation only
       grammarAttrs: {
         partOfSpeech: "curriculum_lexical_item",
         gradeTier: Number(unitItem.grade) || 6,
-        unitItem: unitItem
+        unitItem: unitItem,
+        targetMeaning: unitItem.meaning
       },
-      explanation: `Trong <strong>${unitItem.unitTitle}</strong>, động từ trọng tâm là <code class="text-emerald-300 font-bold">${unitItem.verb} (${unitItem.ipa})</code> có nghĩa là <strong>"${unitItem.meaning}"</strong>.`,
+      explanation: `Trong <strong>${unitItem.unitTitle}</strong>, động từ trọng tâm là <code class="text-emerald-300 font-bold">${unitItem.verb} (${unitItem.ipa || ''})</code> có nghĩa là <strong>"${unitItem.meaning}"</strong>.`,
       speakText: unitItem.verb
     });
   }
@@ -524,24 +531,57 @@ function generateHomogeneousDistractors(canonicalItem) {
   } else if (canonicalItem.grammarAttrs.partOfSpeech === "curriculum_lexical_item") {
     const verbsList = getVerbPool();
     const targetUnit = canonicalItem.grammarAttrs.unitItem;
+    const targetMeaning = (canonicalItem.grammarAttrs.targetMeaning || targetUnit.meaning || '').toLowerCase();
 
-    // Filter out: Same verb, same meaning, same cluster, or synonyms
+    // Helper: strip diacritics for loose meaning comparison
+    function foldTone(s) {
+      return (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase().trim();
+    }
+    const foldedTargetMeaning = foldTone(targetMeaning);
+    // First token of target meaning (split on comma / semicolon / space)
+    const targetMeaningToken = foldedTargetMeaning.split(/[ ,;/]/)[0];
+
+    // Issue 2 Fix: Expanded synonym/collision filtering
+    // - Same verb OR same meaning (exact) OR same cluster
+    // - Synonym from static cluster words list
+    // - Meaning-token overlap (first token of Vietnamese meaning matches target)
     const candidateDistractors = verbsList.filter(wv => {
       if (wv.v1 === targetUnit.verb) return false;
-      if (wv.meaning === targetUnit.meaning) return false;
+
+      // Exact meaning match
+      if (wv.meaning === targetMeaning) return false;
+
+      // Any synonym from cluster
       if (canonicalItem.synonyms.includes(wv.v1)) return false;
+
+      // Semantic cluster ID match
       const c = getSemanticCluster(wv.v1, wv.meaning);
-      if (c.clusterId === canonicalItem.semanticClusterId) return false;
+      if (c.clusterId === canonicalItem.semanticClusterId &&
+          canonicalItem.semanticClusterId !== `STEM_${foldedTargetMeaning.split(/[ ,;/]/)[0].toUpperCase()}`) {
+        return false;
+      }
+
+      // Meaning-token overlap: discard if the first Vietnamese meaning token matches
+      const foldedCandMeaning = foldTone(wv.meaning || '');
+      const candToken = foldedCandMeaning.split(/[ ,;/]/)[0];
+      if (targetMeaningToken && candToken && targetMeaningToken === candToken) return false;
+
+      // Discard if distractor shares any cluster synonym with target
+      if (c.synonyms && c.synonyms.some(s => canonicalItem.synonyms.includes(s))) return false;
+
       return true;
     }).sort(() => 0.5 - Math.random());
 
+    // Issue 1 Fix: Show only English word — no Vietnamese meaning in choice text
     for (const wv of candidateDistractors) {
-      const choice = `${wv.v1} — ${wv.meaning}`;
+      const choice = wv.v1; // English only, no "— nghĩa" appended
       if (!seenTexts.has(choice)) {
         seenTexts.add(choice);
         options.push({
           text: choice,
           isCorrect: false,
+          rawWord: wv.v1,
+          rawMeaning: wv.meaning,
           detail: `Từ vựng Lớp ${wv.grade || 6}`
         });
       }
@@ -929,10 +969,39 @@ function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
   const isDirectCorrect = Boolean(selectedOpt && selectedOpt.isCorrect === true);
   const isTargetMatch = Boolean(selectedOpt && selectedOpt.text === currentQ.primaryTarget);
 
+  // Issue 2 Fix: Expanded synonym-match scoring for curriculum vocab items.
+  // Options now show only English words (no "— nghĩa"), so extract the word directly
+  // from selectedOpt.text (no longer need to split on "—").
+  // A selection is a synonym match if the chosen English word appears in the full
+  // SEMANTIC_CLUSTERS synonym list for the question's cluster, or in the synonyms array,
+  // AND it is not the exact primaryTarget word (that case is already covered by isTargetMatch).
   let isSynonymMatch = false;
-  if (currentQ.grammarAttrs.partOfSpeech === "curriculum_lexical_item" && Array.isArray(currentQ.synonyms) && selectedOpt && selectedOpt.text) {
-    const optWord = selectedOpt.text.split('—')[0].trim().toLowerCase();
-    isSynonymMatch = currentQ.synonyms.some(s => s.toLowerCase() === optWord && s.toLowerCase() !== currentQ.primaryTarget.toLowerCase());
+  if (
+    currentQ.grammarAttrs.partOfSpeech === "curriculum_lexical_item" &&
+    Array.isArray(currentQ.synonyms) &&
+    selectedOpt && selectedOpt.text && !isDirectCorrect && !isTargetMatch
+  ) {
+    // selectedOpt.text is now a plain English word (e.g. "season", "start")
+    const optWord = (selectedOpt.rawWord || selectedOpt.text.split('—')[0]).trim().toLowerCase();
+    const primaryWord = currentQ.primaryTarget.split('—')[0].trim().toLowerCase();
+
+    // Check 1: optWord is in the synonyms array (from cluster) but is not the primaryTarget
+    const inSynArray = currentQ.synonyms.some(
+      s => s.toLowerCase() === optWord && s.toLowerCase() !== primaryWord
+    );
+
+    // Check 2: optWord shares the same SEMANTIC_CLUSTERS cluster as the target
+    let inCluster = false;
+    if (!inSynArray && currentQ.semanticClusterId) {
+      const clusterData = SEMANTIC_CLUSTERS[currentQ.semanticClusterId];
+      if (clusterData && Array.isArray(clusterData.words)) {
+        inCluster = clusterData.words.some(
+          w => w.toLowerCase() === optWord && w.toLowerCase() !== primaryWord
+        );
+      }
+    }
+
+    isSynonymMatch = inSynArray || inCluster;
   }
 
   const isEvaluatedCorrect = !isTimeout && (isDirectCorrect || isTargetMatch || isSynonymMatch);
@@ -988,9 +1057,15 @@ function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
     if (feedbackBox) {
       feedbackBox.classList.remove("hidden");
       feedbackBox.className = "p-3.5 rounded-xl bg-[#161B26] border border-emerald-500/40 text-xs sm:text-sm text-slate-300 space-y-1";
+
+      // Issue 2 Fix: Show special synonym-accepted badge when synonym was chosen
+      const synonymTag = isSynonymMatch
+        ? ` <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono text-xs">✅ Từ đồng nghĩa được chấp nhận</span>`
+        : "";
+
       feedbackBox.innerHTML = `
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <strong class="text-emerald-400 text-sm">CHÍNH XÁC! +${earnedPoints.toLocaleString()} Điểm (${ArenaState.timeLeft.toFixed(1)}s)${doubleTag}</strong>
+          <strong class="text-emerald-400 text-sm">CHÍNH XÁC! +${earnedPoints.toLocaleString()} Điểm (${ArenaState.timeLeft.toFixed(1)}s)${doubleTag}${synonymTag}</strong>
           <span class="font-mono text-xs text-slate-400">+$${earnedCredits} Credits</span>
         </div>
         <div>${currentQ.explanation}</div>
