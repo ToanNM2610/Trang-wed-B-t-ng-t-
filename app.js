@@ -1069,6 +1069,8 @@ if (typeof window !== 'undefined') {
     const btnLeftSearchClear = document.getElementById('btn-left-search-clear');
     const leftPaneVerbList = document.getElementById('left-pane-verb-list');
     const leftPaneCountBadge = document.getElementById('left-pane-count-badge');
+    const rightDictFeed = document.getElementById('right-dict-feed');
+    const rightDictCountBadge = document.getElementById('right-dict-count-badge');
     const patternActiveDesc = document.getElementById('pattern-active-desc');
     const patternFilterBar = document.getElementById('pattern-filter-bar');
     const auxVs = document.getElementById('aux-vs');
@@ -1236,6 +1238,65 @@ if (typeof window !== 'undefined') {
         win: ['triumph', 'succeed', 'prevail', 'conquer']
       };
       return fallbackSynonymsMap[w] || ['start', 'continue', 'finish'];
+    }
+
+    const VERB_NUANCE_MAP = {
+      cook: 'Phân biệt: bake (nướng lò/bánh), boil (luộc, đun sôi), fry (chiên, rán)',
+      bake: 'Phân biệt: cook (nấu chung), roast (quay thịt/nướng lửa lớn)',
+      boil: 'Phân biệt: cook (nấu chín), simmer (ninh nhỏ lửa), steam (hấp)',
+      speak: 'Phân biệt: talk (trò chuyện hai chiều), say (nói lời cụ thể), tell (kể, bảo ai)',
+      talk: 'Phân biệt: speak (phát biểu/ngôn ngữ), chat (tán gẫu thân mật)',
+      say: 'Phân biệt: tell (cần tân ngữ chỉ người: tell sb), speak (ngôn ngữ)',
+      tell: 'Phân biệt: say (nói điều gì), inform (thông báo chính thức)',
+      hear: 'Phân biệt: listen (chủ động lắng nghe), overhear (tình cờ nghe lỏm)',
+      listen: 'Phân biệt: hear (nghe thụ động/âm thanh lọt vào tai)',
+      see: 'Phân biệt: look (nhìn có chủ đích), watch (theo dõi diễn biến, xem phim)',
+      look: 'Phân biệt: see (nhìn thấy thụ động), stare (nhìn chằm chằm)',
+      watch: 'Phân biệt: see (nhìn thấy), view (ngắm cảnh, quan sát)',
+      make: 'Phân biệt: do (làm việc/hành động), create (sáng tạo mới), produce (sản xuất)',
+      do: 'Phân biệt: make (chế tạo/tạo ra vật thể cụ thể), act (hành động)',
+      take: 'Phân biệt: bring (mang lại gần), carry (mang vác theo người), fetch (đi lấy về)',
+      bring: 'Phân biệt: take (mang đi xa), fetch (đi tìm và mang về)',
+      buy: 'Phân biệt: purchase (mua sắm trang trọng), acquire (thu được, thâu tóm)',
+      sell: 'Phân biệt: vend (bán lẻ), trade (trao đổi buôn bán)',
+      learn: 'Phân biệt: study (nghiên cứu sách vở/học thuật), acquire (tiếp thu kỹ năng)',
+      study: 'Phân biệt: learn (nắm được kiến thức/kỹ năng), revise (ôn tập)',
+      teach: 'Phân biệt: educate (giáo dục toàn diện), instruct (chỉ dẫn kỹ thuật)',
+      remember: 'Phân biệt: remind (nhắc nhở người khác), recall (hồi tưởng lại)',
+      forget: 'Phân biệt: leave (bỏ quên ở đâu đó + địa điểm)',
+      lend: 'Phân biệt: borrow (mượn về), rent (thuê trả tiền)',
+      borrow: 'Phân biệt: lend (cho mượn), loan (cho vay tiền/khoản nợ)',
+      win: 'Phân biệt: beat (đánh bại đối thủ), achieve (đạt được mục tiêu)',
+      lose: 'Phân biệt: miss (bỏ lỡ cơ hội/chuyến tàu), drop (đánh rơi)',
+      find: 'Phân biệt: look for (đang tìm kiếm), discover (phát hiện ra điều mới)',
+      eat: 'Phân biệt: dine (dùng bữa trang trọng), snack (ăn nhẹ, ăn vặt)',
+      drink: 'Phân biệt: sip (nhấp từng ngụm nhỏ), gulp (uống ừng ực)',
+      write: 'Phân biệt: note (ghi chú nhanh), draft (soạn thảo sơ bộ), compose (sáng tác)',
+      read: 'Phân biệt: skim (đọc lướt lấy ý), scan (tìm thông tin cụ thể), peruse (đọc kỹ)',
+      wear: 'Phân biệt: put on (hành động mặc vào), dress (diện trang phục)',
+      sleep: 'Phân biệt: doze (ngủ gật), nap (chợp mắt chốc lát)',
+      wake: 'Phân biệt: get up (rời khỏi giường), awaken (thức tỉnh)',
+      run: 'Phân biệt: jog (chạy bộ duy trì sức khỏe), sprint (chạy nước rút tốc độ cao)',
+      walk: 'Phân biệt: stroll (đi dạo thong thả), march (hành quân, bước đều)',
+      cut: 'Phân biệt: slice (cắt lát mỏng), chop (chặt/thái nhỏ), carve (khắc/xẻ thịt)',
+      break: 'Phân biệt: shatter (vỡ vụn thành trăm mảnh), crack (nứt rạn), smash (đập nát)',
+      hit: 'Phân biệt: strike (đánh mạnh/tấn công), punch (đấm bằng nắm tay)',
+      fall: 'Phân biệt: drop (làm rơi có tác động), collapse (sụp đổ)',
+      rise: 'Phân biệt: raise (nâng vật gì lên - ngoại động từ), arise (phát sinh)',
+      lie: 'Phân biệt: lay (đặt/để vật xuống - ngoại ĐT), lie (nói dối - regular)'
+    };
+
+    function getVerbNuanceOrSynonyms(verb) {
+      if (!verb) return '';
+      const v1 = (verb.v1 || '').toLowerCase().trim();
+      if (VERB_NUANCE_MAP[v1]) {
+        return VERB_NUANCE_MAP[v1];
+      }
+      const syns = getSynonymsForWord(v1);
+      if (syns && syns.length > 0) {
+        return `Đồng nghĩa: ${syns.slice(0, 3).join(', ')}`;
+      }
+      return 'Dạng động từ thông dụng trong SGK & giao tiếp';
     }
 
     let availableVoices = [];
@@ -1432,37 +1493,37 @@ if (typeof window !== 'undefined') {
         }
 
         dictAnchorSentences.innerHTML = `
-          <div class="anchor-card p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 flex flex-col justify-between gap-1.5 shadow-xs">
-            <div class="flex items-center justify-between text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-bold">
-              <span>Hiện tại (Present)</span>
-              <button type="button" class="btn-anchor-speak w-6 h-6 rounded flex items-center justify-center hover:bg-cyan-500/15 hover:text-cyan-400 transition-colors" title="Nghe câu" data-sentence="${s1EN.replace(/"/g, '&quot;')}">
+          <div class="p-3 sm:p-3.5 space-y-1">
+            <div class="flex items-center justify-between text-[10px] font-mono text-[#9CA3AF]">
+              <span>1. Hiện tại (Present)</span>
+              <button type="button" class="btn-anchor-speak text-slate-500 hover:text-white transition-colors cursor-pointer" title="Nghe câu" data-sentence="${s1EN.replace(/"/g, '&quot;')}">
                 <i class="fa-solid fa-volume-high text-xs"></i>
               </button>
             </div>
-            <p class="font-mono text-xs font-semibold text-slate-800 dark:text-slate-100 leading-snug">${s1EN}</p>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">${s1VN}</p>
+            <p class="font-mono text-xs sm:text-sm font-bold text-[#F3F4F6] leading-snug">${s1EN}</p>
+            <p class="text-[11px] sm:text-xs text-[#9CA3AF] italic">${s1VN}</p>
           </div>
 
-          <div class="anchor-card p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 flex flex-col justify-between gap-1.5 shadow-xs">
-            <div class="flex items-center justify-between text-[10px] font-mono text-amber-600 dark:text-amber-400 font-bold">
-              <span>Quá khứ (Past)</span>
-              <button type="button" class="btn-anchor-speak w-6 h-6 rounded flex items-center justify-center hover:bg-amber-500/15 hover:text-amber-400 transition-colors" title="Nghe câu" data-sentence="${s2EN.replace(/"/g, '&quot;')}">
+          <div class="p-3 sm:p-3.5 space-y-1">
+            <div class="flex items-center justify-between text-[10px] font-mono text-[#9CA3AF]">
+              <span>2. Quá khứ (Past)</span>
+              <button type="button" class="btn-anchor-speak text-slate-500 hover:text-white transition-colors cursor-pointer" title="Nghe câu" data-sentence="${s2EN.replace(/"/g, '&quot;')}">
                 <i class="fa-solid fa-volume-high text-xs"></i>
               </button>
             </div>
-            <p class="font-mono text-xs font-semibold text-slate-800 dark:text-slate-100 leading-snug">${s2EN}</p>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">${s2VN}</p>
+            <p class="font-mono text-xs sm:text-sm font-bold text-[#F3F4F6] leading-snug">${s2EN}</p>
+            <p class="text-[11px] sm:text-xs text-[#9CA3AF] italic">${s2VN}</p>
           </div>
 
-          <div class="anchor-card p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 flex flex-col justify-between gap-1.5 shadow-xs">
-            <div class="flex items-center justify-between text-[10px] font-mono text-purple-600 dark:text-purple-400 font-bold">
-              <span>${s3Label}</span>
-              <button type="button" class="btn-anchor-speak w-6 h-6 rounded flex items-center justify-center hover:bg-purple-500/15 hover:text-purple-400 transition-colors" title="Nghe câu" data-sentence="${s3EN.replace(/"/g, '&quot;')}">
+          <div class="p-3 sm:p-3.5 space-y-1">
+            <div class="flex items-center justify-between text-[10px] font-mono text-[#9CA3AF]">
+              <span>3. ${s3Label}</span>
+              <button type="button" class="btn-anchor-speak text-slate-500 hover:text-white transition-colors cursor-pointer" title="Nghe câu" data-sentence="${s3EN.replace(/"/g, '&quot;')}">
                 <i class="fa-solid fa-volume-high text-xs"></i>
               </button>
             </div>
-            <p class="font-mono text-xs font-semibold text-slate-800 dark:text-slate-100 leading-snug">${s3EN}</p>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">${s3VN}</p>
+            <p class="font-mono text-xs sm:text-sm font-bold text-[#F3F4F6] leading-snug">${s3EN}</p>
+            <p class="text-[11px] sm:text-xs text-[#9CA3AF] italic">${s3VN}</p>
           </div>
         `;
 
@@ -1491,7 +1552,7 @@ if (typeof window !== 'undefined') {
         }
         collocs.forEach(c => {
           const pill = document.createElement('span');
-          pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-mono font-medium bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-400/25 hover:bg-cyan-500/20 cursor-pointer transition-colors';
+          pill.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-[#9CA3AF] border border-[#232A3B] hover:text-[#F3F4F6] hover:border-slate-500 cursor-pointer transition-colors';
           pill.textContent = c;
           pill.title = 'Bấm để nghe phát âm';
           pill.addEventListener('click', () => speak(c, 'en-US', pill));
@@ -1507,7 +1568,7 @@ if (typeof window !== 'undefined') {
 
         synonyms.forEach(syn => {
           const pill = document.createElement('span');
-          pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-mono font-medium bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-400/25 hover:bg-violet-500/20 cursor-pointer transition-colors';
+          pill.className = 'px-2 py-0.5 rounded text-[11px] font-mono text-[#9CA3AF] border border-[#232A3B] hover:text-[#F3F4F6] hover:border-slate-500 cursor-pointer transition-colors';
           pill.textContent = syn;
           pill.title = 'Bấm để tra cứu hoặc nghe từ đồng nghĩa';
           pill.addEventListener('click', () => {
@@ -2035,9 +2096,9 @@ if (typeof window !== 'undefined') {
         btn.type = 'button';
         const isSelected = (g === gradeNum);
         btn.className = isSelected
-          ? 'py-2.5 px-2 rounded-xl font-mono text-xs font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-lg transition-all cursor-pointer'
-          : 'py-2.5 px-2 rounded-xl font-mono text-xs font-bold bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300 border border-violet-500/30 hover:border-cyan-400 transition-all cursor-pointer';
-        btn.textContent = `Lớp ${g}`;
+          ? 'py-1.5 px-3 rounded-lg font-mono text-xs font-bold bg-[#1E2536] text-[#F3F4F6] border border-[#232A3B] shadow-sm cursor-pointer'
+          : 'py-1.5 px-3 rounded-lg font-mono text-xs font-medium text-[#9CA3AF] hover:text-[#F3F4F6] bg-transparent border-0 cursor-pointer';
+        btn.textContent = String(g).padStart(2, '0');
         btn.addEventListener('click', () => renderSgkCurriculum(g));
         gradeSelector.appendChild(btn);
       }
@@ -2046,20 +2107,20 @@ if (typeof window !== 'undefined') {
       const tenseChipsHtml = meta.tenses.map(tid => {
         const tObj = TENSES.find(x => x.id === tid);
         if (!tObj) return '';
-        return `<button type="button" data-sgk-tense="${tid}" class="sgk-tense-chip px-3 py-1.5 rounded-xl text-xs font-bold bg-violet-500/20 text-violet-700 dark:text-violet-200 border border-violet-400/40 hover:bg-violet-500/30 transition-all cursor-pointer">⚡ ${tObj.viTitle} (${tObj.formula})</button>`;
+        return `<button type="button" data-sgk-tense="${tid}" class="sgk-tense-chip px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-[#1E2536] text-slate-200 border border-[#232A3B] hover:border-slate-500 cursor-pointer transition-colors">${tObj.viTitle} (${tObj.formula})</button>`;
       }).join('');
 
       gradeSummary.innerHTML = `
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
           <div>
-            <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 font-bold">Cấp ${meta.level} • Chương trình Chuẩn Bộ GD&amp;ĐT</span>
-            <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mt-0.5">${meta.title}</h3>
+            <span class="text-[11px] font-mono text-slate-400">Cấp ${meta.level} • Chuẩn GDPT 2018</span>
+            <h3 class="text-lg sm:text-xl font-bold text-[#F3F4F6]">${meta.title}</h3>
           </div>
         </div>
-        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300">${meta.desc}</p>
-        <div class="space-y-1.5">
-          <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400">Các Thì Trọng Tâm Lớp ${gradeNum} (Nhấn để xem Công thức &amp; Sơ đồ):</span>
-          <div class="flex flex-wrap gap-2 pt-1">${tenseChipsHtml}</div>
+        <p class="text-xs sm:text-sm text-slate-400">${meta.desc}</p>
+        <div class="space-y-1 pt-1 border-t border-[#232A3B]">
+          <span class="text-[10px] font-mono uppercase text-slate-500">Các thì trọng tâm Lớp ${gradeNum}:</span>
+          <div class="flex flex-wrap gap-1.5 pt-0.5">${tenseChipsHtml}</div>
         </div>
       `;
 
@@ -2076,29 +2137,29 @@ if (typeof window !== 'undefined') {
       sgkVerbsGrid.innerHTML = '';
       gradeVerbs.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'p-4 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-slate-300 dark:border-violet-500/30 hover:border-cyan-400 transition-all flex flex-col justify-between gap-3';
+        card.className = 'p-3.5 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-col justify-between gap-2.5 transition-colors';
         card.innerHTML = `
-          <div>
+          <div class="space-y-1.5">
             <div class="flex items-center justify-between gap-2">
               <div class="flex items-center gap-2">
-                <span class="font-mono text-lg font-extrabold text-slate-900 dark:text-white">${item.v1}</span>
-                <span class="cyber-ipa-badge text-xs px-2 py-0.5 rounded-md">${item.ipaUS}</span>
+                <span class="font-mono text-base font-bold text-[#F3F4F6]">${item.v1}</span>
+                <span class="text-xs font-mono text-[#9CA3AF]">${item.ipaUS}</span>
               </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full ${item.isIrregular ? 'bg-amber-500/20 text-amber-300 border border-amber-400/30' : 'bg-emerald-500/20 text-emerald-300 border border-emerald-400/30'}">
+              <span class="text-[10px] font-mono text-[#9CA3AF]">
                 ${item.isIrregular ? 'Bất quy tắc' : 'Có quy tắc'}
               </span>
             </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300 font-semibold mt-1">${item.meaning}</p>
-            <div class="mt-2 flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
-              <span class="px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-cyan-300">V2: ${item.v2}</span>
-              <span class="px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-purple-300">V3: ${item.v3}</span>
-              <span class="px-2 py-0.5 rounded bg-slate-200/70 dark:bg-slate-800 text-indigo-300">V-ing: ${item.ving}</span>
+            <p class="text-xs text-[#9CA3AF] truncate">${item.meaning}</p>
+            <div class="pt-0.5 text-xs font-mono text-[#9CA3AF]">
+              ${item.v2} • ${item.v3} • ${item.ving}
             </div>
           </div>
-          <div class="flex items-center justify-between pt-2 border-t border-slate-200/60 dark:border-slate-800">
-            <button type="button" class="btn-sgk-speak text-xs font-bold text-cyan-400 hover:underline cursor-pointer">🔊 Nghe US</button>
-            <button type="button" class="btn-sgk-use px-3 py-1 rounded-xl text-xs font-bold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-sm hover:opacity-95 cursor-pointer">
-              ⚡ Chia 12 Thì
+          <div class="flex items-center justify-between pt-2 border-t border-[#232A3B]">
+            <button type="button" class="btn-sgk-speak text-slate-500 hover:text-white transition-colors cursor-pointer" title="Nghe phát âm">
+              <i class="fa-solid fa-volume-high text-xs"></i>
+            </button>
+            <button type="button" class="btn-sgk-use text-xs font-mono text-indigo-400 hover:underline cursor-pointer">
+              Chia 12 thì →
             </button>
           </div>
         `;
@@ -2348,7 +2409,7 @@ if (typeof window !== 'undefined') {
       });
     });
 
-    function selectVerb(query, skipReverseCheck = false) {
+    function selectVerb(query, skipReverseCheck = false, source = 'other') {
       let clean = (query || '').trim();
       if (!clean) return;
 
@@ -2368,7 +2429,7 @@ if (typeof window !== 'undefined') {
       state.defaultPassiveSubject = state.verbData.passiveSubject;
       state.verbKey = state.verbData.v1;
       verbInput.value = state.verbData.v1;
-      customObjectInput.value = state.verbData.activeObject || '';
+      if (customObjectInput) customObjectInput.value = state.verbData.activeObject || '';
       btnClear.classList.remove('hidden');
       suggestionsDropdown.classList.add('hidden');
       state.suggestionIndex = -1;
@@ -2376,6 +2437,9 @@ if (typeof window !== 'undefined') {
       renderHeroDictionary();
       renderMatrix();
       highlightLeftPaneVerb(state.verbKey);
+      if (source !== 'right') {
+        syncRightDictionaryToVerb(state.verbKey, true);
+      }
       renderScratchpad();
     }
 
@@ -2438,7 +2502,6 @@ if (typeof window !== 'undefined') {
       const fragment = document.createDocumentFragment();
 
       filtered.forEach(item => {
-        const pat = classifyVerbPattern(item);
         const isActive = item.v1.toLowerCase() === (state.verbKey || '').toLowerCase();
 
         const row = document.createElement('div');
@@ -2447,27 +2510,27 @@ if (typeof window !== 'undefined') {
 
         row.innerHTML = `
           <div class="flex items-center gap-2.5 min-w-0 pr-1">
-            <div class="w-1.5 h-6 rounded-full ${isActive ? 'bg-cyan-400' : 'bg-slate-300 dark:bg-slate-700'} shrink-0 row-indicator"></div>
+            <div class="w-1 h-5 rounded-full ${isActive ? 'bg-indigo-500' : 'bg-transparent'} shrink-0 row-indicator"></div>
             <div class="min-w-0">
               <div class="flex items-center gap-2 flex-wrap">
-                <span class="font-mono font-bold text-xs text-cyan-600 dark:text-cyan-300">${item.v1}</span>
-                <span class="font-mono text-[11px] text-slate-500 dark:text-slate-400">${item.v2} • ${item.v3}</span>
+                <span class="font-mono font-bold text-xs text-[#F3F4F6]">${item.v1}</span>
+                <span class="font-mono text-[11px] text-[#9CA3AF]">${item.v2} • ${item.v3}</span>
               </div>
-              <div class="text-[11px] text-slate-600 dark:text-slate-300 truncate max-w-[210px] sm:max-w-[260px]">
+              <div class="text-[11px] text-[#9CA3AF] truncate max-w-[220px] sm:max-w-[280px]">
                 ${item.meaning}
               </div>
             </div>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
-            <span class="pattern-tag pattern-tag--${pat}">${pat}</span>
-            <button type="button" class="btn-left-speak w-6 h-6 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 flex items-center justify-center transition-colors" title="Nghe phát âm">
+            <button type="button" class="btn-left-speak w-6 h-6 rounded text-slate-500 hover:text-white flex items-center justify-center transition-colors cursor-pointer" title="Nghe phát âm">
               <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
             </button>
           </div>
         `;
 
         row.addEventListener('click', () => {
-          selectVerb(item.v1, true);
+          selectVerb(item.v1, true, 'left');
+          syncRightDictionaryToVerb(item.v1, true);
         });
 
         const speakBtn = row.querySelector('.btn-left-speak');
@@ -2489,15 +2552,35 @@ if (typeof window !== 'undefined') {
       const targetV1 = v1.toLowerCase();
 
       if (leftPaneVerbList) {
-        const rows = leftPaneVerbList.querySelectorAll('.verb-matrix-row');
+        let rows = leftPaneVerbList.querySelectorAll('.verb-matrix-row');
+        let found = false;
+        rows.forEach(r => {
+          if (r.dataset.v1 && r.dataset.v1.toLowerCase() === targetV1) found = true;
+        });
+
+        // If not found in current pattern filter or search query, reset to 'all' so it becomes visible
+        if (!found && (state.patternFilter !== 'all' || state.leftSearchQuery)) {
+          state.patternFilter = 'all';
+          state.leftSearchQuery = '';
+          if (leftPaneSearch) leftPaneSearch.value = '';
+          if (btnLeftSearchClear) btnLeftSearchClear.classList.add('hidden');
+          if (patternFilterBar) {
+            patternFilterBar.querySelectorAll('.pattern-tab-btn').forEach(b => {
+              b.classList.toggle('is-active', b.dataset.pattern === 'all');
+            });
+          }
+          renderLeftPaneVerbs();
+          rows = leftPaneVerbList.querySelectorAll('.verb-matrix-row');
+        }
+
         rows.forEach(r => {
           const match = r.dataset.v1 && r.dataset.v1.toLowerCase() === targetV1;
           r.classList.toggle('is-active', match);
           const indicator = r.querySelector('.row-indicator');
           if (indicator) {
             indicator.className = match
-              ? 'w-1.5 h-6 rounded-full bg-cyan-400 shrink-0 row-indicator'
-              : 'w-1.5 h-6 rounded-full bg-slate-300 dark:bg-slate-700 shrink-0 row-indicator';
+              ? 'w-1 h-5 rounded-full bg-indigo-500 shrink-0 row-indicator'
+              : 'w-1 h-5 rounded-full bg-transparent shrink-0 row-indicator';
           }
           if (match) {
             r.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -2521,6 +2604,232 @@ if (typeof window !== 'undefined') {
       }
     }
 
+    /* ----------------------------------------------------------------------------
+     * RIGHT PANE: REVERSE LOOKUP SCROLLABLE DICTIONARY & ACCORDION
+     * ---------------------------------------------------------------------------- */
+
+    function renderReverseDictionary(filterQuery = '') {
+      if (!rightDictFeed) return;
+
+      const q = (filterQuery || '').trim();
+      let list = [];
+
+      if (q) {
+        if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.search === 'function') {
+          const results = window.LexiSearchEngine.search(q, { minScore: 0.15 });
+          list = results.map(r => r.verb);
+        } else {
+          const qLower = q.toLowerCase();
+          const qNoTone = removeVietnameseTones(qLower);
+          list = VERB_DATABASE.filter(item => {
+            const viNorm = removeVietnameseTones(item.meaning);
+            return (
+              item.v1.toLowerCase().includes(qLower) ||
+              (item.v2 && item.v2.toLowerCase().includes(qLower)) ||
+              (item.v3 && item.v3.toLowerCase().includes(qLower)) ||
+              (item.meaning && item.meaning.toLowerCase().includes(qLower)) ||
+              viNorm.includes(qNoTone)
+            );
+          });
+        }
+      } else {
+        list = VERB_DATABASE.slice();
+      }
+
+      if (rightDictCountBadge) {
+        rightDictCountBadge.textContent = `${list.length} / ${VERB_DATABASE.length} Mục từ`;
+      }
+
+      rightDictFeed.innerHTML = '';
+
+      if (list.length === 0) {
+        rightDictFeed.innerHTML = `
+          <div class="p-8 text-center text-xs text-slate-400 bg-[#161B26] rounded-xl border border-[#232A3B]">
+            <i class="fa-solid fa-book-open text-2xl mb-2 text-slate-500 block"></i>
+            Không tìm thấy mục từ tiếng Việt hoặc tiếng Anh tương ứng với <strong class="text-indigo-400">"${q}"</strong>.
+            <div class="mt-2 text-slate-500 text-[11px]">Thử tìm với từ khóa không dấu (VD: "nau an", "cat", "mua", "viet")...</div>
+          </div>
+        `;
+        return;
+      }
+
+      const activeV1 = (state.verbKey || (state.verbData && state.verbData.v1) || '').toLowerCase();
+      const fragment = document.createDocumentFragment();
+
+      list.forEach(item => {
+        const v1Lower = item.v1.toLowerCase();
+        const isActive = v1Lower === activeV1;
+        const v2First = firstVariant(item.v2);
+        const v3First = firstVariant(item.v3);
+        const nuanceText = getVerbNuanceOrSynonyms(item);
+        const cleanMeaning = (item.meaning || '').split(',')[0].trim();
+        const obj = item.activeObject ? item.activeObject.trim() : '';
+        const exampleEN = `I usually ${item.v1}${obj ? ' ' + obj : ''} every day.`;
+        const exampleVN = `Tôi thường ${cleanMeaning}${obj ? ' ' + obj : ''} mỗi ngày.`;
+
+        const card = document.createElement('div');
+        card.className = `dict-entry-card p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer ${isActive ? 'is-active' : ''}`;
+        card.dataset.v1 = v1Lower;
+        card.id = `dict-card-${v1Lower}`;
+
+        card.innerHTML = `
+          <!-- Top Row: Vietnamese Concept in Bold & Flags -->
+          <div class="flex items-start justify-between gap-2">
+            <h3 class="text-sm font-bold text-[#F3F4F6] leading-snug flex-1">${item.meaning}</h3>
+            <div class="flex items-center gap-1 shrink-0 flex-wrap justify-end">
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] ${item.isIrregular ? 'text-amber-400/90' : 'text-slate-400'}">
+                ${item.isIrregular ? 'Bất quy tắc' : 'Có quy tắc'}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] ${item.isTransitive ? 'text-emerald-400' : 'text-rose-400'}">
+                ${item.isTransitive ? '[vt.]' : '[vi.]'}
+              </span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] text-slate-500">
+                Lớp ${item.grade || 6}
+              </span>
+            </div>
+          </div>
+
+          <!-- Second Row: Primary English Equivalent + IPA + Audio Button + Quick Forms -->
+          <div class="flex items-center justify-between gap-2 mt-1.5">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-mono text-base font-extrabold text-indigo-400">${item.v1}</span>
+              <span class="cyber-ipa-badge text-xs">${item.ipaUS || `/${item.v1}/`}</span>
+              <span class="text-[11px] font-mono text-slate-400">${item.v2} • ${item.v3}</span>
+            </div>
+            <div class="inline-flex items-center gap-1 shrink-0">
+              <button type="button" class="btn-card-audio p-1 text-slate-400 hover:text-white transition-colors cursor-pointer" title="Nghe phát âm (${item.v1})">
+                <i class="fa-solid fa-volume-high text-xs" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn-card-toggle text-slate-500 hover:text-slate-300 p-1 transition-transform cursor-pointer" title="Mở rộng chi tiết">
+                <i class="fa-solid fa-chevron-down text-xs card-chevron ${isActive ? 'rotate-180' : ''}" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Third Row: Related Nuance or Synonyms -->
+          <div class="text-[11px] text-slate-400 flex items-center gap-1.5 mt-2 pt-1.5 border-t border-[#232A3B]/60">
+            <i class="fa-solid fa-lightbulb text-[10px] text-amber-400/80 shrink-0" aria-hidden="true"></i>
+            <span class="truncate">${nuanceText}</span>
+          </div>
+
+          <!-- Expandable Detail (Accordion Mode) -->
+          <div class="dict-card-accordion mt-2.5 pt-2.5 border-t border-[#232A3B] space-y-2 ${isActive ? '' : 'hidden'}">
+            <!-- 3 Verb Forms -->
+            <div class="grid grid-cols-3 gap-1.5 text-center font-mono text-xs">
+              <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+                <div class="text-[9px] uppercase text-slate-500 font-bold">V1 (Base)</div>
+                <div class="font-bold text-[#F3F4F6] mt-0.5">${item.v1}</div>
+              </div>
+              <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+                <div class="text-[9px] uppercase text-slate-500 font-bold">V2 (Past)</div>
+                <div class="font-bold text-[#F3F4F6] mt-0.5">${v2First}</div>
+              </div>
+              <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+                <div class="text-[9px] uppercase text-slate-500 font-bold">V3 (Participle)</div>
+                <div class="font-bold text-[#F3F4F6] mt-0.5">${v3First}</div>
+              </div>
+            </div>
+
+            <!-- Anchor Example Sentence -->
+            <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+              <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+                <span>Câu Ngữ Cảnh Chuẩn (Anchor Sentence)</span>
+                <button type="button" class="btn-card-sentence-speak text-slate-400 hover:text-white cursor-pointer" title="Nghe câu ví dụ">
+                  <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+                </button>
+              </div>
+              <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${exampleEN}</p>
+              <p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>
+            </div>
+
+            <!-- Two-Way Reactive Synchronization Status -->
+            <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-0.5">
+              <span>Đồng bộ Ma trận 12 Thì</span>
+              <span class="text-indigo-400 flex items-center gap-1">
+                <span>Xem bảng chia thì bên dưới ↓</span>
+              </span>
+            </div>
+          </div>
+        `;
+
+        // Audio speak button
+        const audioBtn = card.querySelector('.btn-card-audio');
+        if (audioBtn) {
+          audioBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            speak(item.v1, 'en-US', audioBtn);
+          });
+        }
+
+        // Sentence speak button
+        const sentenceBtn = card.querySelector('.btn-card-sentence-speak');
+        if (sentenceBtn) {
+          sentenceBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            speak(exampleEN, 'en-US', sentenceBtn);
+          });
+        }
+
+        // Toggle accordion button or full card click
+        card.addEventListener('click', (e) => {
+          const accordion = card.querySelector('.dict-card-accordion');
+          const chevron = card.querySelector('.card-chevron');
+          const isCurrentlyActive = card.classList.contains('is-active');
+
+          if (isCurrentlyActive && accordion && !accordion.classList.contains('hidden')) {
+            // Clicking again on active card toggles accordion
+            accordion.classList.add('hidden');
+            if (chevron) chevron.classList.remove('rotate-180');
+          } else {
+            // Select verb and expand
+            selectVerb(item.v1, true, 'right');
+            highlightLeftPaneVerb(item.v1);
+            syncRightDictionaryToVerb(item.v1, true);
+          }
+        });
+
+        fragment.appendChild(card);
+      });
+
+      rightDictFeed.appendChild(fragment);
+    }
+
+    function syncRightDictionaryToVerb(v1, expandAccordion = true) {
+      if (!v1 || !rightDictFeed) return;
+      const targetV1 = v1.toLowerCase().trim();
+
+      let targetCard = rightDictFeed.querySelector(`.dict-entry-card[data-v1="${targetV1}"]`);
+
+      // If target card is not found in the current feed (e.g. search filter excluded it),
+      // re-render the full dictionary feed so it is present!
+      if (!targetCard) {
+        renderReverseDictionary('');
+        targetCard = rightDictFeed.querySelector(`.dict-entry-card[data-v1="${targetV1}"]`);
+      }
+
+      // Update is-active and accordion visibility on all cards
+      const allCards = rightDictFeed.querySelectorAll('.dict-entry-card');
+      allCards.forEach(c => {
+        const isMatch = c.dataset.v1 === targetV1;
+        c.classList.toggle('is-active', isMatch);
+        const acc = c.querySelector('.dict-card-accordion');
+        const chev = c.querySelector('.card-chevron');
+        if (acc) {
+          if (isMatch && expandAccordion) {
+            acc.classList.remove('hidden');
+            if (chev) chev.classList.add('rotate-180');
+          } else if (!isMatch) {
+            acc.classList.add('hidden');
+            if (chev) chev.classList.remove('rotate-180');
+          }
+        }
+      });
+
+      if (targetCard) {
+        targetCard.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    }
+
     function savePinnedVerbs() {
       try {
         if (typeof window !== 'undefined' && window.localStorage) {
@@ -2533,18 +2842,23 @@ if (typeof window !== 'undefined') {
       if (!scratchpadChipsContainer) return;
       scratchpadChipsContainer.innerHTML = '';
 
+      const badgeCount = document.getElementById('scratchpad-badge-count');
+      if (badgeCount) {
+        badgeCount.textContent = state.pinnedVerbs.length > 0 ? `(${state.pinnedVerbs.length})` : '';
+      }
+
       state.pinnedVerbs.forEach(verbKey => {
         const isCurrent = (state.verbKey || '').toLowerCase() === verbKey.toLowerCase();
         const pill = document.createElement('div');
-        pill.className = `scratchpad-pin-pill inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-mono font-medium border cursor-pointer select-none transition-all ${
+        pill.className = `scratchpad-pin-pill inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-medium border cursor-pointer select-none transition-colors ${
           isCurrent
-            ? 'bg-gradient-to-r from-violet-600 to-cyan-600 text-white border-transparent shadow-xs font-bold'
-            : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:border-amber-400'
+            ? 'bg-[#1E2536] text-[#F3F4F6] border-indigo-500 font-bold'
+            : 'bg-[#161B26] text-slate-400 border-[#232A3B] hover:text-white hover:border-slate-500'
         }`;
 
         pill.innerHTML = `
           <span>${verbKey}</span>
-          <button type="button" class="btn-unpin text-slate-400 hover:text-rose-400 text-xs ml-0.5" title="Bỏ ghim">
+          <button type="button" class="btn-unpin text-slate-500 hover:text-rose-400 text-xs ml-0.5 cursor-pointer" title="Bỏ ghim">
             &times;
           </button>
         `;
@@ -2638,6 +2952,14 @@ if (typeof window !== 'undefined') {
       btnPinCurrent.addEventListener('click', pinCurrentVerb);
     }
 
+    const btnToggleScratchpad = document.getElementById('btn-toggle-scratchpad');
+    const sessionScratchpadDrawer = document.getElementById('session-scratchpad-drawer');
+    if (btnToggleScratchpad && sessionScratchpadDrawer) {
+      btnToggleScratchpad.addEventListener('click', () => {
+        sessionScratchpadDrawer.classList.toggle('is-open');
+      });
+    }
+
     function updateAutocomplete(val) {
       const q = (val || '').trim();
       state.suggestionIndex = -1;
@@ -2727,7 +3049,10 @@ if (typeof window !== 'undefined') {
       const val = e.target.value;
       btnClear.classList.toggle('hidden', !val);
       clearTimeout(searchDebounceTimer);
-      searchDebounceTimer = setTimeout(() => updateAutocomplete(val), 180);
+      searchDebounceTimer = setTimeout(() => {
+        updateAutocomplete(val);
+        renderReverseDictionary(val);
+      }, 150);
     });
 
     verbInput.addEventListener('keydown', (e) => {
@@ -2759,6 +3084,7 @@ if (typeof window !== 'undefined') {
       verbInput.value = '';
       btnClear.classList.add('hidden');
       suggestionsDropdown.classList.add('hidden');
+      renderReverseDictionary('');
       verbInput.focus();
     });
 
@@ -2921,6 +3247,7 @@ if (typeof window !== 'undefined') {
 
       renderScratchpad();
       renderLeftPaneVerbs();
+      renderReverseDictionary('');
       selectVerb('write');
     }
 
@@ -2940,6 +3267,8 @@ if (typeof window !== 'undefined') {
   window.resolveInflectedForm = resolveInflectedForm;
   window.renderLeftPaneVerbs = renderLeftPaneVerbs;
   window.highlightLeftPaneVerb = highlightLeftPaneVerb;
+  window.renderReverseDictionary = renderReverseDictionary;
+  window.syncRightDictionaryToVerb = syncRightDictionaryToVerb;
   window.renderScratchpad = renderScratchpad;
   window.state = state;
 }

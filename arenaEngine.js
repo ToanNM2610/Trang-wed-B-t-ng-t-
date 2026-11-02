@@ -814,16 +814,16 @@ function updateArenaHUD() {
   if (powerupBadges) {
     const badges = [];
     if (ArenaState.hasInsurance) {
-      badges.push(`<span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-400/40">🛡️ Insurance Active</span>`);
+      badges.push(`<span class="px-2 py-0.5 rounded text-[10px] font-mono text-slate-300 border border-[#232A3B]">🛡️ Insurance</span>`);
     }
     if (ArenaState.hasCyberShield) {
-      badges.push(`<span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">🔰 Streak Shield</span>`);
+      badges.push(`<span class="px-2 py-0.5 rounded text-[10px] font-mono text-slate-300 border border-[#232A3B]">🔰 Shield</span>`);
     }
     if (ArenaState.doubleNextPoints) {
-      badges.push(`<span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-400/40">⚡ Next 2x Points</span>`);
+      badges.push(`<span class="px-2 py-0.5 rounded text-[10px] font-mono text-slate-300 border border-[#232A3B]">⚡ 2x Points</span>`);
     }
     if (ArenaState.streakBonusLevel > 1) {
-      badges.push(`<span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-violet-500/20 text-violet-300 border border-violet-400/40">🚀 Streak Boost x${ArenaState.streakBonusLevel}</span>`);
+      badges.push(`<span class="px-2 py-0.5 rounded text-[10px] font-mono text-slate-300 border border-[#232A3B]">🚀 Streak x${ArenaState.streakBonusLevel}</span>`);
     }
     powerupBadges.innerHTML = badges.join("");
   }
@@ -832,17 +832,14 @@ function updateArenaHUD() {
   if (streakBanner && questionCard) {
     if (ArenaState.streak >= 3) {
       streakBanner.classList.remove("hidden");
-      streakBanner.className = "px-3.5 py-1 rounded-full text-xs font-mono font-extrabold bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white shadow-lg shadow-orange-500/40 animate-pulse";
-      streakBanner.textContent = `Combo x${ArenaState.streak} 🔥🔥 SUPER CHARGED`;
-      questionCard.classList.add("super-charged-fire");
+      streakBanner.className = "px-2.5 py-0.5 rounded text-[11px] font-mono text-indigo-300 border border-indigo-500/40 bg-indigo-950/30";
+      streakBanner.textContent = `Combo x${ArenaState.streak} 🔥`;
     } else if (ArenaState.streak === 2) {
       streakBanner.classList.remove("hidden");
-      streakBanner.className = "px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-500/25 text-amber-300 border border-amber-400/50";
+      streakBanner.className = "px-2.5 py-0.5 rounded text-[11px] font-mono text-slate-300 border border-[#232A3B]";
       streakBanner.textContent = `Combo x2 🔥`;
-      questionCard.classList.remove("super-charged-fire");
     } else {
       streakBanner.classList.add("hidden");
-      questionCard.classList.remove("super-charged-fire");
     }
   }
 
@@ -891,22 +888,14 @@ function generateDynamicQuestion() {
   const optionsGrid = typeof document !== 'undefined' ? document.getElementById("quiz-options-grid") : null;
   if (optionsGrid) {
     optionsGrid.innerHTML = "";
-    const colorBorders = [
-      "border-cyan-500/40 hover:border-cyan-400",
-      "border-violet-500/40 hover:border-violet-400",
-      "border-emerald-500/40 hover:border-emerald-400",
-      "border-amber-500/40 hover:border-amber-400"
-    ];
 
     canonicalItem.options.forEach((opt, idx) => {
       const btn = document.createElement("button");
       btn.type = "button";
-      btn.className = `quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-bold bg-white dark:bg-slate-900/95 border-2 ${colorBorders[idx % 4]} text-slate-800 dark:text-slate-100 transition-all cursor-pointer flex items-center justify-between gap-2 shadow-sm`;
+      btn.className = "quiz-opt-btn p-3.5 sm:p-4 rounded-xl text-left font-mono text-xs sm:text-sm font-medium bg-[#161B26] border border-[#232A3B] text-[#F3F4F6] hover:border-[#4B5563] transition-all cursor-pointer flex items-center gap-3";
       btn.innerHTML = `
-        <span class="flex items-center gap-2.5">
-          <span class="w-6 h-6 rounded-lg bg-slate-200 dark:bg-slate-800 text-cyan-400 flex items-center justify-center text-xs font-extrabold shrink-0">${String.fromCharCode(65 + idx)}</span>
-          <span>${opt.text}</span>
-        </span>
+        <span class="w-6 h-6 rounded bg-[#1F2937] text-slate-400 flex items-center justify-center text-xs font-mono font-bold shrink-0">${String.fromCharCode(65 + idx)}</span>
+        <span class="text-[#F3F4F6]">${opt.text}</span>
       `;
       btn.addEventListener("click", () => applyKahootScoring(opt, btn, false));
       optionsGrid.appendChild(btn);
@@ -989,20 +978,20 @@ function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
     ArenaAudio.playCorrect();
 
     if (clickedBtn) {
-      clickedBtn.className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-emerald-500/25 border-2 border-emerald-400 text-emerald-200 transition-all flex items-center justify-between gap-2 shadow-lg shadow-emerald-500/20";
+      clickedBtn.className = "quiz-opt-btn p-3.5 sm:p-4 rounded-xl text-left font-mono text-xs sm:text-sm font-semibold bg-emerald-950/40 border border-emerald-500/60 text-emerald-200 transition-all flex items-center gap-3";
     }
 
     let doubleTag = evalContext.doublePointsUsed
-      ? ` <span class="px-2 py-0.5 rounded bg-amber-500/25 text-amber-300 font-mono text-xs">⚡ x2 DOUBLE POINTS!</span>`
+      ? ` <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono text-xs">⚡ x2 POINTS</span>`
       : "";
 
     if (feedbackBox) {
       feedbackBox.classList.remove("hidden");
-      feedbackBox.className = "p-4 rounded-2xl bg-emerald-500/15 border border-emerald-400/45 text-emerald-200 text-xs sm:text-sm space-y-1 animate-card-in";
+      feedbackBox.className = "p-3.5 rounded-xl bg-[#161B26] border border-emerald-500/40 text-xs sm:text-sm text-slate-300 space-y-1";
       feedbackBox.innerHTML = `
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <strong class="text-emerald-300 text-sm">🎉 CHÍNH XÁC! +${earnedPoints.toLocaleString()} Điểm (Tốc độ ${ArenaState.timeLeft.toFixed(1)}s)${doubleTag}</strong>
-          <span class="font-mono font-bold text-cyan-300 bg-cyan-500/20 px-2.5 py-0.5 rounded-lg border border-cyan-400/40">+$${earnedCredits} Cyber-Credits</span>
+          <strong class="text-emerald-400 text-sm">CHÍNH XÁC! +${earnedPoints.toLocaleString()} Điểm (${ArenaState.timeLeft.toFixed(1)}s)${doubleTag}</strong>
+          <span class="font-mono text-xs text-slate-400">+$${earnedCredits} Credits</span>
         </div>
         <div>${currentQ.explanation}</div>
       `;
@@ -1028,17 +1017,17 @@ function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
     if (currentQ.options) {
       currentQ.options.forEach((opt, i) => {
         if ((opt.isCorrect || opt.text === currentQ.primaryTarget) && allBtns[i]) {
-          allBtns[i].className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-emerald-500/20 border-2 border-emerald-400 text-emerald-200 transition-all";
+          allBtns[i].className = "quiz-opt-btn p-3.5 sm:p-4 rounded-xl text-left font-mono text-xs sm:text-sm font-semibold bg-emerald-950/40 border border-emerald-500/60 text-emerald-200 transition-all flex items-center gap-3";
         }
       });
     }
 
     if (clickedBtn) {
-      clickedBtn.className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-rose-500/25 border-2 border-rose-400 text-rose-200 transition-all";
+      clickedBtn.className = "quiz-opt-btn p-3.5 sm:p-4 rounded-xl text-left font-mono text-xs sm:text-sm font-semibold bg-rose-950/40 border border-rose-500/60 text-rose-200 transition-all flex items-center gap-3";
     }
 
     let shieldMsg = evalContext.shieldSavedStreak
-      ? `<span class="px-2 py-0.5 rounded bg-cyan-500/25 text-cyan-300 font-mono text-xs">🛡️ CYBER SHIELD ĐÃ BẢO VỆ CHUỖI STREAK (${ArenaState.streak}🔥)!</span>`
+      ? `<span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono text-xs">🛡️ Shield đã bảo vệ streak (${ArenaState.streak}🔥)</span>`
       : "";
 
     if (!evalContext.shieldSavedStreak && questionCard) {
@@ -1048,15 +1037,15 @@ function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
     }
 
     let penaltyMsg = evalContext.insuranceSavedCredits
-      ? `<span class="px-2.5 py-0.5 rounded-lg bg-violet-500/25 text-violet-200 font-mono font-bold text-xs border border-violet-400/40">🛡️ FIREWALL INSURANCE: Miễn phạt $0</span>`
-      : `<span class="px-2.5 py-0.5 rounded-lg bg-rose-500/25 text-rose-300 font-mono font-bold text-xs border border-rose-400/40">Phạt -$30 Cyber-Credits</span>`;
+      ? `<span class="text-xs font-mono text-slate-400">🛡️ Insurance: Miễn phạt</span>`
+      : `<span class="text-xs font-mono text-rose-400">Phạt -$30</span>`;
 
     if (feedbackBox) {
       feedbackBox.classList.remove("hidden");
-      feedbackBox.className = "p-4 rounded-2xl bg-rose-500/15 border border-rose-400/45 text-rose-200 text-xs sm:text-sm space-y-1 animate-card-in";
+      feedbackBox.className = "p-3.5 rounded-xl bg-[#161B26] border border-rose-500/40 text-xs sm:text-sm text-slate-300 space-y-1";
       feedbackBox.innerHTML = `
         <div class="flex flex-wrap items-center justify-between gap-2">
-          <strong class="text-rose-300 text-sm">${isTimeout ? "⏰ HẾT THỜI GIAN (15s)!" : "💡 CHƯA CHÍNH XÁC!"} ${shieldMsg}</strong>
+          <strong class="text-rose-400 text-sm">${isTimeout ? "HẾT THỜI GIAN (15.0s)!" : "CHƯA CHÍNH XÁC!"} ${shieldMsg}</strong>
           ${penaltyMsg}
         </div>
         <div>${currentQ.explanation}</div>

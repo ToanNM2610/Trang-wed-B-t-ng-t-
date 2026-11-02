@@ -139,58 +139,61 @@
   <header class="cyber-header sticky top-0 z-40 transition-colors">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-1.5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1.5">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <button id="btn-replay-intro" type="button" title="Xem màn hình Intro Ultra"
-            class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 via-indigo-600 to-cyan-500 text-white flex items-center justify-center font-serif italic font-bold text-xl shadow-md shadow-violet-500/30 hover:scale-105 transition-transform cursor-pointer">
+        <div class="flex items-center gap-2.5">
+          <button id="btn-replay-intro" type="button" title="Xem lại Intro"
+            class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-serif italic font-bold text-base hover:bg-indigo-500 transition-colors cursor-pointer">
             V
           </button>
-          <div class="flex items-center gap-2 flex-wrap">
-            <span class="font-extrabold text-base tracking-tight text-slate-900 dark:text-white">LexiMatrix</span>
-            <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-md bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-500/30 font-bold">
-              Cyber 3×4
-            </span>
+          <div class="flex items-center gap-2">
+            <span class="font-bold text-sm tracking-tight text-white">LexiMatrix</span>
             <span id="verb-count-badge"
-              class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-400/40 shadow-sm">
-              388 Động từ
+              class="text-[10px] font-mono text-slate-400">
+              388 Verbs
             </span>
           </div>
         </div>
 
         <div class="flex lg:hidden items-center gap-1.5">
-          <button id="btn-open-cheatsheet-mobile" type="button" title="Mở sơ đồ công thức 3×4"
-            class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-200/70 dark:bg-slate-800/80 border border-violet-500/30 flex items-center gap-1">
-            <i class="fa-solid fa-table-columns text-cyan-400 text-[11px]" aria-hidden="true"></i>
+          <button id="btn-open-cheatsheet-mobile" type="button" title="Mở sơ đồ 3×4"
+            class="px-2 py-1 rounded-lg text-xs font-mono text-slate-300 bg-slate-800/80 border border-[#232A3B] flex items-center gap-1">
+            <i class="fa-solid fa-table-columns text-slate-400 text-[10px]" aria-hidden="true"></i>
             <span>3×4</span>
           </button>
         </div>
       </div>
 
-      <!-- Center: 3 Learning Module Switcher Tabs -->
-      <nav aria-label="Phân hệ học tập LexiMatrix" class="cyber-nav-tabs flex items-center gap-1 overflow-x-auto no-scrollbar">
+      <!-- Center: Minimal Segmented Text Bar -->
+      <nav aria-label="Phân hệ học tập LexiMatrix" class="cyber-nav-tabs flex items-center gap-4 overflow-x-auto no-scrollbar">
         <button id="nav-tab-matrix" type="button" data-module-tab="matrix" class="cyber-module-tab active">
-          <span>⚡ Ma trận 12 Thì &amp; <span id="tab-verb-count">388</span> Động từ</span>
+          <span>12 Thì &amp; <span id="tab-verb-count">388</span> Động từ</span>
         </button>
         <button id="nav-tab-sgk" type="button" data-module-tab="sgk" class="cyber-module-tab">
-          <span>📚 Lộ trình SGK Lớp 1 - 12</span>
-          <span class="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">GDPT</span>
+          <span>Lộ trình SGK 1–12</span>
         </button>
         <button id="nav-tab-arena" type="button" data-module-tab="arena" class="cyber-module-tab">
-          <span>🎯 Đấu trường Quiz &amp; Flashcard</span>
+          <span>Quiz &amp; Flashcard</span>
         </button>
       </nav>
 
-      <!-- Right Actions: Formula Guide & Theme Switcher -->
+      <!-- Right Actions: Scratchpad Drawer Toggle, Formula Guide & Theme Switcher -->
       <div class="hidden lg:flex items-center gap-2 shrink-0">
+        <button id="btn-toggle-scratchpad" type="button" title="Mở/Đóng Session Scratchpad"
+          class="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-400 hover:text-white border border-[#232A3B] bg-[#161B26] hover:bg-[#1E2536] transition-colors flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-thumbtack text-[10px]" aria-hidden="true"></i>
+          <span>Scratchpad</span>
+          <span id="scratchpad-badge-count" class="text-[10px] text-indigo-400"></span>
+        </button>
+
         <button id="btn-open-cheatsheet" type="button" title="Mở sơ đồ công thức 3×4"
           aria-label="Mở sơ đồ công thức 3×4"
-          class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-700 dark:text-slate-200 hover:bg-violet-500/15 dark:hover:bg-violet-500/20 border border-slate-300 dark:border-violet-500/35 transition-all flex items-center gap-1.5 cursor-pointer">
-          <i class="fa-solid fa-table-columns text-cyan-500 dark:text-cyan-400" aria-hidden="true"></i>
+          class="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-300 hover:text-white border border-[#232A3B] bg-[#161B26] hover:bg-[#1E2536] transition-colors flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-table-columns text-slate-400 text-xs" aria-hidden="true"></i>
           <span>Sơ đồ 3×4</span>
         </button>
 
         <button id="btn-theme-toggle" type="button" title="Đổi giao diện Sáng/Tối" aria-label="Đổi giao diện Sáng/Tối"
-          class="w-9 h-9 rounded-xl border border-slate-300 dark:border-violet-500/35 bg-white/80 dark:bg-slate-900/90 text-slate-700 dark:text-amber-300 hover:border-cyan-400 flex items-center justify-center transition-all cursor-pointer">
-          <i id="theme-icon" class="fa-solid fa-sun text-xs" aria-hidden="true"></i>
+          class="w-7 h-7 rounded-lg border border-[#232A3B] bg-[#161B26] text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer">
+          <i id="theme-icon" class="fa-solid fa-moon text-xs" aria-hidden="true"></i>
           <span class="sr-only">Đổi giao diện Sáng/Tối</span>
         </button>
       </div>
@@ -206,26 +209,28 @@
     <div id="module-view-matrix" class="space-y-2.5 sm:space-y-3.5">
 
       <!-- =====================================================================
-       * SESSION MEMORY & QUICK PINNING (SCRATCHPAD BAR)
+       * SESSION MEMORY & QUICK PINNING (COLLAPSIBLE DRAWER)
        * ===================================================================== -->
-      <section id="session-scratchpad-bar" class="p-2 sm:px-3 rounded-2xl bg-white/80 dark:bg-slate-900/85 border border-slate-300 dark:border-violet-500/30 flex flex-wrap items-center justify-between gap-2 shadow-sm">
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full">
-          <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold flex items-center gap-1.5 shrink-0">
-            <i class="fa-solid fa-thumbtack text-amber-400 text-xs" aria-hidden="true"></i>
-            <span>Session Scratchpad:</span>
-          </span>
-          <div id="scratchpad-chips-container" class="flex items-center gap-1.5">
-            <!-- Pinned verbs dynamically rendered -->
+      <div id="session-scratchpad-drawer">
+        <section id="session-scratchpad-bar" class="p-2 sm:px-3 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-wrap items-center justify-between gap-2 shadow-none">
+          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-medium flex items-center gap-1.5 shrink-0">
+              <i class="fa-solid fa-thumbtack text-slate-400 text-xs" aria-hidden="true"></i>
+              <span>Session Scratchpad:</span>
+            </span>
+            <div id="scratchpad-chips-container" class="flex items-center gap-1.5">
+              <!-- Pinned verbs dynamically rendered -->
+            </div>
           </div>
-        </div>
-        <div class="flex items-center gap-2 shrink-0">
-          <button id="btn-pin-current" type="button" title="Ghim động từ đang xem vào thanh ghi nhớ nhanh"
-            class="px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-700 dark:text-amber-300 border border-amber-400/35 transition-all flex items-center gap-1.5 cursor-pointer">
-            <i class="fa-solid fa-plus text-[10px]" aria-hidden="true"></i>
-            <span>Ghim từ hiện tại</span>
-          </button>
-        </div>
-      </section>
+          <div class="flex items-center gap-2 shrink-0">
+            <button id="btn-pin-current" type="button" title="Ghim động từ đang xem vào thanh ghi nhớ nhanh"
+              class="px-2.5 py-1 rounded-lg text-xs font-mono font-medium bg-[#1F2937] hover:bg-[#374151] text-[#F3F4F6] border border-[#232A3B] transition-colors flex items-center gap-1.5 cursor-pointer">
+              <i class="fa-solid fa-plus text-[10px]" aria-hidden="true"></i>
+              <span>Ghim từ hiện tại</span>
+            </button>
+          </div>
+        </section>
+      </div>
 
       <!-- =====================================================================
        * DUAL-PANE ELECTRONIC LEXICON WORKSTATION
@@ -236,47 +241,47 @@
         <!-- -------------------------------------------------------------------
          * LEFT PANE: THE 388 IRREGULAR VERBS ENGINE (HIGH-SPEED REFERENCE)
          * ------------------------------------------------------------------- -->
-        <div class="lg:col-span-5 left-pane-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-4 space-y-2.5 flex flex-col justify-between">
+        <div class="lg:col-span-5 left-pane-card rounded-2xl p-3.5 sm:p-4 space-y-2.5 flex flex-col justify-between">
           <div class="space-y-2.5">
             <!-- Left Pane Header -->
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
-                <h2 class="font-mono text-xs font-extrabold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                <h2 class="font-mono text-xs font-bold uppercase tracking-wider text-slate-300">
                   388 Verbs Matrix Engine
                 </h2>
               </div>
-              <span id="left-pane-count-badge" class="px-2 py-0.5 rounded-md font-mono text-[11px] font-bold bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-400/30">
+              <span id="left-pane-count-badge" class="px-2 py-0.5 rounded font-mono text-[11px] text-slate-400 border border-[#232A3B]">
                 388 Từ
               </span>
             </div>
 
-            <!-- Omni-Directional Fuzzy Search (V1, V2, V3 or Meaning) -->
+            <!-- Clean, flat search input field with minimal magnifying icon -->
             <div class="relative">
-              <div class="flex items-center bg-slate-100 dark:bg-slate-950/80 rounded-xl border border-slate-300 dark:border-violet-500/30 px-3 py-1.5 focus-within:border-cyan-400 focus-within:ring-1 focus-within:ring-cyan-400/40 transition-all">
-                <i class="fa-solid fa-magnifying-glass text-xs text-cyan-500 dark:text-cyan-400 mr-2 pointer-events-none" aria-hidden="true"></i>
+              <div class="flex items-center bg-[#161B26] rounded-xl border border-[#232A3B] px-3 py-1.5 focus-within:border-indigo-500 transition-colors">
+                <i class="fa-solid fa-magnifying-glass text-xs text-slate-500 mr-2 pointer-events-none" aria-hidden="true"></i>
                 <input id="left-pane-search" type="text" autocomplete="off" spellcheck="false"
-                  placeholder="Tìm nhanh V1, V2, V3 hoặc nghĩa (VD: bought, cắt, go)..."
-                  class="w-full bg-transparent text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-400 focus:outline-none font-medium" />
-                <button id="btn-left-search-clear" type="button" title="Xóa từ khóa" class="hidden text-slate-400 hover:text-slate-800 dark:hover:text-white text-xs ml-1.5 cursor-pointer">
+                  placeholder="Tìm nhanh V1, V2, V3 hoặc nghĩa..."
+                  class="w-full bg-transparent text-xs text-[#F3F4F6] placeholder-slate-500 focus:outline-none font-medium" />
+                <button id="btn-left-search-clear" type="button" title="Xóa từ khóa" class="hidden text-slate-400 hover:text-white text-xs ml-1.5 cursor-pointer">
                   <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
               </div>
             </div>
 
-            <!-- Morphological Pattern Filters (A-A-A, A-B-B, A-B-A, A-B-C, REGULAR) -->
+            <!-- Horizontal pattern bar in dark slate -->
             <div class="space-y-1">
-              <div class="flex items-center justify-between text-[10px] font-mono uppercase text-slate-400">
+              <div class="flex items-center justify-between text-[10px] font-mono uppercase text-slate-500">
                 <span>Phân loại hình thái:</span>
-                <span id="pattern-active-desc" class="text-cyan-600 dark:text-cyan-400 font-bold">Tất cả động từ</span>
+                <span id="pattern-active-desc" class="text-slate-400 font-medium">Tất cả động từ</span>
               </div>
               <div id="pattern-filter-bar" class="flex items-center gap-1 overflow-x-auto no-scrollbar py-0.5 text-[11px] font-mono">
-                <button type="button" data-pattern="all" class="pattern-filter-btn px-2 py-0.5 rounded-lg font-bold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-xs cursor-pointer">Tất cả (388)</button>
-                <button type="button" data-pattern="A-A-A" class="pattern-filter-btn px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-white bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 cursor-pointer" title="Bất biến: V1 = V2 = V3 (cut, hit, let)">A-A-A (25)</button>
-                <button type="button" data-pattern="A-B-B" class="pattern-filter-btn px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-white bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 cursor-pointer" title="V2 = V3 (keep, teach, build, buy)">A-B-B (85)</button>
-                <button type="button" data-pattern="A-B-A" class="pattern-filter-btn px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-white bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 cursor-pointer" title="V1 = V3 (come, run, become)">A-B-A (4)</button>
-                <button type="button" data-pattern="A-B-C" class="pattern-filter-btn px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-white bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 cursor-pointer" title="3 dạng khác biệt (write, drive, sing)">A-B-C (74)</button>
-                <button type="button" data-pattern="REGULAR" class="pattern-filter-btn px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-white bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 cursor-pointer" title="Có quy tắc: thêm -ed (play, look, study)">Regular (200)</button>
+                <button type="button" data-pattern="all" class="pattern-filter-btn px-2 py-0.5 rounded font-bold bg-[#1E2536] text-[#F3F4F6] border border-[#232A3B] cursor-pointer">Tất cả (388)</button>
+                <button type="button" data-pattern="A-A-A" class="pattern-filter-btn px-2 py-0.5 rounded text-slate-400 hover:text-white bg-[#161B26] border border-[#232A3B] cursor-pointer" title="Bất biến: V1 = V2 = V3">A-A-A (25)</button>
+                <button type="button" data-pattern="A-B-B" class="pattern-filter-btn px-2 py-0.5 rounded text-slate-400 hover:text-white bg-[#161B26] border border-[#232A3B] cursor-pointer" title="V2 = V3">A-B-B (85)</button>
+                <button type="button" data-pattern="A-B-A" class="pattern-filter-btn px-2 py-0.5 rounded text-slate-400 hover:text-white bg-[#161B26] border border-[#232A3B] cursor-pointer" title="V1 = V3">A-B-A (4)</button>
+                <button type="button" data-pattern="A-B-C" class="pattern-filter-btn px-2 py-0.5 rounded text-slate-400 hover:text-white bg-[#161B26] border border-[#232A3B] cursor-pointer" title="3 dạng khác biệt">A-B-C (74)</button>
+                <button type="button" data-pattern="REGULAR" class="pattern-filter-btn px-2 py-0.5 rounded text-slate-400 hover:text-white bg-[#161B26] border border-[#232A3B] cursor-pointer" title="Có quy tắc (-ed)">Regular (200)</button>
               </div>
             </div>
 
@@ -286,225 +291,122 @@
             </div>
           </div>
 
-          <!-- In-Place Auxiliary Conjugator Panel (Displays on active verb) -->
-          <div id="left-pane-quick-aux" class="p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 flex flex-wrap items-center justify-between gap-2 text-xs font-mono mt-2">
+          <!-- In-Place Auxiliary Conjugator Panel -->
+          <div id="left-pane-quick-aux" class="p-2.5 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-wrap items-center justify-between gap-2 text-xs font-mono mt-2">
             <div class="flex items-center gap-1.5">
-              <span class="text-[10px] uppercase text-slate-400">Ngôi 3 (V-s/es):</span>
-              <strong id="aux-vs" class="text-emerald-600 dark:text-emerald-400 font-bold">writes</strong>
+              <span class="text-[10px] uppercase text-slate-500">Ngôi 3 (V-s/es):</span>
+              <strong id="aux-vs" class="text-[#F3F4F6] font-bold">writes</strong>
             </div>
             <div class="flex items-center gap-1.5">
-              <span class="text-[10px] uppercase text-slate-400">Tiếp diễn (V-ing):</span>
-              <strong id="aux-ving" class="text-indigo-600 dark:text-indigo-400 font-bold">writing</strong>
+              <span class="text-[10px] uppercase text-slate-500">Tiếp diễn (V-ing):</span>
+              <strong id="aux-ving" class="text-indigo-400 font-bold">writing</strong>
             </div>
             <div class="flex items-center gap-1.5">
-              <span id="aux-trans" class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-400/30">[vt.] Ngoại ĐT</span>
+              <span id="aux-trans" class="text-[10px] px-1.5 py-0.5 rounded text-slate-400 border border-[#232A3B] font-medium">[vt.] Ngoại ĐT</span>
             </div>
           </div>
         </div>
 
         <!-- -------------------------------------------------------------------
-         * RIGHT PANE: UNIVERSAL ENGLISH DICTIONARY & LINGUISTIC EXPLORER
+         * RIGHT PANE: VIETNAMESE-TO-ENGLISH REVERSE LOOKUP SCROLLABLE DICTIONARY
          * ------------------------------------------------------------------- -->
-        <div class="lg:col-span-7 right-pane-card rounded-2xl sm:rounded-3xl p-3.5 sm:p-4.5 space-y-3">
+        <div class="lg:col-span-7 right-pane-card rounded-2xl p-3.5 sm:p-4.5 space-y-3">
           
-          <!-- Universal Live Query Search Bar & Word Explorer -->
-          <div class="space-y-1.5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 px-0.5">
-              <div class="inline-flex items-center gap-2 text-xs font-semibold text-slate-600 dark:text-slate-300">
-                <span class="w-2 h-2 rounded-full bg-violet-400 animate-pulse"></span>
-                <span>Từ điển Ngôn ngữ Toàn năng • <strong id="hero-total-verbs-inline" class="text-violet-600 dark:text-violet-300 font-mono">388 Động từ &amp; SGK</strong></span>
-              </div>
-              <span class="text-[11px] font-mono text-cyan-600 dark:text-cyan-400">Master-Detail Sync</span>
+          <!-- Header: Title & Meta -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 px-0.5">
+            <div class="inline-flex items-center gap-2">
+              <i class="fa-solid fa-book-bookmark text-indigo-400 text-sm" aria-hidden="true"></i>
+              <h2 class="text-xs sm:text-sm font-bold text-[#F3F4F6] tracking-tight">Từ điển Tra cứu Ngược Việt - Anh (Reverse Lexicon)</h2>
+              <span class="text-slate-600">•</span>
+              <span id="hero-total-verbs-inline" class="text-[11px] font-mono text-slate-400">388 Động từ &amp; SGK</span>
             </div>
+            <div class="flex items-center gap-2">
+              <span id="right-dict-count-badge" class="text-[11px] font-mono text-slate-400 border border-[#232A3B] px-2 py-0.5 rounded bg-[#161B26]">
+                388 Mục từ
+              </span>
+              <span class="text-[11px] font-mono text-slate-500 hidden sm:inline-block">Two-Way Sync</span>
+            </div>
+          </div>
 
+          <!-- Reverse Semantic Search Bar -->
+          <div class="space-y-1.5">
             <div class="relative text-left">
-              <div class="relative flex items-center bg-white/90 dark:bg-slate-900/85 backdrop-blur-xl rounded-2xl border border-slate-300 dark:border-violet-500/40 shadow-xl focus-within:ring-2 focus-within:ring-cyan-400/50 focus-within:border-cyan-400 transition-all">
-                <div class="pl-4 pr-3 text-cyan-500 dark:text-cyan-400 pointer-events-none">
-                  <i class="fa-solid fa-book-open text-sm" aria-hidden="true"></i>
+              <div class="relative flex items-center bg-[#161B26] rounded-xl border border-[#232A3B] focus-within:border-indigo-500 transition-colors">
+                <div class="pl-3.5 pr-2.5 text-slate-500 pointer-events-none">
+                  <i class="fa-solid fa-magnifying-glass text-xs" aria-hidden="true"></i>
                 </div>
                 <input id="verb-input" type="text" autocomplete="off" spellcheck="false"
-                  placeholder="Tra cứu từ bất kỳ hoặc dạng biến thể (VD: write, wrote, underwent, mua, go)..."
-                  class="w-full py-2 sm:py-2.5 pr-32 bg-transparent text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-400 text-xs sm:text-sm font-medium focus:outline-none" />
+                  placeholder="Tra cứu theo nghĩa tiếng Việt (VD: nấu ăn, nau an, cắt, mua, viết)..."
+                  class="w-full py-2 pr-28 bg-transparent text-[#F3F4F6] placeholder-slate-500 text-xs sm:text-sm font-medium focus:outline-none" />
                 <div class="absolute right-2 flex items-center gap-1.5">
-                  <button id="btn-clear" type="button" title="Xóa từ khóa tìm kiếm" class="hidden w-7 h-7 rounded-lg text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                  <button id="btn-clear" type="button" title="Xóa từ khóa" class="hidden w-6 h-6 rounded text-slate-500 hover:text-white flex items-center justify-center transition-colors">
                     <i class="fa-solid fa-xmark text-xs" aria-hidden="true"></i>
                   </button>
-                  <span id="shortcut-hint" class="kbd-badge hidden sm:inline-block" title="Nhấn phím / để tìm nhanh">/</span>
-                  <button id="btn-search" type="button" class="bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 text-white text-xs font-bold px-4 py-2 rounded-xl transition-all shadow-md cursor-pointer">
+                  <span id="shortcut-hint" class="kbd-badge hidden sm:inline-block" title="Nhấn / để tìm">/</span>
+                  <button id="btn-search" type="button" class="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors cursor-pointer">
                     Tra từ
                   </button>
                 </div>
               </div>
-              <div id="suggestions-dropdown" class="hidden absolute left-0 right-0 mt-2 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl rounded-2xl border border-slate-300 dark:border-violet-500/40 shadow-2xl overflow-hidden z-50 max-h-80 overflow-y-auto divide-y divide-slate-200/70 dark:divide-slate-800/80"></div>
+              <div id="suggestions-dropdown" class="hidden absolute left-0 right-0 mt-1 bg-[#161B26] rounded-xl border border-[#232A3B] shadow-lg overflow-hidden z-50 max-h-80 overflow-y-auto divide-y divide-[#232A3B]"></div>
             </div>
 
             <!-- Reverse Form Resolution Banner -->
-            <div id="reverse-resolution-banner" class="hidden p-2 rounded-xl bg-cyan-500/15 border border-cyan-400/40 text-xs font-mono text-cyan-700 dark:text-cyan-300 flex items-center gap-2">
-              <i class="fa-solid fa-arrow-turn-down text-cyan-400 rotate-90" aria-hidden="true"></i>
-              <span id="reverse-resolution-text">Nhận diện hình thái: "bought" là dạng Quá khứ (V2) &amp; Phân từ (V3) của "buy" [A-B-B]</span>
+            <div id="reverse-resolution-banner" class="hidden p-2 rounded-lg bg-[#161B26] border border-[#232A3B] text-xs font-mono text-slate-300 flex items-center gap-2">
+              <i class="fa-solid fa-arrow-turn-down text-slate-400 rotate-90" aria-hidden="true"></i>
+              <span id="reverse-resolution-text"></span>
             </div>
 
-            <!-- Quick Chips Bar for quick access -->
-            <div class="flex items-center gap-2 w-full overflow-hidden pt-0.5">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 shrink-0">Từ nhanh:</span>
-              <div id="quick-chips" class="quick-chips-scroll flex items-center gap-1.5 overflow-x-auto w-full no-scrollbar py-0.5"></div>
+            <!-- Quick Chips for backwards-compatibility -->
+            <div id="quick-chips" class="hidden"></div>
+          </div>
+
+          <!-- Custom Object / Context Strip (Compact & Accessible) -->
+          <div class="context-inline-strip flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-1.5 px-2.5 rounded-xl bg-[#161B26]/60 border border-[#232A3B]">
+            <div class="flex flex-wrap items-center gap-2 flex-1">
+              <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1 shrink-0">
+                <i class="fa-solid fa-wand-magic-sparkles text-indigo-400 text-xs" aria-hidden="true"></i>
+                <span>Tân ngữ tùy chọn:</span>
+              </span>
+              <div class="flex items-center gap-2 flex-1 min-w-[150px] max-w-xs">
+                <input id="custom-object-input" type="text" placeholder="Nhập tân ngữ tùy chỉnh..."
+                  class="w-full px-2.5 py-0.5 rounded-lg text-xs font-mono bg-[#0F1117] border border-[#232A3B] text-[#F3F4F6] focus:outline-none focus:border-indigo-500" />
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-1">
+              <button type="button" data-obj-preset="__default__" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-400/40 cursor-pointer">Mặc định</button>
+              <button type="button" data-obj-preset="everyone" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-[#0F1117] border border-[#232A3B] cursor-pointer">everyone</button>
+              <button type="button" data-obj-preset="English" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-[#0F1117] border border-[#232A3B] cursor-pointer">English</button>
+              <button type="button" data-obj-preset="" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-[#0F1117] border border-[#232A3B] cursor-pointer">(Rỗng)</button>
             </div>
           </div>
 
-          <!-- In-Depth Lexical Profile Card -->
-          <div class="space-y-2.5 pt-1 border-t border-slate-200 dark:border-slate-800/80">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <div class="flex items-center gap-3 flex-wrap">
-                <h1 id="hero-verb-title" class="font-sans text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white drop-shadow-sm">
-                  write
-                </h1>
-                <span id="verb-ipa" class="cyber-ipa-badge text-sm sm:text-base px-3 py-0.5 rounded-xl">
-                  /raɪt/
-                </span>
-                <div class="inline-flex items-center gap-1.5">
-                  <button id="btn-speak-us" type="button" class="glossy-audio-pill glossy-audio-pill-us" title="Nghe phát âm Anh - Mỹ (en-US)">
-                    <svg class="w-3.5 h-3.5 text-violet-500 dark:text-violet-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" /><path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                    </svg>
-                    <span>US</span>
-                  </button>
-                  <button id="btn-speak-uk" type="button" class="glossy-audio-pill glossy-audio-pill-uk" title="Nghe phát âm Anh - Anh (en-GB)">
-                    <svg class="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-300 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                    </svg>
-                    <span>UK</span>
-                  </button>
-                </div>
-              </div>
+          <!-- Dedicated Vietnamese-to-English Reverse Lookup Scrollable Feed -->
+          <div id="right-dict-feed" class="right-dict-feed space-y-2.5 pr-1 overflow-y-auto" style="max-height: 480px; scroll-behavior: smooth;">
+            <!-- Dynamically populated via app.js -->
+          </div>
 
-              <!-- Badges: Type, Transitivity, Grade & CEFR Indicator -->
-              <div class="flex flex-wrap items-center gap-1.5">
-                <span id="verb-type-pill" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-400/35">
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                  <span>Bất quy tắc</span>
-                </span>
-                <button id="verb-transitivity-pill" type="button" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-400/35 hover:bg-emerald-500/25 transition-all cursor-pointer select-none">
-                  <span class="font-mono font-bold">[vt.]</span>
-                  <span>Ngoại động từ</span>
-                </button>
-                <span id="verb-grade-pill" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-violet-500/15 text-violet-700 dark:text-violet-300 border border-violet-400/35">
-                  SGK Lớp 3
-                </span>
-                <span id="dict-cefr-pill" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-mono font-bold bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-400/35">
-                  CEFR A1
-                </span>
-              </div>
-            </div>
-
-            <!-- Meaning & Dynamic Context -->
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 flex flex-wrap items-center gap-2">
-              <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Nghĩa:</span>
-              <strong id="hero-verb-meaning" class="font-bold text-slate-900 dark:text-white text-base">viết, soạn thảo, sáng tác</strong>
-              <span class="text-slate-400 dark:text-slate-600">•</span>
-              <span id="hero-verb-context" class="text-xs font-mono text-cyan-600 dark:text-cyan-300 font-semibold bg-cyan-500/10 px-2 py-0.5 rounded-md border border-cyan-500/25">+ the letter</span>
-            </p>
-
-            <div id="custom-word-note" class="hidden p-2.5 rounded-xl bg-amber-500/15 border border-amber-400/35 text-xs text-amber-900 dark:text-amber-200 leading-relaxed">
-              <div id="custom-word-note-text"></div>
-            </div>
-
-            <!-- 5 Morphological Verb Forms Grid -->
-            <div class="morphology-grid">
-              <button data-form-key="v1" type="button" class="verb-form-cell group text-left flex flex-col justify-between">
-                <div class="flex items-center justify-between w-full">
-                  <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">V1 • Gốc</span>
-                  <i class="fa-solid fa-volume-high text-[10px] text-slate-400 group-hover:text-cyan-400" aria-hidden="true"></i>
-                </div>
-                <div id="cell-v1" class="morphology-value text-slate-900 dark:text-white my-0.5">write</div>
-                <span class="text-[10px] font-mono text-slate-400">Infinitive</span>
-              </button>
-
-              <button data-form-key="vs" type="button" class="verb-form-cell group text-left flex flex-col justify-between">
-                <div class="flex items-center justify-between w-full">
-                  <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">V-s/es</span>
-                  <i class="fa-solid fa-volume-high text-[10px] text-slate-400 group-hover:text-emerald-400" aria-hidden="true"></i>
-                </div>
-                <div id="cell-vs" class="morphology-value text-emerald-600 dark:text-emerald-300 my-0.5">writes</div>
-                <span class="text-[10px] font-mono text-slate-400">He / She / It</span>
-              </button>
-
-              <button data-form-key="v2" type="button" class="verb-form-cell group text-left flex flex-col justify-between">
-                <div class="flex items-center justify-between w-full">
-                  <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">V2 • Quá khứ</span>
-                  <i class="fa-solid fa-volume-high text-[10px] text-slate-400 group-hover:text-amber-400" aria-hidden="true"></i>
-                </div>
-                <div id="cell-v2" class="morphology-value text-amber-600 dark:text-amber-300 my-0.5">wrote</div>
-                <span class="text-[10px] font-mono text-slate-400">Past Simple</span>
-              </button>
-
-              <button data-form-key="v3" type="button" class="verb-form-cell group text-left flex flex-col justify-between">
-                <div class="flex items-center justify-between w-full">
-                  <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-300">V3 • Phân từ</span>
-                  <i class="fa-solid fa-volume-high text-[10px] text-slate-400 group-hover:text-purple-400" aria-hidden="true"></i>
-                </div>
-                <div id="cell-v3" class="morphology-value text-purple-600 dark:text-purple-300 my-0.5">written</div>
-                <span class="text-[10px] font-mono text-slate-400">Perfect &amp; Passive</span>
-              </button>
-
-              <button data-form-key="ving" type="button" class="verb-form-cell group text-left flex flex-col justify-between">
-                <div class="flex items-center justify-between w-full">
-                  <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-300">V-ing • Tiếp diễn</span>
-                  <i class="fa-solid fa-volume-high text-[10px] text-slate-400 group-hover:text-indigo-400" aria-hidden="true"></i>
-                </div>
-                <div id="cell-ving" class="morphology-value text-indigo-600 dark:text-indigo-300 my-0.5">writing</div>
-                <span class="text-[10px] font-mono text-slate-400">Continuous</span>
-              </button>
-            </div>
-
-            <!-- Contextual Anchor Sentences (Bilingual authentic usage) -->
-            <div class="space-y-1.5 pt-1">
-              <span class="text-[11px] font-mono uppercase text-slate-400 font-bold flex items-center gap-1.5">
-                <i class="fa-solid fa-quote-left text-cyan-400" aria-hidden="true"></i>
-                <span>Câu Ngữ Cảnh Chuẩn (Anchor Sentences):</span>
-              </span>
-              <div id="dict-anchor-sentences" class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                <!-- Dynamically rendered -->
-              </div>
-            </div>
-
-            <!-- Collocations & Idioms and Synonym Clusters -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
-              <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 space-y-1">
-                <span class="font-mono text-[10px] uppercase text-cyan-600 dark:text-cyan-400 font-bold flex items-center gap-1">
-                  <i class="fa-solid fa-link text-[10px]" aria-hidden="true"></i> Collocations &amp; Giới từ:
-                </span>
-                <div id="dict-collocations-container" class="flex flex-wrap gap-1"></div>
-              </div>
-              <div class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 space-y-1">
-                <span class="font-mono text-[10px] uppercase text-violet-600 dark:text-violet-400 font-bold flex items-center gap-1">
-                  <i class="fa-solid fa-tags text-[10px]" aria-hidden="true"></i> Cụm Từ Đồng Nghĩa (Synonyms):
-                </span>
-                <div id="dict-synonyms-container" class="flex flex-wrap gap-1"></div>
-              </div>
-            </div>
-
-            <!-- Custom Object / Context Strip -->
-            <div class="context-inline-strip flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1 border-t border-slate-200 dark:border-slate-800/80">
-              <div class="flex flex-wrap items-center gap-2 flex-1">
-                <span class="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1 shrink-0">
-                  <i class="fa-solid fa-wand-magic-sparkles text-cyan-400 text-xs" aria-hidden="true"></i>
-                  <span>Tân ngữ:</span>
-                </span>
-                <div class="flex items-center gap-2 flex-1 min-w-[180px] max-w-sm">
-                  <input id="custom-object-input" type="text" placeholder="Nhập tân ngữ tùy chỉnh..."
-                    class="w-full px-2.5 py-1 rounded-lg text-xs font-mono bg-white/90 dark:bg-slate-950/85 border border-slate-300 dark:border-violet-500/30 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-cyan-400" />
-                </div>
-              </div>
-              <div class="flex flex-wrap items-center gap-1">
-                <button type="button" data-obj-preset="__default__" class="obj-preset-btn px-2 py-0.5 rounded text-[11px] font-mono font-bold bg-violet-500/20 text-violet-700 dark:text-violet-300 border border-violet-400/40 cursor-pointer">Mặc định</button>
-                <button type="button" data-obj-preset="everyone" class="obj-preset-btn px-2 py-0.5 rounded text-[11px] font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 cursor-pointer">everyone</button>
-                <button type="button" data-obj-preset="English" class="obj-preset-btn px-2 py-0.5 rounded text-[11px] font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 cursor-pointer">English</button>
-                <button type="button" data-obj-preset="" class="obj-preset-btn px-2 py-0.5 rounded text-[11px] font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 cursor-pointer">(Rỗng)</button>
-              </div>
-            </div>
-
+          <!-- Hidden Backward-Compatibility Section (Guarantees no JS null pointer exceptions) -->
+          <div id="right-pane-compat" class="hidden" aria-hidden="true" style="display: none !important;">
+            <h1 id="hero-verb-title">write</h1>
+            <span id="verb-ipa">/raɪt/</span>
+            <button id="btn-speak-us" type="button"></button>
+            <button id="btn-speak-uk" type="button"></button>
+            <span id="verb-type-pill"></span>
+            <button id="verb-transitivity-pill" type="button"></button>
+            <span id="verb-grade-pill"></span>
+            <span id="dict-cefr-pill"></span>
+            <strong id="hero-verb-meaning"></strong>
+            <span id="hero-verb-context"></span>
+            <div id="custom-word-note"><div id="custom-word-note-text"></div></div>
+            <div id="cell-v1"></div>
+            <div id="cell-vs"></div>
+            <div id="cell-v2"></div>
+            <div id="cell-v3"></div>
+            <div id="cell-ving"></div>
+            <div id="dict-anchor-sentences"></div>
+            <div id="dict-collocations-container"></div>
+            <div id="dict-synonyms-container"></div>
           </div>
 
         </div>
@@ -715,27 +617,41 @@
             </p>
           </div>
 
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="px-3 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-400/30 text-emerald-700 dark:text-emerald-300 text-xs font-bold">Tiểu học (Lớp 1–5)</span>
-            <span class="px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-400/30 text-amber-700 dark:text-amber-300 text-xs font-bold">THCS (Lớp 6–9)</span>
-            <span class="px-3 py-1.5 rounded-xl bg-cyan-500/15 border border-cyan-400/30 text-cyan-700 dark:text-cyan-300 text-xs font-bold">THPT (Lớp 10–12)</span>
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#232A3B] pb-4">
+          <div class="space-y-1">
+            <h2 class="font-bold text-2xl sm:text-3xl text-[#F3F4F6]">
+              Lộ trình Động từ &amp; Ngữ pháp SGK Lớp 1 – 12
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400">
+              Chương trình GDPT 2018 (Global Success &amp; i-Learn Smart World). Chọn lớp trên thước đo để tra cứu.
+            </p>
+          </div>
+
+          <!-- Clean 3-tier text segments -->
+          <div class="flex items-center gap-2 text-xs font-mono text-slate-400 shrink-0">
+            <span>Primary (1–5)</span>
+            <span class="text-[#232A3B]">|</span>
+            <span>Lower Secondary (6–9)</span>
+            <span class="text-[#232A3B]">|</span>
+            <span>Upper Secondary (10–12)</span>
           </div>
         </div>
 
-        <div id="sgk-grade-selector" class="grid grid-cols-3 sm:grid-cols-6 lg:grid-cols-12 gap-2">
+        <!-- Clean Numeric Ruler Container (01, 02, ..., 12) -->
+        <div id="sgk-grade-selector" class="flex items-center gap-1.5 overflow-x-auto py-1 no-scrollbar">
         </div>
 
-        <div id="sgk-grade-summary" class="p-5 rounded-2xl bg-slate-100/90 dark:bg-slate-900/90 border border-violet-500/30 space-y-4">
+        <div id="sgk-grade-summary" class="p-4 rounded-xl bg-[#161B26] border border-[#232A3B] space-y-3">
         </div>
 
         <div class="space-y-3">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <h3 id="sgk-verbs-heading" class="font-bold text-base sm:text-lg text-slate-900 dark:text-white">
+            <h3 id="sgk-verbs-heading" class="font-bold text-base text-[#F3F4F6]">
               Danh mục Động từ cốt lõi
             </h3>
-            <span class="text-xs font-mono text-cyan-600 dark:text-cyan-300">Nhấn "⚡ Chia 12 Thì" để nạp động từ vào Ma trận chính</span>
+            <span class="text-xs font-mono text-slate-500">Bấm "Chia 12 thì →" để nạp vào Ma trận</span>
           </div>
-          <div id="sgk-verbs-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <div id="sgk-verbs-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           </div>
         </div>
       </div>
@@ -744,138 +660,117 @@
     <!-- =======================================================================
      * MODULE VIEW 3: 🎯 ĐẤU TRƯỜNG QUIZ & FLASHCARD 3D
      * ======================================================================= -->
-    <section id="module-view-arena" class="hidden space-y-6 animate-card-in">
-      <div class="focus-verb-card rounded-3xl p-6 sm:p-8 space-y-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-violet-500/25 pb-5">
+    <section id="module-view-arena" class="hidden space-y-4 animate-card-in">
+      <div class="focus-verb-card rounded-2xl p-5 sm:p-6 space-y-5">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#232A3B] pb-4">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/15 text-violet-600 dark:text-violet-300 border border-violet-400/35 text-xs font-mono font-bold mb-1.5">
-              <span>CYBER ARENA • ACTIVE RECALL &amp; GAMIFIED MASTERY</span>
-            </div>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-              🎯 Đấu trường Quiz 12 Thì &amp; Flashcard 388 Động từ
+            <h2 class="font-bold text-2xl sm:text-3xl text-[#F3F4F6]">
+              Đấu trường Quiz &amp; Flashcard
             </h2>
+            <p class="text-xs text-slate-400 mt-0.5">Luyện phản xạ chia thì &amp; 388 động từ bất quy tắc</p>
           </div>
 
-          <div class="inline-flex p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-950/90 border border-violet-500/35 self-start md:self-auto">
+          <div class="inline-flex p-1 rounded-xl bg-[#161B26] border border-[#232A3B] self-start md:self-auto">
             <button id="btn-arena-mode-quiz" type="button"
-              class="px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-md transition-all cursor-pointer">
-              ⚡ Đấu trường Quiz
+              class="px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium bg-[#1E2536] text-[#F3F4F6] border border-[#232A3B] transition-colors cursor-pointer">
+              Đấu trường Quiz
             </button>
             <button id="btn-arena-mode-flashcard" type="button"
-              class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-white transition-all cursor-pointer">
-              🃏 Flashcard 3D (388 Từ)
+              class="px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-400 hover:text-white transition-colors cursor-pointer">
+              Flashcard 3D
             </button>
           </div>
         </div>
 
-        <!-- SUB-VIEW 3A: CYBER QUIZ ARENA (KAHOOT! + GIMKIT + BLOOKET ENGINE) -->
-        <div id="arena-quiz-stage" class="space-y-4">
+        <!-- SUB-VIEW 3A: CYBER QUIZ ARENA -->
+        <div id="arena-quiz-stage" class="space-y-3.5">
 
-          <!-- Top Cyber Control Strip: Question Type Filters + Cyber Upgrade Shop + Sound + Podium -->
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 p-3 rounded-2xl bg-slate-100/90 dark:bg-slate-950/85 border border-violet-500/30">
-            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
-              <span class="text-[11px] font-mono uppercase text-slate-400 shrink-0 mr-1">Chế độ:</span>
-              <button type="button" data-qtype="all" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-xs cursor-pointer shrink-0">
-                🎲 Tất cả (388 Từ &amp; 170 Units)
+          <!-- Top Mode Strip -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 p-2.5 rounded-xl bg-[#161B26] border border-[#232A3B]">
+            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs font-mono">
+              <span class="text-slate-500 uppercase text-[10px] shrink-0 mr-1">Chế độ:</span>
+              <button type="button" data-qtype="all" class="arena-qtype-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-[#1E2536] text-[#F3F4F6] border border-[#232A3B] cursor-pointer shrink-0">
+                Tất cả (388 Từ)
               </button>
-              <button type="button" data-qtype="type1" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-cyan-400 cursor-pointer shrink-0">
-                ⚡ Dạng 1: Chia 12 Thì
+              <button type="button" data-qtype="type1" class="arena-qtype-btn px-2.5 py-1 rounded-lg text-xs text-slate-400 hover:text-white bg-transparent border border-transparent hover:border-[#232A3B] cursor-pointer shrink-0">
+                Chia 12 Thì
               </button>
-              <button type="button" data-qtype="type2" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-amber-400 cursor-pointer shrink-0">
-                🔥 Dạng 2: Bất quy tắc V2/V3
+              <button type="button" data-qtype="type2" class="arena-qtype-btn px-2.5 py-1 rounded-lg text-xs text-slate-400 hover:text-white bg-transparent border border-transparent hover:border-[#232A3B] cursor-pointer shrink-0">
+                Bất quy tắc V2/V3
               </button>
-              <button type="button" data-qtype="type3" class="arena-qtype-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 hover:border-emerald-400 cursor-pointer shrink-0">
-                📚 Dạng 3: Từ vựng 170 Units SGK
+              <button type="button" data-qtype="type3" class="arena-qtype-btn px-2.5 py-1 rounded-lg text-xs text-slate-400 hover:text-white bg-transparent border border-transparent hover:border-[#232A3B] cursor-pointer shrink-0">
+                Từ vựng SGK
               </button>
             </div>
 
             <div class="flex flex-wrap items-center gap-2 shrink-0">
               <button id="btn-open-cyber-shop" type="button"
-                class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-emerald-600 to-cyan-600 hover:from-emerald-500 hover:to-cyan-500 text-white shadow-md shadow-emerald-600/25 flex items-center gap-2 cursor-pointer">
-                <span>🛒 Cyber Upgrade Shop</span>
-                <span id="quiz-multiplier-badge" class="px-1.5 py-0.5 rounded bg-black/30 font-mono text-[11px] text-amber-300">1.0x</span>
+                class="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-300 hover:text-white border border-[#232A3B] bg-[#161B26] hover:bg-[#1E2536] flex items-center gap-1.5 cursor-pointer">
+                <span>Shop</span>
+                <span id="quiz-multiplier-badge" class="text-indigo-400 font-bold">1.0x</span>
               </button>
 
-              <button id="btn-arena-mute" type="button" title="Bật/Tắt hiệu ứng âm thanh Web Audio API"
-                class="px-3 py-2 rounded-xl text-xs font-bold bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-300 border border-cyan-500/35 hover:border-cyan-400 cursor-pointer">
-                🔊 Âm thanh: BẬT
+              <button id="btn-arena-mute" type="button" title="Bật/Tắt âm thanh"
+                class="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-400 hover:text-white border border-[#232A3B] bg-[#161B26] cursor-pointer">
+                🔊 Âm thanh
               </button>
 
               <button id="btn-open-podium" type="button"
-                class="px-3.5 py-2 rounded-xl text-xs font-extrabold bg-amber-500/20 hover:bg-amber-500/30 text-amber-600 dark:text-amber-300 border border-amber-400/40 cursor-pointer">
-                🏆 Tổng kết Vinh danh
+                class="px-2.5 py-1 rounded-lg text-xs font-mono text-slate-300 hover:text-white border border-[#232A3B] bg-[#161B26] hover:bg-[#1E2536] cursor-pointer">
+                🏆 Bảng xếp hạng
               </button>
             </div>
           </div>
 
-          <!-- 5-Metric HUD Strip (Kahoot Score + Gimkit Cyber-Credits + Streak Fire + Accuracy + Total) -->
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-cyan-500/35 flex flex-col justify-between">
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">⚡ ĐIỂM KAHOOT</span>
-              <span id="quiz-score" class="font-mono text-xl font-extrabold text-cyan-500 dark:text-cyan-300 mt-0.5">0</span>
+          <!-- Single Consolidated Status Strip (Score: 0 | Streak: 0 🔥 | Accuracy: 100% | Question: 1/20) -->
+          <div class="px-4 py-2.5 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-slate-400">
+            <div class="flex items-center gap-4 flex-wrap">
+              <span>Score: <strong id="quiz-score" class="text-[#F3F4F6] font-bold">0</strong></span>
+              <span class="text-[#232A3B]">|</span>
+              <span>Streak: <strong id="quiz-streak" class="text-[#F3F4F6] font-bold">0 🔥</strong></span>
+              <span class="text-[#232A3B]">|</span>
+              <span>Accuracy: <strong id="quiz-accuracy" class="text-[#F3F4F6] font-bold">100%</strong></span>
+              <span class="text-[#232A3B]">|</span>
+              <span>Question: <strong id="quiz-total" class="text-[#F3F4F6] font-bold">1</strong>/20</span>
             </div>
-            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-emerald-500/35 flex flex-col justify-between">
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">💰 CYBER-CREDITS</span>
-              <span id="quiz-credits" class="font-mono text-xl font-extrabold text-emerald-500 dark:text-emerald-300 mt-0.5">$0</span>
-            </div>
-            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-amber-500/35 flex flex-col justify-between">
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">CHUỖI THẮNG 🔥</span>
-              <span id="quiz-streak" class="font-mono text-xl font-extrabold text-amber-500 dark:text-amber-300 mt-0.5">0 🔥</span>
-            </div>
-            <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-teal-500/35 flex flex-col justify-between">
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">ĐỘ CHÍNH XÁC</span>
-              <span id="quiz-accuracy" class="font-mono text-xl font-extrabold text-teal-500 dark:text-teal-300 mt-0.5">100%</span>
-            </div>
-            <div class="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-slate-100 dark:bg-slate-900/90 border border-violet-500/35 flex flex-col justify-between">
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-mono uppercase">CÂU HỎI</span>
-              <span id="quiz-total" class="font-mono text-xl font-extrabold text-violet-500 dark:text-violet-300 mt-0.5">1</span>
+            <div class="flex items-center gap-2">
+              <span id="quiz-credits" class="text-slate-500 text-[11px]">$0</span>
+              <span id="quiz-streak-fire-banner" class="hidden"></span>
+              <div id="quiz-active-powerups" class="flex items-center gap-1"></div>
             </div>
           </div>
 
-          <!-- Active Power-ups & Combo Fire Banner Strip -->
-          <div class="flex flex-wrap items-center justify-between gap-2 min-h-[28px]">
-            <div class="flex flex-wrap items-center gap-2">
-              <span id="quiz-streak-fire-banner" class="hidden">Combo x2 🔥</span>
-              <div id="quiz-active-powerups" class="flex flex-wrap items-center gap-1.5"></div>
-            </div>
-            <span class="text-[11px] font-mono text-slate-400">🎁 Đúng 3 câu liên tiếp mở Hòm Bí Mật Blooket!</span>
+          <!-- Slim 3px Progress Line directly above question container -->
+          <div class="timer-bar-track">
+            <div id="quiz-timer-bar" class="timer-bar-fill"></div>
           </div>
 
-          <!-- Main Question Card with Kahoot 15s Time-Decay Bar -->
-          <div id="quiz-question-card" class="p-5 sm:p-6 rounded-3xl bg-slate-100/90 dark:bg-slate-950/90 border border-violet-500/40 space-y-4 transition-all">
-            <!-- Kahoot 15-Second Countdown Bar -->
-            <div class="space-y-1.5">
-              <div class="flex items-center justify-between text-xs font-mono">
-                <span class="text-cyan-500 dark:text-cyan-300 font-bold flex items-center gap-1.5">
-                  <i class="fa-regular fa-clock"></i>
-                  <span>KAHOOT TIME-DECAY TIMER (15s)</span>
-                </span>
-                <span id="quiz-timer-text" class="font-extrabold text-sm text-emerald-400">15.0s</span>
-              </div>
-              <div class="timer-bar-track">
-                <div id="quiz-timer-bar" class="timer-bar-fill"></div>
+          <!-- Main Question Card -->
+          <div id="quiz-question-card" class="p-5 sm:p-6 rounded-2xl bg-[#161B26] border border-[#232A3B] space-y-4 transition-colors">
+            <!-- Ultra-small muted caption above prompt with secondary metadata -->
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span id="quiz-category-badge" class="uppercase tracking-wider">Thử thách Chia Động Từ</span>
+              <div class="flex items-center gap-3">
+                <span id="quiz-timer-text" class="text-slate-300 font-bold">15.0s</span>
+                <button id="btn-quiz-next" type="button"
+                  class="px-3 py-1 rounded-lg text-xs font-mono font-medium bg-[#1E2536] hover:bg-[#374151] text-[#F3F4F6] border border-[#232A3B] transition-colors cursor-pointer">
+                  Câu tiếp theo →
+                </button>
               </div>
             </div>
 
-            <div class="flex flex-wrap items-center justify-between gap-2 pt-1">
-              <span id="quiz-category-badge" class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-400/35">
-                Thử thách Chia Động Từ
-              </span>
-              <button id="btn-quiz-next" type="button"
-                class="px-4 py-2 rounded-xl text-xs font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 hover:from-violet-500 hover:to-cyan-500 text-white shadow-md transition-all cursor-pointer">
-                Câu tiếp theo →
-              </button>
+            <!-- High contrast crisp white prompt -->
+            <div id="quiz-question-text" class="text-lg sm:text-xl font-bold text-[#F3F4F6] leading-relaxed">
             </div>
 
-            <div id="quiz-question-text" class="text-base sm:text-xl font-bold text-slate-900 dark:text-white leading-relaxed">
+            <!-- Balanced 2x2 grid or clean vertical stack -->
+            <div id="quiz-options-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             </div>
 
-            <div id="quiz-options-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            </div>
-
-            <div id="quiz-feedback-box" class="hidden p-4 rounded-2xl border text-xs sm:text-sm leading-relaxed">
+            <div id="quiz-feedback-box" class="hidden p-3.5 rounded-xl border border-[#232A3B] bg-[#161B26] text-xs sm:text-sm leading-relaxed">
             </div>
           </div>
+        </div>
         </div>
 
         <!-- SUB-VIEW 3B: 3D FLASHCARD DECK -->
