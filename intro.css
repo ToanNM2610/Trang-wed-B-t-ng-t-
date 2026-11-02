@@ -3,8 +3,31 @@
  * ========================================================================= */
 
 /* Lock body scroll during Intro */
-body.intro-active {
+body.intro-active,
+html.intro-active {
   overflow: hidden !important;
+}
+
+/* Persistent Intro Mount Container (Self-Healing Persistent Architecture) */
+#lexi-intro-mount {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s ease;
+}
+
+#lexi-intro-mount.is-active {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+#lexi-intro-mount.is-exiting {
+  pointer-events: none;
+  opacity: 0;
 }
 
 /* Micro-Matrix Dot Pulsing Animation */

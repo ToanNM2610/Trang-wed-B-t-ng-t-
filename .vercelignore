@@ -5,4 +5,6 @@ scratch/
 test_*.js
 deep_audit_runner.js
 *.bat
+.hintrc
+
 

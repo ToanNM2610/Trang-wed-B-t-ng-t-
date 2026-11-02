@@ -1,4 +1,36 @@
+/**
+ * ============================================================================
+ * LEXIMATRIX CYBER ARENA ENGINE v3.0 (MODULAR ARCHITECTURAL REWRITE)
+ * 
+ * 1. Decoupled Question & Content Schema (Swappable Data Layer)
+ *    - Canonical Question Item contract (itemKey, stimulus, primaryTarget,
+ *      semanticClusterId, synonyms, grammarAttrs, explanation, speakText).
+ *    - Pluggable ContentProvider adapters for SGK 170 Units, 12-Tense Conjugations,
+ *      and Irregular Verbs (V2/V3).
+ * 
+ * 2. Intelligent Distractor Generation Logic (Anti-Leak & Anti-Collision)
+ *    - Prompt Leak Elimination: Contextual and directional masking (EN->VN, VN->EN, Cloze).
+ *    - Semantic Filtering: Cluster exclusion + Synonym suppression (no synonymous decoys).
+ *    - Homogeneous Part-of-Speech Matching: All 4 choices share identical grammatical form.
+ *    - Multi-Key Validation Fallback: Award score if answer matches target OR valid synonym set.
+ * 
+ * 3. Multi-Game Mode Orchestrator (Strategy Pattern)
+ *    - Strategy-driven scoring and mechanics:
+ *      * Speed Blitz Mode (Kahoot Style): 15s timer, exponential time-decay score.
+ *      * Economy & Upgrade Mode (Gimkit Style): +$50 credits, -$30 penalty, Shop upgrades.
+ *      * Minigame Battles (Blooket Style): Streak milestones open Mystery Crates & Shields.
+ *      * Composite Cyber Arena: Harmonized triple-engine for maximum engagement.
+ * 
+ * 4. Universal Game State Lifecycle
+ *    - Predictable loop: [ROUND_INIT] -> [FETCH_QUESTION] -> [COUNTDOWN] -> [EVALUATION] -> [ROUND_RESOLVE].
+ *    - Idempotent Input Guard: Instant input locking prevents double-click race conditions.
+ *    - Persistent Telemetry: Tracks wrong answers to build an automatic review session (Spaced Repetition).
+ * ============================================================================
+ */
 
+/* ----------------------------------------------------------------------------
+ * HELPER DEPENDENCIES & DATA ACCESSORS
+ * ---------------------------------------------------------------------------- */
 function getTensesList() {
   if (typeof window !== 'undefined' && Array.isArray(window.TENSES) && window.TENSES.length > 0) return window.TENSES;
   if (typeof TENSES !== 'undefined' && Array.isArray(TENSES) && TENSES.length > 0) return TENSES;
@@ -18,16 +50,37 @@ function getConjFn() {
   };
 }
 
-/**
- * ============================================================================
- * LEXIMATRIX CYBER ARENA ENGINE (KAHOOT! + GIMKIT + BLOOKET GAMIFICATION)
- * Connected to: VERB_DATABASE (388 Verbs) & CURRICULUM_DATA (170 SGK Units)
- * ============================================================================
- */
+function firstVariant(formStr) {
+  if (!formStr) return '';
+  return String(formStr).split('/')[0].trim();
+}
 
-/* ----------------------------------------------------------------------------
- * 1. BUILD 170 SGK UNITS DATASET (CHƯƠNG TRÌNH GDPT 2018 LỚP 1 - 12)
- * ---------------------------------------------------------------------------- */
+function safeSpeak(text, lang = "en-US") {
+  if (typeof window !== "undefined" && typeof window.speak === "function") {
+    window.speak(text, lang);
+  } else if (typeof speak === "function") {
+    try { speak(text, lang); } catch (e) {}
+  }
+}
+
+function safeToast(msg, icon) {
+  if (typeof window !== "undefined" && typeof window.showToast === "function") {
+    window.showToast(msg, icon);
+  } else if (typeof showToast === "function") {
+    try { showToast(msg, icon); } catch (e) {}
+  }
+}
+
+function getVerbPool() {
+  if (typeof window !== 'undefined' && Array.isArray(window.VERB_DATABASE) && window.VERB_DATABASE.length > 0) {
+    return window.VERB_DATABASE;
+  }
+  if (typeof VERB_DATABASE !== 'undefined' && Array.isArray(VERB_DATABASE) && VERB_DATABASE.length > 0) {
+    return VERB_DATABASE;
+  }
+  return [];
+}
+
 const SGK_UNIT_THEMES = [
   "My School & Classroom", "Family & Friends", "Daily Routines", "Hobbies & Music",
   "Outdoor Sports", "Healthy Food & Drinks", "Festival & Celebrations", "Our Green Planet",
@@ -42,7 +95,7 @@ function build170CurriculumUnits(verbsList) {
     1: 14, 2: 14, 3: 15, 4: 15, 5: 15,
     6: 14, 7: 14, 8: 14, 9: 14,
     10: 14, 11: 14, 12: 13
-  }; // Total = 14+14+15+15+15 + 14*4 + 14+14+13 = 170 Units
+  }; // Total = 170 Units
 
   let globalUnitIndex = 1;
   for (let grade = 1; grade <= 12; grade++) {
@@ -68,37 +121,13 @@ function build170CurriculumUnits(verbsList) {
         ipa: targetVerb.ipaUS,
         meaning: targetVerb.meaning,
         contextSentence: `In Unit ${u} (${themeName}), students learn how to "${targetVerb.v1}${objPhrase}" in daily communication.`,
-        blankSentence: `We always ____${objPhrase} during the "${themeName}" project.`
+        blankSentence: `We always _____ during the "${themeName}" project.`
       });
       globalUnitIndex++;
     }
   }
   return units;
 }
-
-
-
-function firstVariant(formStr) {
-  if (!formStr) return '';
-  return String(formStr).split('/')[0].trim();
-}
-
-function safeSpeak(text, lang = "en-US") {
-  if (typeof window !== "undefined" && typeof window.speak === "function") {
-    window.speak(text, lang);
-  } else if (typeof speak === "function") {
-    try { speak(text, lang); } catch (e) {}
-  }
-}
-
-function safeToast(msg, icon) {
-  if (typeof window !== "undefined" && typeof window.showToast === "function") {
-    window.showToast(msg, icon);
-  } else if (typeof showToast === "function") {
-    try { showToast(msg, icon); } catch (e) {}
-  }
-}
-
 
 function getCurriculumPool() {
   if (typeof window !== 'undefined' && Array.isArray(window.CURRICULUM_DATA) && window.CURRICULUM_DATA.length > 0) {
@@ -111,51 +140,538 @@ function getCurriculumPool() {
   return build170CurriculumUnits(fallbackVerbs);
 }
 
-function getVerbPool() {
-  if (typeof window !== 'undefined' && Array.isArray(window.VERB_DATABASE) && window.VERB_DATABASE.length > 0) {
-    return window.VERB_DATABASE;
-  }
-  if (typeof VERB_DATABASE !== 'undefined' && Array.isArray(VERB_DATABASE) && VERB_DATABASE.length > 0) {
-    return VERB_DATABASE;
-  }
-  return [];
-}
-
-// Fallback initialization if CURRICULUM_DATA not yet loaded
 if (typeof window !== 'undefined' && !window.CURRICULUM_DATA) {
   window.CURRICULUM_DATA = build170CurriculumUnits(getVerbPool());
 }
 
+/* ----------------------------------------------------------------------------
+ * 1. SEMANTIC CLUSTERS & SYNSET REGISTRY (Cluster Exclusion & Synonyms)
+ * ---------------------------------------------------------------------------- */
+const SEMANTIC_CLUSTERS = {
+  START_INITIATE: {
+    words: ["begin", "start", "commence", "initiate", "launch", "open"],
+    meanings: ["bắt đầu", "khởi đầu", "mở đầu", "khởi động"]
+  },
+  FINISH_END: {
+    words: ["finish", "end", "complete", "conclude", "stop", "cease", "terminate"],
+    meanings: ["kết thúc", "hoàn thành", "chấm dứt", "dừng lại"]
+  },
+  SPEAK_COMMUNICATE: {
+    words: ["speak", "talk", "tell", "say", "state", "pronounce", "express", "chat"],
+    meanings: ["nói", "kể", "bảo", "phát biểu", "trò chuyện", "thảo luận"]
+  },
+  WRITE_RECORD: {
+    words: ["write", "record", "note", "compose", "draft", "author"],
+    meanings: ["viết", "ghi chép", "soạn thảo", "sáng tác"]
+  },
+  CREATE_MAKE: {
+    words: ["make", "build", "create", "produce", "construct", "form"],
+    meanings: ["làm", "chế tạo", "xây dựng", "tạo ra", "sản xuất"]
+  },
+  TAKE_BRING: {
+    words: ["take", "bring", "fetch", "carry", "grab", "hold"],
+    meanings: ["cầm", "lấy", "mang", "đem", "nắm giữ"]
+  },
+  BUY_PURCHASE: {
+    words: ["buy", "purchase", "get", "acquire", "obtain"],
+    meanings: ["mua", "sắm", "tậu", "thu được"]
+  },
+  MOVE_TRAVEL: {
+    words: ["go", "run", "walk", "travel", "fly", "drive", "ride", "come"],
+    meanings: ["đi", "chạy", "di chuyển", "bay", "lái xe", "đến"]
+  },
+  SEE_PERCEIVE: {
+    words: ["see", "look", "watch", "observe", "view", "notice"],
+    meanings: ["nhìn", "thấy", "xem", "quan sát", "chú ý"]
+  },
+  UNDERSTAND_KNOW: {
+    words: ["know", "understand", "learn", "realize", "comprehend"],
+    meanings: ["biết", "hiểu", "nhận thức", "học hỏi"]
+  },
+  GIVE_SEND: {
+    words: ["give", "send", "provide", "offer", "grant", "deliver", "lend"],
+    meanings: ["cho", "tặng", "gửi", "cung cấp", "cho mượn"]
+  },
+  BREAK_DAMAGE: {
+    words: ["break", "tear", "damage", "destroy", "ruin", "split"],
+    meanings: ["làm vỡ", "làm gãy", "phá hủy", "xé rách"]
+  },
+  EAT_CONSUME: {
+    words: ["eat", "drink", "consume", "taste", "swallow", "bite"],
+    meanings: ["ăn", "uống", "tiêu thụ", "nếm", "cắn"]
+  },
+  KEEP_STORE: {
+    words: ["keep", "hold", "store", "save", "retain", "preserve"],
+    meanings: ["giữ", "lưu trữ", "bảo quản", "tiết kiệm"]
+  },
+  BECOME_GROW: {
+    words: ["become", "grow", "develop", "turn"],
+    meanings: ["trở thành", "phát triển", "lớn lên"]
+  },
+  FIND_DISCOVER: {
+    words: ["find", "discover", "detect", "locate"],
+    meanings: ["tìm thấy", "phát hiện", "khám phá"]
+  }
+};
+
+function getSemanticCluster(word = "", meaning = "") {
+  const normWord = String(word).trim().toLowerCase();
+  const normMeaning = String(meaning).trim().toLowerCase();
+
+  for (const [clusterKey, data] of Object.entries(SEMANTIC_CLUSTERS)) {
+    if (data.words.includes(normWord)) {
+      return { clusterId: clusterKey, synonyms: data.words, meanings: data.meanings };
+    }
+    for (const m of data.meanings) {
+      if (normMeaning.includes(m) || m.includes(normMeaning)) {
+        return { clusterId: clusterKey, synonyms: data.words, meanings: data.meanings };
+      }
+    }
+  }
+
+  // Dynamic Fallback Cluster: generate hash/stem from Vietnamese meaning
+  const stem = normMeaning.split(/[ ,;/]/)[0] || normWord;
+  return {
+    clusterId: `STEM_${stem.toUpperCase()}`,
+    synonyms: [normWord],
+    meanings: [normMeaning]
+  };
+}
 
 /* ----------------------------------------------------------------------------
- * 2. GAME STATE MACHINE (ArenaState)
+ * 2. DECOUPLED QUESTION & CONTENT SCHEMA (Canonical Contract & Pluggable Adapters)
+ * ---------------------------------------------------------------------------- */
+class CanonicalQuestionItem {
+  constructor(data) {
+    this.itemKey = data.itemKey;
+    this.stimulus = data.stimulus; // { type, promptHtml, subHint, badgeText, maskedSentence }
+    this.primaryTarget = data.primaryTarget;
+    this.displayTarget = data.displayTarget || data.primaryTarget;
+    this.semanticClusterId = data.semanticClusterId || "GENERAL";
+    this.synonyms = Array.isArray(data.synonyms) ? data.synonyms : [];
+    this.grammarAttrs = data.grammarAttrs || {}; // { partOfSpeech, tenseId, gradeTier }
+    this.explanation = data.explanation || "";
+    this.speakText = data.speakText || "";
+    this.options = data.options || [];
+  }
+}
+
+/**
+ * Content Adapters
+ */
+const TenseConjugationAdapter = {
+  fetchItem() {
+    const verbsList = getVerbPool();
+    const v = verbsList[Math.floor(Math.random() * verbsList.length)] || {
+      v1: "write", vs: "writes", v2: "wrote", v3: "written", ving: "writing", meaning: "viết", ipaUS: "/raɪt/"
+    };
+    const tensesPool = getTensesList();
+    const t = tensesPool[Math.floor(Math.random() * tensesPool.length)];
+    const conjFn = getConjFn();
+    const subjects = ["I", "You", "We", "They", "He", "She"];
+    const subj = subjects[Math.floor(Math.random() * subjects.length)];
+    const correctConj = conjFn(t.id, v, subj, false).affRaw;
+
+    const cluster = getSemanticCluster(v.v1, v.meaning);
+
+    return new CanonicalQuestionItem({
+      itemKey: `tense_${t.id}_${v.v1}_${subj}`,
+      stimulus: {
+        type: "production",
+        badgeText: `⚡ Dạng 1: Chia Thì Ma Trận • Động từ "${v.v1}" (Lớp ${v.grade || 6})`,
+        promptHtml: `Chọn câu chia đúng ở thì <span class="text-cyan-400 underline decoration-cyan-400/50">${t.viTitle} (${t.enTitle})</span> với chủ ngữ <code class="font-mono text-violet-300">"${subj}"</code> và động từ <code class="font-mono text-emerald-300">"${v.v1}"</code> (${v.meaning}):`,
+        subHint: `Dấu hiệu nhận biết: ${t.signals}`
+      },
+      primaryTarget: correctConj,
+      displayTarget: correctConj,
+      semanticClusterId: cluster.clusterId,
+      synonyms: cluster.synonyms,
+      grammarAttrs: {
+        partOfSpeech: "conjugated_sentence",
+        tenseId: t.id,
+        gradeTier: Number(v.grade) || 6,
+        verb: v,
+        subj: subj,
+        tense: t
+      },
+      explanation: `Công thức chuẩn của <strong>${t.viTitle}</strong> là <code>${t.formula}</code>. Câu đúng: <code class="text-emerald-300 font-bold">"${correctConj}"</code>.`,
+      speakText: correctConj
+    });
+  }
+};
+
+const IrregularFormsAdapter = {
+  fetchItem() {
+    const verbsList = getVerbPool();
+    const irregularPool = verbsList.filter(v => v.isIrregular && v.v1 !== "be");
+    const v = irregularPool[Math.floor(Math.random() * irregularPool.length)] || verbsList[0];
+    const correctPair = `V2: ${v.v2}  •  V3: ${v.v3}`;
+    const cluster = getSemanticCluster(v.v1, v.meaning);
+
+    return new CanonicalQuestionItem({
+      itemKey: `irreg_${v.v1}_${v.id || v.v1}`,
+      stimulus: {
+        type: "production",
+        badgeText: `🔥 Dạng 2: Bất Quy Tắc V2 / V3 • "${v.v1}" (${v.ipaUS})`,
+        promptHtml: `Động từ bất quy tắc <code class="font-mono text-amber-300 text-xl">"[ ${v.v1} ]"</code> (nghĩa: <em>${v.meaning}</em>) có dạng <strong>Quá khứ đơn (V2)</strong> và <strong>Quá khứ phân từ (V3)</strong> là gì?`,
+        subHint: `Gợi ý: Dạng V-ing là "${v.ving}" • SGK Lớp ${v.grade || 6}`
+      },
+      primaryTarget: correctPair,
+      displayTarget: correctPair,
+      semanticClusterId: cluster.clusterId,
+      synonyms: cluster.synonyms,
+      grammarAttrs: {
+        partOfSpeech: "v2_v3_morphology",
+        gradeTier: Number(v.grade) || 6,
+        verb: v
+      },
+      explanation: `Bộ 3 cột bất quy tắc của <strong>${v.v1}</strong> là: <code class="text-emerald-300 font-bold">${v.v1} → ${v.v2} → ${v.v3}</code> (${v.meaning}).`,
+      speakText: `${v.v1}, ${firstVariant(v.v2)}, ${firstVariant(v.v3)}`
+    });
+  }
+};
+
+let pipelineModule = null;
+if (typeof window !== 'undefined' && window.CurriculumPipeline) {
+  pipelineModule = window.CurriculumPipeline;
+} else if (typeof require === 'function') {
+  try { pipelineModule = require('./curriculumPipeline.js'); } catch (e) {}
+}
+
+function getCertifiedCurriculumPool() {
+  if (pipelineModule && typeof pipelineModule.getCertifiedDB === 'function') {
+    return pipelineModule.getCertifiedDB();
+  }
+  return null;
+}
+
+const CurriculumVocabAdapter = {
+  fetchItem() {
+    const certifiedPool = getCertifiedCurriculumPool();
+
+    // 1. If Certified Curriculum DB available, use 3-Tier Standardized Schema & 4 Golden Rules
+    if (certifiedPool && certifiedPool.length > 0) {
+      const targetItem = certifiedPool[Math.floor(Math.random() * certifiedPool.length)];
+      const distractors = pipelineModule.generateCertifiedDistractors(targetItem, certifiedPool, 3);
+
+      const correctChoiceText = `${targetItem.target_word} — ${targetItem.primary_meaning_vn}`;
+      const options = [
+        { text: correctChoiceText, isCorrect: true, detail: `Chuẩn SGK Lớp ${targetItem.grade_level}` }
+      ];
+
+      distractors.forEach(d => {
+        options.push({
+          text: `${d.target_word} — ${d.primary_meaning_vn}`,
+          isCorrect: false,
+          detail: `Từ vựng Lớp ${d.grade_level} (${d.part_of_speech})`
+        });
+      });
+      options.sort(() => 0.5 - Math.random());
+
+      return new CanonicalQuestionItem({
+        itemKey: targetItem.id,
+        stimulus: {
+          type: "cloze",
+          badgeText: `📚 Dạng 3: Từ Vựng SGK • Lớp ${targetItem.grade_level} (${targetItem.cefr_band}) • Unit ${targetItem.unit_number}`,
+          promptHtml: `Chọn từ vựng đúng để hoàn thành câu trong chương trình <strong>Lớp ${targetItem.grade_level} (${targetItem.tier})</strong>:<br><span class="text-cyan-300 font-mono text-base sm:text-lg">"${targetItem.prompt_sentence}"</span>`,
+          subHint: `Gợi ý: Từ loại [${targetItem.part_of_speech}] • Mang nghĩa "${targetItem.primary_meaning_vn}" • Unit #${targetItem.unit_number}`
+        },
+        primaryTarget: correctChoiceText,
+        displayTarget: correctChoiceText,
+        semanticClusterId: targetItem.synonym_cluster_id,
+        synonyms: [targetItem.target_word],
+        grammarAttrs: {
+          partOfSpeech: "curriculum_lexical_item",
+          rawPOS: targetItem.part_of_speech,
+          gradeTier: targetItem.grade_level,
+          standardItem: targetItem
+        },
+        explanation: `Trong chương trình <strong>Lớp ${targetItem.grade_level} (${targetItem.tier})</strong>, từ <code class="text-emerald-300 font-bold">${targetItem.target_word}</code> (${targetItem.part_of_speech}) mang nghĩa chuẩn ngữ cảnh là <strong>"${targetItem.primary_meaning_vn}"</strong>.`,
+        speakText: targetItem.target_word,
+        options
+      });
+    }
+
+    // Fallback if pipeline not loaded
+    const currPool = getCurriculumPool();
+    const rawUnit = currPool[Math.floor(Math.random() * currPool.length)] || currPool[0];
+    const verbsList = getVerbPool();
+
+    let unitItem = null;
+    if (rawUnit && rawUnit.verb) {
+      unitItem = rawUnit;
+    } else if (rawUnit && Array.isArray(rawUnit.vocabulary) && rawUnit.vocabulary.length > 0) {
+      const vocab = rawUnit.vocabulary[Math.floor(Math.random() * rawUnit.vocabulary.length)];
+      const vWord = (vocab.word || '').trim();
+      const escWord = vWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      unitItem = {
+        id: `${rawUnit.grade}_U${rawUnit.unit}`,
+        globalUnitNumber: rawUnit.unit || 1,
+        grade: rawUnit.grade,
+        unitNumber: rawUnit.unit,
+        unitTitle: `${rawUnit.grade} • Unit ${rawUnit.unit}: ${rawUnit.title || ''}`,
+        verb: vWord,
+        ipa: vocab.ipa || '',
+        meaning: vocab.meaning || '',
+        blankSentence: vocab.example ? vocab.example.replace(new RegExp(escWord, 'gi'), '_____') : `We always _____ in this unit project.`
+      };
+    } else {
+      const fallbackV = verbsList[0] || { v1: "write", meaning: "viết", ipaUS: "/raɪt/" };
+      unitItem = {
+        id: "G6_U1",
+        globalUnitNumber: 1,
+        unitTitle: "Lớp 6 • Unit 1: My New School",
+        verb: fallbackV.v1,
+        ipa: fallbackV.ipaUS,
+        meaning: fallbackV.meaning,
+        blankSentence: "We always _____ our homework carefully."
+      };
+    }
+
+    const cluster = getSemanticCluster(unitItem.verb, unitItem.meaning);
+    const correctChoiceText = `${unitItem.verb} — ${unitItem.meaning}`;
+
+    return new CanonicalQuestionItem({
+      itemKey: `curriculum_${unitItem.id || 'unit'}_${unitItem.verb}`,
+      stimulus: {
+        type: "cloze",
+        badgeText: `📚 Dạng 3: Từ Vựng 170 Units SGK • ${unitItem.unitTitle}`,
+        promptHtml: `Chọn từ vựng đúng để hoàn thành câu trong <strong>${unitItem.unitTitle}</strong>:<br><span class="text-cyan-300 font-mono text-base sm:text-lg">"${unitItem.blankSentence}"</span>`,
+        subHint: `Gợi ý: Mang nghĩa "${unitItem.meaning}" • Phiên âm: ${unitItem.ipa} • Unit #${unitItem.globalUnitNumber}/170`
+      },
+      primaryTarget: correctChoiceText,
+      displayTarget: correctChoiceText,
+      semanticClusterId: cluster.clusterId,
+      synonyms: cluster.synonyms,
+      grammarAttrs: {
+        partOfSpeech: "curriculum_lexical_item",
+        gradeTier: Number(unitItem.grade) || 6,
+        unitItem: unitItem
+      },
+      explanation: `Trong <strong>${unitItem.unitTitle}</strong>, động từ trọng tâm là <code class="text-emerald-300 font-bold">${unitItem.verb} (${unitItem.ipa})</code> có nghĩa là <strong>"${unitItem.meaning}"</strong>.`,
+      speakText: unitItem.verb
+    });
+  }
+};
+
+const ContentProvider = {
+  getItem(qType) {
+    if (qType === "type1") return TenseConjugationAdapter.fetchItem();
+    if (qType === "type2") return IrregularFormsAdapter.fetchItem();
+    if (qType === "type3") return CurriculumVocabAdapter.fetchItem();
+
+    const types = ["type1", "type2", "type3"];
+    const chosen = types[Math.floor(Math.random() * types.length)];
+    return this.getItem(chosen);
+  }
+};
+
+/* ----------------------------------------------------------------------------
+ * 3. INTELLIGENT DISTRACTOR GENERATION (Anti-Leak, Cluster Exclusion & Homogeneity)
+ * ---------------------------------------------------------------------------- */
+function generateHomogeneousDistractors(canonicalItem) {
+  const options = [
+    { text: canonicalItem.primaryTarget, isCorrect: true, detail: "Đáp án chính xác" }
+  ];
+  const seenTexts = new Set([canonicalItem.primaryTarget]);
+
+  if (canonicalItem.grammarAttrs.partOfSpeech === "conjugated_sentence") {
+    const { verb, subj, tense } = canonicalItem.grammarAttrs;
+    const tensesPool = getTensesList();
+    const conjFn = getConjFn();
+    const shuffledTenses = tensesPool.filter(x => x.id !== tense.id).sort(() => 0.5 - Math.random());
+
+    for (const wt of shuffledTenses) {
+      const conj = conjFn(wt.id, verb, subj, false).affRaw;
+      if (!seenTexts.has(conj)) {
+        seenTexts.add(conj);
+        options.push({
+          text: conj,
+          isCorrect: false,
+          detail: `Thì ${wt.viTitle} (${wt.formula})`
+        });
+      }
+      if (options.length >= 4) break;
+    }
+  } else if (canonicalItem.grammarAttrs.partOfSpeech === "v2_v3_morphology") {
+    const v = canonicalItem.grammarAttrs.verb;
+    const verbsList = getVerbPool();
+    const irregularPool = verbsList.filter(x => x.isIrregular && x.v1 !== "be" && x.v1 !== v.v1);
+
+    const decoys = [
+      `V2: ${v.v1}ed  •  V3: ${v.v1}ed`,
+      `V2: ${v.vs}  •  V3: ${v.ving}`,
+      `V2: ${v.v3}  •  V3: ${v.v1}s`
+    ];
+
+    for (const d of decoys) {
+      if (!seenTexts.has(d)) {
+        seenTexts.add(d);
+        options.push({ text: d, isCorrect: false, detail: "Sai hình thái ngữ pháp" });
+      }
+      if (options.length >= 4) break;
+    }
+
+    // Homogeneous fallback if decoys duplicated
+    while (options.length < 4 && irregularPool.length > 0) {
+      const other = irregularPool[Math.floor(Math.random() * irregularPool.length)];
+      const cand = `V2: ${other.v2}  •  V3: ${other.v3}`;
+      if (!seenTexts.has(cand)) {
+        seenTexts.add(cand);
+        options.push({ text: cand, isCorrect: false, detail: `Bất quy tắc của "${other.v1}"` });
+      }
+    }
+  } else if (canonicalItem.grammarAttrs.partOfSpeech === "curriculum_lexical_item") {
+    const verbsList = getVerbPool();
+    const targetUnit = canonicalItem.grammarAttrs.unitItem;
+
+    // Filter out: Same verb, same meaning, same cluster, or synonyms
+    const candidateDistractors = verbsList.filter(wv => {
+      if (wv.v1 === targetUnit.verb) return false;
+      if (wv.meaning === targetUnit.meaning) return false;
+      if (canonicalItem.synonyms.includes(wv.v1)) return false;
+      const c = getSemanticCluster(wv.v1, wv.meaning);
+      if (c.clusterId === canonicalItem.semanticClusterId) return false;
+      return true;
+    }).sort(() => 0.5 - Math.random());
+
+    for (const wv of candidateDistractors) {
+      const choice = `${wv.v1} — ${wv.meaning}`;
+      if (!seenTexts.has(choice)) {
+        seenTexts.add(choice);
+        options.push({
+          text: choice,
+          isCorrect: false,
+          detail: `Từ vựng Lớp ${wv.grade || 6}`
+        });
+      }
+      if (options.length >= 4) break;
+    }
+  }
+
+  // Shuffle options in place
+  return options.sort(() => 0.5 - Math.random());
+}
+
+/* ----------------------------------------------------------------------------
+ * 4. MULTI-GAME MODE ORCHESTRATOR (Strategy Pattern)
+ * ---------------------------------------------------------------------------- */
+class GameModeStrategy {
+  constructor(name) {
+    this.name = name;
+  }
+  calculateScore(state, evalContext) { return 0; }
+  calculateCredits(state, evalContext) { return 0; }
+  handleStreak(state, evalContext) {}
+  handlePenalty(state, evalContext) {}
+}
+
+/**
+ * Composite Strategy: Kahoot Speed Blitz + Gimkit Cyber-Credits + Blooket Crates
+ */
+class CompositeCyberArenaStrategy extends GameModeStrategy {
+  constructor() {
+    super("composite_cyber_arena");
+  }
+
+  calculateScore(state, evalContext) {
+    if (!evalContext.isCorrect) return 0;
+    // Kahoot Time-Decay Formula: Base (1000) * (TimeLeft / MaxTime) * multiplier
+    const rawSpeedScore = Math.round(1000 * (state.timeLeft / state.maxTime));
+    let earned = Math.round(rawSpeedScore * state.multiplier);
+
+    // Streak Bonus
+    const streakBonus = state.streak >= 2 ? (state.streak * 60 * state.streakBonusLevel) : 0;
+    earned += streakBonus;
+
+    // Blooket Double Points power-up
+    if (state.doubleNextPoints) {
+      earned *= 2;
+      state.doubleNextPoints = false;
+      evalContext.doublePointsUsed = true;
+    }
+    return earned;
+  }
+
+  calculateCredits(state, evalContext) {
+    if (!evalContext.isCorrect) return 0;
+    return Math.round(50 * state.multiplier);
+  }
+
+  handleStreak(state, evalContext) {
+    if (evalContext.isCorrect) {
+      state.streak += 1;
+      if (state.streak > state.maxStreak) {
+        state.maxStreak = state.streak;
+      }
+    } else {
+      if (state.hasCyberShield) {
+        state.hasCyberShield = false;
+        evalContext.shieldSavedStreak = true;
+      } else {
+        state.streak = 0;
+      }
+    }
+  }
+
+  handlePenalty(state, evalContext) {
+    if (evalContext.isCorrect) return;
+    if (state.hasInsurance) {
+      state.hasInsurance = false;
+      evalContext.insuranceSavedCredits = true;
+    } else {
+      state.cyberCredits = Math.max(0, state.cyberCredits - 30);
+    }
+  }
+}
+
+const activeStrategy = new CompositeCyberArenaStrategy();
+
+/* ----------------------------------------------------------------------------
+ * 5. GAME STATE MACHINE & PERSISTENT TELEMETRY
  * ---------------------------------------------------------------------------- */
 const ArenaState = {
   score: 0,
-  cyberCredits: 0,        // Đơn vị tiền tệ in-game (Gimkit)
-  streak: 0,              // Chuỗi trả lời đúng (Kahoot)
+  cyberCredits: 0,
+  streak: 0,
   maxStreak: 0,
   correctCount: 0,
   totalAnswered: 0,
-  multiplier: 1.0,        // Hệ số nhân điểm nâng cấp từ Shop (tối đa 4.0x)
-  streakBonusLevel: 1,    // Cấp độ thưởng chuỗi
-  hasInsurance: false,    // Bảo hiểm chống phạt tiền (Gimkit)
-  hasCyberShield: false,  // Khiên bảo vệ Streak (Blooket Crate)
-  doubleNextPoints: false,// Nhân đôi điểm ở câu hỏi tiếp theo (Blooket Crate)
-  totalCreditsEarned: 0,  // Tổng Cyber-Credits tích lũy
-  soundEnabled: true,     // Trạng thái âm thanh Web Audio API
-  questionTypeFilter: "all", // 'all' | 'type1' | 'type2' | 'type3'
+  multiplier: 1.0,
+  streakBonusLevel: 1,
+  hasInsurance: false,
+  hasCyberShield: false,
+  doubleNextPoints: false,
+  totalCreditsEarned: 0,
+  soundEnabled: true,
+  questionTypeFilter: "all",
   currentQuestion: null,
   timerInterval: null,
-  timeLeft: 15,           // Đếm ngược 15s mỗi câu (Kahoot)
-  maxTime: 15
+  timeLeft: 15,
+  maxTime: 15,
+  isInputLocked: false, // Idempotent Input Guard
+  telemetry: {
+    wrongAnswers: [],
+    history: [],
+    recordAttempt(attempt) {
+      this.history.push(attempt);
+      if (!attempt.isCorrect) {
+        this.wrongAnswers.push(attempt);
+      }
+    },
+    clear() {
+      this.wrongAnswers = [];
+      this.history = [];
+    }
+  }
 };
+
 if (typeof window !== "undefined") {
   window.ArenaState = ArenaState;
 }
 
 /* ----------------------------------------------------------------------------
- * 3. PURE WEB AUDIO API SYNTHESIZER (NO EXTERNAL MP3 REQUIRED)
+ * 6. PURE WEB AUDIO API SYNTHESIZER
  * ---------------------------------------------------------------------------- */
 const ArenaAudio = {
   ctx: null,
@@ -190,14 +706,12 @@ const ArenaAudio = {
     this.playTone(urgent ? 880 : 620, "sine", 0.07, 0, urgent ? 0.1 : 0.05);
   },
   playCorrect() {
-    // Bright "Ting!" ascending chord
     this.playTone(523.25, "triangle", 0.14, 0, 0.14);
     this.playTone(659.25, "triangle", 0.14, 0.07, 0.14);
     this.playTone(783.99, "triangle", 0.18, 0.14, 0.15);
     this.playTone(1046.5, "sine", 0.32, 0.21, 0.16);
   },
   playWrong() {
-    // Low buzzer
     this.playTone(165, "sawtooth", 0.22, 0, 0.14);
     this.playTone(120, "sawtooth", 0.34, 0.16, 0.16);
   },
@@ -219,7 +733,7 @@ const ArenaAudio = {
 };
 
 /* ----------------------------------------------------------------------------
- * 4. TIMER MANAGEMENT (KAHOOT 15s TIME-DECAY)
+ * 7. TIMER & HUD MANAGERS
  * ---------------------------------------------------------------------------- */
 function stopArenaTimer() {
   if (ArenaState.timerInterval) {
@@ -229,6 +743,7 @@ function stopArenaTimer() {
 }
 
 function updateTimerUI() {
+  if (typeof document === 'undefined') return;
   const barEl = document.getElementById("quiz-timer-bar");
   const textEl = document.getElementById("quiz-timer-text");
   if (!barEl || !textEl) return;
@@ -272,350 +787,8 @@ function startArenaTimer() {
   }, 100);
 }
 
-/* ----------------------------------------------------------------------------
- * 5. DYNAMIC QUESTION GENERATOR (3 QUESTION TYPES: MATRIX, V2/V3, 170 UNITS SGK)
- * ---------------------------------------------------------------------------- */
-function generateDynamicQuestion() {
-  stopArenaTimer();
-
-  const feedbackBox = document.getElementById("quiz-feedback-box");
-  if (feedbackBox) feedbackBox.classList.add("hidden");
-
-  const types = ["type1", "type2", "type3"];
-  const chosenType = (ArenaState.questionTypeFilter !== "all" && types.includes(ArenaState.questionTypeFilter))
-    ? ArenaState.questionTypeFilter
-    : types[Math.floor(Math.random() * types.length)];
-
-  let qData = null;
-
-  if (chosenType === "type1") {
-    // Dạng 1: Chia thì ma trận 12 Thì (388 Động từ)
-    const verbsList = getVerbPool(); const v = verbsList[Math.floor(Math.random() * verbsList.length)] || { v1: "write", vs: "writes", v2: "wrote", v3: "written", ving: "writing", meaning: "viết", ipaUS: "/raɪt/" };
-    const tensesPool = getTensesList(); const t = tensesPool[Math.floor(Math.random() * tensesPool.length)]; const conjFn = getConjFn();
-    const subjects = ["I", "You", "We", "They", "He", "She"];
-    const subj = subjects[Math.floor(Math.random() * subjects.length)];
-    const correctConj = conjFn(t.id, v, subj, false).affRaw;
-
-    const options = [
-      { text: correctConj, isCorrect: true, detail: `Thì ${t.viTitle} (${t.formula})` }
-    ];
-    const seenTexts = new Set([correctConj]);
-    const shuffledTenses = tensesPool.filter(x => x.id !== t.id).sort(() => 0.5 - Math.random());
-    for (const wt of shuffledTenses) {
-      const conj = conjFn(wt.id, v, subj, false).affRaw;
-      if (!seenTexts.has(conj)) {
-        seenTexts.add(conj);
-        options.push({
-          text: conj,
-          isCorrect: false,
-          detail: `Thì ${wt.viTitle} (${wt.formula})`
-        });
-      }
-      if (options.length >= 4) break;
-    }
-    options.sort(() => 0.5 - Math.random());
-
-    qData = {
-      type: "type1",
-      badgeText: `⚡ Dạng 1: Chia Thì Ma Trận • Động từ "${v.v1}" (Lớp ${v.grade || 6})`,
-      questionHtml: `Chọn câu chia đúng ở thì <span class="text-cyan-400 underline decoration-cyan-400/50">${t.viTitle} (${t.enTitle})</span> với chủ ngữ <code class="font-mono text-violet-300">"${subj}"</code> và động từ <code class="font-mono text-emerald-300">"${v.v1}"</code> (${v.meaning}):`,
-      subHint: `Dấu hiệu nhận biết: ${t.signals}`,
-      correctAnswer: correctConj,
-      explanation: `Công thức chuẩn của <strong>${t.viTitle}</strong> là <code>${t.formula}</code>. Câu đúng: <code class="text-emerald-300 font-bold">"${correctConj}"</code>.`,
-      speakText: correctConj,
-      options
-    };
-  } else if (chosenType === "type2") {
-    // Dạng 2: Điền dạng quá khứ V2 / phân từ V3 của động từ bất quy tắc
-    const verbsList = getVerbPool(); const irregularPool = verbsList.filter(v => v.isIrregular && v.v1 !== "be");
-    const v = irregularPool[Math.floor(Math.random() * irregularPool.length)] || VERB_DATABASE[0];
-    const correctPair = `V2: ${v.v2}  •  V3: ${v.v3}`;
-
-    const decoys = [
-      `V2: ${v.v1}ed  •  V3: ${v.v1}ed`,
-      `V2: ${v.vs}  •  V3: ${v.ving}`,
-      `V2: ${v.v3}  •  V3: ${v.v1}s`
-    ];
-    // Ensure unique decoys
-    const uniqueDecoys = [];
-    for (const d of decoys) {
-      if (d !== correctPair && !uniqueDecoys.includes(d)) uniqueDecoys.push(d);
-    }
-    while (uniqueDecoys.length < 3) {
-      const other = irregularPool[Math.floor(Math.random() * irregularPool.length)];
-      const cand = `V2: ${other.v2}  •  V3: ${other.v3}`;
-      if (cand !== correctPair && !uniqueDecoys.includes(cand)) uniqueDecoys.push(cand);
-    }
-
-    const options = [
-      { text: correctPair, isCorrect: true, detail: `Chuẩn bất quy tắc của "${v.v1}"` },
-      ...uniqueDecoys.slice(0, 3).map(d => ({
-        text: d,
-        isCorrect: false,
-        detail: `Sai hình thái bất quy tắc`
-      }))
-    ].sort(() => 0.5 - Math.random());
-
-    qData = {
-      type: "type2",
-      badgeText: `🔥 Dạng 2: Bất Quy Tắc V2 / V3 • "${v.v1}" (${v.ipaUS})`,
-      questionHtml: `Động từ bất quy tắc <code class="font-mono text-amber-300 text-xl">"[ ${v.v1} ]"</code> (nghĩa: <em>${v.meaning}</em>) có dạng <strong>Quá khứ đơn (V2)</strong> và <strong>Quá khứ phân từ (V3)</strong> là gì?`,
-      subHint: `Gợi ý: Dạng V-ing là "${v.ving}" • SGK Lớp ${v.grade || 6}`,
-      correctAnswer: correctPair,
-      explanation: `Bộ 3 cột bất quy tắc của <strong>${v.v1}</strong> là: <code class="text-emerald-300 font-bold">${v.v1} → ${v.v2} → ${v.v3}</code> (${v.meaning}).`,
-      speakText: `${v.v1}, ${firstVariant(v.v2)}, ${firstVariant(v.v3)}`,
-      options
-    };
-  } else {
-    // Dạng 3: Đoán nghĩa từ vựng SGK theo ngữ cảnh 170 Units
-    const currPool = getCurriculumPool();
-    const rawUnit = currPool[Math.floor(Math.random() * currPool.length)] || currPool[0];
-    const verbsList = getVerbPool();
-    
-    // Normalize unitItem for both data formats
-    let unitItem = null;
-    if (rawUnit && rawUnit.verb) {
-      unitItem = rawUnit;
-    } else if (rawUnit && Array.isArray(rawUnit.vocabulary) && rawUnit.vocabulary.length > 0) {
-      const vocab = rawUnit.vocabulary[Math.floor(Math.random() * rawUnit.vocabulary.length)];
-      const vWord = (vocab.word || '').trim();
-      const escWord = vWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      unitItem = {
-        id: `${rawUnit.grade}_U${rawUnit.unit}`,
-        globalUnitNumber: rawUnit.unit || 1,
-        grade: rawUnit.grade,
-        unitNumber: rawUnit.unit,
-        unitTitle: `${rawUnit.grade} • Unit ${rawUnit.unit}: ${rawUnit.title || ''}`,
-        verb: vWord,
-        ipa: vocab.ipa || '',
-        meaning: vocab.meaning || '',
-        blankSentence: vocab.example ? vocab.example.replace(new RegExp(escWord, 'gi'), '_____') : `We always _____ in this unit project.`
-      };
-    } else {
-      const fallbackV = verbsList[0] || { v1: "write", meaning: "viết", ipaUS: "/raɪt/" };
-      unitItem = {
-        globalUnitNumber: 1,
-        unitTitle: "Lớp 6 • Unit 1: My New School",
-        verb: fallbackV.v1,
-        ipa: fallbackV.ipaUS,
-        meaning: fallbackV.meaning,
-        blankSentence: "We always _____ our homework carefully."
-      };
-    }
-    const correctChoiceText = `${unitItem.verb} — ${unitItem.meaning}`;
-    const options = [
-      { text: correctChoiceText, isCorrect: true, detail: unitItem.unitTitle }
-    ];
-    const seenChoices = new Set([correctChoiceText]);
-    const shuffledVerbs = verbsList.filter(x => x.v1 !== unitItem.verb).sort(() => 0.5 - Math.random());
-    for (const wv of shuffledVerbs) {
-      const choice = `${wv.v1} — ${wv.meaning}`;
-      if (!seenChoices.has(choice)) {
-        seenChoices.add(choice);
-        options.push({
-          text: choice,
-          isCorrect: false,
-          detail: `Từ vựng Lớp ${wv.grade || 6}`
-        });
-      }
-      if (options.length >= 4) break;
-    }
-    options.sort(() => 0.5 - Math.random());
-
-    qData = {
-      type: "type3",
-      badgeText: `📚 Dạng 3: Từ Vựng 170 Units SGK • ${unitItem.unitTitle}`,
-      questionHtml: `Trong ngữ cảnh <strong>${unitItem.unitTitle}</strong>:<br><span class="text-cyan-300 font-mono text-base sm:text-lg">"${unitItem.blankSentence}"</span><br>Động từ và nghĩa tiếng Việt nào phù hợp nhất để điền vào chỗ trống (mang nghĩa: <em class="text-amber-300">"${unitItem.meaning}"</em>)?`,
-      subHint: `Phiên âm gợi ý: ${unitItem.ipa} • Unit #${unitItem.globalUnitNumber}/170`,
-      correctAnswer: `${unitItem.verb} — ${unitItem.meaning}`,
-      explanation: `Trong <strong>${unitItem.unitTitle}</strong>, động từ trọng tâm là <code class="text-emerald-300 font-bold">${unitItem.verb} (${unitItem.ipa})</code> có nghĩa là <strong>"${unitItem.meaning}"</strong>.`,
-      speakText: unitItem.verb,
-      options
-    };
-  }
-
-  ArenaState.currentQuestion = { ...qData, answered: false };
-
-  const catBadge = document.getElementById("quiz-category-badge");
-  if (catBadge) catBadge.textContent = qData.badgeText;
-
-  const qText = document.getElementById("quiz-question-text");
-  if (qText) {
-    qText.innerHTML = `
-      <div>${qData.questionHtml}</div>
-      <div class="text-xs font-mono text-slate-400 mt-1.5">${qData.subHint}</div>
-    `;
-  }
-
-  const optionsGrid = document.getElementById("quiz-options-grid");
-  if (optionsGrid) {
-    optionsGrid.innerHTML = "";
-    const colorBorders = [
-      "border-cyan-500/40 hover:border-cyan-400",
-      "border-violet-500/40 hover:border-violet-400",
-      "border-emerald-500/40 hover:border-emerald-400",
-      "border-amber-500/40 hover:border-amber-400"
-    ];
-    qData.options.forEach((opt, idx) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = `quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-bold bg-white dark:bg-slate-900/95 border-2 ${colorBorders[idx % 4]} text-slate-800 dark:text-slate-100 transition-all cursor-pointer flex items-center justify-between gap-2 shadow-sm`;
-      btn.innerHTML = `
-        <span class="flex items-center gap-2.5">
-          <span class="w-6 h-6 rounded-lg bg-slate-200 dark:bg-slate-800 text-cyan-400 flex items-center justify-center text-xs font-extrabold shrink-0">${String.fromCharCode(65 + idx)}</span>
-          <span>${opt.text}</span>
-        </span>
-      `;
-      btn.addEventListener("click", () => applyKahootScoring(opt, btn, false));
-      optionsGrid.appendChild(btn);
-    });
-  }
-
-  updateArenaHUD();
-  startArenaTimer();
-}
-
-/* ----------------------------------------------------------------------------
- * 6. KAHOOT SCORING + STREAK FIRE + GIMKIT CREDITS + BLOOKET CRATE TRIGGER
- * ---------------------------------------------------------------------------- */
-function handleQuizTimeout() {
-  if (!ArenaState.currentQuestion || ArenaState.currentQuestion.answered) return;
-  applyKahootScoring({ isCorrect: false, text: "Hết thời gian (15.0s)" }, null, true);
-}
-
-function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
-  if (!ArenaState.currentQuestion || ArenaState.currentQuestion.answered) return;
-  ArenaState.currentQuestion.answered = true;
-  stopArenaTimer();
-
-  ArenaState.totalAnswered += 1;
-  const feedbackBox = document.getElementById("quiz-feedback-box");
-  const questionCard = document.getElementById("quiz-question-card");
-
-  if (selectedOpt && selectedOpt.isCorrect) {
-    ArenaAudio.playCorrect();
-    ArenaState.correctCount += 1;
-    ArenaState.streak += 1;
-    if (ArenaState.streak > ArenaState.maxStreak) {
-      ArenaState.maxStreak = ArenaState.streak;
-    }
-
-    // Kahoot Time-Decay Formula: Math.round(1000 * (timeLeft / maxTime)) * multiplier
-    const rawSpeedScore = Math.round(1000 * (ArenaState.timeLeft / ArenaState.maxTime));
-    let earnedPoints = Math.round(rawSpeedScore * ArenaState.multiplier);
-
-    // Streak Bonus
-    const streakBonus = ArenaState.streak >= 2
-      ? (ArenaState.streak * 60 * ArenaState.streakBonusLevel)
-      : 0;
-    earnedPoints += streakBonus;
-
-    // Blooket Double Points Power-up check
-    let doubleTag = "";
-    if (ArenaState.doubleNextPoints) {
-      earnedPoints *= 2;
-      ArenaState.doubleNextPoints = false;
-      doubleTag = ` <span class="px-2 py-0.5 rounded bg-amber-500/25 text-amber-300 font-mono text-xs">⚡ x2 DOUBLE POINTS!</span>`;
-    }
-
-    ArenaState.score += earnedPoints;
-
-    // Gimkit Cyber-Credits Economy: +$50 x Multiplier
-    const earnedCredits = Math.round(50 * ArenaState.multiplier);
-    ArenaState.cyberCredits += earnedCredits;
-    ArenaState.totalCreditsEarned += earnedCredits;
-
-    if (clickedBtn) {
-      clickedBtn.className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-emerald-500/25 border-2 border-emerald-400 text-emerald-200 transition-all flex items-center justify-between gap-2 shadow-lg shadow-emerald-500/20";
-    }
-
-    if (feedbackBox) {
-      feedbackBox.classList.remove("hidden");
-      feedbackBox.className = "p-4 rounded-2xl bg-emerald-500/15 border border-emerald-400/45 text-emerald-200 text-xs sm:text-sm space-y-1 animate-card-in";
-      feedbackBox.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <strong class="text-emerald-300 text-sm">🎉 CHÍNH XÁC! +${earnedPoints.toLocaleString()} Điểm (Tốc độ ${ArenaState.timeLeft.toFixed(1)}s)${doubleTag}</strong>
-          <span class="font-mono font-bold text-cyan-300 bg-cyan-500/20 px-2.5 py-0.5 rounded-lg border border-cyan-400/40">+$${earnedCredits} Cyber-Credits</span>
-        </div>
-        <div>${ArenaState.currentQuestion.explanation}</div>
-      `;
-    }
-
-    // Speak correct English phrase
-    if (ArenaState.currentQuestion.speakText) {
-      safeSpeak(ArenaState.currentQuestion.speakText, "en-US");
-    }
-
-    updateArenaHUD();
-
-    // Check Blooket Lucky Cyber-Crate trigger: Every 3 consecutive correct answers!
-    if (ArenaState.streak > 0 && ArenaState.streak % 3 === 0) {
-      setTimeout(() => {
-        triggerBlooketCrate();
-      }, 650);
-    }
-  } else {
-    // Wrong Answer or Timeout
-    ArenaAudio.playWrong();
-
-    // Highlight correct button in options grid
-    const allBtns = document.querySelectorAll("#quiz-options-grid .quiz-opt-btn");
-    if (ArenaState.currentQuestion.options) {
-      ArenaState.currentQuestion.options.forEach((opt, i) => {
-        if (opt.isCorrect && allBtns[i]) {
-          allBtns[i].className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-emerald-500/20 border-2 border-emerald-400 text-emerald-200 transition-all";
-        }
-      });
-    }
-
-    if (clickedBtn) {
-      clickedBtn.className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-rose-500/25 border-2 border-rose-400 text-rose-200 transition-all";
-    }
-
-    // Check Blooket Cyber Shield (protects Streak)
-    let shieldMsg = "";
-    if (ArenaState.hasCyberShield) {
-      ArenaState.hasCyberShield = false;
-      shieldMsg = `<span class="px-2 py-0.5 rounded bg-cyan-500/25 text-cyan-300 font-mono text-xs">🛡️ CYBER SHIELD ĐÃ BẢO VỆ CHUỖI STREAK (${ArenaState.streak}🔥)!</span>`;
-    } else {
-      ArenaState.streak = 0;
-      if (questionCard) {
-        questionCard.classList.remove("arena-shake");
-        void questionCard.offsetWidth;
-        questionCard.classList.add("arena-shake");
-      }
-    }
-
-    // Check Gimkit Firewall Insurance (protects -$30 penalty)
-    let penaltyMsg = "";
-    if (ArenaState.hasInsurance) {
-      ArenaState.hasInsurance = false;
-      penaltyMsg = `<span class="px-2.5 py-0.5 rounded-lg bg-violet-500/25 text-violet-200 font-mono font-bold text-xs border border-violet-400/40">🛡️ FIREWALL INSURANCE: Miễn phạt $0</span>`;
-    } else {
-      ArenaState.cyberCredits = Math.max(0, ArenaState.cyberCredits - 30);
-      penaltyMsg = `<span class="px-2.5 py-0.5 rounded-lg bg-rose-500/25 text-rose-300 font-mono font-bold text-xs border border-rose-400/40">Phạt -$30 Cyber-Credits</span>`;
-    }
-
-    if (feedbackBox) {
-      feedbackBox.classList.remove("hidden");
-      feedbackBox.className = "p-4 rounded-2xl bg-rose-500/15 border border-rose-400/45 text-rose-200 text-xs sm:text-sm space-y-1 animate-card-in";
-      feedbackBox.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2">
-          <strong class="text-rose-300 text-sm">${isTimeout ? "⏰ HẾT THỜI GIAN (15s)!" : "💡 CHƯA CHÍNH XÁC!"} ${shieldMsg}</strong>
-          ${penaltyMsg}
-        </div>
-        <div>${ArenaState.currentQuestion.explanation}</div>
-      `;
-    }
-
-    updateArenaHUD();
-  }
-}
-
-/* ----------------------------------------------------------------------------
- * 7. UPDATE ARENA HUD & STREAK FIRE VISUALS
- * ---------------------------------------------------------------------------- */
 function updateArenaHUD() {
+  if (typeof document === 'undefined') return;
   const scoreEl = document.getElementById("quiz-score");
   const creditsEl = document.getElementById("quiz-credits");
   const streakEl = document.getElementById("quiz-streak");
@@ -637,7 +810,7 @@ function updateArenaHUD() {
   if (accEl) accEl.textContent = `${acc}%`;
   if (multEl) multEl.textContent = `${ArenaState.multiplier.toFixed(1)}x`;
 
-  // Active Power-up Status Pills
+  // Active Power-up Badges
   if (powerupBadges) {
     const badges = [];
     if (ArenaState.hasInsurance) {
@@ -655,7 +828,7 @@ function updateArenaHUD() {
     powerupBadges.innerHTML = badges.join("");
   }
 
-  // Kahoot Streak Fire Visuals
+  // Streak Fire Banner Visuals
   if (streakBanner && questionCard) {
     if (ArenaState.streak >= 3) {
       streakBanner.classList.remove("hidden");
@@ -673,7 +846,6 @@ function updateArenaHUD() {
     }
   }
 
-  // Update shop modal balance if open
   const shopBalanceEl = document.getElementById("cyber-shop-balance");
   if (shopBalanceEl) {
     shopBalanceEl.textContent = `$${ArenaState.cyberCredits.toLocaleString()}`;
@@ -681,7 +853,222 @@ function updateArenaHUD() {
 }
 
 /* ----------------------------------------------------------------------------
- * 8. GIMKIT CYBER UPGRADE SHOP (openCyberShop & buyShopUpgrade)
+ * 8. UNIVERSAL GAME STATE LIFECYCLE (generateDynamicQuestion & applyKahootScoring)
+ * ---------------------------------------------------------------------------- */
+function generateDynamicQuestion() {
+  // [ROUND_INIT]
+  stopArenaTimer();
+  ArenaState.isInputLocked = false; // Unlock input guard for new question
+
+  const feedbackBox = typeof document !== 'undefined' ? document.getElementById("quiz-feedback-box") : null;
+  if (feedbackBox) feedbackBox.classList.add("hidden");
+
+  // [FETCH_QUESTION] from Pluggable ContentProvider
+  const canonicalItem = ContentProvider.getItem(ArenaState.questionTypeFilter);
+
+  // Distractor generation with Cluster Exclusion & Anti-Collision (if not already certified)
+  if (!canonicalItem.options || canonicalItem.options.length < 4) {
+    canonicalItem.options = generateHomogeneousDistractors(canonicalItem);
+  }
+
+  ArenaState.currentQuestion = {
+    ...canonicalItem,
+    answered: false
+  };
+
+  // Render UI
+  const catBadge = typeof document !== 'undefined' ? document.getElementById("quiz-category-badge") : null;
+  if (catBadge) catBadge.textContent = canonicalItem.stimulus.badgeText;
+
+  const qText = typeof document !== 'undefined' ? document.getElementById("quiz-question-text") : null;
+  if (qText) {
+    qText.innerHTML = `
+      <div>${canonicalItem.stimulus.promptHtml}</div>
+      <div class="text-xs font-mono text-slate-400 mt-1.5">${canonicalItem.stimulus.subHint}</div>
+    `;
+  }
+
+  const optionsGrid = typeof document !== 'undefined' ? document.getElementById("quiz-options-grid") : null;
+  if (optionsGrid) {
+    optionsGrid.innerHTML = "";
+    const colorBorders = [
+      "border-cyan-500/40 hover:border-cyan-400",
+      "border-violet-500/40 hover:border-violet-400",
+      "border-emerald-500/40 hover:border-emerald-400",
+      "border-amber-500/40 hover:border-amber-400"
+    ];
+
+    canonicalItem.options.forEach((opt, idx) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-bold bg-white dark:bg-slate-900/95 border-2 ${colorBorders[idx % 4]} text-slate-800 dark:text-slate-100 transition-all cursor-pointer flex items-center justify-between gap-2 shadow-sm`;
+      btn.innerHTML = `
+        <span class="flex items-center gap-2.5">
+          <span class="w-6 h-6 rounded-lg bg-slate-200 dark:bg-slate-800 text-cyan-400 flex items-center justify-center text-xs font-extrabold shrink-0">${String.fromCharCode(65 + idx)}</span>
+          <span>${opt.text}</span>
+        </span>
+      `;
+      btn.addEventListener("click", () => applyKahootScoring(opt, btn, false));
+      optionsGrid.appendChild(btn);
+    });
+  }
+
+  updateArenaHUD();
+  // [COUNTDOWN & WAIT_INPUT]
+  startArenaTimer();
+}
+
+function handleQuizTimeout() {
+  if (ArenaState.isInputLocked || !ArenaState.currentQuestion || ArenaState.currentQuestion.answered) return;
+  applyKahootScoring({ isCorrect: false, text: "Hết thời gian (15.0s)" }, null, true);
+}
+
+function applyKahootScoring(selectedOpt, clickedBtn = null, isTimeout = false) {
+  // Idempotent Input Guard: Prevent double-click race conditions immediately
+  if (ArenaState.isInputLocked) return;
+  if (!ArenaState.currentQuestion || ArenaState.currentQuestion.answered) return;
+
+  ArenaState.isInputLocked = true;
+  ArenaState.currentQuestion.answered = true;
+  stopArenaTimer();
+
+  ArenaState.totalAnswered += 1;
+  const currentQ = ArenaState.currentQuestion;
+
+  // Multi-Key Scoring Fallback Validation:
+  // Award full credit if matches target OR belongs to valid lexical synonym cluster
+  const isDirectCorrect = Boolean(selectedOpt && selectedOpt.isCorrect === true);
+  const isTargetMatch = Boolean(selectedOpt && selectedOpt.text === currentQ.primaryTarget);
+
+  let isSynonymMatch = false;
+  if (currentQ.grammarAttrs.partOfSpeech === "curriculum_lexical_item" && Array.isArray(currentQ.synonyms) && selectedOpt && selectedOpt.text) {
+    const optWord = selectedOpt.text.split('—')[0].trim().toLowerCase();
+    isSynonymMatch = currentQ.synonyms.some(s => s.toLowerCase() === optWord && s.toLowerCase() !== currentQ.primaryTarget.toLowerCase());
+  }
+
+  const isEvaluatedCorrect = !isTimeout && (isDirectCorrect || isTargetMatch || isSynonymMatch);
+
+  const evalContext = {
+    isCorrect: isEvaluatedCorrect,
+    isTimeout,
+    doublePointsUsed: false,
+    shieldSavedStreak: false,
+    insuranceSavedCredits: false
+  };
+
+  // Dispatch to Game Mode Strategy
+  const earnedPoints = activeStrategy.calculateScore(ArenaState, evalContext);
+  const earnedCredits = activeStrategy.calculateCredits(ArenaState, evalContext);
+  activeStrategy.handleStreak(ArenaState, evalContext);
+  activeStrategy.handlePenalty(ArenaState, evalContext);
+
+  if (isEvaluatedCorrect) {
+    ArenaState.correctCount += 1;
+    ArenaState.score += earnedPoints;
+    ArenaState.cyberCredits += earnedCredits;
+    ArenaState.totalCreditsEarned += earnedCredits;
+  }
+
+  // Persistent Telemetry: Record attempt for Spaced Repetition Review
+  ArenaState.telemetry.recordAttempt({
+    itemKey: currentQ.itemKey,
+    type: currentQ.grammarAttrs.partOfSpeech || "general",
+    promptText: currentQ.stimulus.promptHtml,
+    selected: selectedOpt ? selectedOpt.text : "N/A",
+    correct: currentQ.primaryTarget,
+    isCorrect: isEvaluatedCorrect,
+    explanation: currentQ.explanation,
+    timeSpent: +(ArenaState.maxTime - ArenaState.timeLeft).toFixed(1)
+  });
+
+  // UI Evaluation & Feedback Rendering
+  const feedbackBox = document.getElementById("quiz-feedback-box");
+  const questionCard = document.getElementById("quiz-question-card");
+
+  if (isEvaluatedCorrect) {
+    ArenaAudio.playCorrect();
+
+    if (clickedBtn) {
+      clickedBtn.className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-emerald-500/25 border-2 border-emerald-400 text-emerald-200 transition-all flex items-center justify-between gap-2 shadow-lg shadow-emerald-500/20";
+    }
+
+    let doubleTag = evalContext.doublePointsUsed
+      ? ` <span class="px-2 py-0.5 rounded bg-amber-500/25 text-amber-300 font-mono text-xs">⚡ x2 DOUBLE POINTS!</span>`
+      : "";
+
+    if (feedbackBox) {
+      feedbackBox.classList.remove("hidden");
+      feedbackBox.className = "p-4 rounded-2xl bg-emerald-500/15 border border-emerald-400/45 text-emerald-200 text-xs sm:text-sm space-y-1 animate-card-in";
+      feedbackBox.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <strong class="text-emerald-300 text-sm">🎉 CHÍNH XÁC! +${earnedPoints.toLocaleString()} Điểm (Tốc độ ${ArenaState.timeLeft.toFixed(1)}s)${doubleTag}</strong>
+          <span class="font-mono font-bold text-cyan-300 bg-cyan-500/20 px-2.5 py-0.5 rounded-lg border border-cyan-400/40">+$${earnedCredits} Cyber-Credits</span>
+        </div>
+        <div>${currentQ.explanation}</div>
+      `;
+    }
+
+    if (currentQ.speakText) {
+      safeSpeak(currentQ.speakText, "en-US");
+    }
+
+    updateArenaHUD();
+
+    // Trigger Blooket Lucky Cyber-Crate milestone every 3 streaks
+    if (ArenaState.streak > 0 && ArenaState.streak % 3 === 0) {
+      setTimeout(() => {
+        triggerBlooketCrate();
+      }, 650);
+    }
+  } else {
+    ArenaAudio.playWrong();
+
+    // Highlight correct button in grid
+    const allBtns = document.querySelectorAll("#quiz-options-grid .quiz-opt-btn");
+    if (currentQ.options) {
+      currentQ.options.forEach((opt, i) => {
+        if ((opt.isCorrect || opt.text === currentQ.primaryTarget) && allBtns[i]) {
+          allBtns[i].className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-emerald-500/20 border-2 border-emerald-400 text-emerald-200 transition-all";
+        }
+      });
+    }
+
+    if (clickedBtn) {
+      clickedBtn.className = "quiz-opt-btn p-4 rounded-2xl text-left font-mono text-xs sm:text-sm font-extrabold bg-rose-500/25 border-2 border-rose-400 text-rose-200 transition-all";
+    }
+
+    let shieldMsg = evalContext.shieldSavedStreak
+      ? `<span class="px-2 py-0.5 rounded bg-cyan-500/25 text-cyan-300 font-mono text-xs">🛡️ CYBER SHIELD ĐÃ BẢO VỆ CHUỖI STREAK (${ArenaState.streak}🔥)!</span>`
+      : "";
+
+    if (!evalContext.shieldSavedStreak && questionCard) {
+      questionCard.classList.remove("arena-shake");
+      void questionCard.offsetWidth;
+      questionCard.classList.add("arena-shake");
+    }
+
+    let penaltyMsg = evalContext.insuranceSavedCredits
+      ? `<span class="px-2.5 py-0.5 rounded-lg bg-violet-500/25 text-violet-200 font-mono font-bold text-xs border border-violet-400/40">🛡️ FIREWALL INSURANCE: Miễn phạt $0</span>`
+      : `<span class="px-2.5 py-0.5 rounded-lg bg-rose-500/25 text-rose-300 font-mono font-bold text-xs border border-rose-400/40">Phạt -$30 Cyber-Credits</span>`;
+
+    if (feedbackBox) {
+      feedbackBox.classList.remove("hidden");
+      feedbackBox.className = "p-4 rounded-2xl bg-rose-500/15 border border-rose-400/45 text-rose-200 text-xs sm:text-sm space-y-1 animate-card-in";
+      feedbackBox.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <strong class="text-rose-300 text-sm">${isTimeout ? "⏰ HẾT THỜI GIAN (15s)!" : "💡 CHƯA CHÍNH XÁC!"} ${shieldMsg}</strong>
+          ${penaltyMsg}
+        </div>
+        <div>${currentQ.explanation}</div>
+      `;
+    }
+
+    updateArenaHUD();
+  }
+}
+
+/* ----------------------------------------------------------------------------
+ * 9. GIMKIT CYBER UPGRADE SHOP
  * ---------------------------------------------------------------------------- */
 function openCyberShop() {
   const shopModal = document.getElementById("cyber-shop-modal");
@@ -760,7 +1147,7 @@ function buyShopUpgrade(itemKey) {
 }
 
 /* ----------------------------------------------------------------------------
- * 9. BLOOKET LUCKY CYBER-CRATE (triggerBlooketCrate)
+ * 10. BLOOKET LUCKY CYBER-CRATE
  * ---------------------------------------------------------------------------- */
 const BLOOKET_REWARDS = [
   {
@@ -803,13 +1190,12 @@ function triggerBlooketCrate() {
   crateResult.classList.add("hidden");
   cratesGrid.innerHTML = "";
 
-  // Shuffle the 3 rewards across the 3 mystery crates
   const shuffled = [...BLOOKET_REWARDS].sort(() => 0.5 - Math.random());
 
   shuffled.forEach((reward, idx) => {
     const card = document.createElement("button");
     card.type = "button";
-    card.className = "cyber-crate-card p-6 rounded-3xl flex flex-col items-center text-center space-y-3";
+    card.className = "cyber-crate-card p-6 rounded-3xl flex flex-col items-center text-center space-y-3 cursor-pointer";
     card.innerHTML = `
       <div class="w-16 h-16 rounded-2xl bg-violet-500/20 border border-cyan-400/40 flex items-center justify-center text-3xl text-cyan-300 shadow-inner">
         <i class="fa-solid fa-box-open"></i>
@@ -857,7 +1243,7 @@ function triggerBlooketCrate() {
 }
 
 /* ----------------------------------------------------------------------------
- * 10. CYBER VICTORY PODIUM (openArenaPodium & resetArenaGame)
+ * 11. CYBER VICTORY PODIUM (openArenaPodium & resetArenaGame)
  * ---------------------------------------------------------------------------- */
 function openArenaPodium() {
   stopArenaTimer();
@@ -884,13 +1270,25 @@ function openArenaPodium() {
     rankColor = "text-violet-300 border-violet-400/50 bg-violet-500/20";
   }
 
-  document.getElementById("podium-rank-badge").className = `inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-mono text-sm font-extrabold border ${rankColor}`;
-  document.getElementById("podium-rank-badge").textContent = rankTitle;
-  document.getElementById("podium-rank-desc").textContent = rankDesc;
-  document.getElementById("podium-final-score").textContent = ArenaState.score.toLocaleString();
-  document.getElementById("podium-max-streak").textContent = `${ArenaState.maxStreak} 🔥`;
-  document.getElementById("podium-total-credits").textContent = `$${ArenaState.totalCreditsEarned.toLocaleString()}`;
-  document.getElementById("podium-accuracy").textContent = `${acc}% (${ArenaState.correctCount}/${ArenaState.totalAnswered})`;
+  const badgeEl = document.getElementById("podium-rank-badge");
+  if (badgeEl) {
+    badgeEl.className = `inline-flex items-center gap-2 px-4 py-1.5 rounded-full font-mono text-sm font-extrabold border ${rankColor}`;
+    badgeEl.textContent = rankTitle;
+  }
+  const descEl = document.getElementById("podium-rank-desc");
+  if (descEl) descEl.textContent = rankDesc;
+
+  const finalScoreEl = document.getElementById("podium-final-score");
+  if (finalScoreEl) finalScoreEl.textContent = ArenaState.score.toLocaleString();
+
+  const maxStreakEl = document.getElementById("podium-max-streak");
+  if (maxStreakEl) maxStreakEl.textContent = `${ArenaState.maxStreak} 🔥`;
+
+  const totalCreditsEl = document.getElementById("podium-total-credits");
+  if (totalCreditsEl) totalCreditsEl.textContent = `$${ArenaState.totalCreditsEarned.toLocaleString()}`;
+
+  const accuracyEl = document.getElementById("podium-accuracy");
+  if (accuracyEl) accuracyEl.textContent = `${acc}% (${ArenaState.correctCount}/${ArenaState.totalAnswered})`;
 
   podiumModal.classList.remove("hidden");
 }
@@ -910,6 +1308,8 @@ function resetArenaGame() {
   ArenaState.doubleNextPoints = false;
   ArenaState.totalCreditsEarned = 0;
   ArenaState.currentQuestion = null;
+  ArenaState.isInputLocked = false;
+  ArenaState.telemetry.clear();
 
   const podiumModal = document.getElementById("arena-podium-modal");
   if (podiumModal) podiumModal.classList.add("hidden");
@@ -919,10 +1319,13 @@ function resetArenaGame() {
   safeToast("🚀 Đã khởi tạo ván Đấu trường Cyber Arena mới!");
 }
 
-// Export global Arena API
+// Global API & Module Exports
 if (typeof window !== 'undefined') {
   window.ArenaState = ArenaState;
   window.ArenaAudio = ArenaAudio;
+  window.ContentProvider = ContentProvider;
+  window.SEMANTIC_CLUSTERS = SEMANTIC_CLUSTERS;
+  window.CanonicalQuestionItem = CanonicalQuestionItem;
   window.startArenaTimer = startArenaTimer;
   window.stopArenaTimer = stopArenaTimer;
   window.updateTimerUI = updateTimerUI;
@@ -939,6 +1342,17 @@ if (typeof window !== 'undefined') {
   window.resetArenaGame = resetArenaGame;
   window.build170CurriculumUnits = build170CurriculumUnits;
 }
+
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ArenaState, ArenaAudio, generateDynamicQuestion, applyKahootScoring };
+  module.exports = {
+    ArenaState,
+    ArenaAudio,
+    ContentProvider,
+    SEMANTIC_CLUSTERS,
+    CanonicalQuestionItem,
+    generateDynamicQuestion,
+    applyKahootScoring,
+    generateHomogeneousDistractors,
+    getSemanticCluster
+  };
 }

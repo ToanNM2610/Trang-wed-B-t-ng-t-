@@ -131,6 +131,14 @@
       );
       if (exactMatch) return { ...exactMatch };
 
+      // Multi-Field Fuzzy Search Engine high-confidence lookup
+      if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.search === 'function') {
+        const topSearch = window.LexiSearchEngine.search(q, { limit: 1, minScore: 0.45 });
+        if (topSearch.length > 0 && topSearch[0].verb) {
+          return { ...topSearch[0].verb };
+        }
+      }
+
       const qNoTone = removeVietnameseTones(q);
       const viMatch = VERB_DATABASE.find(item =>
         (item.meaning || '').toLowerCase().includes(q) ||
@@ -981,6 +989,19 @@ if (typeof window !== 'undefined') {
       `;
     }
 
+    let initialPins = ['write', 'go', 'be', 'have', 'do'];
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const savedPins = window.localStorage.getItem('leximatrix_pinned_verbs');
+        if (savedPins) {
+          const parsed = JSON.parse(savedPins);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            initialPins = parsed;
+          }
+        }
+      }
+    } catch (e) {}
+
     const state = {
       activeModule: 'matrix',
       verbKey: 'write',
@@ -999,7 +1020,10 @@ if (typeof window !== 'undefined') {
       quizStreak: 0,
       quizTotal: 1,
       quizCorrectCount: 0,
-      currentQuiz: null
+      currentQuiz: null,
+      patternFilter: 'all',
+      leftSearchQuery: '',
+      pinnedVerbs: initialPins
     };
 
     const verbInput = document.getElementById('verb-input');
@@ -1036,6 +1060,183 @@ if (typeof window !== 'undefined') {
     const timeframeTabs = document.getElementById('timeframe-tabs');
     const toastEl = document.getElementById('toast');
     const toastMsg = document.getElementById('toast-message');
+
+    // Dual-Pane Electronic Lexicon Workstation DOM Elements
+    const scratchpadChipsContainer = document.getElementById('scratchpad-chips-container');
+    const btnPinCurrent = document.getElementById('btn-pin-current');
+
+    const leftPaneSearch = document.getElementById('left-pane-search');
+    const btnLeftSearchClear = document.getElementById('btn-left-search-clear');
+    const leftPaneVerbList = document.getElementById('left-pane-verb-list');
+    const leftPaneCountBadge = document.getElementById('left-pane-count-badge');
+    const patternActiveDesc = document.getElementById('pattern-active-desc');
+    const patternFilterBar = document.getElementById('pattern-filter-bar');
+    const auxVs = document.getElementById('aux-vs');
+    const auxVing = document.getElementById('aux-ving');
+    const auxTrans = document.getElementById('aux-trans');
+
+    const reverseResolutionBanner = document.getElementById('reverse-resolution-banner');
+    const reverseResolutionText = document.getElementById('reverse-resolution-text');
+    const dictCefrPill = document.getElementById('dict-cefr-pill');
+    const dictAnchorSentences = document.getElementById('dict-anchor-sentences');
+    const dictCollocationsContainer = document.getElementById('dict-collocations-container');
+    const dictSynonymsContainer = document.getElementById('dict-synonyms-container');
+
+    function classifyVerbPattern(verb) {
+      if (!verb) return 'REGULAR';
+      if (!verb.isIrregular) return 'REGULAR';
+      const v1 = (verb.v1 || '').toLowerCase().trim();
+      const v2 = (verb.v2 || '').toLowerCase().split('/')[0].trim();
+      const v3 = (verb.v3 || '').toLowerCase().split('/')[0].trim();
+      if (v1 === v2 && v2 === v3) return 'A-A-A';
+      if (v2 === v3 && v1 !== v2) return 'A-B-B';
+      if (v1 === v3 && v1 !== v2) return 'A-B-A';
+      if (v1 !== v2 && v2 !== v3 && v1 !== v3) return 'A-B-C';
+      return 'A-B-B';
+    }
+
+    function resolveInflectedForm(rawQuery) {
+      const q = (rawQuery || '').toLowerCase().trim();
+      if (!q) return null;
+
+      const directRoot = VERB_DATABASE.find(item => (item.v1 || '').toLowerCase() === q);
+      if (directRoot) return null;
+
+      for (const item of VERB_DATABASE) {
+        const v2Variants = (item.v2 || '').toLowerCase().split('/').map(s => s.trim());
+        const v3Variants = (item.v3 || '').toLowerCase().split('/').map(s => s.trim());
+        const vingVariants = (item.ving || '').toLowerCase().split('/').map(s => s.trim());
+
+        const isV2 = v2Variants.includes(q);
+        const isV3 = v3Variants.includes(q);
+        const isVing = vingVariants.includes(q);
+
+        if (isV2 && isV3) {
+          return {
+            rootVerb: item,
+            formDescription: 'Quá khứ (V2) & Phân từ (V3)',
+            pattern: classifyVerbPattern(item)
+          };
+        } else if (isV2) {
+          return {
+            rootVerb: item,
+            formDescription: 'Quá khứ (V2)',
+            pattern: classifyVerbPattern(item)
+          };
+        } else if (isV3) {
+          return {
+            rootVerb: item,
+            formDescription: 'Phân từ hoàn thành (V3)',
+            pattern: classifyVerbPattern(item)
+          };
+        } else if (isVing) {
+          return {
+            rootVerb: item,
+            formDescription: 'Tiếp diễn (V-ing)',
+            pattern: classifyVerbPattern(item)
+          };
+        }
+      }
+      return null;
+    }
+
+    const VERB_COLLOCATIONS_MAP = {
+      write: ["write down", "write to someone", "write an essay", "write in ink", "write back"],
+      make: ["make a decision", "make friends", "make mistakes", "make progress", "make sure"],
+      take: ["take notes", "take care of", "take part in", "take time", "take a look"],
+      build: ["build up", "build a bridge", "build confidence", "build a career", "rebuild"],
+      go: ["go to school", "go for a walk", "go on holiday", "go abroad", "go out"],
+      come: ["come back", "come from", "come across", "come true", "come in"],
+      run: ["run away", "run into", "run out of", "run a business", "run fast"],
+      speak: ["speak English", "speak up", "speak to someone", "speak fluently", "speak out"],
+      know: ["know about", "know how to", "get to know", "well-known", "let someone know"],
+      do: ["do homework", "do exercise", "do the laundry", "do one's best", "do good"],
+      have: ["have breakfast", "have a meeting", "have fun", "have time", "have an idea"],
+      be: ["be good at", "be interested in", "be ready for", "be able to", "be proud of"],
+      get: ["get up", "get on with", "get ready", "get in touch", "get over"],
+      give: ["give up", "give away", "give back", "give advice", "give in"],
+      find: ["find out", "find a solution", "find it easy", "find fault with", "find time"],
+      think: ["think about", "think of", "think twice", "think carefully", "think over"],
+      see: ["see off", "see eye to eye", "let me see", "see someone later", "see through"],
+      eat: ["eat out", "eat healthy", "eat up", "eat an apple", "eat breakfast"],
+      cut: ["cut down on", "cut off", "cut out", "cut in pieces", "shortcut"],
+      keep: ["keep in touch", "keep quiet", "keep an eye on", "keep going", "keep calm"],
+      teach: ["teach English", "teach a lesson", "teach someone to", "teach oneself"],
+      buy: ["buy online", "buy for someone", "buy from a store", "buy in bulk"],
+      drive: ["drive a car", "drive someone crazy", "test drive", "drive safely"],
+      break: ["break down", "break up", "break the ice", "break a promise"],
+      bring: ["bring up", "bring about", "bring back", "bring together"],
+      choose: ["choose between", "choose carefully", "choose from"],
+      fall: ["fall in love", "fall down", "fall asleep", "fall apart"],
+      feel: ["feel like", "feel happy", "feel free", "feel well"],
+      grow: ["grow up", "grow fast", "grow plants", "grow old"],
+      hear: ["hear from", "hear of", "hear about", "hear clearly"],
+      hold: ["hold on", "hold a meeting", "hold hands", "hold back"],
+      leave: ["leave for", "leave behind", "leave early", "leave alone"],
+      meet: ["meet with", "meet deadlines", "nice to meet you", "meet friends"],
+      pay: ["pay for", "pay attention to", "pay back", "pay off"],
+      read: ["read aloud", "read widely", "read through", "read books"],
+      send: ["send an email", "send out", "send for", "send back"],
+      stand: ["stand up", "stand by", "stand for", "stand out"],
+      tell: ["tell the truth", "tell a story", "tell a lie", "tell off"],
+      understand: ["understand clearly", "make understood", "try to understand"],
+      win: ["win a prize", "win a game", "win a scholarship", "win hearts"]
+    };
+
+    function getSynonymsForWord(word) {
+      const w = (word || '').toLowerCase().trim();
+      if (typeof window !== 'undefined' && window.CurriculumPipeline && window.CurriculumPipeline.CURRICULUM_CLUSTERS) {
+        const clusters = Object.values(window.CurriculumPipeline.CURRICULUM_CLUSTERS);
+        for (const cl of clusters) {
+          if (cl.words && cl.words.includes(w)) {
+            return cl.words.filter(x => x !== w);
+          }
+        }
+      }
+      const fallbackSynonymsMap = {
+        write: ['compose', 'draft', 'author', 'record', 'create'],
+        make: ['create', 'produce', 'build', 'craft', 'construct'],
+        build: ['construct', 'make', 'create', 'develop', 'erect'],
+        take: ['seize', 'grab', 'capture', 'hold', 'acquire'],
+        eat: ['consume', 'dine', 'ingest', 'swallow', 'feast'],
+        go: ['move', 'proceed', 'travel', 'depart', 'head'],
+        come: ['arrive', 'approach', 'reach', 'enter'],
+        run: ['sprint', 'jog', 'race', 'operate', 'function'],
+        speak: ['talk', 'say', 'tell', 'converse', 'pronounce'],
+        know: ['understand', 'comprehend', 'recognize', 'realize'],
+        see: ['look', 'watch', 'observe', 'view', 'spot'],
+        do: ['perform', 'execute', 'carry out', 'accomplish'],
+        have: ['possess', 'own', 'hold', 'experience'],
+        be: ['exist', 'live', 'remain'],
+        get: ['receive', 'obtain', 'acquire', 'gain', 'fetch'],
+        give: ['donate', 'provide', 'offer', 'grant', 'hand'],
+        find: ['discover', 'locate', 'uncover', 'detect'],
+        think: ['ponder', 'consider', 'reflect', 'reason', 'believe'],
+        buy: ['purchase', 'procure', 'acquire', 'order'],
+        teach: ['educate', 'instruct', 'train', 'guide', 'coach'],
+        keep: ['retain', 'hold', 'maintain', 'preserve', 'save'],
+        cut: ['slice', 'chop', 'sever', 'trim', 'divide'],
+        drive: ['steer', 'navigate', 'operate', 'pilot'],
+        break: ['shatter', 'fracture', 'smash', 'crack'],
+        bring: ['fetch', 'carry', 'deliver', 'transport'],
+        choose: ['select', 'pick', 'opt', 'decide'],
+        fall: ['drop', 'descend', 'collapse', 'tumble'],
+        feel: ['sense', 'perceive', 'experience'],
+        grow: ['develop', 'expand', 'increase', 'mature'],
+        hear: ['listen', 'perceive', 'catch'],
+        hold: ['grasp', 'clutch', 'maintain'],
+        leave: ['depart', 'exit', 'abandon', 'quit'],
+        meet: ['encounter', 'greet', 'converge'],
+        pay: ['compensate', 'remunerate', 'settle'],
+        read: ['peruse', 'scan', 'study'],
+        send: ['transmit', 'dispatch', 'forward'],
+        stand: ['rise', 'endure', 'tolerate'],
+        tell: ['inform', 'narrate', 'notify'],
+        understand: ['comprehend', 'grasp', 'fathom'],
+        win: ['triumph', 'succeed', 'prevail', 'conquer']
+      };
+      return fallbackSynonymsMap[w] || ['start', 'continue', 'finish'];
+    }
 
     let availableVoices = [];
     function loadSpeechVoices() {
@@ -1190,6 +1391,135 @@ if (typeof window !== 'undefined') {
           btn.className = `quick-chip-btn shrink-0 px-3 py-1 rounded-xl text-xs font-mono font-medium bg-white/80 dark:bg-slate-900/90 ${isIntrans ? 'text-amber-600 dark:text-amber-300' : 'text-slate-600 dark:text-slate-300'} hover:border-cyan-400 border border-slate-300 dark:border-slate-700/80 transition-all cursor-pointer`;
         }
       });
+
+      // Update CEFR Band Indicator
+      if (dictCefrPill) {
+        const g = Number(d.grade || 6);
+        let band = 'CEFR A1';
+        if (g <= 5) band = 'CEFR A1';
+        else if (g <= 7) band = 'CEFR A2';
+        else if (g <= 9) band = 'CEFR A2+';
+        else band = 'CEFR B1-B2';
+        dictCefrPill.textContent = band;
+      }
+
+      // Render 3 Bilingual Contextual Anchor Sentences
+      if (dictAnchorSentences) {
+        const cleanMeaning = (d.meaning || '').split(',')[0].trim();
+        const v1 = d.v1;
+        const v2 = firstVariant(d.v2);
+        const v3 = firstVariant(d.v3);
+        const obj = d.activeObject ? d.activeObject.trim() : '';
+
+        const s1EN = `I usually ${v1}${obj ? ' ' + obj : ''} every day.`;
+        const s1VN = `Tôi thường ${cleanMeaning}${obj ? ' ' + obj : ' mọi thứ'} mỗi ngày.`;
+
+        const s2EN = `Yesterday, they ${v2}${obj ? ' ' + obj : ' an important project'}.`;
+        const s2VN = `Hôm qua, họ đã ${cleanMeaning}${obj ? ' ' + obj : ' một dự án quan trọng'}.`;
+
+        let s3EN = '';
+        let s3VN = '';
+        let s3Label = '';
+        if (d.isTransitive) {
+          s3Label = 'Bị động (Passive)';
+          const pSubj = d.passiveSubject || 'The task';
+          s3EN = `${pSubj} was ${v3} by the team.`;
+          s3VN = `${pSubj} đã được ${cleanMeaning} bởi cả nhóm.`;
+        } else {
+          s3Label = 'Hoàn thành (Perfect)';
+          s3EN = `They have ${v3} successfully.`;
+          s3VN = `Họ đã ${cleanMeaning} thành công.`;
+        }
+
+        dictAnchorSentences.innerHTML = `
+          <div class="anchor-card p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 flex flex-col justify-between gap-1.5 shadow-xs">
+            <div class="flex items-center justify-between text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-bold">
+              <span>Hiện tại (Present)</span>
+              <button type="button" class="btn-anchor-speak w-6 h-6 rounded flex items-center justify-center hover:bg-cyan-500/15 hover:text-cyan-400 transition-colors" title="Nghe câu" data-sentence="${s1EN.replace(/"/g, '&quot;')}">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+            <p class="font-mono text-xs font-semibold text-slate-800 dark:text-slate-100 leading-snug">${s1EN}</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">${s1VN}</p>
+          </div>
+
+          <div class="anchor-card p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 flex flex-col justify-between gap-1.5 shadow-xs">
+            <div class="flex items-center justify-between text-[10px] font-mono text-amber-600 dark:text-amber-400 font-bold">
+              <span>Quá khứ (Past)</span>
+              <button type="button" class="btn-anchor-speak w-6 h-6 rounded flex items-center justify-center hover:bg-amber-500/15 hover:text-amber-400 transition-colors" title="Nghe câu" data-sentence="${s2EN.replace(/"/g, '&quot;')}">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+            <p class="font-mono text-xs font-semibold text-slate-800 dark:text-slate-100 leading-snug">${s2EN}</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">${s2VN}</p>
+          </div>
+
+          <div class="anchor-card p-2.5 rounded-xl bg-slate-100/90 dark:bg-slate-950/80 border border-slate-300 dark:border-violet-500/25 flex flex-col justify-between gap-1.5 shadow-xs">
+            <div class="flex items-center justify-between text-[10px] font-mono text-purple-600 dark:text-purple-400 font-bold">
+              <span>${s3Label}</span>
+              <button type="button" class="btn-anchor-speak w-6 h-6 rounded flex items-center justify-center hover:bg-purple-500/15 hover:text-purple-400 transition-colors" title="Nghe câu" data-sentence="${s3EN.replace(/"/g, '&quot;')}">
+                <i class="fa-solid fa-volume-high text-xs"></i>
+              </button>
+            </div>
+            <p class="font-mono text-xs font-semibold text-slate-800 dark:text-slate-100 leading-snug">${s3EN}</p>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic">${s3VN}</p>
+          </div>
+        `;
+
+        dictAnchorSentences.querySelectorAll('.btn-anchor-speak').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const s = btn.dataset.sentence;
+            if (s) speak(s, 'en-US', btn);
+          });
+        });
+      }
+
+      // Render Collocations & Preposition Partners
+      if (dictCollocationsContainer) {
+        dictCollocationsContainer.innerHTML = '';
+        const v1 = d.v1.toLowerCase();
+        let collocs = VERB_COLLOCATIONS_MAP[v1];
+        if (!collocs || collocs.length === 0) {
+          const defaultObj = d.activeObject ? d.activeObject.trim() : 'something';
+          collocs = [
+            `${d.v1} ${defaultObj}`,
+            `${d.v1} with`,
+            `${d.v1} about`,
+            `${d.v1} together`
+          ];
+        }
+        collocs.forEach(c => {
+          const pill = document.createElement('span');
+          pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-mono font-medium bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-400/25 hover:bg-cyan-500/20 cursor-pointer transition-colors';
+          pill.textContent = c;
+          pill.title = 'Bấm để nghe phát âm';
+          pill.addEventListener('click', () => speak(c, 'en-US', pill));
+          dictCollocationsContainer.appendChild(pill);
+        });
+      }
+
+      // Render Synonyms from Semantic Clusters
+      if (dictSynonymsContainer) {
+        dictSynonymsContainer.innerHTML = '';
+        const v1 = d.v1.toLowerCase();
+        const synonyms = getSynonymsForWord(v1);
+
+        synonyms.forEach(syn => {
+          const pill = document.createElement('span');
+          pill.className = 'px-2 py-0.5 rounded-lg text-[11px] font-mono font-medium bg-violet-500/10 text-violet-700 dark:text-violet-300 border border-violet-400/25 hover:bg-violet-500/20 cursor-pointer transition-colors';
+          pill.textContent = syn;
+          pill.title = 'Bấm để tra cứu hoặc nghe từ đồng nghĩa';
+          pill.addEventListener('click', () => {
+            if (VERB_DATABASE.some(x => x.v1 === syn)) {
+              selectVerb(syn);
+            } else {
+              speak(syn, 'en-US', pill);
+            }
+          });
+          dictSynonymsContainer.appendChild(pill);
+        });
+      }
     }
 
     function createTenseCardElement(tense) {
@@ -2018,9 +2348,21 @@ if (typeof window !== 'undefined') {
       });
     });
 
-    function selectVerb(query) {
-      const clean = (query || '').trim();
+    function selectVerb(query, skipReverseCheck = false) {
+      let clean = (query || '').trim();
       if (!clean) return;
+
+      if (!skipReverseCheck) {
+        const rev = resolveInflectedForm(clean);
+        if (rev && reverseResolutionBanner && reverseResolutionText) {
+          reverseResolutionBanner.classList.remove('hidden');
+          reverseResolutionText.innerHTML = `Nhận diện hình thái: <strong>"${clean}"</strong> là dạng <strong>${rev.formDescription}</strong> của <strong>"${rev.rootVerb.v1}"</strong> [<span class="font-mono text-cyan-500 dark:text-cyan-400 font-bold">${rev.pattern}</span>]`;
+          clean = rev.rootVerb.v1;
+        } else if (reverseResolutionBanner) {
+          reverseResolutionBanner.classList.add('hidden');
+        }
+      }
+
       state.verbData = findOrBuildVerb(clean);
       state.defaultActiveObject = state.verbData.activeObject;
       state.defaultPassiveSubject = state.verbData.passiveSubject;
@@ -2030,34 +2372,306 @@ if (typeof window !== 'undefined') {
       btnClear.classList.remove('hidden');
       suggestionsDropdown.classList.add('hidden');
       state.suggestionIndex = -1;
+
       renderHeroDictionary();
       renderMatrix();
+      highlightLeftPaneVerb(state.verbKey);
+      renderScratchpad();
+    }
+
+    function renderLeftPaneVerbs() {
+      if (!leftPaneVerbList) return;
+
+      const q = (state.leftSearchQuery || '').trim();
+      const filter = state.patternFilter || 'all';
+
+      let filtered = [];
+      if (q) {
+        if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.search === 'function') {
+          const searchResults = window.LexiSearchEngine.search(q, {
+            patternFilter: filter,
+            minScore: 0.15
+          });
+          filtered = searchResults.map(r => r.verb);
+        } else {
+          const qLower = q.toLowerCase();
+          const qNoTone = removeVietnameseTones(qLower);
+          filtered = VERB_DATABASE.filter(item => {
+            const pat = classifyVerbPattern(item);
+            if (filter !== 'all' && pat !== filter) return false;
+            const viNorm = removeVietnameseTones(item.meaning);
+            return (
+              item.v1.toLowerCase().includes(qLower) ||
+              (item.v2 && item.v2.toLowerCase().includes(qLower)) ||
+              (item.v3 && item.v3.toLowerCase().includes(qLower)) ||
+              (item.meaning && item.meaning.toLowerCase().includes(qLower)) ||
+              viNorm.includes(qNoTone)
+            );
+          });
+        }
+      } else {
+        filtered = VERB_DATABASE.filter(item => {
+          if (filter !== 'all') {
+            const pat = classifyVerbPattern(item);
+            if (pat !== filter) return false;
+          }
+          return true;
+        });
+      }
+
+      if (leftPaneCountBadge) {
+        leftPaneCountBadge.textContent = `${filtered.length} / ${VERB_DATABASE.length} Từ`;
+      }
+
+      leftPaneVerbList.innerHTML = '';
+
+      if (filtered.length === 0) {
+        leftPaneVerbList.innerHTML = `
+          <div class="p-6 text-center text-xs text-slate-400">
+            <i class="fa-solid fa-filter-circle-xmark text-lg mb-1 block text-slate-500"></i>
+            Không tìm thấy động từ phù hợp với từ khóa hoặc nhóm hình thái đã chọn.
+          </div>
+        `;
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+
+      filtered.forEach(item => {
+        const pat = classifyVerbPattern(item);
+        const isActive = item.v1.toLowerCase() === (state.verbKey || '').toLowerCase();
+
+        const row = document.createElement('div');
+        row.dataset.v1 = item.v1;
+        row.className = `verb-matrix-row flex items-center justify-between p-2 rounded-xl cursor-pointer ${isActive ? 'is-active' : ''}`;
+
+        row.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0 pr-1">
+            <div class="w-1.5 h-6 rounded-full ${isActive ? 'bg-cyan-400' : 'bg-slate-300 dark:bg-slate-700'} shrink-0 row-indicator"></div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="font-mono font-bold text-xs text-cyan-600 dark:text-cyan-300">${item.v1}</span>
+                <span class="font-mono text-[11px] text-slate-500 dark:text-slate-400">${item.v2} • ${item.v3}</span>
+              </div>
+              <div class="text-[11px] text-slate-600 dark:text-slate-300 truncate max-w-[210px] sm:max-w-[260px]">
+                ${item.meaning}
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <span class="pattern-tag pattern-tag--${pat}">${pat}</span>
+            <button type="button" class="btn-left-speak w-6 h-6 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 flex items-center justify-center transition-colors" title="Nghe phát âm">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+        `;
+
+        row.addEventListener('click', () => {
+          selectVerb(item.v1, true);
+        });
+
+        const speakBtn = row.querySelector('.btn-left-speak');
+        if (speakBtn) {
+          speakBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            speak(item.v1, 'en-US', speakBtn);
+          });
+        }
+
+        fragment.appendChild(row);
+      });
+
+      leftPaneVerbList.appendChild(fragment);
+    }
+
+    function highlightLeftPaneVerb(v1) {
+      if (!v1) return;
+      const targetV1 = v1.toLowerCase();
+
+      if (leftPaneVerbList) {
+        const rows = leftPaneVerbList.querySelectorAll('.verb-matrix-row');
+        rows.forEach(r => {
+          const match = r.dataset.v1 && r.dataset.v1.toLowerCase() === targetV1;
+          r.classList.toggle('is-active', match);
+          const indicator = r.querySelector('.row-indicator');
+          if (indicator) {
+            indicator.className = match
+              ? 'w-1.5 h-6 rounded-full bg-cyan-400 shrink-0 row-indicator'
+              : 'w-1.5 h-6 rounded-full bg-slate-300 dark:bg-slate-700 shrink-0 row-indicator';
+          }
+          if (match) {
+            r.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }
+        });
+      }
+
+      const currentVerb = state.verbData || VERB_DATABASE.find(x => x.v1.toLowerCase() === targetV1);
+      if (currentVerb) {
+        if (auxVs) auxVs.textContent = currentVerb.vs || (currentVerb.v1 + 's');
+        if (auxVing) auxVing.textContent = currentVerb.ving || (currentVerb.v1 + 'ing');
+        if (auxTrans) {
+          if (currentVerb.isTransitive) {
+            auxTrans.className = 'text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold border border-emerald-400/30';
+            auxTrans.textContent = '[vt.] Ngoại ĐT';
+          } else {
+            auxTrans.className = 'text-[10px] px-1.5 py-0.5 rounded bg-rose-500/20 text-rose-700 dark:text-rose-300 font-bold border border-rose-400/30';
+            auxTrans.textContent = '[vi.] Nội ĐT';
+          }
+        }
+      }
+    }
+
+    function savePinnedVerbs() {
+      try {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          window.localStorage.setItem('leximatrix_pinned_verbs', JSON.stringify(state.pinnedVerbs));
+        }
+      } catch (e) {}
+    }
+
+    function renderScratchpad() {
+      if (!scratchpadChipsContainer) return;
+      scratchpadChipsContainer.innerHTML = '';
+
+      state.pinnedVerbs.forEach(verbKey => {
+        const isCurrent = (state.verbKey || '').toLowerCase() === verbKey.toLowerCase();
+        const pill = document.createElement('div');
+        pill.className = `scratchpad-pin-pill inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-mono font-medium border cursor-pointer select-none transition-all ${
+          isCurrent
+            ? 'bg-gradient-to-r from-violet-600 to-cyan-600 text-white border-transparent shadow-xs font-bold'
+            : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-300 dark:border-slate-700 hover:border-amber-400'
+        }`;
+
+        pill.innerHTML = `
+          <span>${verbKey}</span>
+          <button type="button" class="btn-unpin text-slate-400 hover:text-rose-400 text-xs ml-0.5" title="Bỏ ghim">
+            &times;
+          </button>
+        `;
+
+        pill.addEventListener('click', (e) => {
+          if (e.target.closest('.btn-unpin')) return;
+          selectVerb(verbKey, true);
+        });
+
+        const btnUnpin = pill.querySelector('.btn-unpin');
+        if (btnUnpin) {
+          btnUnpin.addEventListener('click', (e) => {
+            e.stopPropagation();
+            unpinVerb(verbKey);
+          });
+        }
+
+        scratchpadChipsContainer.appendChild(pill);
+      });
+    }
+
+    function pinCurrentVerb() {
+      const current = state.verbKey;
+      if (!current) return;
+      if (state.pinnedVerbs.includes(current)) {
+        showToast(`Động từ "${current}" đã có sẵn trong Scratchpad!`);
+        return;
+      }
+      state.pinnedVerbs.push(current);
+      savePinnedVerbs();
+      renderScratchpad();
+      showToast(`📌 Đã ghim "${current}" vào Session Scratchpad!`);
+    }
+
+    function unpinVerb(verbKey) {
+      state.pinnedVerbs = state.pinnedVerbs.filter(v => v !== verbKey);
+      savePinnedVerbs();
+      renderScratchpad();
+      showToast(`Đã bỏ ghim "${verbKey}" khỏi Scratchpad.`);
+    }
+
+    if (leftPaneSearch) {
+      leftPaneSearch.addEventListener('input', (e) => {
+        state.leftSearchQuery = e.target.value;
+        if (btnLeftSearchClear) {
+          btnLeftSearchClear.classList.toggle('hidden', !state.leftSearchQuery);
+        }
+        renderLeftPaneVerbs();
+      });
+    }
+
+    if (btnLeftSearchClear) {
+      btnLeftSearchClear.addEventListener('click', () => {
+        if (leftPaneSearch) leftPaneSearch.value = '';
+        state.leftSearchQuery = '';
+        btnLeftSearchClear.classList.add('hidden');
+        renderLeftPaneVerbs();
+        if (leftPaneSearch) leftPaneSearch.focus();
+      });
+    }
+
+    if (patternFilterBar) {
+      patternFilterBar.querySelectorAll('button[data-pattern]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const pat = btn.dataset.pattern;
+          state.patternFilter = pat;
+
+          patternFilterBar.querySelectorAll('button[data-pattern]').forEach(b => {
+            b.className = 'pattern-filter-btn px-2 py-0.5 rounded-lg text-slate-600 dark:text-slate-300 hover:text-white bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300 dark:border-slate-700/80 cursor-pointer';
+          });
+          btn.className = 'pattern-filter-btn px-2 py-0.5 rounded-lg font-bold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-xs cursor-pointer';
+
+          const patternDescMap = {
+            all: 'Tất cả động từ (388)',
+            'A-A-A': 'Bất biến: V1 = V2 = V3 (cut, hit, let...)',
+            'A-B-B': 'Quá khứ = Phân từ: V2 = V3 (buy, build, teach...)',
+            'A-B-A': 'Nguyên thể = Phân từ: V1 = V3 (come, run, become...)',
+            'A-B-C': '3 dạng biến đổi riêng biệt: V1 ≠ V2 ≠ V3 (write, drive, sing...)',
+            REGULAR: 'Động từ có quy tắc (-ed)'
+          };
+          if (patternActiveDesc) {
+            patternActiveDesc.textContent = patternDescMap[pat] || pat;
+          }
+
+          renderLeftPaneVerbs();
+        });
+      });
+    }
+
+    if (btnPinCurrent) {
+      btnPinCurrent.addEventListener('click', pinCurrentVerb);
     }
 
     function updateAutocomplete(val) {
-      const q = (val || '').toLowerCase().trim();
+      const q = (val || '').trim();
       state.suggestionIndex = -1;
       if (!q) {
         suggestionsDropdown.classList.add('hidden');
         return;
       }
 
-      const qNoTone = removeVietnameseTones(q);
-      const matches = VERB_DATABASE.filter(item => {
-        const viNorm = removeVietnameseTones(item.meaning);
-        return (
-          item.v1.includes(q) ||
-          item.v2.toLowerCase().includes(q) ||
-          item.v3.toLowerCase().includes(q) ||
-          item.ving.toLowerCase().includes(q) ||
-          item.meaning.toLowerCase().includes(q) ||
-          viNorm.includes(qNoTone)
-        );
-      }).sort((a, b) => {
-        const aStarts = a.v1.startsWith(q) ? 0 : 1;
-        const bStarts = b.v1.startsWith(q) ? 0 : 1;
-        return aStarts - bStarts;
-      }).slice(0, 8);
+      let matches = [];
+      if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.search === 'function') {
+        const searchResults = window.LexiSearchEngine.search(q, {
+          limit: 8,
+          minScore: 0.18
+        });
+        matches = searchResults.map(r => r.verb);
+      } else {
+        const qLower = q.toLowerCase();
+        const qNoTone = removeVietnameseTones(qLower);
+        matches = VERB_DATABASE.filter(item => {
+          const viNorm = removeVietnameseTones(item.meaning);
+          return (
+            item.v1.includes(qLower) ||
+            item.v2.toLowerCase().includes(qLower) ||
+            item.v3.toLowerCase().includes(qLower) ||
+            item.ving.toLowerCase().includes(qLower) ||
+            item.meaning.toLowerCase().includes(qLower) ||
+            viNorm.includes(qNoTone)
+          );
+        }).sort((a, b) => {
+          const aStarts = a.v1.startsWith(qLower) ? 0 : 1;
+          const bStarts = b.v1.startsWith(qLower) ? 0 : 1;
+          return aStarts - bStarts;
+        }).slice(0, 8);
+      }
 
       suggestionsDropdown.innerHTML = '';
 
@@ -2153,7 +2767,11 @@ if (typeof window !== 'undefined') {
     const btnReplayIntro = document.getElementById('btn-replay-intro');
 
     function dismissIntro() {
-      if (introOverlay) introOverlay.classList.add('intro-hidden');
+      if (typeof window.LexiMatrixIntroEngine !== 'undefined' && typeof window.LexiMatrixIntroEngine.exitIntro === 'function') {
+        window.LexiMatrixIntroEngine.exitIntro();
+      } else if (introOverlay) {
+        introOverlay.classList.add('intro-hidden');
+      }
     }
 
     if (btnIntroEnter) {
@@ -2161,7 +2779,11 @@ if (typeof window !== 'undefined') {
     }
     if (btnReplayIntro) {
       btnReplayIntro.addEventListener('click', () => {
-        if (introOverlay) introOverlay.classList.remove('intro-hidden');
+        if (typeof window.LexiMatrixIntroEngine !== 'undefined' && typeof window.LexiMatrixIntroEngine.launch === 'function') {
+          window.LexiMatrixIntroEngine.launch();
+        } else if (introOverlay) {
+          introOverlay.classList.remove('intro-hidden');
+        }
       });
     }
 
@@ -2278,7 +2900,7 @@ if (typeof window !== 'undefined') {
       }
       const heroTotalVerbsInline = document.getElementById('hero-total-verbs-inline');
       if (heroTotalVerbsInline) {
-        heroTotalVerbsInline.textContent = `${totalVerbs} Động từ`;
+        heroTotalVerbsInline.textContent = `${totalVerbs} Động từ & SGK`;
       }
 
       quickChipsContainer.innerHTML = '';
@@ -2292,6 +2914,13 @@ if (typeof window !== 'undefined') {
         quickChipsContainer.appendChild(btn);
       });
 
+      // Initialize Multi-Field Inverted Search Engine Index
+      if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.initIndex === 'function') {
+        window.LexiSearchEngine.initIndex(VERB_DATABASE);
+      }
+
+      renderScratchpad();
+      renderLeftPaneVerbs();
       selectVerb('write');
     }
 
@@ -2307,4 +2936,10 @@ if (typeof window !== 'undefined') {
   window.selectVerb = selectVerb;
   window.switchModuleTab = switchModuleTab;
   window.renderSgkCurriculum = renderSgkCurriculum;
+  window.classifyVerbPattern = classifyVerbPattern;
+  window.resolveInflectedForm = resolveInflectedForm;
+  window.renderLeftPaneVerbs = renderLeftPaneVerbs;
+  window.highlightLeftPaneVerb = highlightLeftPaneVerb;
+  window.renderScratchpad = renderScratchpad;
+  window.state = state;
 }
