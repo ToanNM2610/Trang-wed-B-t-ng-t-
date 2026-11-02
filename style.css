@@ -1016,6 +1016,21 @@ html.dark .right-pane-card {
   color: #FFFFFF;
 }
 
+.btn-card-audio-uk,
+.btn-card-audio-us {
+  transition: all 0.15s ease;
+}
+
+.btn-card-audio-uk:hover {
+  border-color: #38BDF8 !important;
+  color: #38BDF8 !important;
+}
+
+.btn-card-audio-us:hover {
+  border-color: #818CF8 !important;
+  color: #818CF8 !important;
+}
+
 /* ============================================================================
  * MODULE VIEW 2: SGK ROADMAP (LỘ TRÌNH LỚP 1 - 12) TOP-TO-BOTTOM SINGLE COLUMN
  * ============================================================================ */

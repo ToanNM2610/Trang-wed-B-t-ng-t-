@@ -2833,6 +2833,430 @@ if (typeof window !== 'undefined') {
     }
 
     /* ----------------------------------------------------------------------------
+     * MULTI-PART-OF-SPEECH MORPHOLOGY & PHONETICS HELPERS
+     * ---------------------------------------------------------------------------- */
+
+    function computeNounPlural(w) {
+      if (!w) return '';
+      const word = w.toLowerCase().trim();
+      const irreg = {
+        child: 'children', person: 'people', man: 'men', woman: 'women',
+        tooth: 'teeth', foot: 'feet', mouse: 'mice', goose: 'geese',
+        sheep: 'sheep', fish: 'fish', leaf: 'leaves', life: 'lives',
+        wife: 'wives', knife: 'knives', half: 'halves', wolf: 'wolves',
+        school: 'schools', apple: 'apples', student: 'students', teacher: 'teachers',
+        city: 'cities', country: 'countries', baby: 'babies', family: 'families'
+      };
+      if (irreg[word]) return irreg[word];
+      if (/(s|sh|ch|x|z)$/i.test(word)) return word + 'es';
+      if (/[^aeiou]y$/i.test(word)) return word.slice(0, -1) + 'ies';
+      if (/(hero|potato|tomato)$/i.test(word)) return word + 'es';
+      return word + 's';
+    }
+
+    function computeAdjDegrees(w) {
+      if (!w) return { comp: '', sup: '' };
+      const word = w.toLowerCase().trim();
+      const irreg = {
+        good: { comp: 'better', sup: 'best' },
+        bad: { comp: 'worse', sup: 'worst' },
+        far: { comp: 'farther / further', sup: 'farthest / furthest' },
+        little: { comp: 'less', sup: 'least' },
+        many: { comp: 'more', sup: 'most' },
+        much: { comp: 'more', sup: 'most' }
+      };
+      if (irreg[word]) return irreg[word];
+      if (/[^aeiou]y$/i.test(word)) {
+        return { comp: word.slice(0, -1) + 'ier', sup: word.slice(0, -1) + 'iest' };
+      }
+      const isShort = word.length <= 5 || /^(clever|narrow|simple|quiet|gentle)$/i.test(word);
+      if (isShort) {
+        if (word.endsWith('e')) return { comp: word + 'r', sup: word + 'st' };
+        if (/[aeiou][bcdfghjklmnpqrstvwxyz]$/i.test(word) && !/[aeiou]{2}[bcdfghjklmnpqrstvwxyz]$/i.test(word) && !/[wxy]$/i.test(word)) {
+          return { comp: word + word.slice(-1) + 'er', sup: word + word.slice(-1) + 'est' };
+        }
+        return { comp: word + 'er', sup: word + 'est' };
+      }
+      return { comp: 'more ' + word, sup: 'most ' + word };
+    }
+
+    function getDualIPA(item) {
+      const rawUS = item.ipaUS || item.ipa || '';
+      let usIPA = rawUS.trim();
+      let ukIPA = (item.ipaUK || '').trim();
+
+      const baseWord = (item.v1 || item.word || '').toLowerCase();
+
+      if (!usIPA || usIPA === '/' || usIPA === '//') {
+        usIPA = `/${baseWord}/`;
+      }
+      if (!ukIPA || ukIPA === '/' || ukIPA === '//') {
+        let derivedUK = usIPA
+          .replace(/ɑːr/g, 'ɑː')
+          .replace(/ɔːr/g, 'ɔː')
+          .replace(/ɜːr/g, 'ɜː')
+          .replace(/ɝː/g, 'ɜː')
+          .replace(/ər\b/g, 'ə')
+          .replace(/oʊ/g, 'əʊ');
+        ukIPA = derivedUK;
+      }
+
+      if (!usIPA.startsWith('/')) usIPA = `/${usIPA}/`;
+      if (!ukIPA.startsWith('/')) ukIPA = `/${ukIPA}/`;
+
+      return { ukIPA, usIPA };
+    }
+
+    function buildUniversalLexicon() {
+      const map = new Map();
+
+      // 1. 388 Irregular & Priority Verbs
+      if (Array.isArray(VERB_DATABASE)) {
+        VERB_DATABASE.forEach(v => {
+          const w = (v.v1 || '').trim();
+          if (!w) return;
+          const key = `${w.toLowerCase()}_v`;
+          const dual = getDualIPA(v);
+          map.set(key, {
+            ...v,
+            word: w,
+            v1: w,
+            pos: 'v',
+            isVerb: true,
+            ipaUK: dual.ukIPA,
+            ipaUS: dual.usIPA,
+            grade: v.grade || 6
+          });
+        });
+      }
+
+      // 2. Vocabulary from SGK Curriculum Units (Grades 1-12)
+      const rawCurr = (typeof window !== 'undefined' && Array.isArray(window.CURRICULUM_DATA))
+        ? window.CURRICULUM_DATA
+        : (typeof CURRICULUM_DATA !== 'undefined' && Array.isArray(CURRICULUM_DATA) ? CURRICULUM_DATA : []);
+
+      if (Array.isArray(rawCurr)) {
+        rawCurr.forEach((unit, uIdx) => {
+          const gMatch = String(unit.grade || '').match(/\d+/);
+          const gradeNum = gMatch ? parseInt(gMatch[0], 10) : 6;
+          if (Array.isArray(unit.vocabulary)) {
+            unit.vocabulary.forEach(v => {
+              const w = (v.word || '').trim();
+              if (!w) return;
+              let rawPos = (v.pos || 'n').toLowerCase().trim();
+              let pos = 'n';
+              if (rawPos.startsWith('v') || rawPos.includes('verb')) {
+                pos = rawPos.includes('phr') ? 'phrasal v' : 'v';
+              } else if (rawPos.startsWith('adj')) {
+                pos = 'adj';
+              } else if (rawPos.startsWith('adv')) {
+                pos = 'adv';
+              } else if (rawPos.startsWith('n')) {
+                pos = 'n';
+              } else {
+                pos = rawPos;
+              }
+
+              const key = `${w.toLowerCase()}_${pos}`;
+              const dual = getDualIPA(v);
+
+              if (!map.has(key)) {
+                const entry = {
+                  word: w,
+                  v1: w,
+                  pos: pos,
+                  meaning: v.meaning || '',
+                  ipaUK: dual.ukIPA,
+                  ipaUS: dual.usIPA,
+                  collocation: v.collocation || '',
+                  example: v.example || '',
+                  grade: gradeNum,
+                  unit: unit.unit || (uIdx + 1),
+                  isIrregular: false
+                };
+
+                if (pos === 'n') {
+                  entry.plural = computeNounPlural(w);
+                } else if (pos === 'adj') {
+                  const degrees = computeAdjDegrees(w);
+                  entry.comparative = degrees.comp;
+                  entry.superlative = degrees.sup;
+                } else if (pos === 'v') {
+                  entry.isVerb = true;
+                }
+
+                map.set(key, entry);
+              } else {
+                const existing = map.get(key);
+                if (!existing.collocation && v.collocation) existing.collocation = v.collocation;
+                if (!existing.example && v.example) existing.example = v.example;
+              }
+            });
+          }
+        });
+      }
+
+      // 3. Certified curriculum DB / foundational lexicon
+      const certDB = (typeof window !== 'undefined' && Array.isArray(window.CERTIFIED_CURRICULUM_DB))
+        ? window.CERTIFIED_CURRICULUM_DB
+        : (typeof CERTIFIED_CURRICULUM_DB !== 'undefined' && Array.isArray(CERTIFIED_CURRICULUM_DB) ? CERTIFIED_CURRICULUM_DB : []);
+
+      if (Array.isArray(certDB)) {
+        certDB.forEach(c => {
+          const w = (c.target_word || c.word || '').trim();
+          if (!w) return;
+          let rawPos = (c.part_of_speech || c.pos || 'n').toLowerCase().trim();
+          let pos = 'n';
+          if (rawPos.startsWith('v') || rawPos.includes('verb')) {
+            pos = rawPos.includes('phr') ? 'phrasal v' : 'v';
+          } else if (rawPos.startsWith('adj')) {
+            pos = 'adj';
+          } else if (rawPos.startsWith('adv')) {
+            pos = 'adv';
+          } else if (rawPos.startsWith('n')) {
+            pos = 'n';
+          } else {
+            pos = rawPos;
+          }
+
+          const key = `${w.toLowerCase()}_${pos}`;
+          const dual = getDualIPA(c);
+
+          if (!map.has(key)) {
+            const cleanMeaning = c.primary_meaning_vn || c.meaning || '';
+            const exText = (c.prompt_sentence || c.example || '').replace(/_____/g, w);
+            const entry = {
+              word: w,
+              v1: w,
+              pos: pos,
+              meaning: cleanMeaning,
+              ipaUK: dual.ukIPA,
+              ipaUS: dual.usIPA,
+              collocation: c.collocation || '',
+              example: exText,
+              grade: c.grade_level || c.grade || 6,
+              unit: c.unit_number || c.unit || 1,
+              isIrregular: false
+            };
+
+            if (pos === 'n') {
+              entry.plural = computeNounPlural(w);
+            } else if (pos === 'adj') {
+              const degrees = computeAdjDegrees(w);
+              entry.comparative = degrees.comp;
+              entry.superlative = degrees.sup;
+            } else if (pos === 'v') {
+              entry.isVerb = true;
+            }
+
+            map.set(key, entry);
+          }
+        });
+      }
+
+      return Array.from(map.values());
+    }
+
+    function buildVerbDetailHtml(item) {
+      const v1 = item.v1 || item.word || '';
+      const v2First = firstVariant(item.v2) || (v1 + 'ed');
+      const v3First = firstVariant(item.v3) || (v1 + 'ed');
+      const cleanMeaning = (item.meaning || '').split(',')[0].trim();
+      const obj = item.activeObject ? item.activeObject.trim() : '';
+      const exampleEN = item.example || `I usually ${v1}${obj ? ' ' + obj : ''} every day.`;
+      const exampleVN = `Tôi thường ${cleanMeaning}${obj ? ' ' + obj : ''} mỗi ngày.`;
+
+      return `
+        <!-- 3 Verb Forms -->
+        <div class="grid grid-cols-3 gap-1.5 text-center font-mono text-xs">
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">V1 (Base)</div>
+            <div class="font-bold text-[#F3F4F6] mt-0.5">${v1}</div>
+          </div>
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">V2 (Past)</div>
+            <div class="font-bold text-[#F3F4F6] mt-0.5">${v2First}</div>
+          </div>
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">V3 (Participle)</div>
+            <div class="font-bold text-[#F3F4F6] mt-0.5">${v3First}</div>
+          </div>
+        </div>
+
+        <!-- Anchor Example Sentence -->
+        <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span>Câu Ngữ Cảnh Chuẩn (Anchor Sentence)</span>
+            <button type="button" class="btn-card-sentence-speak text-slate-400 hover:text-white cursor-pointer" data-speak="${exampleEN}" title="Nghe câu ví dụ">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${exampleEN}</p>
+          <p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>
+        </div>
+
+        <!-- 12-Tense Conjugation Matrix Container -->
+        <div class="card-tense-matrix-box mt-2.5 pt-2 border-t border-[#232A3B]">
+          ${buildCardTenseMatrixHtml(item, state.dictSubjectMode || 'plural')}
+        </div>
+      `;
+    }
+
+    function buildNounDetailHtml(item) {
+      const headword = item.word || item.v1 || '';
+      const pluralForm = item.plural || computeNounPlural(headword);
+      const collocation = item.collocation || (headword === 'school' ? 'my school, go to school, primary school' : `a ${headword}`);
+      const exampleEN = item.example || `This is a famous ${headword} in the city.`;
+      const exampleVN = item.meaning ? `Đây là một ${item.meaning.split(',')[0].trim()} nổi tiếng trong thành phố.` : '';
+
+      return `
+        <!-- Noun Morphology Breakdown -->
+        <div class="grid grid-cols-3 gap-1.5 text-center font-mono text-xs">
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">Số ít (Singular)</div>
+            <div class="font-bold text-[#F3F4F6] mt-0.5">${headword}</div>
+          </div>
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">Số nhiều (Plural)</div>
+            <div class="font-bold text-sky-400 mt-0.5">${pluralForm}</div>
+          </div>
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">Phân loại</div>
+            <div class="font-bold text-slate-300 mt-0.5">Danh từ [n.]</div>
+          </div>
+        </div>
+
+        <!-- Common Collocations Card -->
+        <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span class="flex items-center gap-1.5 text-sky-400 font-semibold">
+              <i class="fa-solid fa-link text-[10px]" aria-hidden="true"></i>
+              Cụm từ thông dụng (Collocations)
+            </span>
+            <button type="button" class="btn-card-collocation-speak text-slate-400 hover:text-white cursor-pointer" data-speak="${collocation}" title="Nghe cụm từ">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${collocation}</p>
+        </div>
+
+        <!-- Contextual Example Sentence Card -->
+        <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span>Câu Ngữ Cảnh Chuẩn (Anchor Sentence)</span>
+            <button type="button" class="btn-card-sentence-speak text-slate-400 hover:text-white cursor-pointer" data-speak="${exampleEN}" title="Nghe câu ví dụ">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${exampleEN}</p>
+          ${exampleVN ? `<p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>` : ''}
+        </div>
+      `;
+    }
+
+    function buildAdjectiveDetailHtml(item) {
+      const headword = item.word || item.v1 || '';
+      const degrees = {
+        comp: item.comparative || computeAdjDegrees(headword).comp,
+        sup: item.superlative || computeAdjDegrees(headword).sup
+      };
+      const collocation = item.collocation || `very ${headword}, a ${headword} person`;
+      const exampleEN = item.example || `The weather is ${headword} today.`;
+      const exampleVN = item.meaning ? `Thời tiết hôm nay rất ${item.meaning.split(',')[0].trim()}.` : '';
+
+      return `
+        <!-- Adjective 3 Degrees of Comparison Breakdown -->
+        <div class="grid grid-cols-3 gap-1.5 text-center font-mono text-xs">
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">Nguyên thể (Base)</div>
+            <div class="font-bold text-[#F3F4F6] mt-0.5">${headword}</div>
+          </div>
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">So sánh hơn (Comp.)</div>
+            <div class="font-bold text-amber-400 mt-0.5">${degrees.comp}</div>
+          </div>
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">So sánh nhất (Sup.)</div>
+            <div class="font-bold text-indigo-400 mt-0.5">${degrees.sup}</div>
+          </div>
+        </div>
+
+        <!-- Common Collocations Card -->
+        <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span class="flex items-center gap-1.5 text-amber-400 font-semibold">
+              <i class="fa-solid fa-link text-[10px]" aria-hidden="true"></i>
+              Kết hợp từ (Collocations / Modifiers)
+            </span>
+            <button type="button" class="btn-card-collocation-speak text-slate-400 hover:text-white cursor-pointer" data-speak="${collocation}" title="Nghe kết hợp từ">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${collocation}</p>
+        </div>
+
+        <!-- Contextual Example Sentence Card -->
+        <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span>Câu Ngữ Cảnh Chuẩn (Anchor Sentence)</span>
+            <button type="button" class="btn-card-sentence-speak text-slate-400 hover:text-white cursor-pointer" data-speak="${exampleEN}" title="Nghe câu ví dụ">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${exampleEN}</p>
+          ${exampleVN ? `<p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>` : ''}
+        </div>
+      `;
+    }
+
+    function buildGeneralWordDetailHtml(item) {
+      const headword = item.word || item.v1 || '';
+      const posLabel = item.pos === 'adv' ? 'Phó từ / Trạng từ' : (item.pos === 'phrasal v' ? 'Cụm động từ' : 'Mục từ trọng tâm');
+      const collocation = item.collocation || `${headword}`;
+      const exampleEN = item.example || `We use "${headword}" in daily communication.`;
+      const exampleVN = item.meaning ? `Nghĩa: ${item.meaning}` : '';
+
+      return `
+        <div class="grid grid-cols-2 gap-1.5 text-center font-mono text-xs">
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">Từ gốc (Headword)</div>
+            <div class="font-bold text-[#F3F4F6] mt-0.5">${headword}</div>
+          </div>
+          <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+            <div class="text-[9px] uppercase text-slate-500 font-bold">Từ loại (POS)</div>
+            <div class="font-bold text-purple-400 mt-0.5">${posLabel}</div>
+          </div>
+        </div>
+
+        <!-- Collocations / Usage -->
+        <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span class="flex items-center gap-1.5 text-purple-400 font-semibold">
+              <i class="fa-solid fa-link text-[10px]" aria-hidden="true"></i>
+              Ngữ cảnh &amp; Cụm từ
+            </span>
+            <button type="button" class="btn-card-collocation-speak text-slate-400 hover:text-white cursor-pointer" data-speak="${collocation}" title="Nghe cụm từ">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${collocation}</p>
+        </div>
+
+        <!-- Example Sentence -->
+        <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
+            <span>Câu Ngữ Cảnh Chuẩn (Anchor Sentence)</span>
+            <button type="button" class="btn-card-sentence-speak text-slate-400 hover:text-white cursor-pointer" data-speak="${exampleEN}" title="Nghe câu ví dụ">
+              <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+            </button>
+          </div>
+          <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${exampleEN}</p>
+          ${exampleVN ? `<p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>` : ''}
+        </div>
+      `;
+    }
+
+    /* ----------------------------------------------------------------------------
      * RIGHT PANE: REVERSE LOOKUP SCROLLABLE DICTIONARY & ACCORDION
      * ---------------------------------------------------------------------------- */
 
@@ -2842,6 +3266,10 @@ if (typeof window !== 'undefined') {
       const q = (filterQuery || '').trim();
       let list = [];
 
+      const sourceLexicon = (typeof window !== 'undefined' && Array.isArray(window.universalLexicon) && window.universalLexicon.length > 0)
+        ? window.universalLexicon
+        : (window.universalLexicon = buildUniversalLexicon());
+
       if (q) {
         if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.search === 'function') {
           const results = window.LexiSearchEngine.search(q, { minScore: 0.15 });
@@ -2849,10 +3277,11 @@ if (typeof window !== 'undefined') {
         } else {
           const qLower = q.toLowerCase();
           const qNoTone = removeVietnameseTones(qLower);
-          list = VERB_DATABASE.filter(item => {
-            const viNorm = removeVietnameseTones(item.meaning);
+          list = sourceLexicon.filter(item => {
+            const head = (item.v1 || item.word || '').toLowerCase();
+            const viNorm = removeVietnameseTones(item.meaning || '');
             return (
-              item.v1.toLowerCase().includes(qLower) ||
+              head.includes(qLower) ||
               (item.v2 && item.v2.toLowerCase().includes(qLower)) ||
               (item.v3 && item.v3.toLowerCase().includes(qLower)) ||
               (item.meaning && item.meaning.toLowerCase().includes(qLower)) ||
@@ -2861,11 +3290,11 @@ if (typeof window !== 'undefined') {
           });
         }
       } else {
-        list = VERB_DATABASE.slice();
+        list = sourceLexicon.slice();
       }
 
       if (rightDictCountBadge) {
-        rightDictCountBadge.textContent = `${list.length} / ${VERB_DATABASE.length} Mục từ`;
+        rightDictCountBadge.textContent = `${list.length.toLocaleString('vi-VN')} / ${sourceLexicon.length.toLocaleString('vi-VN')} Mục từ`;
       }
 
       rightDictFeed.innerHTML = '';
@@ -2875,7 +3304,7 @@ if (typeof window !== 'undefined') {
           <div class="p-8 text-center text-xs text-slate-400 bg-[#161B26] rounded-xl border border-[#232A3B]">
             <i class="fa-solid fa-book-open text-2xl mb-2 text-slate-500 block"></i>
             Không tìm thấy mục từ tiếng Việt hoặc tiếng Anh tương ứng với <strong class="text-indigo-400">"${q}"</strong>.
-            <div class="mt-2 text-slate-500 text-[11px]">Thử tìm với từ khóa không dấu (VD: "nau an", "cat", "mua", "viet")...</div>
+            <div class="mt-2 text-slate-500 text-[11px]">Thử tìm với từ khóa (VD: "trường học", "truong hoc", "qua tao", "nau an", "viet")...</div>
           </div>
         `;
         return;
@@ -2884,48 +3313,105 @@ if (typeof window !== 'undefined') {
       const fragment = document.createDocumentFragment();
 
       list.forEach(item => {
-        const v1Lower = item.v1.toLowerCase();
-        const isExpanded = state.rightExpandedV1 === v1Lower;
-        const v2First = firstVariant(item.v2);
-        const v3First = firstVariant(item.v3);
+        const headword = (item.word || item.v1 || '').trim();
+        const itemPos = (item.pos || 'v').toLowerCase();
+        const cardKey = (headword.toLowerCase() + '_' + itemPos).replace(/[^a-z0-9_-]/g, '-');
+        const isExpanded = state.rightExpandedV1 === cardKey || state.rightExpandedV1 === headword.toLowerCase();
+        const dual = getDualIPA(item);
         const nuanceText = getVerbNuanceOrSynonyms(item);
-        const cleanMeaning = (item.meaning || '').split(',')[0].trim();
-        const obj = item.activeObject ? item.activeObject.trim() : '';
-        const exampleEN = `I usually ${item.v1}${obj ? ' ' + obj : ''} every day.`;
-        const exampleVN = `Tôi thường ${cleanMeaning}${obj ? ' ' + obj : ''} mỗi ngày.`;
+
+        // Build POS badges
+        let posBadgeHtml = '';
+        let quickMorphology = '';
+        let detailHtml = '';
+
+        if (itemPos === 'v') {
+          posBadgeHtml = `
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] text-emerald-400 font-semibold">[v.] Động từ</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] ${item.isIrregular ? 'text-amber-400/90' : 'text-slate-400'}">
+              ${item.isIrregular ? 'Bất quy tắc' : 'Có quy tắc'}
+            </span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] ${item.isTransitive ? 'text-emerald-400' : 'text-rose-400'}">
+              ${item.isTransitive ? '[vt.]' : '[vi.]'}
+            </span>
+          `;
+          quickMorphology = `<span class="text-[11px] font-mono text-slate-400">${item.v2 || ''} • ${item.v3 || ''}</span>`;
+          detailHtml = buildVerbDetailHtml(item);
+        } else if (itemPos === 'n') {
+          const pluralVal = item.plural || computeNounPlural(headword);
+          posBadgeHtml = `
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-sky-500/30 bg-sky-950/20 text-sky-400 font-semibold">[n.] Danh từ</span>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] text-slate-300">Đếm được</span>
+          `;
+          quickMorphology = `<span class="text-[11px] font-mono text-slate-400">Số nhiều: <strong class="text-sky-400">${pluralVal}</strong></span>`;
+          detailHtml = buildNounDetailHtml(item);
+        } else if (itemPos === 'adj') {
+          const degrees = {
+            comp: item.comparative || computeAdjDegrees(headword).comp,
+            sup: item.superlative || computeAdjDegrees(headword).sup
+          };
+          posBadgeHtml = `
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-amber-500/30 bg-amber-950/20 text-amber-400 font-semibold">[adj.] Tính từ</span>
+          `;
+          quickMorphology = `<span class="text-[11px] font-mono text-slate-400">So sánh: <strong class="text-amber-400">${degrees.comp}</strong> • <strong class="text-indigo-400">${degrees.sup}</strong></span>`;
+          detailHtml = buildAdjectiveDetailHtml(item);
+        } else if (itemPos === 'adv') {
+          posBadgeHtml = `
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-purple-500/30 bg-purple-950/20 text-purple-400 font-semibold">[adv.] Phó từ</span>
+          `;
+          quickMorphology = `<span class="text-[11px] font-mono text-slate-400">${item.collocation || 'Phó từ SGK'}</span>`;
+          detailHtml = buildGeneralWordDetailHtml(item);
+        } else if (itemPos.includes('phr')) {
+          posBadgeHtml = `
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-pink-500/30 bg-pink-950/20 text-pink-400 font-semibold">[phr v.] Cụm ĐT</span>
+          `;
+          quickMorphology = `<span class="text-[11px] font-mono text-slate-400">Cụm động từ</span>`;
+          detailHtml = buildGeneralWordDetailHtml(item);
+        } else {
+          posBadgeHtml = `
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] text-slate-400">[${itemPos}] Từ vựng</span>
+          `;
+          quickMorphology = `<span class="text-[11px] font-mono text-slate-400">${item.collocation || ''}</span>`;
+          detailHtml = buildGeneralWordDetailHtml(item);
+        }
 
         const card = document.createElement('div');
         card.className = `dict-entry-card p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer ${isExpanded ? 'is-active' : ''}`;
-        card.dataset.v1 = v1Lower;
-        card.id = `dict-card-${v1Lower}`;
+        card.dataset.v1 = headword.toLowerCase();
+        card.dataset.cardKey = cardKey;
+        card.id = `dict-card-${cardKey}`;
 
         card.innerHTML = `
           <!-- Top Row: Vietnamese Concept in Bold & Flags -->
           <div class="flex items-start justify-between gap-2">
             <h3 class="text-sm font-bold text-[#F3F4F6] leading-snug flex-1">${item.meaning}</h3>
             <div class="flex items-center gap-1 shrink-0 flex-wrap justify-end">
-              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] ${item.isIrregular ? 'text-amber-400/90' : 'text-slate-400'}">
-                ${item.isIrregular ? 'Bất quy tắc' : 'Có quy tắc'}
-              </span>
-              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] ${item.isTransitive ? 'text-emerald-400' : 'text-rose-400'}">
-                ${item.isTransitive ? '[vt.]' : '[vi.]'}
-              </span>
+              ${posBadgeHtml}
               <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] text-slate-500">
                 Lớp ${item.grade || 6}
               </span>
             </div>
           </div>
 
-          <!-- Second Row: Primary English Equivalent + IPA + Audio Button + Quick Forms -->
-          <div class="flex items-center justify-between gap-2 mt-1.5">
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="font-mono text-base font-extrabold text-indigo-400">${item.v1}</span>
-              <span class="cyber-ipa-badge text-xs">${item.ipaUS || `/${item.v1}/`}</span>
-              <span class="text-[11px] font-mono text-slate-400">${item.v2} • ${item.v3}</span>
+          <!-- Second Row: Headword + Dual UK & US Phonetics + Quick Morphology + Dual Audio Buttons -->
+          <div class="flex items-center justify-between gap-2 mt-2">
+            <div class="flex items-center gap-2 flex-wrap min-w-0">
+              <span class="font-mono text-base font-extrabold text-[#F3F4F6]">${headword}</span>
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#0F1117] border border-[#232A3B] text-[11px] font-mono">
+                <span class="text-sky-400 font-bold">UK</span> <span class="text-slate-300">${dual.ukIPA}</span>
+                <span class="text-slate-600">|</span>
+                <span class="text-indigo-400 font-bold">US</span> <span class="text-slate-300">${dual.usIPA}</span>
+              </span>
+              ${quickMorphology}
             </div>
-            <div class="inline-flex items-center gap-1 shrink-0">
-              <button type="button" class="btn-card-audio p-1 text-slate-400 hover:text-white transition-colors cursor-pointer" title="Nghe phát âm (${item.v1})">
-                <i class="fa-solid fa-volume-high text-xs" aria-hidden="true"></i>
+            <div class="inline-flex items-center gap-1.5 shrink-0">
+              <button type="button" class="btn-card-audio-uk px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#161B26] text-sky-400 border border-[#232A3B] hover:bg-sky-950/40 hover:border-sky-500/50 hover:text-white transition-all cursor-pointer flex items-center gap-1" title="Nghe phát âm tiếng Anh - Anh (UK: ${headword})">
+                <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+                <span>UK</span>
+              </button>
+              <button type="button" class="btn-card-audio-us px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#161B26] text-indigo-400 border border-[#232A3B] hover:bg-indigo-950/40 hover:border-indigo-500/50 hover:text-white transition-all cursor-pointer flex items-center gap-1" title="Nghe phát âm tiếng Anh - Mỹ (US: ${headword})">
+                <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
+                <span>US</span>
               </button>
               <button type="button" class="btn-card-toggle text-slate-500 hover:text-slate-300 p-1 transition-transform cursor-pointer" title="Mở rộng chi tiết">
                 <i class="fa-solid fa-chevron-down text-xs card-chevron ${isExpanded ? 'rotate-180' : ''}" aria-hidden="true"></i>
@@ -2933,81 +3419,70 @@ if (typeof window !== 'undefined') {
             </div>
           </div>
 
-          <!-- Third Row: Related Nuance or Synonyms -->
+          <!-- Third Row: Collocation, Nuance, or Synonyms -->
           <div class="text-[11px] text-slate-400 flex items-center gap-1.5 mt-2 pt-1.5 border-t border-[#232A3B]/60">
             <i class="fa-solid fa-lightbulb text-[10px] text-amber-400/80 shrink-0" aria-hidden="true"></i>
-            <span class="truncate">${nuanceText}</span>
+            <span class="truncate">${itemPos === 'v' ? nuanceText : (item.collocation ? 'Cụm từ tiêu biểu: ' + item.collocation : 'Từ vựng trọng tâm SGK')}</span>
           </div>
 
           <!-- Expandable Detail (Accordion Mode) -->
-          <div class="dict-card-accordion mt-2.5 pt-2.5 border-t border-[#232A3B] space-y-2 ${isExpanded ? '' : 'hidden'}">
-            <!-- 3 Verb Forms -->
-            <div class="grid grid-cols-3 gap-1.5 text-center font-mono text-xs">
-              <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
-                <div class="text-[9px] uppercase text-slate-500 font-bold">V1 (Base)</div>
-                <div class="font-bold text-[#F3F4F6] mt-0.5">${item.v1}</div>
-              </div>
-              <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
-                <div class="text-[9px] uppercase text-slate-500 font-bold">V2 (Past)</div>
-                <div class="font-bold text-[#F3F4F6] mt-0.5">${v2First}</div>
-              </div>
-              <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
-                <div class="text-[9px] uppercase text-slate-500 font-bold">V3 (Participle)</div>
-                <div class="font-bold text-[#F3F4F6] mt-0.5">${v3First}</div>
-              </div>
-            </div>
-
-            <!-- Anchor Example Sentence -->
-            <div class="p-2.5 rounded-lg bg-[#0F1117] border border-[#232A3B] space-y-1">
-              <div class="flex items-center justify-between text-[10px] font-mono text-slate-500">
-                <span>Câu Ngữ Cảnh Chuẩn (Anchor Sentence)</span>
-                <button type="button" class="btn-card-sentence-speak text-slate-400 hover:text-white cursor-pointer" title="Nghe câu ví dụ">
-                  <i class="fa-solid fa-volume-high text-[10px]" aria-hidden="true"></i>
-                </button>
-              </div>
-              <p class="font-mono text-xs font-semibold text-[#F3F4F6]">${exampleEN}</p>
-              <p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>
-            </div>
-
-            <!-- 12-Tense Conjugation Matrix Container -->
-            <div class="card-tense-matrix-box mt-2.5 pt-2 border-t border-[#232A3B]">
-              ${buildCardTenseMatrixHtml(item, state.dictSubjectMode || 'plural')}
-            </div>
-
-            <!-- Form & Context Info (Completely Independent) -->
+          <div class="dict-card-accordion mt-2.5 pt-2.5 border-t border-[#232A3B] space-y-2.5 ${isExpanded ? '' : 'hidden'}">
+            ${detailHtml}
             <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-0.5">
-              <span>Ma trận 12 thì &amp; Ngữ cảnh</span>
+              <span>${itemPos === 'v' ? 'Ma trận 12 thì &amp; Ngữ cảnh' : 'Hình thái từ &amp; Cụm từ SGK'}</span>
               <span class="text-slate-400 text-[10px] font-mono">Tra cứu độc lập</span>
             </div>
           </div>
         `;
 
-        // Attach matrix interactive listeners (Subject toggle & Tense pronunciation)
-        attachCardMatrixListeners(card, item);
-
-        // Audio speak button
-        const audioBtn = card.querySelector('.btn-card-audio');
-        if (audioBtn) {
-          audioBtn.addEventListener('click', (e) => {
+        // UK Audio Button
+        const ukBtn = card.querySelector('.btn-card-audio-uk');
+        if (ukBtn) {
+          ukBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            speak(item.v1, 'en-US', audioBtn);
+            speak(headword, 'en-GB', ukBtn);
           });
         }
 
-        // Sentence speak button
-        const sentenceBtn = card.querySelector('.btn-card-sentence-speak');
-        if (sentenceBtn) {
-          sentenceBtn.addEventListener('click', (e) => {
+        // US Audio Button
+        const usBtn = card.querySelector('.btn-card-audio-us');
+        if (usBtn) {
+          usBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            speak(exampleEN, 'en-US', sentenceBtn);
+            speak(headword, 'en-US', usBtn);
           });
+        }
+
+        // Collocation speech
+        const colButtons = card.querySelectorAll('.btn-card-collocation-speak');
+        colButtons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const textToSpeak = btn.dataset.speak;
+            if (textToSpeak) speak(textToSpeak, 'en-US', btn);
+          });
+        });
+
+        // Sentence speech
+        const sentenceButtons = card.querySelectorAll('.btn-card-sentence-speak');
+        sentenceButtons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const textToSpeak = btn.dataset.speak;
+            if (textToSpeak) speak(textToSpeak, 'en-US', btn);
+          });
+        });
+
+        // If verb, attach 12-tense matrix interactive listeners
+        if (itemPos === 'v') {
+          attachCardMatrixListeners(card, item);
         }
 
         // Toggle accordion logic
         const toggleCardAccordion = () => {
           const accordion = card.querySelector('.dict-card-accordion');
           const chevron = card.querySelector('.card-chevron');
-          const isCurrentlyExpanded = state.rightExpandedV1 === v1Lower;
+          const isCurrentlyExpanded = state.rightExpandedV1 === cardKey || state.rightExpandedV1 === headword.toLowerCase();
 
           if (isCurrentlyExpanded) {
             state.rightExpandedV1 = null;
@@ -3017,7 +3492,7 @@ if (typeof window !== 'undefined') {
           } else {
             // Collapse previously expanded card if any
             if (state.rightExpandedV1 && rightDictFeed) {
-              const prev = rightDictFeed.querySelector(`.dict-entry-card[data-v1="${state.rightExpandedV1}"]`);
+              const prev = rightDictFeed.querySelector(`.dict-entry-card[data-card-key="${state.rightExpandedV1}"], .dict-entry-card[data-v1="${state.rightExpandedV1}"]`);
               if (prev) {
                 prev.classList.remove('is-active');
                 const prevAcc = prev.querySelector('.dict-card-accordion');
@@ -3026,7 +3501,7 @@ if (typeof window !== 'undefined') {
                 if (prevChev) prevChev.classList.remove('rotate-180');
               }
             }
-            state.rightExpandedV1 = v1Lower;
+            state.rightExpandedV1 = cardKey;
             if (accordion) accordion.classList.remove('hidden');
             if (chevron) chevron.classList.add('rotate-180');
             card.classList.add('is-active');
@@ -3041,10 +3516,11 @@ if (typeof window !== 'undefined') {
           });
         }
 
-        // Card header click to toggle (ignoring interactions inside the accordion)
+        // Card header click to toggle (ignoring interactions inside the accordion or audio buttons)
         card.addEventListener('click', (e) => {
           if (e.target.closest('.dict-card-accordion')) return;
-          if (e.target.closest('.btn-card-audio')) return;
+          if (e.target.closest('.btn-card-audio-uk')) return;
+          if (e.target.closest('.btn-card-audio-us')) return;
           if (e.target.closest('.btn-card-toggle')) return;
 
           toggleCardAccordion();
@@ -3230,6 +3706,10 @@ if (typeof window !== 'undefined') {
         return;
       }
 
+      const sourceLexicon = (typeof window !== 'undefined' && Array.isArray(window.universalLexicon) && window.universalLexicon.length > 0)
+        ? window.universalLexicon
+        : buildUniversalLexicon();
+
       let matches = [];
       if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.search === 'function') {
         const searchResults = window.LexiSearchEngine.search(q, {
@@ -3240,19 +3720,21 @@ if (typeof window !== 'undefined') {
       } else {
         const qLower = q.toLowerCase();
         const qNoTone = removeVietnameseTones(qLower);
-        matches = VERB_DATABASE.filter(item => {
-          const viNorm = removeVietnameseTones(item.meaning);
+        matches = sourceLexicon.filter(item => {
+          const head = (item.v1 || item.word || '').toLowerCase();
+          const viNorm = removeVietnameseTones(item.meaning || '');
           return (
-            item.v1.includes(qLower) ||
-            item.v2.toLowerCase().includes(qLower) ||
-            item.v3.toLowerCase().includes(qLower) ||
-            item.ving.toLowerCase().includes(qLower) ||
-            item.meaning.toLowerCase().includes(qLower) ||
+            head.includes(qLower) ||
+            (item.v2 && item.v2.toLowerCase().includes(qLower)) ||
+            (item.v3 && item.v3.toLowerCase().includes(qLower)) ||
+            (item.meaning && item.meaning.toLowerCase().includes(qLower)) ||
             viNorm.includes(qNoTone)
           );
         }).sort((a, b) => {
-          const aStarts = a.v1.startsWith(qLower) ? 0 : 1;
-          const bStarts = b.v1.startsWith(qLower) ? 0 : 1;
+          const aHead = (a.v1 || a.word || '').toLowerCase();
+          const bHead = (b.v1 || b.word || '').toLowerCase();
+          const aStarts = aHead.startsWith(qLower) ? 0 : 1;
+          const bStarts = bHead.startsWith(qLower) ? 0 : 1;
           return aStarts - bStarts;
         }).slice(0, 8);
       }
@@ -3274,26 +3756,55 @@ if (typeof window !== 'undefined') {
         suggestionsDropdown.appendChild(customRow);
       } else {
         matches.forEach((item, index) => {
+          const head = item.word || item.v1 || '';
+          const itemPos = (item.pos || 'v').toLowerCase();
           const row = document.createElement('div');
           row.dataset.index = index;
-          row.dataset.verb = item.v1;
+          row.dataset.verb = head;
           row.className = 'suggestion-item px-4 py-2.5 cursor-pointer hover:bg-[#232A3B]/60 flex flex-wrap items-center justify-between gap-2 transition-colors';
+
+          let quickMorph = '';
+          let posBadgeClass = 'bg-slate-800 text-slate-300';
+          let posBadgeText = `[${itemPos}]`;
+
+          if (itemPos === 'v') {
+            quickMorph = `${item.v2 || ''} • ${item.v3 || ''}`;
+            posBadgeClass = 'bg-emerald-500/15 text-emerald-300';
+            posBadgeText = '[v.] Động từ';
+          } else if (itemPos === 'n') {
+            quickMorph = `Plural: ${item.plural || computeNounPlural(head)}`;
+            posBadgeClass = 'bg-sky-500/15 text-sky-300';
+            posBadgeText = '[n.] Danh từ';
+          } else if (itemPos === 'adj') {
+            quickMorph = `So sánh: ${item.comparative || computeAdjDegrees(head).comp}`;
+            posBadgeClass = 'bg-amber-500/15 text-amber-300';
+            posBadgeText = '[adj.] Tính từ';
+          } else if (itemPos === 'adv') {
+            quickMorph = item.collocation || 'Phó từ';
+            posBadgeClass = 'bg-purple-500/15 text-purple-300';
+            posBadgeText = '[adv.] Phó từ';
+          } else if (itemPos.includes('phr')) {
+            quickMorph = 'Cụm từ';
+            posBadgeClass = 'bg-pink-500/15 text-pink-300';
+            posBadgeText = '[phr v.] Cụm ĐT';
+          }
+
           row.innerHTML = `
             <div class="flex items-center gap-3 min-w-0">
-              <span class="font-mono font-bold text-sm text-indigo-400">${item.v1}</span>
-              <span class="font-mono text-xs text-slate-400">${item.v2} • ${item.v3}</span>
+              <span class="font-mono font-bold text-sm text-indigo-400">${head}</span>
+              <span class="font-mono text-xs text-slate-400">${quickMorph}</span>
               <span class="text-xs text-slate-300 truncate">— ${item.meaning}</span>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
               <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-[#232A3B]">Lớp ${item.grade || 6}</span>
-              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${item.isTransitive ? 'bg-emerald-500/15 text-emerald-300' : 'bg-rose-500/15 text-rose-300'}">
-                ${item.isTransitive ? '[vt.] Ngoại ĐT' : '[vi.] Nội ĐT'}
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${posBadgeClass}">
+                ${posBadgeText}
               </span>
             </div>
           `;
           row.addEventListener('click', () => {
-            verbInput.value = item.v1;
-            renderReverseDictionary(item.v1);
+            verbInput.value = head;
+            renderReverseDictionary(head);
             suggestionsDropdown.classList.add('hidden');
           });
           suggestionsDropdown.appendChild(row);
@@ -3502,7 +4013,7 @@ if (typeof window !== 'undefined') {
       }
       const heroTotalVerbsInline = document.getElementById('hero-total-verbs-inline');
       if (heroTotalVerbsInline) {
-        heroTotalVerbsInline.textContent = `${totalVerbs} Động từ & SGK`;
+        heroTotalVerbsInline.textContent = 'Toàn diện SGK 1–12 & Động từ';
       }
 
       quickChipsContainer.innerHTML = '';
@@ -3516,9 +4027,11 @@ if (typeof window !== 'undefined') {
         quickChipsContainer.appendChild(btn);
       });
 
-      // Initialize Multi-Field Inverted Search Engine Index
+      // Initialize Universal Multi-Part-of-Speech Lexicon & Search Engine Index
+      const universalLex = buildUniversalLexicon();
+      window.universalLexicon = universalLex;
       if (typeof window !== 'undefined' && window.LexiSearchEngine && typeof window.LexiSearchEngine.initIndex === 'function') {
-        window.LexiSearchEngine.initIndex(VERB_DATABASE);
+        window.LexiSearchEngine.initIndex(universalLex);
       }
 
       renderScratchpad();
@@ -3546,5 +4059,9 @@ if (typeof window !== 'undefined') {
   window.renderReverseDictionary = renderReverseDictionary;
   window.syncRightDictionaryToVerb = syncRightDictionaryToVerb;
   window.renderScratchpad = renderScratchpad;
+  window.buildUniversalLexicon = buildUniversalLexicon;
+  window.computeNounPlural = computeNounPlural;
+  window.computeAdjDegrees = computeAdjDegrees;
+  window.getDualIPA = getDualIPA;
   window.state = state;
 }

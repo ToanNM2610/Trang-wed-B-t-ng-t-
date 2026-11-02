@@ -149,17 +149,18 @@
   let indexMap = new Map();
 
   /**
-   * Build indexed representation for a single verb item
+   * Build indexed representation for a single lexicon item (verb, noun, adj, adv, etc.)
    */
   function indexVerbRecord(verb) {
-    const v1Tokens = tokenizeEnglish(verb.v1);
+    const headword = (verb.v1 || verb.word || '').trim();
+    const v1Tokens = tokenizeEnglish(headword);
     const v2Tokens = tokenizeEnglish(verb.v2);
     const v3Tokens = tokenizeEnglish(verb.v3);
     const vnExact = tokenizeVietnamese(verb.meaning, false);
     const vnFolded = tokenizeVietnamese(verb.meaning, true);
 
     // Morphological pattern classification
-    const v1Clean = (verb.v1 || '').toLowerCase().trim();
+    const v1Clean = headword.toLowerCase();
     const v2First = (verb.v2 || '').toLowerCase().split('/')[0].trim();
     const v3First = (verb.v3 || '').toLowerCase().split('/')[0].trim();
     let pattern = 'REGULAR';
@@ -170,8 +171,11 @@
       else pattern = 'A-B-C';
     }
 
+    const posTag = (verb.pos || 'v').toLowerCase();
+    const uniqueId = `${v1Clean}_${posTag}`;
+
     return {
-      id: v1Clean,
+      id: uniqueId,
       record: verb,
       pattern: pattern,
       fields: {
@@ -184,13 +188,13 @@
     };
   }
 
-  function initIndex(verbDatabase) {
-    if (!Array.isArray(verbDatabase)) return;
+  function initIndex(lexiconDatabase) {
+    if (!Array.isArray(lexiconDatabase)) return;
     indexedRecords = [];
     indexMap.clear();
 
-    verbDatabase.forEach(item => {
-      if (!item || !item.v1) return;
+    lexiconDatabase.forEach(item => {
+      if (!item || (!item.v1 && !item.word)) return;
       const indexed = indexVerbRecord(item);
       indexedRecords.push(indexed);
       indexMap.set(indexed.id, indexed);
@@ -370,8 +374,12 @@
     const results = [];
 
     // If records have not been indexed yet, index now
-    if (indexedRecords.length === 0 && typeof window !== 'undefined' && Array.isArray(window.VERB_DATABASE)) {
-      initIndex(window.VERB_DATABASE);
+    if (indexedRecords.length === 0) {
+      if (typeof window !== 'undefined' && Array.isArray(window.universalLexicon) && window.universalLexicon.length > 0) {
+        initIndex(window.universalLexicon);
+      } else if (typeof window !== 'undefined' && Array.isArray(window.VERB_DATABASE)) {
+        initIndex(window.VERB_DATABASE);
+      }
     }
 
     for (let i = 0; i < indexedRecords.length; i++) {
@@ -487,12 +495,14 @@
       }
     }
 
-    // Sort descending by composite score, then alphabetical by v1
+    // Sort descending by composite score, then alphabetical by headword
     results.sort((a, b) => {
       if (Math.abs(b.score - a.score) > 0.001) {
         return b.score - a.score;
       }
-      return a.verb.v1.localeCompare(b.verb.v1);
+      const aWord = (a.verb.v1 || a.verb.word || '').toLowerCase();
+      const bWord = (b.verb.v1 || b.verb.word || '').toLowerCase();
+      return aWord.localeCompare(bWord);
     });
 
     if (limit && limit > 0) {
