@@ -1023,7 +1023,8 @@ if (typeof window !== 'undefined') {
       currentQuiz: null,
       patternFilter: 'all',
       leftSearchQuery: '',
-      pinnedVerbs: initialPins
+      pinnedVerbs: initialPins,
+      rightExpandedV1: null
     };
 
     const verbInput = document.getElementById('verb-input');
@@ -2429,18 +2430,13 @@ if (typeof window !== 'undefined') {
       state.defaultActiveObject = state.verbData.activeObject;
       state.defaultPassiveSubject = state.verbData.passiveSubject;
       state.verbKey = state.verbData.v1;
-      verbInput.value = state.verbData.v1;
       if (customObjectInput) customObjectInput.value = state.verbData.activeObject || '';
-      btnClear.classList.remove('hidden');
       suggestionsDropdown.classList.add('hidden');
       state.suggestionIndex = -1;
 
       renderHeroDictionary();
       renderMatrix();
       highlightLeftPaneVerb(state.verbKey);
-      if (source !== 'right') {
-        syncRightDictionaryToVerb(state.verbKey, true);
-      }
       renderScratchpad();
     }
 
@@ -2531,7 +2527,6 @@ if (typeof window !== 'undefined') {
 
         row.addEventListener('click', () => {
           selectVerb(item.v1, true, 'left');
-          syncRightDictionaryToVerb(item.v1, true);
         });
 
         const speakBtn = row.querySelector('.btn-left-speak');
@@ -2654,12 +2649,11 @@ if (typeof window !== 'undefined') {
         return;
       }
 
-      const activeV1 = (state.verbKey || (state.verbData && state.verbData.v1) || '').toLowerCase();
       const fragment = document.createDocumentFragment();
 
       list.forEach(item => {
         const v1Lower = item.v1.toLowerCase();
-        const isActive = v1Lower === activeV1;
+        const isExpanded = state.rightExpandedV1 === v1Lower;
         const v2First = firstVariant(item.v2);
         const v3First = firstVariant(item.v3);
         const nuanceText = getVerbNuanceOrSynonyms(item);
@@ -2669,7 +2663,7 @@ if (typeof window !== 'undefined') {
         const exampleVN = `Tôi thường ${cleanMeaning}${obj ? ' ' + obj : ''} mỗi ngày.`;
 
         const card = document.createElement('div');
-        card.className = `dict-entry-card p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer ${isActive ? 'is-active' : ''}`;
+        card.className = `dict-entry-card p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer ${isExpanded ? 'is-active' : ''}`;
         card.dataset.v1 = v1Lower;
         card.id = `dict-card-${v1Lower}`;
 
@@ -2702,7 +2696,7 @@ if (typeof window !== 'undefined') {
                 <i class="fa-solid fa-volume-high text-xs" aria-hidden="true"></i>
               </button>
               <button type="button" class="btn-card-toggle text-slate-500 hover:text-slate-300 p-1 transition-transform cursor-pointer" title="Mở rộng chi tiết">
-                <i class="fa-solid fa-chevron-down text-xs card-chevron ${isActive ? 'rotate-180' : ''}" aria-hidden="true"></i>
+                <i class="fa-solid fa-chevron-down text-xs card-chevron ${isExpanded ? 'rotate-180' : ''}" aria-hidden="true"></i>
               </button>
             </div>
           </div>
@@ -2714,7 +2708,7 @@ if (typeof window !== 'undefined') {
           </div>
 
           <!-- Expandable Detail (Accordion Mode) -->
-          <div class="dict-card-accordion mt-2.5 pt-2.5 border-t border-[#232A3B] space-y-2 ${isActive ? '' : 'hidden'}">
+          <div class="dict-card-accordion mt-2.5 pt-2.5 border-t border-[#232A3B] space-y-2 ${isExpanded ? '' : 'hidden'}">
             <!-- 3 Verb Forms -->
             <div class="grid grid-cols-3 gap-1.5 text-center font-mono text-xs">
               <div class="p-2 rounded-lg bg-[#0F1117] border border-[#232A3B]">
@@ -2743,12 +2737,10 @@ if (typeof window !== 'undefined') {
               <p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>
             </div>
 
-            <!-- Two-Way Reactive Synchronization Status -->
+            <!-- Form & Context Info (Completely Independent) -->
             <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-0.5">
-              <span>Đồng bộ Ma trận 12 Thì</span>
-              <span class="text-indigo-400 flex items-center gap-1">
-                <span>Xem bảng chia thì bên dưới ↓</span>
-              </span>
+              <span>Dạng thức V1, V2, V3 &amp; Ví dụ ngữ cảnh</span>
+              <span class="text-slate-400 text-[10px] font-mono">Tra cứu độc lập</span>
             </div>
           </div>
         `;
@@ -2771,21 +2763,33 @@ if (typeof window !== 'undefined') {
           });
         }
 
-        // Toggle accordion button or full card click
-        card.addEventListener('click', (e) => {
+        // Toggle accordion button or full card click (independent right dictionary)
+        card.addEventListener('click', () => {
           const accordion = card.querySelector('.dict-card-accordion');
           const chevron = card.querySelector('.card-chevron');
-          const isCurrentlyActive = card.classList.contains('is-active');
+          const isCurrentlyExpanded = state.rightExpandedV1 === v1Lower;
 
-          if (isCurrentlyActive && accordion && !accordion.classList.contains('hidden')) {
-            // Clicking again on active card toggles accordion
-            accordion.classList.add('hidden');
+          if (isCurrentlyExpanded) {
+            state.rightExpandedV1 = null;
+            if (accordion) accordion.classList.add('hidden');
             if (chevron) chevron.classList.remove('rotate-180');
+            card.classList.remove('is-active');
           } else {
-            // Select verb and expand
-            selectVerb(item.v1, true, 'right');
-            highlightLeftPaneVerb(item.v1);
-            syncRightDictionaryToVerb(item.v1, true);
+            // Collapse previously expanded card if any
+            if (state.rightExpandedV1 && rightDictFeed) {
+              const prev = rightDictFeed.querySelector(`.dict-entry-card[data-v1="${state.rightExpandedV1}"]`);
+              if (prev) {
+                prev.classList.remove('is-active');
+                const prevAcc = prev.querySelector('.dict-card-accordion');
+                const prevChev = prev.querySelector('.card-chevron');
+                if (prevAcc) prevAcc.classList.add('hidden');
+                if (prevChev) prevChev.classList.remove('rotate-180');
+              }
+            }
+            state.rightExpandedV1 = v1Lower;
+            if (accordion) accordion.classList.remove('hidden');
+            if (chevron) chevron.classList.add('rotate-180');
+            card.classList.add('is-active');
           }
         });
 
@@ -3000,33 +3004,41 @@ if (typeof window !== 'undefined') {
 
       if (matches.length === 0) {
         const customRow = document.createElement('div');
-        customRow.className = 'p-3.5 text-xs text-slate-600 dark:text-slate-300 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800/70 flex items-center justify-between';
+        customRow.className = 'p-3.5 text-xs text-slate-300 cursor-pointer hover:bg-[#232A3B]/60 flex items-center justify-between';
         customRow.innerHTML = `
-          <span>Chia tự động động từ <strong class="font-mono text-cyan-400">"${q}"</strong> theo quy tắc chuẩn</span>
+          <span>Tra cứu nghĩa tiếng Việt: <strong class="font-mono text-indigo-400">"${q}"</strong></span>
           <span class="kbd-badge">Enter ↵</span>
         `;
-        customRow.addEventListener('click', () => selectVerb(q));
+        customRow.addEventListener('click', () => {
+          verbInput.value = q;
+          renderReverseDictionary(q);
+          suggestionsDropdown.classList.add('hidden');
+        });
         suggestionsDropdown.appendChild(customRow);
       } else {
         matches.forEach((item, index) => {
           const row = document.createElement('div');
           row.dataset.index = index;
           row.dataset.verb = item.v1;
-          row.className = 'suggestion-item px-4 py-2.5 cursor-pointer hover:bg-violet-500/15 flex flex-wrap items-center justify-between gap-2 transition-colors';
+          row.className = 'suggestion-item px-4 py-2.5 cursor-pointer hover:bg-[#232A3B]/60 flex flex-wrap items-center justify-between gap-2 transition-colors';
           row.innerHTML = `
             <div class="flex items-center gap-3 min-w-0">
-              <span class="font-mono font-bold text-sm text-cyan-500 dark:text-cyan-300">${item.v1}</span>
+              <span class="font-mono font-bold text-sm text-indigo-400">${item.v1}</span>
               <span class="font-mono text-xs text-slate-400">${item.v2} • ${item.v3}</span>
-              <span class="text-xs text-slate-700 dark:text-slate-200 truncate">— ${item.meaning}</span>
+              <span class="text-xs text-slate-300 truncate">— ${item.meaning}</span>
             </div>
             <div class="flex items-center gap-1.5 shrink-0">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-violet-500/15 text-violet-300">Lớp ${item.grade || 6}</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-[#232A3B]">Lớp ${item.grade || 6}</span>
               <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${item.isTransitive ? 'bg-emerald-500/15 text-emerald-300' : 'bg-rose-500/15 text-rose-300'}">
                 ${item.isTransitive ? '[vt.] Ngoại ĐT' : '[vi.] Nội ĐT'}
               </span>
             </div>
           `;
-          row.addEventListener('click', () => selectVerb(item.v1));
+          row.addEventListener('click', () => {
+            verbInput.value = item.v1;
+            renderReverseDictionary(item.v1);
+            suggestionsDropdown.classList.add('hidden');
+          });
           suggestionsDropdown.appendChild(row);
         });
       }
@@ -3068,10 +3080,13 @@ if (typeof window !== 'undefined') {
         highlightSuggestionRow(rows);
       } else if (e.key === 'Enter') {
         e.preventDefault();
+        suggestionsDropdown.classList.add('hidden');
         if (state.suggestionIndex >= 0 && rows[state.suggestionIndex]) {
-          selectVerb(rows[state.suggestionIndex].dataset.verb);
+          const chosen = rows[state.suggestionIndex].dataset.verb;
+          verbInput.value = chosen;
+          renderReverseDictionary(chosen);
         } else {
-          selectVerb(verbInput.value);
+          renderReverseDictionary(verbInput.value);
         }
       } else if (e.key === 'Escape') {
         suggestionsDropdown.classList.add('hidden');
@@ -3079,7 +3094,10 @@ if (typeof window !== 'undefined') {
       }
     });
 
-    btnSearch.addEventListener('click', () => selectVerb(verbInput.value));
+    btnSearch.addEventListener('click', () => {
+      suggestionsDropdown.classList.add('hidden');
+      renderReverseDictionary(verbInput.value);
+    });
 
     btnClear.addEventListener('click', () => {
       verbInput.value = '';

@@ -241,8 +241,8 @@
         <!-- -------------------------------------------------------------------
          * LEFT PANE: THE 388 IRREGULAR VERBS ENGINE (HIGH-SPEED REFERENCE)
          * ------------------------------------------------------------------- -->
-        <div class="lg:col-span-5 left-pane-card rounded-2xl p-3.5 sm:p-4 space-y-2.5 flex flex-col justify-between">
-          <div class="space-y-2.5">
+        <div class="lg:col-span-5 left-pane-card rounded-2xl p-3.5 sm:p-4 flex flex-col justify-between">
+          <div class="space-y-2">
             <!-- Left Pane Header -->
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
@@ -285,35 +285,94 @@
               </div>
             </div>
 
-            <!-- Fast Scrollable Verb Matrix List -->
-            <div id="left-pane-verb-list" class="left-pane-verb-list space-y-1 pr-1">
+            <!-- Fast Scrollable Verb Matrix List (Independently scrollable) -->
+            <div id="left-pane-verb-list" class="left-pane-verb-list space-y-1 pr-1 overflow-y-auto">
               <!-- Populated dynamically via app.js -->
             </div>
           </div>
 
-          <!-- In-Place Auxiliary Conjugator Panel -->
-          <div id="left-pane-quick-aux" class="p-2.5 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-wrap items-center justify-between gap-2 text-xs font-mono mt-2">
-            <div class="flex items-center gap-1.5">
-              <span class="text-[10px] uppercase text-slate-500">Ngôi 3 (V-s/es):</span>
-              <strong id="aux-vs" class="text-[#F3F4F6] font-bold">writes</strong>
+          <!-- Bottom: Auxiliary Info + Matrix Tense/Subject Selector Controls -->
+          <div class="space-y-2 pt-2 border-t border-[#232A3B] mt-1.5 shrink-0">
+            <!-- Auxiliary conjugator info -->
+            <div id="left-pane-quick-aux" class="p-2 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-wrap items-center justify-between gap-1.5 text-xs font-mono">
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] uppercase text-slate-500">Ngôi 3 (V-s/es):</span>
+                <strong id="aux-vs" class="text-[#F3F4F6] font-bold">writes</strong>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] uppercase text-slate-500">Tiếp diễn (V-ing):</span>
+                <strong id="aux-ving" class="text-indigo-400 font-bold">writing</strong>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span id="aux-trans" class="text-[10px] px-1.5 py-0.5 rounded text-slate-400 border border-[#232A3B] font-medium">[vt.] Ngoại ĐT</span>
+              </div>
             </div>
-            <div class="flex items-center gap-1.5">
-              <span class="text-[10px] uppercase text-slate-500">Tiếp diễn (V-ing):</span>
-              <strong id="aux-ving" class="text-indigo-400 font-bold">writing</strong>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span id="aux-trans" class="text-[10px] px-1.5 py-0.5 rounded text-slate-400 border border-[#232A3B] font-medium">[vt.] Ngoại ĐT</span>
-            </div>
+
+            <!-- Tense / Subject Selector Controls for Matrix (Confined to Left Pane) -->
+            <section id="floating-control-dock" class="p-2 sm:p-2.5 rounded-xl bg-[#161B26] border border-[#232A3B] space-y-2 transition-all">
+              <!-- Subject Selector Row -->
+              <div class="flex items-center justify-between gap-1 overflow-x-auto no-scrollbar">
+                <span id="subject-label" class="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-bold shrink-0">Chủ ngữ:</span>
+                <div id="subject-selector" class="inline-flex p-0.5 rounded-lg bg-[#0F1117] border border-[#232A3B] shrink-0 gap-0.5">
+                  <button data-subj="I" class="subj-btn px-2 py-0.5 rounded text-xs font-extrabold bg-indigo-600 text-white cursor-pointer">I</button>
+                  <button data-subj="You" class="subj-btn px-2 py-0.5 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">You</button>
+                  <button data-subj="We" class="subj-btn px-2 py-0.5 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">We</button>
+                  <button data-subj="They" class="subj-btn px-2 py-0.5 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">They</button>
+                  <button data-subj="He" class="subj-btn px-2 py-0.5 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">He</button>
+                  <button data-subj="She" class="subj-btn px-2 py-0.5 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">She</button>
+                  <button data-subj="It" class="subj-btn px-2 py-0.5 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">It</button>
+                </div>
+              </div>
+
+              <!-- Polarity, Passive, Layout Row -->
+              <div class="flex flex-wrap items-center justify-between gap-1.5 pt-1.5 border-t border-[#232A3B]">
+                <!-- Polarity Selector -->
+                <div class="flex items-center gap-1">
+                  <span class="text-[10px] font-mono text-slate-500 uppercase">Thể:</span>
+                  <div id="polarity-selector" class="inline-flex p-0.5 rounded-lg bg-[#0F1117] border border-[#232A3B] gap-0.5">
+                    <button data-pol="aff" class="pol-btn px-1.5 py-0.5 rounded text-[11px] font-bold bg-emerald-600 text-white cursor-pointer">+</button>
+                    <button data-pol="neg" class="pol-btn px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-400 hover:text-white cursor-pointer">−</button>
+                    <button data-pol="int" class="pol-btn px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-400 hover:text-white cursor-pointer">?</button>
+                    <button data-pol="all" class="pol-btn px-1.5 py-0.5 rounded text-[11px] font-semibold text-slate-400 hover:text-white cursor-pointer">All</button>
+                  </div>
+                </div>
+
+                <!-- Passive Voice Switch -->
+                <button id="btn-passive-toggle" type="button" role="switch" aria-checked="false"
+                  class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-lg text-[11px] font-semibold border border-[#232A3B] bg-[#0F1117] text-slate-300 hover:text-white cursor-pointer select-none"
+                  title="Bật/Tắt Thể Bị Động (Passive Voice)">
+                  <span>Bị động</span>
+                  <span id="passive-switch-track" class="relative inline-flex h-3.5 w-6 shrink-0 items-center rounded-full bg-slate-700">
+                    <span id="passive-switch-thumb" class="inline-block h-2.5 w-2.5 transform rounded-full bg-white transition-transform translate-x-0.5"></span>
+                  </span>
+                  <span id="passive-status-badge" class="font-mono text-[9px] px-1 rounded bg-[#161B26] text-slate-400">OFF</span>
+                </button>
+
+                <!-- Layout Selector -->
+                <div id="layout-selector" class="inline-flex p-0.5 rounded-lg bg-[#0F1117] border border-[#232A3B]">
+                  <button data-layout="columns" title="3 Cột" class="layout-btn px-1.5 py-0.5 rounded text-[11px] font-bold bg-indigo-600 text-white cursor-pointer">3 Cột</button>
+                  <button data-layout="aspects" title="4 Trạng thái" class="layout-btn px-1.5 py-0.5 rounded text-[11px] text-slate-400 hover:text-white cursor-pointer">4 Dạng</button>
+                  <button data-layout="tabs" title="Từng mốc" class="layout-btn px-1.5 py-0.5 rounded text-[11px] text-slate-400 hover:text-white cursor-pointer">Từng mốc</button>
+                </div>
+              </div>
+
+              <!-- Timeframe Tabs (Conditional) -->
+              <div id="timeframe-tabs" class="hidden pt-1.5 border-t border-[#232A3B] flex items-center justify-center gap-1.5">
+                <button data-tf="present" class="tf-tab-btn px-2.5 py-1 rounded text-xs font-bold bg-emerald-600 text-white cursor-pointer">Hiện tại</button>
+                <button data-tf="past" class="tf-tab-btn px-2.5 py-1 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">Quá khứ</button>
+                <button data-tf="future" class="tf-tab-btn px-2.5 py-1 rounded text-xs font-semibold text-slate-400 hover:text-white cursor-pointer">Tương lai</button>
+              </div>
+            </section>
           </div>
         </div>
 
         <!-- -------------------------------------------------------------------
          * RIGHT PANE: VIETNAMESE-TO-ENGLISH REVERSE LOOKUP SCROLLABLE DICTIONARY
          * ------------------------------------------------------------------- -->
-        <div class="lg:col-span-7 right-pane-card rounded-2xl p-3.5 sm:p-4.5 space-y-3">
+        <div class="lg:col-span-7 right-pane-card rounded-2xl p-3.5 sm:p-4.5 space-y-3 flex flex-col">
           
           <!-- Header: Title & Meta -->
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 px-0.5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 px-0.5 shrink-0">
             <div class="inline-flex items-center gap-2">
               <i class="fa-solid fa-book-bookmark text-indigo-400 text-sm" aria-hidden="true"></i>
               <h2 class="text-xs sm:text-sm font-bold text-[#F3F4F6] tracking-tight">Từ điển Tra cứu Ngược Việt - Anh (Reverse Lexicon)</h2>
@@ -324,12 +383,11 @@
               <span id="right-dict-count-badge" class="text-[11px] font-mono text-slate-400 border border-[#232A3B] px-2 py-0.5 rounded bg-[#161B26]">
                 388 Mục từ
               </span>
-              <span class="text-[11px] font-mono text-slate-500 hidden sm:inline-block">Two-Way Sync</span>
             </div>
           </div>
 
           <!-- Reverse Semantic Search Bar -->
-          <div class="space-y-1.5">
+          <div class="space-y-1.5 shrink-0">
             <div class="relative text-left">
               <div class="relative flex items-center bg-[#161B26] rounded-xl border border-[#232A3B] focus-within:border-indigo-500 transition-colors">
                 <div class="pl-3.5 pr-2.5 text-slate-500 pointer-events-none">
@@ -361,33 +419,15 @@
             <div id="quick-chips" class="hidden"></div>
           </div>
 
-          <!-- Custom Object / Context Strip (Compact & Accessible) -->
-          <div class="context-inline-strip flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-1.5 px-2.5 rounded-xl bg-[#161B26]/60 border border-[#232A3B]">
-            <div class="flex flex-wrap items-center gap-2 flex-1">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 flex items-center gap-1 shrink-0">
-                <i class="fa-solid fa-wand-magic-sparkles text-indigo-400 text-xs" aria-hidden="true"></i>
-                <span>Tân ngữ tùy chọn:</span>
-              </span>
-              <div class="flex items-center gap-2 flex-1 min-w-[150px] max-w-xs">
-                <input id="custom-object-input" type="text" placeholder="Nhập tân ngữ tùy chỉnh..."
-                  class="w-full px-2.5 py-0.5 rounded-lg text-xs font-mono bg-[#0F1117] border border-[#232A3B] text-[#F3F4F6] focus:outline-none focus:border-indigo-500" />
-              </div>
-            </div>
-            <div class="flex flex-wrap items-center gap-1">
-              <button type="button" data-obj-preset="__default__" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-400/40 cursor-pointer">Mặc định</button>
-              <button type="button" data-obj-preset="everyone" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-[#0F1117] border border-[#232A3B] cursor-pointer">everyone</button>
-              <button type="button" data-obj-preset="English" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-[#0F1117] border border-[#232A3B] cursor-pointer">English</button>
-              <button type="button" data-obj-preset="" class="obj-preset-btn px-2 py-0.5 rounded text-[10px] font-mono text-slate-400 bg-[#0F1117] border border-[#232A3B] cursor-pointer">(Rỗng)</button>
-            </div>
-          </div>
-
-          <!-- Dedicated Vietnamese-to-English Reverse Lookup Scrollable Feed -->
-          <div id="right-dict-feed" class="right-dict-feed space-y-2.5 pr-1 overflow-y-auto" style="max-height: 480px; scroll-behavior: smooth;">
+          <!-- Dedicated Vietnamese-to-English Reverse Lookup Scrollable Feed (Extends to bottom) -->
+          <div id="right-dict-feed" class="right-dict-feed space-y-2.5 pr-1 overflow-y-auto flex-1">
             <!-- Dynamically populated via app.js -->
           </div>
 
           <!-- Hidden Backward-Compatibility Section (Guarantees no JS null pointer exceptions) -->
           <div id="right-pane-compat" class="hidden" aria-hidden="true" style="display: none !important;">
+            <input id="custom-object-input" type="hidden" value="" />
+            <button class="obj-preset-btn" data-obj-preset="__default__" type="button"></button>
             <h1 id="hero-verb-title">write</h1>
             <span id="verb-ipa">/raɪt/</span>
             <button id="btn-speak-us" type="button"></button>
@@ -411,114 +451,6 @@
 
         </div>
 
-      </section>
-
-      <!-- =====================================================================
-       * 4. FLOATING CONTROL DOCK (SUBJECT, POLARITY, PASSIVE SWITCH, LAYOUT)
-       * ===================================================================== -->
-      <section id="floating-control-dock"
-        class="cyber-floating-dock sticky top-12 z-30 rounded-2xl p-2 sm:px-3.5 sm:py-2 transition-all">
-        <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-2.5">
-
-          <div class="flex items-center gap-2 overflow-x-auto no-scrollbar w-full xl:w-auto">
-            <span id="subject-label"
-              class="text-[11px] font-mono uppercase tracking-wider text-cyan-600 dark:text-cyan-400 font-bold shrink-0">
-              Chủ ngữ:
-            </span>
-            <div id="subject-selector"
-              class="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-950/90 border border-slate-300 dark:border-violet-500/30 shrink-0 gap-0.5">
-              <button data-subj="I"
-                class="subj-btn px-3 py-1.5 rounded-lg text-xs font-extrabold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-sm transition-all cursor-pointer">I</button>
-              <button data-subj="You"
-                class="subj-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">You</button>
-              <button data-subj="We"
-                class="subj-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">We</button>
-              <button data-subj="They"
-                class="subj-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">They</button>
-              <button data-subj="He"
-                class="subj-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">He</button>
-              <button data-subj="She"
-                class="subj-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">She</button>
-              <button data-subj="It"
-                class="subj-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">It</button>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap items-center justify-between sm:justify-end gap-2 w-full xl:w-auto">
-            <div class="flex flex-wrap items-center gap-2 overflow-x-auto no-scrollbar w-full sm:w-auto">
-              <span class="text-[11px] font-mono uppercase tracking-wider text-slate-400 hidden sm:inline shrink-0">Thể:</span>
-              <div id="polarity-selector"
-                class="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-950/90 border border-slate-300 dark:border-violet-500/30 shrink-0 gap-0.5">
-                <button data-pol="aff"
-                  class="pol-btn px-2.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 text-white shadow-xs transition-all cursor-pointer">+ Khẳng định</button>
-                <button data-pol="neg"
-                  class="pol-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">− Phủ định</button>
-                <button data-pol="int"
-                  class="pol-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">? Nghi vấn</button>
-                <button data-pol="all"
-                  class="pol-btn px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all cursor-pointer">Tất cả</button>
-              </div>
-
-              <!-- Passive Voice Switch -->
-              <button id="btn-passive-toggle" type="button" role="switch" aria-checked="false"
-                class="group relative inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-300 dark:border-violet-500/35 bg-slate-100 dark:bg-slate-950/90 text-slate-700 dark:text-slate-200 hover:border-violet-400 transition-all cursor-pointer select-none shrink-0"
-                title="Bật/Tắt Thể Bị Động (Passive Voice: S + be + V3/ed + by O)">
-                <svg class="w-3.5 h-3.5 text-violet-400 shrink-0 transition-transform duration-200 group-hover:rotate-12"
-                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M17 2.1l4 4-4 4" />
-                  <path d="M3 12.2v-2a4 4 0 0 1 4-4h14" />
-                  <path d="M7 21.9l-4-4 4-4" />
-                  <path d="M21 11.8v2a4 4 0 0 1-4 4H3" />
-                </svg>
-                <span>Bị động (Passive)</span>
-                <span id="passive-switch-track"
-                  class="relative inline-flex h-4 w-7 shrink-0 items-center rounded-full bg-slate-300 dark:bg-slate-700 transition-colors duration-200">
-                  <span id="passive-switch-thumb"
-                    class="inline-block h-3 w-3 transform rounded-full bg-white shadow-xs transition-transform duration-200 translate-x-0.5"></span>
-                </span>
-                <span id="passive-status-badge"
-                  class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400">OFF</span>
-              </button>
-            </div>
-
-            <div id="layout-selector"
-              class="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-950/90 border border-slate-300 dark:border-violet-500/30">
-              <button data-layout="columns" title="Ma trận 3 Cột Thời gian"
-                class="layout-btn shrink-0 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-gradient-to-r from-violet-600 to-cyan-600 text-white shadow-xs transition-all flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-table-columns text-[11px]"></i>
-                <span class="hidden md:inline">3 Cột</span>
-              </button>
-              <button data-layout="aspects" title="Đối chiếu theo 4 Trạng thái"
-                class="layout-btn shrink-0 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-solid fa-layer-group text-[11px]"></i>
-                <span class="hidden md:inline">4 Trạng thái</span>
-              </button>
-              <button data-layout="tabs" title="Tập trung từng Mốc thời gian"
-                class="layout-btn shrink-0 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-1.5 cursor-pointer">
-                <i class="fa-regular fa-compass text-[11px]"></i>
-                <span class="hidden md:inline">Từng mốc</span>
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <div id="timeframe-tabs"
-          class="hidden pt-2.5 mt-2.5 border-t border-slate-200 dark:border-violet-500/25 flex items-center justify-center gap-2">
-          <button data-tf="present"
-            class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-xs transition-all cursor-pointer">
-            1. Hiện tại (Present)
-          </button>
-          <button data-tf="past"
-            class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-all cursor-pointer">
-            2. Quá khứ (Past)
-          </button>
-          <button data-tf="future"
-            class="tf-tab-btn px-4 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-all cursor-pointer">
-            3. Tương lai (Future)
-          </button>
-        </div>
       </section>
 
       <!-- Color-coded Token Legend Bar -->

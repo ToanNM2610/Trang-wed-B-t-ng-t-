@@ -790,11 +790,14 @@ html.dark .token-passive-be {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.85rem;
+  align-items: stretch;
 }
 
 @media (min-width: 1024px) {
   .dual-lexicon-workstation {
     grid-template-columns: repeat(12, minmax(0, 1fr));
+    height: 700px;
+    max-height: 700px;
   }
 }
 
@@ -807,10 +810,31 @@ html.dark .right-pane-card {
   box-shadow: none !important;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  border-radius: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .left-pane-card {
+    height: 700px !important;
+    max-height: 700px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
+  }
+
+  .right-pane-card {
+    height: 700px !important;
+    max-height: 700px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
 }
 
 .left-pane-verb-list {
-  max-height: 460px;
+  flex: 1 1 auto;
+  max-height: 290px;
   overflow-y: auto;
   scrollbar-width: thin;
 }
@@ -877,7 +901,9 @@ html.dark .right-pane-card {
  * RIGHT PANE: VIETNAMESE-TO-ENGLISH REVERSE LOOKUP SCROLLABLE DICTIONARY
  * ============================================================================ */
 .right-dict-feed {
-  max-height: 480px;
+  flex: 1 1 auto;
+  height: 100%;
+  max-height: none;
   overflow-y: auto;
   scrollbar-width: thin;
 }
