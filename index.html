@@ -602,33 +602,21 @@
     <!-- =======================================================================
      * MODULE VIEW 2: 📚 LỘ TRÌNH SGK LỚP 1 - 12 (CHƯƠNG TRÌNH GDPT 2018)
      * ======================================================================= -->
-    <section id="module-view-sgk" class="hidden space-y-6 animate-card-in">
-      <div class="focus-verb-card rounded-3xl p-6 sm:p-8 space-y-6">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-200 dark:border-violet-500/25 pb-5">
-          <div class="space-y-1.5">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-400/35 text-xs font-mono font-bold">
-              <span>CHƯƠNG TRÌNH GDPT 2018 • GLOBAL SUCCESS / I-LEARN SMART WORLD</span>
-            </div>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
-              📚 Lộ trình Động từ &amp; Ngữ pháp SGK Lớp 1 – 12
-            </h2>
-            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-300">
-              Chọn khối lớp để khám phá các Thì trọng tâm và danh mục Động từ cốt lõi theo chuẩn Bộ GD&amp;ĐT. Nhấn vào bất kỳ động từ nào để chuyển sang Ma trận 12 Thì.
-            </p>
-          </div>
+    <section id="module-view-sgk" class="hidden w-full space-y-6 animate-card-in">
+      <div class="focus-verb-card rounded-2xl p-4 sm:p-6 space-y-6 w-full">
 
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-[#232A3B] pb-4">
-          <div class="space-y-1">
-            <h2 class="font-bold text-2xl sm:text-3xl text-[#F3F4F6]">
-              Lộ trình Động từ &amp; Ngữ pháp SGK Lớp 1 – 12
-            </h2>
-            <p class="text-xs sm:text-sm text-slate-400">
-              Chương trình GDPT 2018 (Global Success &amp; i-Learn Smart World). Chọn lớp trên thước đo để tra cứu.
-            </p>
+        <!-- Top Header: Centered horizontally, single column -->
+        <div class="text-center space-y-2 border-b border-[#232A3B] pb-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161B26] border border-[#232A3B] text-xs font-mono text-emerald-400">
+            <span>CHƯƠNG TRÌNH GDPT 2018 • GLOBAL SUCCESS / I-LEARN SMART WORLD</span>
           </div>
-
-          <!-- Clean 3-tier text segments -->
-          <div class="flex items-center gap-2 text-xs font-mono text-slate-400 shrink-0">
+          <h2 class="font-bold text-2xl sm:text-3xl text-[#F3F4F6]">
+            📚 Lộ trình Động từ &amp; Ngữ pháp SGK Lớp 1 – 12
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto">
+            Hệ thống chuẩn kiến thức từ vựng &amp; ngữ pháp qua từng cấp học. Chọn khối lớp trên thanh thước đo để tra cứu danh mục động từ trọng tâm.
+          </p>
+          <div class="flex items-center justify-center gap-3 text-xs font-mono text-slate-400 pt-1">
             <span>Primary (1–5)</span>
             <span class="text-[#232A3B]">|</span>
             <span>Lower Secondary (6–9)</span>
@@ -637,23 +625,32 @@
           </div>
         </div>
 
-        <!-- Clean Numeric Ruler Container (01, 02, ..., 12) -->
-        <div id="sgk-grade-selector" class="flex items-center gap-1.5 overflow-x-auto py-1 no-scrollbar">
+        <!-- 1. Horizontal Grade Switcher (Grades 1–12) across 100% width -->
+        <div class="w-full space-y-1.5">
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 px-0.5">
+            <span class="text-slate-500 uppercase tracking-wider text-[10px] font-bold">Thước đo khối lớp:</span>
+            <span class="text-[11px] text-slate-500">Khối 01 – 12</span>
+          </div>
+          <div id="sgk-grade-selector" class="w-full grid grid-cols-6 sm:grid-cols-12 gap-1.5 p-1.5 rounded-xl bg-[#161B26] border border-[#232A3B]">
+          </div>
         </div>
 
-        <div id="sgk-grade-summary" class="p-4 rounded-xl bg-[#161B26] border border-[#232A3B] space-y-3">
+        <!-- 2. Grade Summary & Title Header (Centered horizontally) -->
+        <div id="sgk-grade-summary" class="w-full p-5 rounded-xl bg-[#161B26] border border-[#232A3B] space-y-3.5">
         </div>
 
-        <div class="space-y-3">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <!-- 3. Verb Cards Container: Responsive auto-fill grid minmax(240px, 1fr) -->
+        <div class="w-full space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-0.5">
             <h3 id="sgk-verbs-heading" class="font-bold text-base text-[#F3F4F6]">
               Danh mục Động từ cốt lõi
             </h3>
             <span class="text-xs font-mono text-slate-500">Bấm "Chia 12 thì →" để nạp vào Ma trận</span>
           </div>
-          <div id="sgk-verbs-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div id="sgk-verbs-grid" class="sgk-verbs-grid w-full" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 0.75rem; width: 100%;">
           </div>
         </div>
+
       </div>
     </section>
 

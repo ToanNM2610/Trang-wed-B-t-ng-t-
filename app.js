@@ -2096,9 +2096,10 @@ if (typeof window !== 'undefined') {
         btn.type = 'button';
         const isSelected = (g === gradeNum);
         btn.className = isSelected
-          ? 'py-1.5 px-3 rounded-lg font-mono text-xs font-bold bg-[#1E2536] text-[#F3F4F6] border border-[#232A3B] shadow-sm cursor-pointer'
-          : 'py-1.5 px-3 rounded-lg font-mono text-xs font-medium text-[#9CA3AF] hover:text-[#F3F4F6] bg-transparent border-0 cursor-pointer';
+          ? 'w-full py-2 px-1 text-center rounded-lg font-mono text-xs font-bold bg-[#1E2536] text-[#F3F4F6] border border-[#232A3B] shadow-sm cursor-pointer transition-colors'
+          : 'w-full py-2 px-1 text-center rounded-lg font-mono text-xs font-medium text-[#9CA3AF] hover:text-[#F3F4F6] hover:bg-[#1E2536]/50 bg-transparent border border-transparent cursor-pointer transition-colors';
         btn.textContent = String(g).padStart(2, '0');
+        btn.title = `Xem lộ trình SGK Lớp ${g}`;
         btn.addEventListener('click', () => renderSgkCurriculum(g));
         gradeSelector.appendChild(btn);
       }
@@ -2111,16 +2112,16 @@ if (typeof window !== 'undefined') {
       }).join('');
 
       gradeSummary.innerHTML = `
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-1">
-          <div>
-            <span class="text-[11px] font-mono text-slate-400">Cấp ${meta.level} • Chuẩn GDPT 2018</span>
-            <h3 class="text-lg sm:text-xl font-bold text-[#F3F4F6]">${meta.title}</h3>
-          </div>
+        <div class="text-center space-y-1.5">
+          <span class="inline-block text-[11px] font-mono text-slate-400 uppercase tracking-wider px-2.5 py-0.5 rounded bg-[#0F1117] border border-[#232A3B]">
+            Cấp ${meta.level} • Chuẩn GDPT 2018
+          </span>
+          <h3 class="text-xl sm:text-2xl font-bold text-[#F3F4F6]">${meta.title}</h3>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">${meta.desc}</p>
         </div>
-        <p class="text-xs sm:text-sm text-slate-400">${meta.desc}</p>
-        <div class="space-y-1 pt-1 border-t border-[#232A3B]">
-          <span class="text-[10px] font-mono uppercase text-slate-500">Các thì trọng tâm Lớp ${gradeNum}:</span>
-          <div class="flex flex-wrap gap-1.5 pt-0.5">${tenseChipsHtml}</div>
+        <div class="space-y-1.5 pt-3 border-t border-[#232A3B] text-center">
+          <div class="text-[10px] font-mono uppercase text-slate-500 font-bold tracking-wider">Các thì trọng tâm Lớp ${gradeNum}:</div>
+          <div class="flex flex-wrap justify-center gap-1.5 pt-0.5">${tenseChipsHtml}</div>
         </div>
       `;
 
@@ -2137,28 +2138,28 @@ if (typeof window !== 'undefined') {
       sgkVerbsGrid.innerHTML = '';
       gradeVerbs.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'p-3.5 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-col justify-between gap-2.5 transition-colors';
+        card.className = 'p-3.5 rounded-xl bg-[#161B26] border border-[#232A3B] flex flex-col justify-between gap-2.5 transition-colors hover:border-slate-600';
         card.innerHTML = `
           <div class="space-y-1.5">
             <div class="flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 flex-wrap min-w-0">
                 <span class="font-mono text-base font-bold text-[#F3F4F6]">${item.v1}</span>
-                <span class="text-xs font-mono text-[#9CA3AF]">${item.ipaUS}</span>
+                <span class="text-xs font-mono text-[#9CA3AF]">${item.ipaUS || ''}</span>
               </div>
-              <span class="text-[10px] font-mono text-[#9CA3AF]">
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded border border-[#232A3B] shrink-0 ${item.isIrregular ? 'text-amber-400/90' : 'text-slate-400'}">
                 ${item.isIrregular ? 'Bất quy tắc' : 'Có quy tắc'}
               </span>
             </div>
-            <p class="text-xs text-[#9CA3AF] truncate">${item.meaning}</p>
-            <div class="pt-0.5 text-xs font-mono text-[#9CA3AF]">
+            <p class="text-xs text-[#9CA3AF] leading-relaxed break-words">${item.meaning}</p>
+            <div class="pt-0.5 text-xs font-mono text-indigo-400/90 break-words">
               ${item.v2} • ${item.v3} • ${item.ving}
             </div>
           </div>
           <div class="flex items-center justify-between pt-2 border-t border-[#232A3B]">
             <button type="button" class="btn-sgk-speak text-slate-500 hover:text-white transition-colors cursor-pointer" title="Nghe phát âm">
-              <i class="fa-solid fa-volume-high text-xs"></i>
+              <i class="fa-solid fa-volume-high text-xs" aria-hidden="true"></i>
             </button>
-            <button type="button" class="btn-sgk-use text-xs font-mono text-indigo-400 hover:underline cursor-pointer">
+            <button type="button" class="btn-sgk-use text-xs font-mono text-indigo-400 hover:text-indigo-300 font-semibold cursor-pointer">
               Chia 12 thì →
             </button>
           </div>

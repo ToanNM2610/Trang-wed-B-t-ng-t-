@@ -920,3 +920,31 @@ html.dark .right-pane-card {
   transition: transform 0.2s ease;
 }
 
+/* ============================================================================
+ * MODULE VIEW 2: SGK ROADMAP (LỘ TRÌNH LỚP 1 - 12) TOP-TO-BOTTOM SINGLE COLUMN
+ * ============================================================================ */
+#module-view-sgk {
+  width: 100% !important;
+}
+
+#module-view-sgk .focus-verb-card {
+  width: 100% !important;
+}
+
+#sgk-grade-selector {
+  width: 100% !important;
+}
+
+#sgk-grade-summary {
+  width: 100% !important;
+}
+
+.sgk-verbs-grid,
+#sgk-verbs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+  gap: 0.75rem !important;
+  width: 100% !important;
+}
+
+
