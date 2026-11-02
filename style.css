@@ -43,9 +43,13 @@ html {
   scroll-behavior: smooth;
   background-color: var(--bg-main);
   color: var(--text-primary);
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+}
+
+@supports (-webkit-text-size-adjust: 100%) or (text-size-adjust: 100%) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 }
 
 body {
@@ -837,8 +841,6 @@ html.dark .right-pane-card {
   flex: 1 1 auto;
   max-height: 290px;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-hairline) transparent;
 }
 
 .left-pane-verb-list::-webkit-scrollbar {
@@ -854,6 +856,13 @@ html.dark .right-pane-card {
 }
 .left-pane-verb-list::-webkit-scrollbar-thumb:hover {
   background: #374151;
+}
+
+@supports (scrollbar-width: thin) {
+  .left-pane-verb-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-hairline) transparent;
+  }
 }
 
 .verb-matrix-row {
@@ -914,8 +923,6 @@ html.dark .right-pane-card {
   height: 100%;
   max-height: none;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-hairline) transparent;
 }
 
 .right-dict-feed::-webkit-scrollbar {
@@ -934,6 +941,13 @@ html.dark .right-pane-card {
 
 .right-dict-feed::-webkit-scrollbar-thumb:hover {
   background: #374151;
+}
+
+@supports (scrollbar-width: thin) {
+  .right-dict-feed {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-hairline) transparent;
+  }
 }
 
 .dict-entry-card {
@@ -963,6 +977,43 @@ html.dark .right-pane-card {
 
 .card-chevron {
   transition: transform 0.2s ease;
+}
+
+/* ============================================================================
+ * 12-TENSE CONJUGATION MATRIX (REVERSE LEXICON CARD ACCORDION)
+ * ============================================================================ */
+.card-tense-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.card-tense-table th,
+.card-tense-table td {
+  padding: 0.35rem 0.35rem;
+  line-height: 1.25;
+}
+
+.card-tense-aux {
+  color: #818CF8;
+  font-weight: 600;
+}
+
+.card-tense-verb {
+  color: #F3F4F6;
+  font-weight: 700;
+}
+
+.card-tense-cell {
+  user-select: none;
+}
+
+.card-tense-cell:hover .card-tense-aux {
+  color: #A5B4FC;
+}
+
+.card-tense-cell:hover .card-tense-verb {
+  color: #FFFFFF;
 }
 
 /* ============================================================================

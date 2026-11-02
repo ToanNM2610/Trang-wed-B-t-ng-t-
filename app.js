@@ -1024,7 +1024,8 @@ if (typeof window !== 'undefined') {
       patternFilter: 'all',
       leftSearchQuery: '',
       pinnedVerbs: initialPins,
-      rightExpandedV1: null
+      rightExpandedV1: null,
+      dictSubjectMode: 'plural'
     };
 
     const verbInput = document.getElementById('verb-input');
@@ -2601,6 +2602,237 @@ if (typeof window !== 'undefined') {
     }
 
     /* ----------------------------------------------------------------------------
+     * 12-TENSE CONJUGATION MATRIX HELPER (REVERSE LEXICON CARD ACCORDION)
+     * ---------------------------------------------------------------------------- */
+
+    function buildCardConjugations(item, subjectMode = 'plural') {
+      const isPlural = (subjectMode !== 'singular');
+      const v1 = (item.v1 || '').trim();
+      const isBe = (v1.toLowerCase() === 'be');
+      const v2 = firstVariant(item.v2) || (v1 + 'ed');
+      const v3 = firstVariant(item.v3) || (v1 + 'ed');
+
+      // Third person singular
+      let vs = item.vs;
+      if (!vs) {
+        if (isBe) {
+          vs = 'is';
+        } else if (v1.endsWith('ch') || v1.endsWith('sh') || v1.endsWith('ss') || v1.endsWith('x') || v1.endsWith('zz') || v1.endsWith('o')) {
+          vs = v1 + 'es';
+        } else if (v1.endsWith('y') && !/[aeiou]y$/i.test(v1)) {
+          vs = v1.slice(0, -1) + 'ies';
+        } else {
+          vs = v1 + 's';
+        }
+      }
+
+      // V-ing
+      let ving = item.ving;
+      if (!ving) {
+        if (isBe) {
+          ving = 'being';
+        } else if (v1.endsWith('ie')) {
+          ving = v1.slice(0, -2) + 'ying';
+        } else if (v1.endsWith('e') && !/ee$|oe$|ye$/i.test(v1)) {
+          ving = v1.slice(0, -1) + 'ing';
+        } else {
+          ving = v1 + 'ing';
+        }
+      }
+
+      const aux = (text) => `<span class="card-tense-aux">${text}</span>`;
+      const verb = (text) => `<span class="card-tense-verb">${text}</span>`;
+
+      // 12 Tenses calculation
+      // 1. Present Simple
+      let presSimpleHtml = '', presSimpleRaw = '';
+      if (isBe) {
+        presSimpleHtml = isPlural ? verb('am / are') : verb('is');
+        presSimpleRaw = isPlural ? 'am / are' : 'is';
+      } else {
+        presSimpleHtml = isPlural ? verb(v1) : verb(vs);
+        presSimpleRaw = isPlural ? v1 : vs;
+      }
+
+      // 2. Present Continuous
+      const presContAux = isPlural ? 'am/are' : 'is';
+      const presContHtml = `${aux(presContAux)} ${verb(ving)}`;
+      const presContRaw = `${presContAux} ${ving}`;
+
+      // 3. Present Perfect
+      const presPerfAux = isPlural ? 'have' : 'has';
+      const presPerfHtml = `${aux(presPerfAux)} ${verb(v3)}`;
+      const presPerfRaw = `${presPerfAux} ${v3}`;
+
+      // 4. Present Perfect Continuous
+      const presPerfContAux = isPlural ? 'have been' : 'has been';
+      const presPerfContHtml = `${aux(presPerfContAux)} ${verb(ving)}`;
+      const presPerfContRaw = `${presPerfContAux} ${ving}`;
+
+      // 5. Past Simple
+      let pastSimpleHtml = '', pastSimpleRaw = '';
+      if (isBe) {
+        pastSimpleHtml = isPlural ? verb('were / was') : verb('was');
+        pastSimpleRaw = isPlural ? 'were / was' : 'was';
+      } else {
+        pastSimpleHtml = verb(v2);
+        pastSimpleRaw = v2;
+      }
+
+      // 6. Past Continuous
+      const pastContAux = isPlural ? 'were/was' : 'was';
+      const pastContHtml = `${aux(pastContAux)} ${verb(ving)}`;
+      const pastContRaw = `${pastContAux} ${ving}`;
+
+      // 7. Past Perfect
+      const pastPerfHtml = `${aux('had')} ${verb(v3)}`;
+      const pastPerfRaw = `had ${v3}`;
+
+      // 8. Past Perfect Continuous
+      const pastPerfContHtml = `${aux('had been')} ${verb(ving)}`;
+      const pastPerfContRaw = `had been ${ving}`;
+
+      // 9. Future Simple
+      const futSimpleHtml = `${aux('will')} ${verb(v1)}`;
+      const futSimpleRaw = `will ${v1}`;
+
+      // 10. Future Continuous
+      const futContHtml = `${aux('will be')} ${verb(ving)}`;
+      const futContRaw = `will be ${ving}`;
+
+      // 11. Future Perfect
+      const futPerfHtml = `${aux('will have')} ${verb(v3)}`;
+      const futPerfRaw = `will have ${v3}`;
+
+      // 12. Future Perfect Continuous
+      const futPerfContHtml = `${aux('will have been')} ${verb(ving)}`;
+      const futPerfContRaw = `will have been ${ving}`;
+
+      return {
+        pres: {
+          simple: { html: presSimpleHtml, raw: presSimpleRaw },
+          cont: { html: presContHtml, raw: presContRaw },
+          perf: { html: presPerfHtml, raw: presPerfRaw },
+          perfCont: { html: presPerfContHtml, raw: presPerfContRaw }
+        },
+        past: {
+          simple: { html: pastSimpleHtml, raw: pastSimpleRaw },
+          cont: { html: pastContHtml, raw: pastContRaw },
+          perf: { html: pastPerfHtml, raw: pastPerfRaw },
+          perfCont: { html: pastPerfContHtml, raw: pastPerfContRaw }
+        },
+        fut: {
+          simple: { html: futSimpleHtml, raw: futSimpleRaw },
+          cont: { html: futContHtml, raw: futContRaw },
+          perf: { html: futPerfHtml, raw: futPerfRaw },
+          perfCont: { html: futPerfContHtml, raw: futPerfContRaw }
+        }
+      };
+    }
+
+    function buildCardTenseMatrixHtml(item, subjectMode = 'plural') {
+      const isPlural = (subjectMode !== 'singular');
+      const conj = buildCardConjugations(item, subjectMode);
+
+      return `
+        <div class="space-y-1.5">
+          <!-- Subject Toggle Strip -->
+          <div class="flex items-center justify-between text-[11px] px-0.5">
+            <span class="text-slate-400 font-mono text-[10px] uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-table-cells text-indigo-400 text-[11px]" aria-hidden="true"></i>
+              Ma trận 12 thì (12 Tenses)
+            </span>
+            <div class="inline-flex rounded border border-[#232A3B] bg-[#0F1117] p-0.5" role="group" aria-label="Chọn ngôi chủ ngữ">
+              <button type="button" class="btn-card-subj px-2 py-0.5 rounded text-[10px] font-mono transition-colors cursor-pointer ${isPlural ? 'bg-[#232A3B] text-white font-bold' : 'text-slate-400 hover:text-slate-200'}" data-mode="plural">
+                I / You / We / They
+              </button>
+              <button type="button" class="btn-card-subj px-2 py-0.5 rounded text-[10px] font-mono transition-colors cursor-pointer ${!isPlural ? 'bg-[#232A3B] text-white font-bold' : 'text-slate-400 hover:text-slate-200'}" data-mode="singular">
+                He / She / It
+              </button>
+            </div>
+          </div>
+
+          <!-- 3x4 Matrix Table -->
+          <div class="overflow-hidden rounded-lg border border-[#232A3B] bg-[#0F1117]">
+            <table class="card-tense-table text-left border-collapse w-full">
+              <thead>
+                <tr class="border-b border-[#232A3B] bg-[#161B26]/80 text-[10px] font-mono text-slate-400">
+                  <th class="p-1.5 w-[22%] text-slate-500 font-bold uppercase">Thể</th>
+                  <th class="p-1.5 w-[26%] text-slate-300 font-bold">Hiện tại</th>
+                  <th class="p-1.5 w-[26%] text-slate-300 font-bold">Quá khứ</th>
+                  <th class="p-1.5 w-[26%] text-slate-300 font-bold">Tương lai</th>
+                </tr>
+              </thead>
+              <tbody class="text-[11px] font-mono divide-y divide-[#232A3B]/60">
+                <!-- Row 1: Simple -->
+                <tr>
+                  <td class="p-1.5 text-slate-400 text-[10px] bg-[#161B26]/30 font-semibold">Đơn</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.pres.simple.raw}" title="Nghe phát âm">${conj.pres.simple.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.past.simple.raw}" title="Nghe phát âm">${conj.past.simple.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.fut.simple.raw}" title="Nghe phát âm">${conj.fut.simple.html}</td>
+                </tr>
+                <!-- Row 2: Continuous -->
+                <tr>
+                  <td class="p-1.5 text-slate-400 text-[10px] bg-[#161B26]/30 font-semibold">Tiếp diễn</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.pres.cont.raw}" title="Nghe phát âm">${conj.pres.cont.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.past.cont.raw}" title="Nghe phát âm">${conj.past.cont.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.fut.cont.raw}" title="Nghe phát âm">${conj.fut.cont.html}</td>
+                </tr>
+                <!-- Row 3: Perfect -->
+                <tr>
+                  <td class="p-1.5 text-slate-400 text-[10px] bg-[#161B26]/30 font-semibold">Hoàn thành</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.pres.perf.raw}" title="Nghe phát âm">${conj.pres.perf.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.past.perf.raw}" title="Nghe phát âm">${conj.past.perf.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.fut.perf.raw}" title="Nghe phát âm">${conj.fut.perf.html}</td>
+                </tr>
+                <!-- Row 4: Perfect Continuous -->
+                <tr>
+                  <td class="p-1.5 text-slate-400 text-[10px] bg-[#161B26]/30 font-semibold">HT Tiếp diễn</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.pres.perfCont.raw}" title="Nghe phát âm">${conj.pres.perfCont.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.past.perfCont.raw}" title="Nghe phát âm">${conj.past.perfCont.html}</td>
+                  <td class="p-1.5 card-tense-cell cursor-pointer hover:bg-[#1A2130]" data-speak="${conj.fut.perfCont.raw}" title="Nghe phát âm">${conj.fut.perfCont.html}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-[10px] text-slate-500 font-mono flex items-center justify-between px-0.5">
+            <span><i class="fa-solid fa-volume-high text-[9px] mr-1 text-slate-400" aria-hidden="true"></i>Nhấn vào ô để nghe đọc thì</span>
+            <span class="text-indigo-400/90 font-mono text-[9px]">Aux + Verb</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function attachCardMatrixListeners(card, item) {
+      const matrixBox = card.querySelector('.card-tense-matrix-box');
+      if (!matrixBox) return;
+
+      // 1. Subject toggle buttons
+      const subjButtons = matrixBox.querySelectorAll('.btn-card-subj');
+      subjButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const mode = btn.dataset.mode;
+          state.dictSubjectMode = mode;
+          matrixBox.innerHTML = buildCardTenseMatrixHtml(item, mode);
+          attachCardMatrixListeners(card, item);
+        });
+      });
+
+      // 2. Tense cells speech
+      const cells = matrixBox.querySelectorAll('.card-tense-cell');
+      cells.forEach(cell => {
+        cell.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const textToSpeak = cell.dataset.speak;
+          if (textToSpeak) {
+            speak(textToSpeak, 'en-US');
+          }
+        });
+      });
+    }
+
+    /* ----------------------------------------------------------------------------
      * RIGHT PANE: REVERSE LOOKUP SCROLLABLE DICTIONARY & ACCORDION
      * ---------------------------------------------------------------------------- */
 
@@ -2737,13 +2969,21 @@ if (typeof window !== 'undefined') {
               <p class="text-[11px] text-[#9CA3AF] italic">${exampleVN}</p>
             </div>
 
+            <!-- 12-Tense Conjugation Matrix Container -->
+            <div class="card-tense-matrix-box mt-2.5 pt-2 border-t border-[#232A3B]">
+              ${buildCardTenseMatrixHtml(item, state.dictSubjectMode || 'plural')}
+            </div>
+
             <!-- Form & Context Info (Completely Independent) -->
             <div class="flex items-center justify-between text-[10px] font-mono text-slate-500 pt-0.5">
-              <span>Dạng thức V1, V2, V3 &amp; Ví dụ ngữ cảnh</span>
+              <span>Ma trận 12 thì &amp; Ngữ cảnh</span>
               <span class="text-slate-400 text-[10px] font-mono">Tra cứu độc lập</span>
             </div>
           </div>
         `;
+
+        // Attach matrix interactive listeners (Subject toggle & Tense pronunciation)
+        attachCardMatrixListeners(card, item);
 
         // Audio speak button
         const audioBtn = card.querySelector('.btn-card-audio');
@@ -2763,8 +3003,8 @@ if (typeof window !== 'undefined') {
           });
         }
 
-        // Toggle accordion button or full card click (independent right dictionary)
-        card.addEventListener('click', () => {
+        // Toggle accordion logic
+        const toggleCardAccordion = () => {
           const accordion = card.querySelector('.dict-card-accordion');
           const chevron = card.querySelector('.card-chevron');
           const isCurrentlyExpanded = state.rightExpandedV1 === v1Lower;
@@ -2791,6 +3031,23 @@ if (typeof window !== 'undefined') {
             if (chevron) chevron.classList.add('rotate-180');
             card.classList.add('is-active');
           }
+        };
+
+        const toggleBtn = card.querySelector('.btn-card-toggle');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleCardAccordion();
+          });
+        }
+
+        // Card header click to toggle (ignoring interactions inside the accordion)
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.dict-card-accordion')) return;
+          if (e.target.closest('.btn-card-audio')) return;
+          if (e.target.closest('.btn-card-toggle')) return;
+
+          toggleCardAccordion();
         });
 
         fragment.appendChild(card);
